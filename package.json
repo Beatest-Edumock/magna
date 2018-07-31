@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.1.3",
+    "formik": "^1.0.2",
+    "history": "^4.7.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-flickity-component": "^3.0.3",
@@ -12,9 +14,11 @@
     "react-router": "latest",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "react-select": "^2.0.0",
     "react-toastify": "^4.1.0",
     "react-typed": "^1.0.9",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "yup": "^0.25.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,6 +35,12 @@
     "@storybook/react": "^3.4.8",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
-    "react-storybook-decorator-background": "^1.0.5"
+    "react-storybook-decorator-background": "^1.0.5",
+    "redux-devtools-extension": "^2.13.5"
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://new-struct-lb-5a48b9f92a560a6c.elb.ap-south-1.amazonaws.com"
+    }
   }
 }

@@ -22,6 +22,7 @@ function typedString() {
     );
 }
 
+
 function callToAction() {
     /**
      * The giant call to action with a background image and a button
@@ -32,8 +33,15 @@ function callToAction() {
 
         <div className="main-container">
             <a id="testing-text-1" className="in-page-link"/>
+
             <section className="cover height-100 imagebg text-center" data-overlay={3}>
-                <div className="background-image-holder"><img alt="background" src="img/landing-3.jpg"/></div>
+
+                <div className="background-image-holder" style={{
+                    background: "url(/img/landing-1.jpg)",
+                    "backgroundPosition": "initial",
+                    "opacity": 1
+                }}>
+                </div>
                 <div className="container pos-vertical-center">
 
 

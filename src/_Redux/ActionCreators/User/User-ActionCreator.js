@@ -1,23 +1,28 @@
-import ADD_USER from "../../actions/user"
-import LoginUser from "../../../_Api/User"
+import {ADD_USER, REMOVE_USER} from "_Redux/actions/user"
+import LoginUser from "_Api/User"
+import {ToastContainer, toast} from "react-toastify";
+import history from "__internals/CustomHistory";
 
-function add_user_action_create_api(user) {
+/**
+ *
+ * Add the user to the store
+ * @param user : the user object retured from api/user
+ *
+ * @returns {{type: string, user: *}}
+ */
+function add_user_action(user) {
 
-
-    return (dispatch) => {
-
-        dispatch({type: ADD_USER, user: user});
-
-        LoginUser("swapnildey94@gmail.com", "test123").then(({data}) => {
-            console.log("IN HERE");
-            console.log(data);
-            dispatch({type: ADD_USER, user: null});
-        })
-
-    };
+    return {type: ADD_USER, user};
 
 
 }
 
 
-export default add_user_action_create_api;
+function remove_user_action() {
+
+    return {type: REMOVE_USER};
+
+
+}
+
+export {add_user_action, remove_user_action};

@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
+import history from '__internals/CustomHistory'
+import {LogoutUser} from '_Api/User'
+import {toast} from 'react-toastify'
 
 function LoginProfileSignupButton(props) {
     /**
@@ -11,28 +14,37 @@ function LoginProfileSignupButton(props) {
      */
 
     const profileLoginText = props.isLoggedIn ? "Profile" : "Login";
+    const profileLoginLink = props.isLoggedIn ? "/profile" : "/login";
+
     const signupLogoutText = props.isLoggedIn ? "Logout" : "Sign Up";
 
     return (
 
         <div className="bar__module">
 
-
-            <a className="btn btn--sm btn--primary type--uppercase"
-               href="#purchase-template"> <span className="btn__text"> {profileLoginText}</span>
+            <a className="btn btn--sm btn--primary type--uppercase" onClick={() => {
+                history.push(profileLoginLink)
+            }}>
+                <span className="btn__text"> {profileLoginText}</span>
             </a>
 
-            <a className="btn btn--sm type--uppercase" onClick={props.loginUser}> <span
+            <a className="btn btn--sm type--uppercase" onClick={() => {
+
+                if (props.isLoggedIn) {
+                    LogoutUser().then(() => {
+                        toast.success("Successfully Logged Out");
+                        props.removeUserAction();
+                    });
+                }
+
+            }}> <span
                 className="btn__text"> {signupLogoutText} </span>
             </a>
         </div>
     )
-
 }
 
-
 function NavBar(props) {
-    console.log(props.loginUser);
 
     return (
         <div className="nav-container">
@@ -40,6 +52,7 @@ function NavBar(props) {
                 <div className="bar bar--sm visible-xs">
                     <div className="container">
                         <div className="row">
+
                             <div className="col-3 col-md-2">
                                 <a href="index.html"> <img className="logo logo-dark" alt="logo" src="/logos/beatest.png"/>
                                 </a>
@@ -90,7 +103,8 @@ function NavBar(props) {
 
 NavBar.propTypes = {
     isLoggedIn: PropTypes.object,
-    loginUser: PropTypes.func.isRequired
+    removeUserAction: PropTypes.func.isRequired
+
 };
 
 export default NavBar;

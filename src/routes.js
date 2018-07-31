@@ -1,15 +1,19 @@
 import React from "react";
-import {BrowserRouter as Router, Redirect, Route, Link, Switch} from "react-router-dom";
-
+import {Route, Router, Switch, Link} from "react-router-dom";
 import HomePage from "./HomePage/HomePage"
+import LoginPage from "./LoginPage/LoginPage"
+import history from "./__internals/CustomHistory";
+
 
 const Routes = () => (
-    <Router>
+    <Router history={history}>
         <Switch>
             <Route exact path="/" component={HomePage}/>
+
+            <Route exact path="/login" component={LoginPage}/>
         </Switch>
     </Router>
 );
 
 
-export default Routes
+export default Routes;
