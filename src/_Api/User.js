@@ -9,4 +9,13 @@ function LogoutUser() {
     return axios.post('/user/logout');
 }
 
-export {LoginUser, LogoutUser};
+
+function ResendActivationMail(email, recaptcha) {
+    return axios.post('/user/resend_activation', {
+        email,
+        captcha_token: recaptcha
+    });
+
+}
+
+export {LoginUser, LogoutUser, ResendActivationMail};

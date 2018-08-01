@@ -31,9 +31,9 @@ function loginForm(props) {
 
             }).catch(({response}) => {
                 setErrors({info: response.data.message});
+            }).then(() => {
+                setSubmitting(false);
             });
-
-            setSubmitting(false);
 
 
         }}
@@ -42,8 +42,8 @@ function loginForm(props) {
 
             <form onSubmit={handleSubmit}>
 
-                <div className="row row--gapless">
-                    <div class="col-12 color--error">{errors.info}</div>
+                <div className="row">
+                    <div className="col-12 color--error">{errors.info}</div>
                     <div className={"col-12"}>
 
                         <input
@@ -55,7 +55,7 @@ function loginForm(props) {
                             value={values.email}
                         />
                     </div>
-                    {touched.email && errors.email && <div class="col-12 color--error">{errors.email}</div>}
+                    {touched.email && errors.email && <div className="col-12 color--error">{errors.email}</div>}
 
                     <div className={"col-12"}>
 
@@ -69,7 +69,7 @@ function loginForm(props) {
                         />
                     </div>
 
-                    {touched.password && errors.password && <div class="col-12 color--error">{errors.password}</div>}
+                    {touched.password && errors.password && <div className="col-12 color--error">{errors.password}</div>}
 
                     <div className="col-12">
                         <button className="btn btn--primary" type="submit" disabled={isSubmitting}>

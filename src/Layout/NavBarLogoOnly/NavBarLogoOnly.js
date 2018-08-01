@@ -17,12 +17,8 @@ function NavBarLogoOnly(props) {
                         <div className="container">
                             <div className="row">
                                 <div className="col-3 col-md-2">
-                                    <Link to={"/"}> <img className="logo logo-dark" alt="logo" src="/logos/beatest.png"/>
+                                    <Link to={"/"}> <img className="logo logo-dark" alt="logo" src="/logos/beatest-dark.png"/>
                                     </Link>
-                                </div>
-                                <div className="col-9 col-md-10 text-right">
-                                    <a href="#" className="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm">
-                                        <i className="icon icon--sm stack-interface stack-menu"/> </a>
                                 </div>
                             </div>
                         </div>
@@ -32,9 +28,11 @@ function NavBarLogoOnly(props) {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-1 col-md-2 hidden-xs">
-                                    <div className="bar__module"><Link to="/">
-                                        <img className="logo logo-dark" alt="logo" src="/logos/beatest-dark.png"/> <img
-                                        className="logo logo-light" alt="logo" src="/logos/beatest.png"/> </Link>
+                                    <div className="bar__module">
+                                        <Link to="/">
+                                            <img className="logo logo-dark hidden-xs" alt="logo" src="/logos/beatest-dark.png"/>
+                                            <img className="logo logo-light hidden-xs hidden-sm" alt="logo" src="/logos/beatest.png"/>
+                                        </Link>
                                     </div>
                                 </div>
 
