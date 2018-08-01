@@ -9,7 +9,7 @@ import Recaptcha from "react-recaptcha";
 
 const schema = yup.object().shape({
 
-    email: yup.string().email().required(),
+    email: yup.string().email("Email is not valid").required(),
     recaptcha: yup.string().required("You must complete the recaptcha")
 });
 
@@ -41,10 +41,12 @@ class ResendActivationForm extends React.Component {
 
                 <form onSubmit={handleSubmit}>
 
-                    <div className="row">
-                        <div className="col-12 color--error">{errors.info}</div>
+                    <div className="col-12 color--error">{errors.info}</div>
 
-                        <div className={"col-8"}>
+
+                    <div className="row">
+
+                        <div className="col-8 ">
 
                             <input
                                 type="email"
@@ -57,33 +59,35 @@ class ResendActivationForm extends React.Component {
                         </div>
 
 
-                        <button className="btn btn--primary col-4" type="submit" disabled={isSubmitting}>
+                        <button className="btn btn--primary col-4 " type="submit" disabled={isSubmitting}>
                             Resend Activation Email
                         </button>
 
                         {touched.email && errors.email && <div className="col-12 color--error">{errors.email}</div>}
 
-                        <div className={"col-8"}>
+                    </div>
 
-                            <Recaptcha
-                                sitekey="6LfJGVMUAAAAAJJtME41Fh4D_sQUAcIJSKqSLwAN"
-                                render="explicit"
-                                theme="light"
 
-                                verifyCallback={(response) => {
-                                    setFieldValue("recaptcha", response);
+                    <div className={"col-8"}>
 
-                                }}
-                                onloadCallback={() => {
+                        <Recaptcha
+                            sitekey="6LfJGVMUAAAAAJJtME41Fh4D_sQUAcIJSKqSLwAN"
+                            render="explicit"
+                            theme="light"
 
-                                }}
-                            />
-                            {touched.recaptcha && errors.recaptcha && <div className="col-4 color--error">{errors.recaptcha}</div>}
+                            verifyCallback={(response) => {
+                                setFieldValue("recaptcha", response);
 
-                        </div>
+                            }}
+                            onloadCallback={() => {
 
+                            }}
+                        />
+                        {touched.recaptcha && errors.recaptcha && <div className="col-4 color--error">{errors.recaptcha}</div>}
 
                     </div>
+
+
                 </form>
 
             )}

@@ -24,10 +24,10 @@ function NavBarLogoOnly(props) {
                         </div>
                     </div>
 
-                    <nav id="menu1" className="bar bar-1 hidden-xs bar--absolute bar--transparent">
+                    <nav id="menu1" className="bar bar-1  bar--absolute bar--transparent">
                         <div className="container">
                             <div className="row">
-                                <div className="col-lg-1 col-md-2 hidden-xs">
+                                <div className="col-lg-1 col-md-2 ">
                                     <div className="bar__module">
                                         <Link to="/">
                                             <img className="logo logo-dark hidden-xs" alt="logo" src="/logos/beatest-dark.png"/>
