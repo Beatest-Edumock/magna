@@ -1,9 +1,9 @@
 import React from 'react';
 import {Formik} from 'formik';
 import * as yup from 'yup';
-import {ResendActivationMail} from '_Api/User'
+import {ResendActivationMailApi} from '_Api/User'
 import {toast} from 'react-toastify'
-import history from '__internals/CustomHistory'
+import {history} from "../../__internals/CustomHistory";
 import Recaptcha from "react-recaptcha";
 
 
@@ -24,7 +24,7 @@ function ResendActivationForm() {
 
         onSubmit={(values, {setSubmitting, setErrors}) => {
 
-            ResendActivationMail(values.email, values.recaptcha).then(() => {
+            ResendActivationMailApi(values.email, values.recaptcha).then(() => {
                 toast.success("Email Successfully Resent!");
                 history.push("/login");
 

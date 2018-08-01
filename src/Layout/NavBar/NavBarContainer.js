@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import NavBarUI from './NavBar';
-import {removeUserAC} from "_Redux/ActionCreators/User/User-ActionCreator"
+import {removeUserAC} from "_Redux/ActionCreators/User-ActionCreator"
 
 
 function mapSateToProps(state) {

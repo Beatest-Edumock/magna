@@ -1,9 +1,9 @@
 import React from 'react';
 import {Formik} from 'formik';
 import * as yup from 'yup';
-import {LoginUser} from '_Api/User'
+import {LoginUserApi} from '_Api/User'
 import {toast} from 'react-toastify'
-import history from '__internals/CustomHistory'
+import {history} from "../../__internals/CustomHistory";
 
 
 const schema = yup.object().shape({
@@ -23,7 +23,7 @@ function loginForm(props) {
 
         onSubmit={(values, {setSubmitting, setErrors}) => {
 
-            LoginUser(values.email, values.password).then(({data}) => {
+            LoginUserApi(values.email, values.password).then(({data}) => {
 
                 props.addUserAction(data);
                 toast.success(`Welcome ${data.full_name}`);

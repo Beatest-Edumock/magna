@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addUserAC} from '_Redux/ActionCreators/User/User-ActionCreator'
+import {addUserAC} from '_Redux/ActionCreators/User-ActionCreator'
 import LoginForm from './LoginForm'
 
 

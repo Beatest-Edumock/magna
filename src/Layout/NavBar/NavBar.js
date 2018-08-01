@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import history from '__internals/CustomHistory'
-import {LogoutUser} from '_Api/User'
+import {history} from '__internals/CustomHistory'
+import {LogoutUserApi} from '_Api/User'
 import {toast} from 'react-toastify'
 
 function LoginProfileSignupButton(props) {
@@ -31,7 +31,7 @@ function LoginProfileSignupButton(props) {
             <a className="btn btn--sm type--uppercase" onClick={() => {
 
                 if (props.isLoggedIn) {
-                    LogoutUser().then(() => {
+                    LogoutUserApi().then(() => {
                         toast.success("Successfully Logged Out");
                         props.removeUserAction();
                     });

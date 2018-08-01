@@ -1,7 +1,4 @@
 import {ADD_USER, REMOVE_USER} from "_Redux/actions/user"
-import LoginUser from "_Api/User"
-import {ToastContainer, toast} from "react-toastify";
-import history from "__internals/CustomHistory";
 
 /**
  *

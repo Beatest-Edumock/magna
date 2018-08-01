@@ -1,7 +1,7 @@
 import React from "react";
-import {Route, Router, Switch, Link} from "react-router-dom";
-import history from "./__internals/CustomHistory";
+import {Route, Router} from "react-router-dom";
 import {AnimatedSwitch} from 'react-router-transition';
+import {history} from "./__internals/CustomHistory";
 
 import HomePage from "./HomePage/HomePage"
 import LoginPage from "./LoginPage/LoginPage"

@@ -4,13 +4,13 @@ All setup related to redux is done here.
 This like setting the initial state, combining reducers,etc.
  */
 
-import {applyMiddleware, combineReducers, createStore} from 'redux'
+import {applyMiddleware, createStore} from 'redux'
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {addUserAC} from './ActionCreators/User/User-ActionCreator'
+import {addUserAC} from './ActionCreators/User-ActionCreator'
 
-import userReducer from '_Redux/reducers/User/User-Reducers'
-import {GetUserDetails} from "../_Api/User";
+import userReducer from '_Redux/reducers/User-Reducers'
+import {GetUserDetailsApi} from "../_Api/User";
 
 
 function initStore() {
@@ -21,7 +21,7 @@ function initStore() {
     const store = createStore(userReducer, initState, composeWithDevTools(applyMiddleware(thunk)));
 
 
-    GetUserDetails().then(({data}) => {
+    GetUserDetailsApi().then(({data}) => {
             store.dispatch(addUserAC(data));
         }
     );
