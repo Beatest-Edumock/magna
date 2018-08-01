@@ -27,12 +27,12 @@ reducers
 `Layout/` --> Commonly used components that are used for almost all pages. This includes
 components like header and footers
 
-`Common/` --> Reusable components that are used throughout the app.
+`Common/` --> Reusable components that are required throughout the app.
 
 `CSS/`  --> Custom css theme to be applied to the entire website 
 
 
-#### Page naming conventions
+### Page naming conventions
 
 Pages should be placed directly under `src/` with the suffix `page`. 
 So the Login Page should be placed under `src/LoginPage/` as `LoginPage.js`. 
@@ -40,6 +40,9 @@ So the Login Page should be placed under `src/LoginPage/` as `LoginPage.js`.
 
 If the page requires components, its recommended to add them as different
 files next to the page's js file in a new folder. 
+
+
+### Component naming conventions 
 
 E.g. the `LoginForm` component should be placed under 
 `src/LoginPage/LoginForm.js`
@@ -54,14 +57,13 @@ file at the same level as `LoginForm.js`
 If a component requires to connect to the redux store, it **must have a container component**
 
 
-
-
-
 Components that are part of the general page layout 
 should be placed in `layout`. Extremely commonly used
-components 
+components like `header` , `footer` should be under here. 
+Each component should have its own folder.
 
 Components that are reused should be placed in Common
+but are not part of the layout of a page should be placed under 
+`Common`.
+Each component should have its own folder.
 
-Each `page` component should be directly under source 
-and should be be prefixed by `Page`
