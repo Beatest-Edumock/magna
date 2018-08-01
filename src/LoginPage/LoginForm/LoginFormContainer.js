@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {add_user_action} from '_Redux/ActionCreators/User/User-ActionCreator'
+import {addUserAC} from '_Redux/ActionCreators/User/User-ActionCreator'
 import LoginForm from './LoginForm'
 
 
@@ -12,7 +12,7 @@ function mapDispatchToProps(dispatch) {
 
     return {
         addUserAction: (userDetails) => {
-            dispatch(add_user_action(userDetails))
+            dispatch(addUserAC(userDetails))
         }
     }
 

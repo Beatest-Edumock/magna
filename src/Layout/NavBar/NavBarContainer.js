@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import NavBarUI from './NavBar';
-import {remove_user_action} from "_Redux/ActionCreators/User/User-ActionCreator"
+import {removeUserAC} from "_Redux/ActionCreators/User/User-ActionCreator"
 
 
 function mapSateToProps(state) {
@@ -15,7 +15,7 @@ function mapDispatchToProps(dispatch) {
 
     return {
         removeUserAction: () => {
-            dispatch(remove_user_action());
+            dispatch(removeUserAC());
         }
     }
 }

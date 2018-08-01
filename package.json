@@ -21,7 +21,9 @@
     "react-toastify": "^4.1.0",
     "react-typed": "^1.0.9",
     "redux-thunk": "^2.3.0",
-    "yup": "^0.25.1"
+    "yup": "^0.25.1",
+    "redux": "latest",
+    "prop-types": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

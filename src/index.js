@@ -1,42 +1,40 @@
+/**
+ * Entry point of the app.
+ *
+ * This page calls the setup scripts required
+ * to get the entire app running.
+ *
+ *
+ * Notably, it does the following:
+ *
+ * * Run setUp() to set up globals,config values,etc.
+ * * Run initStore() to set up the redux store.
+ * * Mount the react app in the root of the DOM.
+ *
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
-import {applyMiddleware, createStore} from 'redux'
 import {BrowserRouter} from 'react-router-dom'
-import thunk from 'redux-thunk';
-import {add_user_action} from '_Redux/ActionCreators/User/User-ActionCreator'
-import userReducer from '_Redux/reducers/User/User-Reducers'
-import {composeWithDevTools} from 'redux-devtools-extension';
-
-
-import axios from 'axios';
 
 
 import Routes from './routes'
+import {setUpApp} from "./setUp";
+import {MainToastContainer} from "./Common/ToastContainer";
+import {initStore} from "./_Redux/initStore";
+
+
 import 'bootstrap/dist/css/bootstrap.css';
 import './CSS/theme.css'
-import {Slide, ToastContainer} from 'react-toastify'
-
-axios.defaults.baseURL = 'api/v0.1/';
-
-const initState = {user: null};
-
-const store = createStore(userReducer, initState, composeWithDevTools(applyMiddleware(thunk)));
 
 
-const CustomToastContainer = () => (<ToastContainer autoClose={3500}
-                                                    position={"top-left"}
-                                                    transition={Slide}
-                                                    hideProgressBar={true}/>);
+setUpApp();
+const store = initStore();
 
-axios.get('user').then(({data}) => {
-        store.dispatch(add_user_action(data));
-    }
-);
 
 const App = (
     <React.Fragment>
-        <CustomToastContainer/>
+        <MainToastContainer/>
         <Provider store={store}>
             <Routes history={BrowserRouter}/>
         </Provider>
@@ -48,4 +46,3 @@ ReactDOM.render(App,
 );
 
 
-export {store};

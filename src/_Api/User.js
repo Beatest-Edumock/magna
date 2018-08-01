@@ -9,6 +9,10 @@ function LogoutUser() {
     return axios.post('/user/logout');
 }
 
+function GetUserDetails() {
+    return axios.get('/user');
+}
+
 
 function ResendActivationMail(email, recaptcha) {
     return axios.post('/user/resend_activation', {
@@ -18,4 +22,4 @@ function ResendActivationMail(email, recaptcha) {
 
 }
 
-export {LoginUser, LogoutUser, ResendActivationMail};
+export {LoginUser, LogoutUser, ResendActivationMail,GetUserDetails};

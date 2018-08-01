@@ -10,7 +10,7 @@ import history from "__internals/CustomHistory";
  *
  * @returns {{type: string, user: *}}
  */
-function add_user_action(user) {
+function addUserAC(user) {
 
     return {type: ADD_USER, user};
 
@@ -18,11 +18,11 @@ function add_user_action(user) {
 }
 
 
-function remove_user_action() {
+function removeUserAC() {
 
     return {type: REMOVE_USER};
 
 
 }
 
-export {add_user_action, remove_user_action};
+export {addUserAC, removeUserAC};

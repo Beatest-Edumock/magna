@@ -1,21 +1,17 @@
 import React from 'react';
 
 import {storiesOf} from '@storybook/react';
-import {action} from '@storybook/addon-actions';
-import {linkTo} from '@storybook/addon-links';
 import NavBar from '../Layout/NavBar/NavBar';
 import NavBarLogoOnly from '../Layout/NavBarLogoOnly/NavBarLogoOnly';
 import HomePage from '../HomePage/HomePage'
-import ResendActivationForm from 'ResendActivationPage/ResendActivationForm/ResendActivationForm'
 import StoryRouter from 'storybook-react-router';
 import {Provider} from 'react-redux';
 
 
-import {store} from 'index';
-
-import {Button, Welcome} from '@storybook/react/demo';
 import ResendActivationPage from "../ResendActivationPage/ResendActivationPage";
+import {initStore} from "../_Redux/initStore";
 
+const store = initStore();
 
 storiesOf('NavBar', module)
     .add('Logged In', () => <NavBar isLoggedIn={true}/>)
