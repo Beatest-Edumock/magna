@@ -8,28 +8,28 @@ This is the source of our (Hopefully) upcoming UI.
 ### File structure Conventions
 
 
-`index.js`  --> Entry point of the app 
+`index.js`     --> Entry point of the app 
 
-`routes.js` --> Definitions of different pages using `React-Router`
+`routes.js`    --> Definitions of different pages using `React-Router`
 
-`setUp.js`  --> Factory function that does setup work (like setting global defaults)
+`setUp.js`     --> Factory function that does setup work (like setting global defaults)
 
-`stories/`  --> Storybook folder for UI testing (more details coming soon)
+`stories/`     --> Storybook folder for UI testing (more details coming soon)
 
 `__internals/` --> Code that are required for the functioning of the app itself
 
-`_Api/` --> All external api calls are placed under here. Each logical group of api calls 
+`_Api/`        --> All external api calls are placed under here. Each logical group of api calls 
 should be placed in the same file. 
 
-`_Redux/` --> Redux related code. This includes things like action constants,action creators and
+`_Redux/`      --> Redux related code. This includes things like action constants,action creators and
 reducers
 
-`Layout/` --> Commonly used components that are used for almost all pages. This includes
+`Layout/`      --> Commonly used components that are used for almost all pages. This includes
 components like header and footers
 
-`Common/` --> Reusable components that are required throughout the app.
+`Common/`      --> Reusable components that are required throughout the app.
 
-`CSS/`  --> Custom css theme to be applied to the entire website 
+`CSS/`         --> Custom css theme to be applied to the entire website 
 
 
 ### Page naming conventions

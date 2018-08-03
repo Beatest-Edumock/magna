@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import {LoginUserApi} from '_Api/User'
 import {toast} from 'react-toastify'
 import {history} from "../../__internals/CustomHistory";
+import {Button, Form, FormGroup, Label, Input, FormText, Col} from 'reactstrap';
 
 
 const schema = yup.object().shape({
@@ -13,7 +14,7 @@ const schema = yup.object().shape({
 });
 
 
-function loginForm(props) {
+function LoginForm(props) {
 
     return (<Formik
 
@@ -30,6 +31,7 @@ function loginForm(props) {
                 history.push("/");
 
             }).catch(({response}) => {
+                console.log("response");
                 setErrors({info: response.data.message});
             }).then(() => {
                 setSubmitting(false);
@@ -40,49 +42,50 @@ function loginForm(props) {
 
         render={({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting,}) => (
 
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
 
-                <div className="row">
-                    <div className="col-12 color--error">{errors.info}</div>
-                    <div className={"col-12"}>
+                <FormGroup>
+                    <Label className="text-danger">{errors.info}</Label>
+                </FormGroup>
 
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="email"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.email}
-                        />
-                    </div>
-                    {touched.email && errors.email && <div className="col-12 color--error">{errors.email}</div>}
+                <FormGroup>
+                    <Label className="text-danger text-left">{touched.email && errors.email && errors.email}</Label>
 
-                    <div className={"col-12"}>
+                    <Input
+                        type="email"
+                        name="email"
+                        placeholder="Enter Email"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email}
+                    />
 
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="password"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.password}
-                        />
-                    </div>
+                    <Label className="text-danger text-left">{touched.password && errors.password && errors.password}</Label>
 
-                    {touched.password && errors.password && <div className="col-12 color--error">{errors.password}</div>}
+                    <Input
+                        type="password"
+                        name="password"
+                        placeholder="Enter Password"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.password}
+                    />
 
-                    <div className="col-12">
-                        <button className="btn btn--primary" type="submit" disabled={isSubmitting}>
-                            Submit
-                        </button>
-                    </div>
+                </FormGroup>
 
-                </div>
-            </form>
+                <FormGroup>
+
+                    <Button color="primary" type="submit" disabled={isSubmitting}>
+                        Submit
+                    </Button>
+
+                </FormGroup>
+
+            </Form>
 
         )}
     />);
 }
 
 
-export default loginForm;
+export {LoginForm};

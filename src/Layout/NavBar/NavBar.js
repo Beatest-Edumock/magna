@@ -1,108 +1,103 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import {Container, Collapse, Nav, Navbar, NavbarBrand, NavbarToggler} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
-import {history} from '__internals/CustomHistory'
-import {LogoutUserApi} from '_Api/User'
-import {toast} from 'react-toastify'
+// function LoginProfileSignupButton(props) {
+//     /**
+//      * The text and links of the two buttons
+//      * depends on the fact that the user is logged in or not.
+//      *
+//      * @type {string}
+//      */
+//
+//     const profileLoginText = props.isLoggedIn ? "Profile" : "Login";
+//     const profileLoginLink = props.isLoggedIn ? "/profile" : "/login";
+//
+//     const signupLogoutText = props.isLoggedIn ? "Logout" : "Sign Up";
+//
+//     return (
+//
+//         <div className="bar__module">
+//
+//             <a className="btn btn--sm btn--primary type--uppercase" onClick={() => {
+//                 history.push(profileLoginLink)
+//             }}>
+//                 <span className="btn__text"> {profileLoginText}</span>
+//             </a>
+//
+//             <a className="btn btn--sm type--uppercase" onClick={() => {
+//
+//                 if (props.isLoggedIn) {
+//                     LogoutUserApi().then(() => {
+//                         toast.success("Successfully Logged Out");
+//                         props.removeUserAction();
+//                     });
+//                 }
+//
+//             }}> <span
+//                 className="btn__text"> {signupLogoutText} </span>
+//             </a>
+//         </div>
+//     )
+// }
 
-function LoginProfileSignupButton(props) {
-    /**
-     * The text and links of the two buttons
-     * depends on the fact that the user is logged in or not.
-     *
-     * @type {string}
-     */
+class NavBar extends React.Component {
 
-    const profileLoginText = props.isLoggedIn ? "Profile" : "Login";
-    const profileLoginLink = props.isLoggedIn ? "/profile" : "/login";
+    constructor() {
+        super();
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            isOpen: false,
+            bgColor: 'transparent'
+        };
 
-    const signupLogoutText = props.isLoggedIn ? "Logout" : "Sign Up";
 
-    return (
+    }
 
-        <div className="bar__module">
+    toggle() {
+        const isOpen = !this.state.isOpen;
 
-            <a className="btn btn--sm btn--primary type--uppercase" onClick={() => {
-                history.push(profileLoginLink)
-            }}>
-                <span className="btn__text"> {profileLoginText}</span>
-            </a>
+        this.setState({
+            isOpen: isOpen,
+            bgColor: isOpen ? "light" : "transparent"
+        });
+    }
 
-            <a className="btn btn--sm type--uppercase" onClick={() => {
 
-                if (props.isLoggedIn) {
-                    LogoutUserApi().then(() => {
-                        toast.success("Successfully Logged Out");
-                        props.removeUserAction();
-                    });
-                }
+    render() {
+        return (
 
-            }}> <span
-                className="btn__text"> {signupLogoutText} </span>
-            </a>
-        </div>
-    )
+            <Navbar color={this.state.bgColor} light expand="md">
+                <Container>
+
+                    <NavbarBrand tag={Link} to="/">
+                        <img src={this.props.useLightLogo ? "/logos/beatest.png" : "/logos/beatest-dark.png"} height="30"></img>
+                    </NavbarBrand>
+
+
+                    {this.props.children &&
+                    < div>
+                        < NavbarToggler onClick={this.toggle}/>
+
+                        <Collapse isOpen={this.state.isOpen} navbar>
+
+                            <Nav className="ml-auto" navbar>
+                                {this.props.children}
+
+                            </Nav>
+
+                        </Collapse>
+                    </div>
+                    }
+
+                </Container>
+            </Navbar>
+
+
+        );
+
+    }
 }
 
-function NavBar(props) {
 
-    return (
-        <div className="nav-container">
-            <div>
-                <div className="bar bar--sm visible-xs">
-                    <div className="container">
-                        <div className="row">
-
-                            <div className="col-3 col-md-2">
-                                <img className="logo logo-dark" alt="logo" src="/logos/beatest-dark.png"/>
-                            </div>
-                            <div className="col-9 col-md-10 text-right">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <nav id="menu1" className="bar bar-1  bar--absolute bar--transparent">
-                    <div className="container">
-                        <div className="row">
-
-                            <div className="col-lg-1 col-md-2 hidden-xs">
-                                <div className="bar__module">
-                                    <img className="logo logo-dark hidden-xs" alt="logo" src="/logos/beatest-dark.png"/>
-                                    <img className="logo logo-light hidden-xs hidden-sm" alt="logo" src="/logos/beatest.png"/>
-                                </div>
-                            </div>
-
-
-                            <div className="col-lg-11 col-md-12 text-right text-left-xs text-left-sm ">
-                                <div className="bar__module">
-                                    <ul className="menu-horizontal text-left">
-                                        <li>
-                                            <a href="#"> Testing <span className="label label--inline "> Deal </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-
-                                {LoginProfileSignupButton(props)}
-
-
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-
-    )
-}
-
-NavBar.propTypes = {
-    isLoggedIn: PropTypes.object,
-    removeUserAction: PropTypes.func.isRequired
-
-};
-
-export default NavBar;
+export {NavBar};

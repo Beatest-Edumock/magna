@@ -25,7 +25,7 @@ import {initStore} from "./_Redux/initStore";
 
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './CSS/theme.css'
+// import './_CSS/theme.css'
 
 
 setUpApp();

@@ -1,51 +1,47 @@
 import React from 'react'
-import NavBar from 'Layout/NavBarLogoOnly/NavBarLogoOnly'
-import LoginForm from './LoginForm/LoginFormContainer'
+import {NavBar} from "../Layout/NavBar/NavBar";
+import {Button, Form, FormGroup, Label, Input, FormText, Col} from 'reactstrap';
+import {LoginFormContainer} from "./LoginForm/LoginFormContainer";
 
 
-function LoginPage(props) {
+const formContainerStyle = {
+    marginTop: "10%"
+};
 
-    return (<div>
+const fullPageDivStyle = {
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+    backgroundImage: "linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5) ),url(/img/inner-2.jpg)"
 
-
-            <div className="main-container">
-
-                <NavBar/>
-
-                <section className="space--xs imageblock switchable feature-large ">
-                    <div className="imageblock__content col-lg-5 col-md-5 pos-right">
-
-                        <div className="background-image-holder  hidden-xs" style={{
-                            background: "url(/img/inner-7.jpg)",
-                            "background-position": "initial",
-                            "opacity": 1,
-                            "height": "100vh"
-                        }}>
-
-                        </div>
-                    </div>
+};
 
 
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-5 col-md-7">
+function LoginPage() {
 
-                                <h2>Create a Stack account</h2> <span>Dont Have an account? Get lost</span>
-                                <br/>
-                                <hr className="short"/>
+    return (
 
-                                <LoginForm/>
+        <div style={fullPageDivStyle}>
 
-                            </div>
-                        </div>
-                    </div>
+            <div className="container-fluid">
+                <div>
 
+                    <NavBar useLightLogo/>
 
-                </section>
+                </div>
+
+                <div style={formContainerStyle} className="container text-center col-md-4 col-md-offset-4">
+                    <h4 className='text-light'>Sign In</h4>
+                    <hr className="bg-light"/>
+
+                    <LoginFormContainer/>
+
+                </div>
             </div>
         </div>
+
     )
 
 }
 
-export default LoginPage;
+export {LoginPage};
