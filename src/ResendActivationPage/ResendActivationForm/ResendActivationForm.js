@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import {ResendActivationMailApi} from '_Api/User'
 import {toast} from 'react-toastify'
 import {history} from "../../__internals/CustomHistory";
+import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import Recaptcha from "react-recaptcha";
 
 
@@ -13,6 +14,7 @@ const schema = yup.object().shape({
     recaptcha: yup.string().required("You must complete the recaptcha")
 });
 
+let recaptchaInstance;
 
 function ResendActivationForm() {
 
@@ -24,13 +26,16 @@ function ResendActivationForm() {
 
         onSubmit={(values, {setSubmitting, setErrors}) => {
 
+
             ResendActivationMailApi(values.email, values.recaptcha).then(() => {
                 toast.success("Email Successfully Resent!");
                 history.push("/login");
 
             }).catch(({response}) => {
                 setErrors({info: response.data.message});
+                recaptchaInstance.reset();
                 setSubmitting(false);
+
             });
 
 
@@ -38,56 +43,52 @@ function ResendActivationForm() {
 
         render={({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue}) => (
 
-            <form onSubmit={handleSubmit}>
 
-                <div className="col-12 color--error">{errors.info}</div>
+            <Form onSubmit={handleSubmit}>
 
+                <FormGroup>
+                    <Label className="text-danger">{errors.info}</Label>
+                </FormGroup>
 
-                <div className="row">
+                <FormGroup>
+                    <Label className="text-danger text-left">{touched.email && errors.email && errors.email}</Label>
 
-                    <div className="col-8 ">
+                    <Input
+                        type="email"
+                        name="email"
+                        placeholder="Enter Email"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email}
+                    />
 
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.email}
-                        />
-                    </div>
+                    <Label className="text-danger text-left">{touched.recaptcha && errors.recaptcha && errors.recaptcha}</Label>
 
+                </FormGroup>
 
-                    <button className="btn btn--primary col-4 " type="submit" disabled={isSubmitting}>
-                        Resend Activation Email
-                    </button>
-
-                    {touched.email && errors.email && <div className="col-12 color--error">{errors.email}</div>}
-
-                </div>
-
-
-                <div className={"col-8"}>
-
+                <FormGroup>
                     <Recaptcha
+                        ref={e => recaptchaInstance = e}
                         sitekey="6LfJGVMUAAAAAJJtME41Fh4D_sQUAcIJSKqSLwAN"
                         render="explicit"
                         theme="light"
+                        type="invisible"
 
                         verifyCallback={(response) => {
                             setFieldValue("recaptcha", response);
-
-                        }}
-                        onloadCallback={() => {
-
                         }}
                     />
-                    {touched.recaptcha && errors.recaptcha && <div className="col-4 color--error">{errors.recaptcha}</div>}
+                </FormGroup>
 
-                </div>
+                <FormGroup>
+                    <Button color="primary" type="submit" disabled={isSubmitting}>
+                        Resend Activation Mail
+                    </Button>
+                </FormGroup>
 
 
-            </form>
+            </Form>
+
 
         )}
     />)

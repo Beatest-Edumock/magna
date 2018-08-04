@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavBar} from "../NavBar/NavBar";
-import {NavItem, NavLink} from 'reactstrap';
+import {NavItem, NavLink, Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {LogoutUserApi} from "../../_Api/User";
 import {history} from "../../__internals/CustomHistory";
@@ -14,9 +14,9 @@ function profileLoginNavLink(props) {
 
         <NavLink tag={Link} to={props.isUserLoggedIn ? "/profile" : "/login"}>
 
-            <button className="btn btn-primary">
+            <Button color="primary">
                 {props.isUserLoggedIn ? "Profile" : "Login"}
-            </button>
+            </Button>
 
         </NavLink>
     )
@@ -40,7 +40,7 @@ function signupLogoutNavLink(props) {
 
     else {
         buttonHandler = () => {
-            history.push('/login')
+            history.push('/signup')
         }
     }
 
@@ -48,10 +48,9 @@ function signupLogoutNavLink(props) {
     return (
 
         <NavLink>
-
-            <button className="btn btn-outline-secondary" onClick={buttonHandler}>
+            <Button color="success" onClick={buttonHandler}>
                 {props.isUserLoggedIn ? "Logout" : "Signup"}
-            </button>
+            </Button>
 
         </NavLink>
     );
@@ -62,7 +61,7 @@ function NavBarWithButtons(props) {
 
 
     return (
-        <NavBar>
+        <NavBar lightLogo={props.lightLogo}>
 
             <NavItem>
                 {profileLoginNavLink(props)}

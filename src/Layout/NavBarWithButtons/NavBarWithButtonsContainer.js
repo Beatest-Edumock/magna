@@ -3,10 +3,11 @@ import {NavBarWithButtons} from "./NavBarWithButtons";
 import {removeUserAC} from "../../_Redux/ActionCreators/User-ActionCreator";
 
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
 
     return {
-        isUserLoggedIn: state.user
+        isUserLoggedIn: state.user,
+        lightLogo: ownProps.lightLogo
     }
 
 }

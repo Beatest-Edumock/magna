@@ -1,38 +1,14 @@
 import React from 'react'
-import NavBar from 'Layout/NavBarLogoOnly/NavBarLogoOnly'
 import ResendActivationForm from './ResendActivationForm/ResendActivationForm'
+import {SingleFormPage} from "../Common/SingleFormPage";
 
 function ResendActivationPage(props) {
 
     return (
+        <SingleFormPage title="Resend Activation Email">
+            <ResendActivationForm/>
+        </SingleFormPage>
 
-        <div className="main-container ">
-            <NavBar/>
-            <div className="container">
-                <section className="text-center height-100">
-
-                    <div className="background-image-holder" style={{
-                        background: "url(/img/hero-1.jpg)",
-                        "background-position": "initial",
-                        "opacity": 1,
-                        "height": "100vh"
-                    }}>
-
-                    </div>
-
-                    <div className="container pos-vertical-center">
-                        <ResendActivationForm/>
-
-                        <span className="type--fine-print text-light">
-                        I have read and agree to the
-                        <a href="#"> Terms &amp; Conditions</a>
-                    </span>
-
-                    </div>
-                </section>
-            </div>
-
-        </div>
     );
 
 }

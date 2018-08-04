@@ -5,6 +5,8 @@ import {storiesOf} from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
 import {NavBarWithButtons} from "../Layout/NavBarWithButtons/NavBarWithButtons";
 import {initStore} from "../_Redux/initStore";
+import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
+import {MultipleFeature} from "../Common/FeatureCard/MultipleFeatures";
 
 const store = initStore();
 
@@ -16,6 +18,12 @@ storiesOf('NavBar-WithButtons', module)
     .addDecorator(StoryRouter())
     .add('Logged In', () => <NavBarWithButtons isUserLoggedIn={true}/>)
     .add('Logged Out', () => <NavBarWithButtons isUserLoggedIn={false}/>);
+
+storiesOf('Card', module)
+    .add("Feature Card", FeatureCard);
+
+storiesOf('Multiple Cards', module)
+    .add("Feature Card", MultipleFeature);
 
 // storiesOf('HomePage', module)
 //     .addDecorator(story => <Provider store={store}>{story()}</Provider>)

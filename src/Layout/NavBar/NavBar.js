@@ -59,7 +59,7 @@ class NavBar extends React.Component {
 
         this.setState({
             isOpen: isOpen,
-            bgColor: isOpen ? "light" : "transparent"
+            bgColor: isOpen ? "dark" : "transparent"
         });
     }
 
@@ -67,17 +67,19 @@ class NavBar extends React.Component {
     render() {
         return (
 
-            <Navbar color={this.state.bgColor} light expand="md">
+            <Navbar color={this.state.bgColor} light expand="md" fixed='top' className="shadow-lg">
+
+
                 <Container>
 
                     <NavbarBrand tag={Link} to="/">
-                        <img src={this.props.useLightLogo ? "/logos/beatest.png" : "/logos/beatest-dark.png"} height="30"></img>
+                        <img src={this.props.lightLogo ? "/logos/beatest.png" : "/logos/beatest-dark.png"} height="60"></img>
                     </NavbarBrand>
 
 
                     {this.props.children &&
                     < div>
-                        < NavbarToggler onClick={this.toggle}/>
+                        < NavbarToggler onClick={this.toggle} className="navbar-dark"/>
 
                         <Collapse isOpen={this.state.isOpen} navbar>
 

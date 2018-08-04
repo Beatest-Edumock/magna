@@ -31,7 +31,6 @@ function LoginForm(props) {
                 history.push("/");
 
             }).catch(({response}) => {
-                console.log("response");
                 setErrors({info: response.data.message});
             }).then(() => {
                 setSubmitting(false);
@@ -44,9 +43,7 @@ function LoginForm(props) {
 
             <Form onSubmit={handleSubmit}>
 
-                <FormGroup>
-                    <Label className="text-danger">{errors.info}</Label>
-                </FormGroup>
+                <Label className="text-danger">{errors.info}</Label>
 
                 <FormGroup>
                     <Label className="text-danger text-left">{touched.email && errors.email && errors.email}</Label>

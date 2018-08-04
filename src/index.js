@@ -22,10 +22,16 @@ import Routes from './routes'
 import {setUpApp} from "./setUp";
 import {MainToastContainer} from "./Common/ToastContainer";
 import {initStore} from "./_Redux/initStore";
+import 'core-js/fn/array/find';
 
 
-import 'bootstrap/dist/css/bootstrap.css';
-// import './_CSS/theme.css'
+
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import './_CSS/fonts.css'
+import './_CSS/custom.css'
 
 
 setUpApp();
