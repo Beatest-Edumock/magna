@@ -4,7 +4,9 @@ import * as yup from 'yup';
 import {LoginUserApi} from '_Api/User'
 import {toast} from 'react-toastify'
 import {history} from "../../__internals/CustomHistory";
+import Recaptcha from 'react-recaptcha';
 import {Button, Form, FormGroup, Label, Input, FormText, Col} from 'reactstrap';
+import {GetCollegeApi} from "../../_Api/Colleges";
 
 
 const schema = yup.object().shape({
@@ -16,38 +18,61 @@ const schema = yup.object().shape({
         return password === value;
 
     }),
+    recaptcha: yup.string().required("You must complete the recaptcha"),
     phoneNo: yup.number("Invalid Phone Number")
         .lessThan(10000000000, "Invalid Phone number, must be 10 digits")
         .moreThan(999999999, "Invalid Phone number, must be 10 digits")
-        .required("Phone number is required")
+        .required("Phone number is required"),
+
+    college: yup.string().nullable().test('college-match', "Please Select a College", function (value) {
+
+        if (value === "unselected") {
+            return false;
+        }
+
+        return true;
+    })
 
 });
 
+let recaptchaInstance;
 
 class SignUpForm extends React.Component {
 
     constructor() {
-        super()
+        super();
 
+        this.state = {colleges: new Array()};
     }
 
     componentDidMount() {
+
+        GetCollegeApi().then(({data}) => {
+            const colleges = this.state.colleges;
+
+            colleges.push(...data);
+
+            this.setState({colleges: colleges});
+            console.log(data);
+        })
 
     }
 
     render() {
         return (<Formik
 
-            initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', collegeId: null,}}
+            initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "unselected", recaptcha: ''}}
 
             validationSchema={schema}
 
             onSubmit={(values, {setSubmitting, setErrors}) => {
+                console.log("Submitted");
+                console.log(values);
 
 
             }}
 
-            render={({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting,}) => (
+            render={({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue}) => (
 
                 <Form onSubmit={handleSubmit}>
 
@@ -100,17 +125,39 @@ class SignUpForm extends React.Component {
                         />
 
 
-                    </FormGroup>
+                        <Label className="text-danger text-left">{touched.college && errors.college && errors.college}</Label>
 
-                    <FormGroup>
-                        <Input type="select" name="carlist" form="carform">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                        <Input type="select"
+                               name="college"
+                               value={values.college}
+                               onChange={handleChange}
+                               onBlur={handleBlur}>
+
+                            <option value="unselected" disabled selected>Select your College</option>
+
+                            <option value={null}>Other/Not Listed</option>
+                            {this
+                                .state
+                                .colleges
+                                .map((cur) => <option value={cur.id}>{cur.college_name}</option>)}
+
                         </Input>
                     </FormGroup>
 
+                    <FormGroup>
+                        <Recaptcha
+                            ref={e => recaptchaInstance = e}
+                            sitekey="6LfJGVMUAAAAAJJtME41Fh4D_sQUAcIJSKqSLwAN"
+                            render="explicit"
+                            theme="light"
+                            type="invisible"
+
+                            verifyCallback={(response) => {
+                                setFieldValue("recaptcha", response);
+                            }}
+                        />
+                        <Label className="text-danger text-left">{touched.recaptcha && errors.recaptcha && errors.recaptcha}</Label>
+                    </FormGroup>
                     <FormGroup>
 
                         <Button color="primary" type="submit" disabled={isSubmitting}>

@@ -4,10 +4,9 @@ import {FeatureCard} from "./FeatureCard";
 
 function MultipleFeature() {
     return (
-        <div className="container-fluid">
+        <div className="container-fluid no-gutters">
             <div className="row justify-content-center">
 
-
                 <FeatureCard/>
 
                 <FeatureCard/>
@@ -15,34 +14,10 @@ function MultipleFeature() {
                 <FeatureCard/>
 
                 <FeatureCard/>
-                <FeatureCard/>
-                <FeatureCard/>
-                <FeatureCard/>
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
-
-                <FeatureCard/>
+                {/*<FeatureCard/>*/}
+                {/*<FeatureCard/>*/}
+                {/*<FeatureCard/>*/}
+                {/*<FeatureCard/>*/}
             </div>
         </div>
 

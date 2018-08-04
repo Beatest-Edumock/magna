@@ -25,12 +25,15 @@ function LoginForm(props) {
         onSubmit={(values, {setSubmitting, setErrors}) => {
 
             LoginUserApi(values.email, values.password).then(({data}) => {
+                debugger;
+                console.log(data);
 
                 props.addUserAction(data);
                 toast.success(`Welcome ${data.full_name}`);
                 history.push("/");
 
             }).catch(({response}) => {
+                console.log(response);
                 setErrors({info: response.data.message});
             }).then(() => {
                 setSubmitting(false);

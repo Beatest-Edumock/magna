@@ -1,10 +1,10 @@
 import React from 'react';
-import {NavBar} from "../NavBar/NavBar";
 import {NavItem, NavLink, Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {LogoutUserApi} from "../../_Api/User";
 import {history} from "../../__internals/CustomHistory";
 import {toast} from 'react-toastify'
+import {NavBar} from "../NavBar/NavBar";
 
 
 function profileLoginNavLink(props) {
@@ -62,11 +62,9 @@ function NavBarWithButtons(props) {
 
     return (
         <NavBar lightLogo={props.lightLogo}>
-
             <NavItem>
                 {profileLoginNavLink(props)}
             </NavItem>
-
             <NavItem>
                 {signupLogoutNavLink(props)}
             </NavItem>

@@ -7,6 +7,7 @@ import {NavBarWithButtons} from "../Layout/NavBarWithButtons/NavBarWithButtons";
 import {initStore} from "../_Redux/initStore";
 import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
 import {MultipleFeature} from "../Common/FeatureCard/MultipleFeatures";
+import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
 
 const store = initStore();
 
@@ -24,6 +25,10 @@ storiesOf('Card', module)
 
 storiesOf('Multiple Cards', module)
     .add("Feature Card", MultipleFeature);
+
+
+storiesOf('Multiple Cards', module)
+    .add("Large Feature Card", LargeFeatureCard);
 
 // storiesOf('HomePage', module)
 //     .addDecorator(story => <Provider store={store}>{story()}</Provider>)

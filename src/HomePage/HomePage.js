@@ -2,8 +2,11 @@ import React from "react";
 import Typed from 'react-typed';
 import {NavBarWithButtonsContainer} from "../Layout/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
-import {Jumbotron, Container, Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle, Button} from 'reactstrap';
+import {Button, Container, Jumbotron} from 'reactstrap';
 import {MultipleFeature} from "../Common/FeatureCard/MultipleFeatures";
+import {MultipleLargeFeatures} from "../Common/LargeFeatureCard/MultipleLargeFeatures";
+import Flickity from 'react-flickity-component';
+
 
 //
 //
@@ -35,6 +38,12 @@ function HomePage() {
     return (
 
         <div>
+            <div className="container-fluid">
+
+                <NavBarWithButtonsContainer/>
+
+            </div>
+
             <div>
 
                 <Jumbotron fluid style={bodyStyle}>
@@ -59,13 +68,16 @@ function HomePage() {
 
                 {/*<div>*/}
 
-                <div className="container-fluid">
-
-                    <NavBarWithButtonsContainer lightLogo/>
-
-                </div>
 
                 <MultipleFeature/>
+
+                <Container fluid className='bg-light border-top'>
+
+                    <h1 className="text-center" style={{paddingTop: '2%'}}> Our Features</h1>
+
+                    <MultipleLargeFeatures/>
+                </Container>
+
 
             </div>
         </div>

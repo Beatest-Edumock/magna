@@ -7,9 +7,9 @@
  *
  * Notably, it does the following:
  *
- * * Run setUp() to set up globals,config values,etc.
- * * Run initStore() to set up the redux store.
- * * Mount the react app in the root of the DOM.
+ * 1. Run setUp() to set up globals,config values,etc.
+ * 2. Run initStore() to set up the redux store.
+ * 3. Mount the react app in the root of the DOM.
  *
  */
 import React from 'react';
@@ -23,15 +23,12 @@ import {setUpApp} from "./setUp";
 import {MainToastContainer} from "./Common/ToastContainer";
 import {initStore} from "./_Redux/initStore";
 import 'core-js/fn/array/find';
-
-
-
+import 'core-js/fn/array/from';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './_CSS/fonts.css'
-import './_CSS/custom.css'
 
 
 setUpApp();

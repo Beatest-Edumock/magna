@@ -1,7 +1,9 @@
 import React from 'react';
 import {Card, Container} from 'reactstrap';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
-import {faCoffee, faCompactDisc, faCode, faSpinner, faCodeBranch} from '@fortawesome/free-solid-svg-icons'
+import {faCoffee, faCompactDisc, faCode, faSpinner, faCodeBranch, faUserFriends, fa} from '@fortawesome/free-regular-svg-icons'
+import {faUser,} from '@fortawesome/free-regular-svg-icons'
+import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons'
 
 
 const style = {
@@ -10,25 +12,25 @@ const style = {
     padding: "10%"
 };
 
-function FeatureCard() {
+function LargeFeatureCard(props) {
 
 
     return (
-        <Card className="col-md-4 col-lg-2 shadow-sm" style={{margin: "2%"}}>
+        <Card className="col-md-4 col-lg-3 shadow-sm" style={{margin: "10px"}}>
 
             <div className="container" style={{padding: "10%"}}>
 
                 <div className="text-center ">
 
                     <div style={{style}}>
-                        <FontAwesomeIcon size={"6x"} icon={faCoffee} color="#8C9EFF"/>
+                        <FontAwesomeIcon size={"6x"} icon={faConnectdevelop} color="#8C9EFF"/>
                     </div>
 
                 </div>
 
                 <hr/>
 
-                <div className="text-center" style={{marginTop: "5%"}}>
+                <div className="text-center" style={{marginTop: "10%"}}>
                     <Container>
                         <p className="font-weight-bold">
                             Grow your skills with the inspiring mentors
@@ -44,4 +46,4 @@ function FeatureCard() {
 }
 
 
-export {FeatureCard}
+export {LargeFeatureCard}

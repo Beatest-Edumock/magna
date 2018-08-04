@@ -28,7 +28,7 @@ const fullPageDivStyle = {
     height: "100%",
     width: "100%",
     position: "absolute",
-    backgroundImage: "linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5) ),url(/img/inner-2.jpg)"
+    backgroundImage: "linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5) ),url(/img/inner-2.jpg) "
 
 };
 
@@ -42,7 +42,7 @@ function SingleFormPage(props) {
             <div className="container-fluid">
                 <div>
 
-                    <NavBar lightLogo/>
+                    <NavBar transparent lightLogo/>
 
                 </div>
 
