@@ -5,7 +5,7 @@ import {history} from "./__internals/CustomHistory";
 
 import {HomePage} from "./HomePage/HomePage"
 import {LoginPage} from "./LoginPage/LoginPage"
-import ResendActivationPage from "./ResendActivationPage/ResendActivationPage"
+import {ResendActivationPage} from "./ResendActivationPage/ResendActivationPage"
 import {SignUpPage} from "./SignUpPage/SignUpPage";
 
 

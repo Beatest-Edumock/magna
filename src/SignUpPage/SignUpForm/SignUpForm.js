@@ -1,12 +1,9 @@
 import React from 'react';
 import {Formik} from 'formik';
 import * as yup from 'yup';
-import {LoginUserApi} from '_Api/User'
-import {toast} from 'react-toastify'
-import {history} from "../../__internals/CustomHistory";
 import Recaptcha from 'react-recaptcha';
-import {Button, Form, FormGroup, Label, Input, FormText, Col} from 'reactstrap';
-import {GetCollegeApi} from "../../_Api/Colleges";
+import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import config from 'config';
 
 
 const schema = yup.object().shape({
@@ -25,152 +22,118 @@ const schema = yup.object().shape({
         .required("Phone number is required"),
 
     college: yup.string().nullable().test('college-match', "Please Select a College", function (value) {
+        return value !== "unselected";
 
-        if (value === "unselected") {
-            return false;
-        }
-
-        return true;
     })
-
 });
 
-let recaptchaInstance;
 
-class SignUpForm extends React.Component {
-
-    constructor() {
-        super();
-
-        this.state = {colleges: new Array()};
-    }
-
-    componentDidMount() {
-
-        GetCollegeApi().then(({data}) => {
-            const colleges = this.state.colleges;
-
-            colleges.push(...data);
-
-            this.setState({colleges: colleges});
-            console.log(data);
-        })
-
-    }
-
-    render() {
-        return (<Formik
-
-            initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "unselected", recaptcha: ''}}
-
-            validationSchema={schema}
-
-            onSubmit={(values, {setSubmitting, setErrors}) => {
-                console.log("Submitted");
-                console.log(values);
+function SignUpForm(props) {
 
 
-            }}
+    return (<Formik
 
-            render={({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue}) => (
+        initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "unselected", recaptcha: null}}
 
-                <Form onSubmit={handleSubmit}>
+        validationSchema={schema}
 
-                    <Label className="text-danger">{errors.info}</Label>
+        onSubmit={props.onSubmitCallback}
 
-                    <FormGroup>
-                        <Label className="text-danger text-left">{touched.email && errors.email && errors.email}</Label>
+        render={({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue}) => (
 
-                        <Input
-                            type="email"
-                            name="email"
-                            placeholder="Enter Email"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.email}
-                        />
+            <Form onSubmit={handleSubmit}>
 
-                        <Label className="text-danger text-left">{touched.password && errors.password && errors.password}</Label>
+                <Label className="text-danger">{errors.info}</Label>
 
-                        <Input
-                            type="password"
-                            name="password"
-                            placeholder="Enter Password"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.password}
-                        />
+                <FormGroup>
+                    <Label className="text-danger text-left">{touched.email && errors.email && errors.email}</Label>
 
-                        <Label className="text-danger text-left">{touched.confirmPassword && errors.confirmPassword && errors.confirmPassword}</Label>
+                    <Input
+                        type="email"
+                        name="email"
+                        placeholder="Enter Email"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email}
+                    />
 
-                        <Input
-                            type="password"
-                            name="confirmPassword"
-                            placeholder="Confirm Password"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.confirmPassword}
-                        />
+                    <Label className="text-danger text-left">{touched.password && errors.password && errors.password}</Label>
 
+                    <Input
+                        type="password"
+                        name="password"
+                        placeholder="Enter Password"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.password}
+                    />
 
-                        <Label className="text-danger text-left">{touched.phoneNo && errors.phoneNo && errors.phoneNo}</Label>
+                    <Label className="text-danger text-left">{touched.confirmPassword && errors.confirmPassword && errors.confirmPassword}</Label>
 
-                        <Input
-                            type="tel"
-                            name="phoneNo"
-                            placeholder="Enter Phone Number"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.phoneNo}
-                        />
+                    <Input
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.confirmPassword}
+                    />
 
 
-                        <Label className="text-danger text-left">{touched.college && errors.college && errors.college}</Label>
+                    <Label className="text-danger text-left">{touched.phoneNo && errors.phoneNo && errors.phoneNo}</Label>
 
-                        <Input type="select"
-                               name="college"
-                               value={values.college}
-                               onChange={handleChange}
-                               onBlur={handleBlur}>
+                    <Input
+                        type="tel"
+                        name="phoneNo"
+                        placeholder="Enter Phone Number"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.phoneNo}
+                    />
 
-                            <option value="unselected" disabled selected>Select your College</option>
 
-                            <option value={null}>Other/Not Listed</option>
-                            {this
-                                .state
-                                .colleges
-                                .map((cur) => <option value={cur.id}>{cur.college_name}</option>)}
+                    <Label className="text-danger text-left">{touched.college && errors.college && errors.college}</Label>
 
-                        </Input>
-                    </FormGroup>
+                    <Input type="select"
+                           name="college"
+                           value={values.college}
+                           onChange={handleChange}
+                           onBlur={handleBlur}>
 
-                    <FormGroup>
-                        <Recaptcha
-                            ref={e => recaptchaInstance = e}
-                            sitekey="6LfJGVMUAAAAAJJtME41Fh4D_sQUAcIJSKqSLwAN"
-                            render="explicit"
-                            theme="light"
-                            type="invisible"
+                        <option value="unselected" disabled selected>Select your College</option>
 
-                            verifyCallback={(response) => {
-                                setFieldValue("recaptcha", response);
-                            }}
-                        />
-                        <Label className="text-danger text-left">{touched.recaptcha && errors.recaptcha && errors.recaptcha}</Label>
-                    </FormGroup>
-                    <FormGroup>
+                        <option value={null}>Other/Not Listed</option>
+                        {props.colleges.map((cur) => <option value={cur.id}>{cur.college_name}</option>)}
 
-                        <Button color="primary" type="submit" disabled={isSubmitting}>
-                            Submit
-                        </Button>
+                    </Input>
+                </FormGroup>
 
-                    </FormGroup>
+                <FormGroup>
+                    <Recaptcha
+                        ref={props.registerRecaptchaInstanceCallback}
+                        sitekey={config.recaptchaKey}
+                        render="explicit"
+                        theme="light"
 
-                </Form>
+                        verifyCallback={(response) => {
 
-            )}
-        />)
-    };
+                            setFieldValue("recaptcha", response);
+                        }}
+                    />
+                    <Label className="text-danger text-left">{touched.recaptcha && errors.recaptcha && errors.recaptcha}</Label>
+                </FormGroup>
+                <FormGroup>
+
+                    <Button color="primary" type="submit" disabled={isSubmitting}>
+                        Submit
+                    </Button>
+
+                </FormGroup>
+
+            </Form>
+
+        )}
+    />);
 
 }
 

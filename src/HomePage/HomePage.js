@@ -6,6 +6,7 @@ import {Button, Container, Jumbotron} from 'reactstrap';
 import {MultipleFeature} from "../Common/FeatureCard/MultipleFeatures";
 import {MultipleLargeFeatures} from "../Common/LargeFeatureCard/MultipleLargeFeatures";
 import Flickity from 'react-flickity-component';
+import {NavLink} from 'react-router-dom';
 
 
 //
@@ -56,7 +57,7 @@ function HomePage() {
                             </h2>
 
                             <Container>
-                                <Button primary color="blue" style={{marginTop: "10%"}}> View </Button>
+                                <Button color="primary" style={{marginTop: "10%"}}> View </Button>
                             </Container>
 
                         </div>
@@ -64,9 +65,6 @@ function HomePage() {
                     </Container>
 
                 </Jumbotron>
-
-
-                {/*<div>*/}
 
 
                 <MultipleFeature/>
@@ -77,7 +75,6 @@ function HomePage() {
 
                     <MultipleLargeFeatures/>
                 </Container>
-
 
             </div>
         </div>

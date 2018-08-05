@@ -1,10 +1,7 @@
 import React from 'react';
 import {Formik} from 'formik';
 import * as yup from 'yup';
-import {LoginUserApi} from '_Api/User'
-import {toast} from 'react-toastify'
-import {history} from "../../__internals/CustomHistory";
-import {Button, Form, FormGroup, Label, Input, FormText, Col} from 'reactstrap';
+import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 
 
 const schema = yup.object().shape({
@@ -22,25 +19,7 @@ function LoginForm(props) {
 
         validationSchema={schema}
 
-        onSubmit={(values, {setSubmitting, setErrors}) => {
-
-            LoginUserApi(values.email, values.password).then(({data}) => {
-                debugger;
-                console.log(data);
-
-                props.addUserAction(data);
-                toast.success(`Welcome ${data.full_name}`);
-                history.push("/");
-
-            }).catch(({response}) => {
-                console.log(response);
-                setErrors({info: response.data.message});
-            }).then(() => {
-                setSubmitting(false);
-            });
-
-
-        }}
+        onSubmit={props.onSubmitCallback}
 
         render={({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting,}) => (
 
