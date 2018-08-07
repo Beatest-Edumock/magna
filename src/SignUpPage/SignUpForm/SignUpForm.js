@@ -5,6 +5,8 @@ import Recaptcha from 'react-recaptcha';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import config from 'config';
 
+import Select, {createFilter} from 'react-select';
+
 
 const schema = yup.object().shape({
 
@@ -16,16 +18,28 @@ const schema = yup.object().shape({
 
     }),
     recaptcha: yup.string().required("You must complete the recaptcha"),
+
     phoneNo: yup.number("Invalid Phone Number")
         .lessThan(10000000000, "Invalid Phone number, must be 10 digits")
         .moreThan(999999999, "Invalid Phone number, must be 10 digits")
         .required("Phone number is required"),
 
-    college: yup.string().nullable().test('college-match', "Please Select a College", function (value) {
-        return value !== "unselected";
+    college: yup.object().required("Please select a college")
 
-    })
 });
+
+const filterConfig = (candidate, input) => {
+
+    if (candidate.label.toLowerCase().indexOf(input) >= 0) {
+        return true;
+    }
+
+    if (candidate.value === null) {
+        return true;
+    }
+
+
+};
 
 
 function SignUpForm(props) {
@@ -33,7 +47,7 @@ function SignUpForm(props) {
 
     return (<Formik
 
-        initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "unselected", recaptcha: null}}
+        initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "", recaptcha: ""}}
 
         validationSchema={schema}
 
@@ -94,29 +108,49 @@ function SignUpForm(props) {
 
                     <Label className="text-danger text-left">{touched.college && errors.college && errors.college}</Label>
 
-                    <Input type="select"
-                           name="college"
-                           value={values.college}
-                           onChange={handleChange}
-                           onBlur={handleBlur}>
+                    <Select
+                        id="color"
+                        options={props.colleges.map(cur => {
+                            return {value: cur.id, label: cur.college_name}
+                        })}
+                        multi={false}
+                        onChange={(val) => {
+                            setFieldValue('college', val)
+                        }}
+                        placeholder="Select a College"
+                        onBlur={handleBlur}
+                        value={values.college}
+                        filterOption={filterConfig}
+                        noOptionsMessage={() => {
+                            // setFieldValue('college', {value: null, label: "Not Listed"});
+                            return "AGHAHA"
+                        }}
+                    />
 
-                        <option value="unselected" disabled selected>Select your College</option>
+                    {/*<Input type="select"*/}
+                    {/*name="college"*/}
+                    {/*value={values.college}*/}
+                    {/*onChange={handleChange}*/}
+                    {/*onBlur={handleBlur}>*/}
 
-                        <option value={null}>Other/Not Listed</option>
-                        {props.colleges.map((cur) => <option value={cur.id}>{cur.college_name}</option>)}
+                    {/*<option value="unselected" disabled selected>Select your College</option>*/}
 
-                    </Input>
+                    {/*<option value={null}>Other/Not Listed</option>*/}
+                    {/*{props.colleges.map((cur) => <option value={cur.id}>{cur.college_name}</option>)}*/}
+
+                    {/*</Input>*/}
                 </FormGroup>
 
                 <FormGroup>
                     <Recaptcha
+
                         ref={props.registerRecaptchaInstanceCallback}
+
                         sitekey={config.recaptchaKey}
                         render="explicit"
                         theme="light"
 
                         verifyCallback={(response) => {
-
                             setFieldValue("recaptcha", response);
                         }}
                     />

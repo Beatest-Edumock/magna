@@ -24,7 +24,11 @@ function initStore() {
     GetUserDetailsApi().then(({data}) => {
             store.dispatch(addUserAC(data));
         }
-    );
+    ).catch(() => {
+    });
+
+
+
     return store;
 }
 

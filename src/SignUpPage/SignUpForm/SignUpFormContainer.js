@@ -9,12 +9,12 @@ class SignUpFormContainer extends React.Component {
         super();
 
         this.onSubmitCallback = this.onSubmitCallback.bind(this);
-        this.registerRecaptchaCallback = this.registerRecaptchaCallback.bind(this);
+        this.registerRecaptchaInstanceCallback = this.registerRecaptchaInstanceCallback.bind(this);
 
         this.state = {colleges: new Array()};
     }
 
-    registerRecaptchaCallback(e) {
+    registerRecaptchaInstanceCallback(e) {
         this.recaptchaInstance = e;
 
     }
@@ -25,6 +25,8 @@ class SignUpFormContainer extends React.Component {
             const colleges = this.state.colleges;
 
             colleges.push(...data);
+            colleges.push({id: null, college_name: "My college is not listed"});
+
 
             this.setState({colleges: colleges});
         })
@@ -34,13 +36,15 @@ class SignUpFormContainer extends React.Component {
     onSubmitCallback(values, {setSubmitting, setErrors}) {
         //todo perform api request for submit
 
+        console.log(values);
+
     }
 
 
     render() {
         return (<SignUpForm colleges={this.state.colleges}
                             onSubmitCallback={this.onSubmitCallback}
-                            registerRecaptchaCallback={this.registerRecaptchaCallback}/>);
+                            registerRecaptchaInstanceCallback={this.registerRecaptchaInstanceCallback}/>);
     }
 
 }

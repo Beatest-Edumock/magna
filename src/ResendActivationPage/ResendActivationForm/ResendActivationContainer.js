@@ -15,6 +15,7 @@ class ResendActivationContainer extends React.Component {
     }
 
     registerRecaptchaInstanceCallback(recaptchaInstance) {
+        console.log("registered");
         this.recaptchaInstance = recaptchaInstance;
     }
 
