@@ -39,7 +39,7 @@ const App = (
     <React.Fragment>
         <MainToastContainer/>
         <Provider store={store}>
-            <Routes history={BrowserRouter}/>
+            <Routes/>
         </Provider>
     </React.Fragment>
 );
