@@ -33,7 +33,7 @@ function LargeFeatureCard(props) {
                 <div className="text-center" style={{marginTop: "10%"}}>
                     <Container>
                         <p className="font-weight-bold">
-                            Grow your skills with the inspiring mentors
+                            {props.text}
                         </p>
                     </Container>
 

@@ -4,9 +4,12 @@ import {NavBarWithButtonsContainer} from "../Layout/NavBarWithButtons/NavBarWith
 import 'react-toastify/dist/ReactToastify.css';
 import {Button, Container, Jumbotron} from 'reactstrap';
 import {MultipleFeature} from "../Common/FeatureCard/MultipleFeatures";
+import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
+import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
 import {MultipleLargeFeatures} from "../Common/LargeFeatureCard/MultipleLargeFeatures";
 import Flickity from 'react-flickity-component';
 import {NavLink} from 'react-router-dom';
+import {FEATURE_CARD_ELEMENTS,LARGE_FEATURE_CARD_ELEMENTS} from './constants'
 
 
 //
@@ -65,15 +68,43 @@ function HomePage() {
                     </Container>
 
                 </Jumbotron>
+                <div className="container-fluid no-gutters">
+                    <div className="row justify-content-center">
 
+                        {
+                            FEATURE_CARD_ELEMENTS.map((feature_card) => {
+                                return (
+                                    <FeatureCard 
+                                        icon={feature_card.icon}
+                                        text={feature_card.text}
+                                    />
 
-                <MultipleFeature/>
+                                );
+                            })
+                        }
+                    </div>
+                </div>
 
                 <Container fluid className='bg-light border-top'>
 
                     <h1 className="text-center" style={{paddingTop: '2%'}}> Our Features</h1>
 
-                    <MultipleLargeFeatures/>
+                    <div className="container-fluid no-gutters">
+                        <div className="row justify-content-center">
+
+                            {
+                                LARGE_FEATURE_CARD_ELEMENTS.map((feature_card) => {
+                                    return (
+                                        <LargeFeatureCard 
+                                            icon={feature_card.icon}
+                                            text={feature_card.text}
+                                        />
+
+                                    );
+                                })
+                            }
+                        </div>
+                    </div>
                 </Container>
 
             </div>
