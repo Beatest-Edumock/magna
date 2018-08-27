@@ -10,7 +10,7 @@ const style = {
     padding: "10%"
 };
 
-function FeatureCard() {
+function FeatureCard(props) {
 
 
     return (
@@ -21,7 +21,7 @@ function FeatureCard() {
                 <div className="text-center ">
 
                     <div style={{style}}>
-                        <FontAwesomeIcon size={"6x"} icon={faCoffee} color="#8C9EFF"/>
+                        {props.icon}
                     </div>
 
                 </div>
@@ -31,7 +31,7 @@ function FeatureCard() {
                 <div className="text-center" style={{marginTop: "5%"}}>
                     <Container>
                         <p className="font-weight-bold">
-                            Grow your skills with the inspiring mentors
+                            {props.text}
                         </p>
                     </Container>
 
