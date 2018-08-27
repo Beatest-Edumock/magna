@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Card, Container} from 'reactstrap';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {faCoffee, faCompactDisc, faCode, faSpinner, faCodeBranch} from '@fortawesome/free-solid-svg-icons'
@@ -9,6 +10,11 @@ const style = {
     height: "100%",
     padding: "10%"
 };
+
+
+/**
+ * The feature cards that receive icon and text as props and need to be placed in a row component for them to work properly.
+ */
 
 function FeatureCard(props) {
 
@@ -30,7 +36,7 @@ function FeatureCard(props) {
 
                 <div className="text-center" style={{marginTop: "5%"}}>
                     <Container>
-                        <p className="font-weight-bold">
+                        <p>
                             {props.text}
                         </p>
                     </Container>
@@ -45,3 +51,9 @@ function FeatureCard(props) {
 
 
 export {FeatureCard}
+
+FeatureCard.propTypes = {
+    icon: PropTypes.string,
+    text: PropTypes.string
+
+};

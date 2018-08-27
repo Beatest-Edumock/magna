@@ -3,13 +3,11 @@ import Typed from 'react-typed';
 import {NavBarWithButtonsContainer} from "../Layout/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
 import {Button, Container, Jumbotron} from 'reactstrap';
-import {MultipleFeature} from "../Common/FeatureCard/MultipleFeatures";
 import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
-import {MultipleLargeFeatures} from "../Common/LargeFeatureCard/MultipleLargeFeatures";
 import Flickity from 'react-flickity-component';
 import {NavLink} from 'react-router-dom';
-import {FEATURE_CARD_ELEMENTS,LARGE_FEATURE_CARD_ELEMENTS} from './constants'
+import {FEATURE_CARD_ELEMENTS,LARGE_FEATURE_CARD_ELEMENTS,COLLEGE_IMAGES,TESTIMONIALS} from './data'
 
 
 //
@@ -22,7 +20,7 @@ function typedString() {
     return (
         <Typed
             strings={
-                ['Here you can find anything',
+                ['Here you  can find anything',
                     "This is awesome",
                     "brilliant"]
             }
@@ -36,6 +34,11 @@ const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-1.jpg) no-repeat center',
     backgroundSize: "100% auto",
 };
+
+const flickityOptions = {
+    initialIndex: 2
+};
+
 
 
 function HomePage() {
@@ -85,7 +88,7 @@ function HomePage() {
                     </div>
                 </div>
 
-                <Container fluid className='bg-light border-top'>
+                <Container fluid className='bg-light border-top' style={{paddingBottom: '2%'}}>
 
                     <h1 className="text-center" style={{paddingTop: '2%'}}> Our Features</h1>
 
@@ -107,6 +110,49 @@ function HomePage() {
                     </div>
                 </Container>
 
+            </div>
+            <div style={{paddingTop: '60px',paddingBottom: '60px'}}>
+                <span style={{textAlign: 'center',display: 'block', paddingBottom: '32px',fontSize:'32px'}}>STUDENT PARTNERS</span>
+                <Flickity
+                  className={'carousel'} // default ''
+                  elementType={'div'} // default 'div'
+                  options={flickityOptions} // takes flickity options {}
+                  disableImagesLoaded={false} // default false
+                  reloadOnUpdate // default false
+                >
+                    {
+                        COLLEGE_IMAGES.map((image) => {
+                            return (
+                                <img src={image.img} style={{width: 180,marginRight: 200}}/>
+
+                            );
+                        })
+                    }
+                </Flickity>
+            </div>
+            <div style={{paddingTop: '60px',paddingBottom: '60px',backgroundColor: 'black',color:'white'}}>
+                <Flickity
+                  className={'carousel'} // default ''
+                  elementType={'div'} // default 'div'
+                  options={flickityOptions} // takes flickity options {}
+                  disableImagesLoaded={false} // default false
+                  reloadOnUpdate // default false
+                >
+                    {
+                        TESTIMONIALS.map((image) => {
+                            return (
+                                <div style={{display: 'flex',marginRight:200,width:'80vw'}}>
+                                    <img src={image.img} style={{width: 180,height:180,marginRight: 60}}/>
+                                    <div style={{display: 'flex',flexDirection: 'column'}}>
+                                        <span class="h3">The overall experience was quite good. The content was satisfactory and the UI was friendly.</span>
+                                        <h5>Shubham Yadav</h5>
+                                        <span>IIT Kanpur , Dept of Electrical Engineering,  – Placed at Intel</span>
+                                    </div>
+                                </div>
+                            );
+                        })
+                    }
+                </Flickity>
             </div>
         </div>
     )
