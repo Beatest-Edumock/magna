@@ -105,30 +105,52 @@ export const COLLEGE_IMAGES = [
 export const TESTIMONIALS = [
 
 	{
-		img: "/testimonials/anulekha_chatterjee.png"
+		img: "/testimonials/anulekha_chatterjee.png",
+		message: "Beatest proved to be an useful tool for my campus placement preparation. Along with quality questions and solutions, the UI was also friendly.",
+		name: "Anulekha Chatterjee",
+		place:"Meghnad Saha Institute of Technology, Dept of IT – Placed at Bentley Systems"
 
 	},
 	{
-		img: "/testimonials/arijit_bhatta.png"
+		img: "/testimonials/arijit_bhatta.png",
+		message: "The quality of the content was perfect for placement preparation and it had undoubtedly been a great help to crack the exams.",
+		name: "Arijit Bhattacharya",
+		place: "Jadavpur University, Dept of Chemical Engineering – Placed at Reliance Industries"
+	},
+	{
+		img: "/testimonials/avatar_girl.png",
+		message: "The exams on TCS paper boosted my preparations for the company and helped me in getting placed. The overall experience was really good.",
+		name: "Sharmistha Bakshi",
+		place: "Meghnad Saha Institute of Technology, Dept of CSE, - Placed in TCS"
 
 	},
 	{
-		img: "/testimonials/avatar_boy.png"
-	},
-	{
-		img: "/testimonials/avatar_girl.png"
+		img: "/testimonials/avatar_girl.png",
+		message: "Content was excellent and really helped me beyond placement exams. Although, would have loved to view a few more questions that were meant for mediocre students. Overall it was extremely useful.",
+		name: "Piyali Biswas",
+		place: "Jadavpur University – Dept of Food technology"
+
 
 	},
 	{
-		img: "/testimonials/salil_abbas.png"
+		img: "/testimonials/salil_abbas.png",
+		message: "Despite the Verbal questions being a tad bit difficult, I certainly feel that the content was really helpful and would definitely be rated as 8/10 ",
+		name: "Salil Abbas",
+		place: "IIT Kanpur, Dept of Civil Engineering – Placed at American Express"
 
 	},
 	{
-		img: "/testimonials/shubham_yadav.png"
+		img: "/testimonials/shubham_yadav.png",
+		message: "The overall experience was quite good. The content was satisfactory and the UI was friendly.",
+		name: "Shubham Yadav",
+		place: "IIT Kanpur , Dept of Electrical Engineering,  – Placed at Intel"
 
 	},
 	{
-		img: "/testimonials/tarun_saraswat.png"
+		img: "/testimonials/tarun_saraswat.png",
+		message: "The content kept me thoroughly engaged as it was so well drafted. It was really beneficial to be a part of this. Questions are especially helpful and appropriate.",
+		name: "Tarun Saraswat",
+		place: "IITBHU, Dept of Chemistry  - Placed at EXL Services"
 
 	}
 

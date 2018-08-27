@@ -139,14 +139,14 @@ function HomePage() {
                   reloadOnUpdate // default false
                 >
                     {
-                        TESTIMONIALS.map((image) => {
+                        TESTIMONIALS.map((testimonial) => {
                             return (
                                 <div style={{display: 'flex',marginRight:200,width:'80vw'}}>
-                                    <img src={image.img} style={{width: 180,height:180,marginRight: 60}}/>
+                                    <img src={testimonial.img} style={{width: 180,height:180,marginRight: 60}}/>
                                     <div style={{display: 'flex',flexDirection: 'column'}}>
-                                        <span class="h3">The overall experience was quite good. The content was satisfactory and the UI was friendly.</span>
-                                        <h5>Shubham Yadav</h5>
-                                        <span>IIT Kanpur , Dept of Electrical Engineering,  – Placed at Intel</span>
+                                        <span class="h3">{testimonial.message}</span>
+                                        <h5>{testimonial.name}</h5>
+                                        <span>{testimonial.place}</span>
                                     </div>
                                 </div>
                             );
