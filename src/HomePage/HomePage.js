@@ -7,7 +7,7 @@ import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
 import Flickity from 'react-flickity-component';
 import {NavLink} from 'react-router-dom';
-import {FEATURE_CARD_ELEMENTS,LARGE_FEATURE_CARD_ELEMENTS,COLLEGE_IMAGES,TESTIMONIALS} from './data'
+import {FEATURE_CARD_ELEMENTS,LARGE_FEATURE_CARD_ELEMENTS,COLLEGE_IMAGES,TESTIMONIALS,RECOGNITIONS} from './data'
 
 
 //
@@ -112,7 +112,7 @@ function HomePage() {
 
             </div>
             <div style={{paddingTop: '60px',paddingBottom: '60px'}}>
-                <span style={{textAlign: 'center',display: 'block', paddingBottom: '32px',fontSize:'32px'}}>STUDENT PARTNERS</span>
+                <span style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',textAlign: 'center',display: 'block', paddingBottom: '32px',fontSize:'32px'}}>STUDENT PARTNERS</span>
                 <Flickity
                   className={'carousel'} // default ''
                   elementType={'div'} // default 'div'
@@ -149,6 +149,26 @@ function HomePage() {
                                         <span>{testimonial.place}</span>
                                     </div>
                                 </div>
+                            );
+                        })
+                    }
+                </Flickity>
+            </div>
+
+            <div style={{paddingTop: '60px',paddingBottom: '60px'}}>
+                <span style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',textAlign: 'center',display: 'block', paddingBottom: '32px',fontSize:'32px'}}>RECOGNITIONS</span>
+                <Flickity
+                  className={'carousel'} // default ''
+                  elementType={'div'} // default 'div'
+                  options={flickityOptions} // takes flickity options {}
+                  disableImagesLoaded={false} // default false
+                  reloadOnUpdate // default false
+                >
+                    {
+                        RECOGNITIONS.map((image) => {
+                            return (
+                                <img src={image.img} style={{width: 180,marginRight: 200}}/>
+
                             );
                         })
                     }

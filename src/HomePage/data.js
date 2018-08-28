@@ -9,22 +9,22 @@ export const FEATURE_CARD_ELEMENTS = [
 	{
 
 		icon: <FontAwesomeIcon size={"6x"} icon={faMicrochip} color="#8C9EFF"/>,
-		text: "Grow your skills with the inspiring mentors"
+		text: <p style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Grow your skills with the inspiring mentors</p>
 	},
 
 	{
 		icon: <FontAwesomeIcon size={"6x"} icon={faUsers} color="#8C9EFF"/>,
-		text: "Learn with your peer group across the globe"
+		text: <p style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Learn with your peer group across the globe</p>
 
 	},
 	{
 		icon: <FontAwesomeIcon size={"6x"} icon={faWindowMaximize} color="#8C9EFF"/>,
-		text: "Learn to apply knowledge with capstone projects"
+		text: <p style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Learn to apply knowledge with capstone projects</p>
 
 	},
 	{
 		icon: <FontAwesomeIcon size={"6x"} icon={faBinoculars} color="#8C9EFF"/>,
-		text: "Holistic learning approach with small learning units"
+		text: <p style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Holistic learning approach with small learning units</p>
 
 	}
 
@@ -38,7 +38,7 @@ export const LARGE_FEATURE_CARD_ELEMENTS = [
 	{
 		icon: <FontAwesomeIcon size={"6x"} icon={faCogs} color="#8C9EFF"/>,
 		text: <div><h4>Technology</h4>
-		Gear up your skills on industry relevant courses and a must solve capstone that would add the much needed X-factor to your resume.</div>
+		<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Gear up your skills on industry relevant courses and a must solve capstone that would add the much needed X-factor to your resume.</div></div>
 
 	},
 
@@ -46,14 +46,14 @@ export const LARGE_FEATURE_CARD_ELEMENTS = [
 
 		icon: <FontAwesomeIcon size={"6x"} icon={faHeadphones} color="#8C9EFF"/>,
 		text: <div><h4>Aptitude</h4>
-			Aiming to ace CAT or your campus recruitment exams? Need to learn the tricks to solve a sum in seconds? Learn from IIM and XLRI graduates today.</div>
+			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Aiming to ace CAT or your campus recruitment exams? Need to learn the tricks to solve a sum in seconds? Learn from IIM and XLRI graduates today.</div></div>
 	},
 
 	{
 
 		icon: <FontAwesomeIcon size={"6x"} icon={faUserTie} color="#8C9EFF"/>,
 		text: <div><h4>Business Skills</h4>
-		Wisen up with the concepts and skills to make it through to the best industries today.</div>
+		<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Wisen up with the concepts and skills to make it through to the best industries today.</div></div>
 	},
 
 
@@ -153,5 +153,36 @@ export const TESTIMONIALS = [
 		place: "IITBHU, Dept of Chemistry  - Placed at EXL Services"
 
 	}
+
+]
+
+
+
+export const RECOGNITIONS = [
+
+	{
+		img: "/media/1000startups.png"
+
+	},
+	{
+		img: "/media/digital_india.png"
+
+	},
+	{
+		img: "/media/inc42.png"
+	},
+	{
+		img: "/media/scoopearth.png"
+
+	},
+	{
+		img: "/media/startup_india.png"
+
+	},
+	{
+		img: "/media/your_story.png"
+
+	}
+
 
 ]
