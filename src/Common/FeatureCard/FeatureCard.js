@@ -51,7 +51,11 @@ function FeatureCard(props) {
 export {FeatureCard}
 
 FeatureCard.propTypes = {
+
+    /** The icon to be displayed in the feature card */
     icon: PropTypes.object,
+
+    /** The text to be displayed in the feature card */
     text: PropTypes.object
 
 };

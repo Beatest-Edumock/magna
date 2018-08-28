@@ -142,7 +142,7 @@ function HomePage() {
                         TESTIMONIALS.map((testimonial) => {
                             return (
                                 <div style={{display: 'flex',marginRight:200,width:'80vw'}}>
-                                    <img src={testimonial.img} style={{width: 180,height:180,marginRight: 60}}/>
+                                    <img src={testimonial.img} style={{width: 250,height:100,marginRight: 60}}/>
                                     <div style={{display: 'flex',flexDirection: 'column'}}>
                                         <span className="h3">{testimonial.message}</span>
                                         <h5>{testimonial.name}</h5>

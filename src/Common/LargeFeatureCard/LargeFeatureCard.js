@@ -52,7 +52,11 @@ function LargeFeatureCard(props) {
 export {LargeFeatureCard}
 
 LargeFeatureCard.propTypes = {
+
+    /** The icon to be displayed in the feature card */
     icon: PropTypes.object,
+
+    /** The text to be displayed in the feature card */
     text: PropTypes.object
 
 };
