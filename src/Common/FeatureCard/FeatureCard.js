@@ -36,9 +36,7 @@ function FeatureCard(props) {
 
                 <div className="text-center" style={{marginTop: "5%"}}>
                     <Container>
-                        <p>
                             {props.text}
-                        </p>
                     </Container>
 
                 </div>
@@ -53,7 +51,7 @@ function FeatureCard(props) {
 export {FeatureCard}
 
 FeatureCard.propTypes = {
-    icon: PropTypes.string,
+    icon: PropTypes.object,
     text: PropTypes.string
 
 };
