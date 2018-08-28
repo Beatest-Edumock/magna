@@ -52,6 +52,6 @@ export {FeatureCard}
 
 FeatureCard.propTypes = {
     icon: PropTypes.object,
-    text: PropTypes.string
+    text: PropTypes.object
 
 };
