@@ -36,7 +36,7 @@ const bodyStyle = {
 };
 
 const flickityOptions = {
-    initialIndex: 2
+    initialIndex: 2,
 };
 
 
@@ -115,7 +115,7 @@ function HomePage() {
                 <span style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',textAlign: 'center',display: 'block', paddingBottom: '32px',fontSize:'32px'}}>STUDENT PARTNERS</span>
                 <Flickity
                   className={'carousel'} // default ''
-                  elementType={'div'} // default 'div'
+                  elementType={'ul'} // default 'div'
                   options={flickityOptions} // takes flickity options {}
                   disableImagesLoaded={false} // default false
                   reloadOnUpdate // default false
@@ -142,7 +142,7 @@ function HomePage() {
                         TESTIMONIALS.map((testimonial) => {
                             return (
                                 <div style={{display: 'flex',marginRight:200,width:'80vw'}}>
-                                    <img src={testimonial.img} style={{width: 250,height:100,marginRight: 60}}/>
+                                    <img src={testimonial.img} style={{height:100,marginRight: 60}}/>
                                     <div style={{display: 'flex',flexDirection: 'column'}}>
                                         <span className="h3">{testimonial.message}</span>
                                         <h5>{testimonial.name}</h5>
