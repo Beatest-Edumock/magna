@@ -36,9 +36,7 @@ function FeatureCard(props) {
 
                 <div className="text-center" style={{marginTop: "5%"}}>
                     <Container>
-                        <p>
                             {props.text}
-                        </p>
                     </Container>
 
                 </div>
@@ -53,7 +51,11 @@ function FeatureCard(props) {
 export {FeatureCard}
 
 FeatureCard.propTypes = {
-    icon: PropTypes.string,
-    text: PropTypes.string
+
+    /** The icon to be displayed in the feature card */
+    icon: PropTypes.object,
+
+    /** The text to be displayed in the feature card */
+    text: PropTypes.object
 
 };

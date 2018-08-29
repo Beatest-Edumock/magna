@@ -37,9 +37,7 @@ function LargeFeatureCard(props) {
 
                 <div className="text-center" style={{marginTop: "10%"}}>
                     <Container>
-                        <p>
                             {props.text}
-                        </p>
                     </Container>
 
                 </div>
@@ -54,7 +52,11 @@ function LargeFeatureCard(props) {
 export {LargeFeatureCard}
 
 LargeFeatureCard.propTypes = {
-    icon: PropTypes.string,
-    text: PropTypes.string
+
+    /** The icon to be displayed in the feature card */
+    icon: PropTypes.object,
+
+    /** The text to be displayed in the feature card */
+    text: PropTypes.object
 
 };
