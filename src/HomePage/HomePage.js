@@ -37,6 +37,8 @@ const bodyStyle = {
 
 const flickityOptions = {
     initialIndex: 2,
+    autoPlay: true,
+    wrapAround: true,
 };
 
 
