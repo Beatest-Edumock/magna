@@ -3,6 +3,9 @@ import {ContactUsApi} from "../../_Api/ContactUs";
 import {toast} from 'react-toastify';
 import {ContactUsForm} from "./ContactUsForm";
 
+/**
+ * This component contains the functions that need to be executed when submitting the contactus form
+ */
 
 class ContactUsContainer extends React.Component {
 
