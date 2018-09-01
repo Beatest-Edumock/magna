@@ -195,7 +195,7 @@ function HomePage() {
                 </Row>
 
             </Container>
-            {/*<Footer />*/}
+            <Footer />
         </div>
     )
 }
