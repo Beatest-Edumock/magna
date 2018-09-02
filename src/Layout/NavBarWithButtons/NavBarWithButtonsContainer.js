@@ -4,6 +4,8 @@ import {removeUserAC} from "../../_Redux/ActionCreators/User-ActionCreator";
 
 
 function mapStateToProps(state, ownProps) {
+    console.log("herye");
+    console.log(state.user);
 
     return {
         isUserLoggedIn: state.user,
