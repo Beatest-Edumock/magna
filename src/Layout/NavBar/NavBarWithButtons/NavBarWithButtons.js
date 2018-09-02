@@ -1,10 +1,10 @@
 import React from 'react';
 import {NavItem, NavLink, Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {LogoutUserApi} from "../../_Api/User";
-import {history} from "../../__internals/CustomHistory";
+import {LogoutUserApi} from "../../../_Api/User";
+import {history} from "../../../__internals/CustomHistory";
 import {toast} from 'react-toastify'
-import {NavBar} from "../NavBar/NavBar";
+import {NavBar} from "../NavBar";
 
 
 function profileLoginNavLink(props) {
@@ -14,7 +14,7 @@ function profileLoginNavLink(props) {
 
         <NavLink tag={Link} to={props.isUserLoggedIn ? "/profile" : "/login"}>
 
-            <Button color="primary">
+            <Button color="primary" className="btn-sm">
                 {props.isUserLoggedIn ? "Profile" : "Login"}
             </Button>
 
@@ -48,7 +48,7 @@ function signupLogoutNavLink(props) {
     return (
 
         <NavLink>
-            <Button color="success" onClick={buttonHandler}>
+            <Button color="success" onClick={buttonHandler} className="btn-sm">
                 {props.isUserLoggedIn ? "Logout" : "Signup"}
             </Button>
 
@@ -57,11 +57,14 @@ function signupLogoutNavLink(props) {
 
 }
 
+/**
+ * Navbar with all buttons.
+ */
 function NavBarWithButtons(props) {
 
 
     return (
-        <NavBar lightLogo={props.lightLogo}>
+        <NavBar {...props}>
             <NavItem>
                 {profileLoginNavLink(props)}
             </NavItem>
