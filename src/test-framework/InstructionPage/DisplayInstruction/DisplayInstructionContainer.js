@@ -7,6 +7,8 @@ import React, {Component} from 'react'
 import {DisplayInstructionUI} from "./DisplayInstructionUI";
 import {GetTestWithIDAPI, StartTestAPI} from "../../../_Api/Tests";
 import {history} from "../../../__internals/CustomHistory";
+import PropTypes from 'prop-types';
+
 
 
 // DisplayInstructionContainer
@@ -59,3 +61,7 @@ class DisplayInstructionContainer extends Component {
 }
 
 export {DisplayInstructionContainer}
+
+DisplayInstructionContainer.propTypes = {
+    testID: PropTypes.number
+}

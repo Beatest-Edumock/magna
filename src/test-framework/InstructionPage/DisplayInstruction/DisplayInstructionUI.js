@@ -3,6 +3,7 @@
 
 // imports
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 
 /**
  * DisplayInstructionUI renders the Instructions and Start Test button
@@ -63,3 +64,10 @@ function StartTestButton(props) {
 
 
 export {DisplayInstructionUI}
+
+
+DisplayInstructionUI.propTypes = {
+    startfunc : PropTypes.func,
+    name: PropTypes.string,
+    instructions: PropTypes.object,
+}

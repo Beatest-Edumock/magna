@@ -9,6 +9,11 @@ import {HomePage} from "./HomePage/HomePage"
 import {LoginPage} from "./LoginPage/LoginPage"
 import {ResendActivationPage} from "./ResendActivationPage/ResendActivationPage"
 import {SignUpPage} from "./SignUpPage/SignUpPage";
+
+import {TermsPage} from "./TermsPage/TermsPage";
+import {AboutUsPage} from "./AboutUsPage/AboutUsPage";
+
+
 import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage";
 
 const Routes = () => (
@@ -25,6 +30,8 @@ const Routes = () => (
             <Route exact path="/resend-activation" component={ResendActivationPage}/>
             <Route path="/tests/:testID/instructions" component={InstructionPage}/>
             <Route path="/tests/:testID" component={ExamUI}/>
+            <Route exact path="/terms" component={TermsPage}/>
+            <Route exact path="/aboutus" component={AboutUsPage}/>
 
         </AnimatedSwitch>
     </Router>
