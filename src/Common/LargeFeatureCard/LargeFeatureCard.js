@@ -21,15 +21,15 @@ function LargeFeatureCard(props) {
 
 
     return (
-        <Card className="col-md-4 col-lg-3 shadow-sm" style={{margin: "10px"}}>
+        <Card className="col-md-5 col-lg-3 shadow-sm" style={{margin: "10px"}}>
 
             <div className="container" style={{padding: "10%"}}>
 
-                <div className="text-center ">
+                <div className="text-center " style={{}}>
 
-                    <div style={{style}}>
+                    <Container>
                         {props.icon}
-                    </div>
+                    </Container>
 
                 </div>
 
