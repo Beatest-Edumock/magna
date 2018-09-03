@@ -5,30 +5,54 @@
 // Imports
 import React, {Component} from 'react'
 import {DisplayInstructionUI} from "./DisplayInstructionUI";
-import {GetTestWithIDAPI} from "../../../_Api/Tests";
+import {GetTestWithIDAPI, StartTestAPI} from "../../../_Api/Tests";
+import {history} from "../../../__internals/CustomHistory";
 
 
 // DisplayInstructionContainer
 class DisplayInstructionContainer extends Component {
 
+    constructor(props) {
+        super(props);
+        this.handleClick = this.startTestHandelClick.bind(this);
+
+    }
     // instructions: the RAW HTML for the test instruction
     state = {
         instructions: '',
+        title: '',
+
+    };
+
+    /**
+     * on click handler for start test button
+     */
+    startTestHandelClick() {
+        StartTestAPI(this.props.testID);
+        // reroute to /tests/:testID
+        history.push({
+            pathname: `/tests/${this.props.testID}`,
+        })
     };
 
     componentDidMount() {
         GetTestWithIDAPI(this.props.testID)
             .then(({data}) => {
                 const instructions = data.instruction_html;
+                const test_title = data.name;
+                console.log(test_title);
                 // instruction state is now loaded with raw html instruction
-                this.setState ( {instructions} );
+                this.setState ( {
+                    instructions: instructions,
+                    title: test_title
+                } );
             })
     }
 
     render() {
         return (
             <div>
-                <DisplayInstructionUI instructions={this.state.instructions}/>
+                <DisplayInstructionUI instructions={this.state.instructions} name={this.state.title} startfunc={this.handleClick}/>
             </div>
         )
     }

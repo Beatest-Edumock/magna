@@ -22,12 +22,17 @@ function DisplayInstructionUI(props) {
     return (
         <div className='container my-4'>
 
-            {/*Set the HTML from RAW HTML*/}
+            <div className='my-4'>
+            <h3 className='alert-primary text-center'>
+                {props.name}
+            </h3>
+            </div>
 
+            {/*Set the HTML from RAW HTML*/}
             <div dangerouslySetInnerHTML={{__html: props.instructions}} />
 
             <div>
-                <StartTestButton/>
+                <StartTestButton startfunc={props.startfunc}/>
             </div>
 
         </div>
@@ -47,7 +52,7 @@ function StartTestButton(props) {
     return (
         <div className='container'>
             <div className='row'>
-            <button className="btn btn-primary col-lg-4 offset-4 col-4 offset-4 my-5">
+            <button className="btn btn-primary col-lg-4 offset-4 col-4 offset-4 my-5" onClick={props.startfunc}>
                 Start Test
             </button>
             </div>
