@@ -7,6 +7,9 @@ import {HomePage} from "./HomePage/HomePage"
 import {LoginPage} from "./LoginPage/LoginPage"
 import {ResendActivationPage} from "./ResendActivationPage/ResendActivationPage"
 import {SignUpPage} from "./SignUpPage/SignUpPage";
+import {TermsPage} from "./TermsPage/TermsPage";
+import {AboutUsPage} from "./AboutUsPage/AboutUsPage";
+
 
 
 const Routes = () => (
@@ -21,6 +24,8 @@ const Routes = () => (
             <Route exact path="/login" component={LoginPage}/>
             <Route exact path="/signup" component={SignUpPage}/>
             <Route exact path="/resend-activation" component={ResendActivationPage}/>
+            <Route exact path="/terms" component={TermsPage}/>
+            <Route exact path="/aboutus" component={AboutUsPage}/>
         </AnimatedSwitch>
     </Router>
 );

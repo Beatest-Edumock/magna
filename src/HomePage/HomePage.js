@@ -12,6 +12,7 @@ import {NavLink} from 'react-router-dom';
 import {FEATURE_CARD_ELEMENTS,LARGE_FEATURE_CARD_ELEMENTS,COLLEGE_IMAGES,TESTIMONIALS,RECOGNITIONS} from './data'
 import {ContactUsContainer} from '../ContactUs/ContactUsForm/ContactUsContainer'
 import {Footer} from '../Layout/Footer/Footer'
+import {Link} from 'react-router-dom'
 
 //
 //
@@ -181,11 +182,11 @@ function HomePage() {
                     }
                 </Flickity>
             </div>
-            <Container style={{paddingTop: 32}}>
+            <Container style={{paddingTop: '4%',marginBottom: '3%'}}>
                 <span style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',textAlign: 'center',display: 'block',fontSize:'32px',paddingBottom: 16}}>CONTACT US</span>
                 <Row>
                     <Col style={{paddingRight: '6%'}}>
-                        <p><span style={{fontSize: 20,color:'gray',display: 'inline'}}>Email:</span><a href="mailto:hello@beatest.in"><span style={{fontSize: 20,display: 'inline',textDecoration: 'underline'}}>hello@beatest.in</span></a></p>
+                        <p><span style={{fontSize: 20,color:'gray',display: 'inline'}}>Email:</span><Link to="mailto:hello@beatest.in"><span style={{fontSize: 20,display: 'inline',textDecoration: 'underline'}}>hello@beatest.in</span></Link></p>
                         <p style={{fontSize: 24,color:'gray'}}><span>#7th Floor, Monibhandar Building Webel Bhavan Premises, Sector 5, Ring Road, Bidhannagar, West Bengal-700091, India</span></p>
                         <p style={{fontSize: 14,color:'#666'}}><span>Drop us an email or visit us anytime, we endeavour to answer all enquiries within 24 hours on business days.</span></p>
                     </Col>
