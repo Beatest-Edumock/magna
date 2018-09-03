@@ -16,7 +16,7 @@ function Footer() {
         <Container fluid={true} style={{padding: 0}}>
             <Container fluid={true} style={{filter: 'brightness(80%)',height: 200,backgroundImage: 'url("/img/blog-6.jpg")',backgroundSize: 'cover',backgroundPosition: 'center'}}>
                 <Row style={{paddingTop:'6%',paddingLeft  :'4%',color:'#fff',alignItems: 'center'}}>
-                    <Link to="/aboutus" style={{marginRight:'2%',color: 'inherit',opacity:1,fontSize:14}}>Our Team</Link>
+                    <Link to="/about-us" style={{marginRight:'2%',color: 'inherit',opacity:1,fontSize:14}}>Our Team</Link>
                     <Link to="/faq" style={{marginRight:'60vw',color: 'inherit',opacity:1,fontSize:14}}>FAQs</Link>
                     <Link to="/" style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://plus.google.com/112722904416257444024" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faGoogle} color="#fff"/></Link>
                     <Link to="/" style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://twitter.com/beatest_in" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faTwitter} color="#fff"/></Link>

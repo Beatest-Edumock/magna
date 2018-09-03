@@ -25,7 +25,7 @@ const Routes = () => (
             <Route exact path="/signup" component={SignUpPage}/>
             <Route exact path="/resend-activation" component={ResendActivationPage}/>
             <Route exact path="/terms" component={TermsPage}/>
-            <Route exact path="/aboutus" component={AboutUsPage}/>
+            <Route exact path="/about-us" component={AboutUsPage}/>
         </AnimatedSwitch>
     </Router>
 );
