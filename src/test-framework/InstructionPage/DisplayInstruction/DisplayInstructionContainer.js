@@ -1,5 +1,5 @@
 // Author @ Kyaw Khant Nyar
-// Last Edit: Sept 1, 2018
+// Last Edit: Sept 3, 2018
 
 
 // Imports
@@ -63,5 +63,5 @@ class DisplayInstructionContainer extends Component {
 export {DisplayInstructionContainer}
 
 DisplayInstructionContainer.propTypes = {
-    testID: PropTypes.number
+    testID: PropTypes.string
 }

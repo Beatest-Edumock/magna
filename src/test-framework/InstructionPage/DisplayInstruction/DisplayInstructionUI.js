@@ -1,5 +1,5 @@
 // Author @ Kyaw Khant Nyar
-// Last Edit: Sept 1, 2018
+// Last Edit: Sept 3, 2018
 
 // imports
 import React, {Component} from 'react'
@@ -24,7 +24,7 @@ function DisplayInstructionUI(props) {
         <div className='container my-4'>
 
             <div className='my-4'>
-            <h3 className='alert-primary text-center'>
+            <h3 className='alert alert-primary text-center'>
                 {props.name}
             </h3>
             </div>
@@ -41,13 +41,11 @@ function DisplayInstructionUI(props) {
 
 }
 
-
-// TODO: add functionality, update comments
 /**
  *
- * @param props
- * @returns {*}
- * @constructor
+ * @param props: a call back function that tells the server that the client wants to start the exam
+ * and create test attempt
+ * @returns {*} the start test button
  */
 function StartTestButton(props) {
     return (
@@ -69,5 +67,5 @@ export {DisplayInstructionUI}
 DisplayInstructionUI.propTypes = {
     startfunc : PropTypes.func,
     name: PropTypes.string,
-    instructions: PropTypes.object,
+    instructions: PropTypes.string,
 }
