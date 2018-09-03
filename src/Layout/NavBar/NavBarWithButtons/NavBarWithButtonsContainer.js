@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
 import {NavBarWithButtons} from "./NavBarWithButtons";
-import {removeUserAC} from "../../_Redux/ActionCreators/User-ActionCreator";
+import {removeUserAC} from "../../../_Redux/ActionCreators/User-ActionCreator";
 
 
 function mapStateToProps(state, ownProps) {
 
     return {
         isUserLoggedIn: state.user,
-        lightLogo: ownProps.lightLogo
+        ownProps
     }
 
 }
