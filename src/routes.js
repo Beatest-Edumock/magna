@@ -31,8 +31,9 @@ const Routes = () => (
             <Route path="/tests/:testID/instructions" component={InstructionPage}/>
             <Route path="/tests/:testID" component={ExamUI}/>
             <Route exact path="/terms" component={TermsPage}/>
-            <Route exact path="/aboutus" component={AboutUsPage}/>
 
+            <Route exact path="/about-us" component={AboutUsPage}/>
+            <Route path="/tests/:testID" component={InstructionPage}/>
         </AnimatedSwitch>
     </Router>
 );

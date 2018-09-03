@@ -26,9 +26,9 @@ function FeatureCard(props) {
 
                 <div className="text-center ">
 
-                    <div style={{style}}>
+                    <Container>
                         {props.icon}
-                    </div>
+                    </Container>
 
                 </div>
 
