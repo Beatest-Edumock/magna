@@ -2,7 +2,7 @@ import React from "react";
 import Typed from 'react-typed';
 import Recaptcha from 'react-recaptcha';
 import config from 'config';
-import {NavBarWithButtonsContainer} from "../Layout/NavBarWithButtons/NavBarWithButtonsContainer";
+import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
 import {Button, Container, Jumbotron, Form, FormGroup, Label, Input, FormText, Row, Col} from 'reactstrap';
 import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
