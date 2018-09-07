@@ -12,7 +12,6 @@ class ExamPageContainer extends React.Component {
     componentDidMount() {
         const {testID} = this.props.match.params;
 
-        this.props.addLoader();
 
         GetTestGroupAPI(testID).then(
             axios.spread((testDetails, sectionDetails, testAttemptDetails) => {
@@ -29,7 +28,11 @@ class ExamPageContainer extends React.Component {
 
     render() {
 
-        return <ExamPageUI loading={this.props.loadingCount}/>
+        // if (this.props.loadingCount) {
+        //     return <LoadingScreen/>
+        // } else {
+            return <ExamPageUI loading={this.props.loadingCount}/>
+        // }
 
     }
 }

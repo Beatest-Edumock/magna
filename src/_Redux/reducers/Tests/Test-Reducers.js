@@ -3,7 +3,7 @@ import {DECREMENT_LOADING, INCREMENT_LOADING, SECTION_PUSH_DETAILS, TEST_PUSH_AT
 import _ from 'lodash';
 
 const defaultState = {
-    loadingCount: 0
+    loadingCount: 1
 
 };
 

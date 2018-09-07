@@ -1,6 +1,7 @@
 import React from 'react';
 import {LoadingScreen} from "./LoadingScreen";
-
+import {QuestionPaletteContainer} from "../components/QuestionPalette/QuestionPaletteContainer";
+import {SectionsGroup} from "../components/Section/SectionsGroupContainer";
 
 class ExamPageUI extends React.Component {
 
@@ -8,7 +9,19 @@ class ExamPageUI extends React.Component {
         if (this.props.loading)
             return <LoadingScreen/>;
         else {
-            return <div>Read</div>;
+            return (
+                <div className='container-fluid'>
+                    <div>
+                    <SectionsGroup/>
+                    </div>
+                    <div className='container-fluid float-right'>
+                        <QuestionPaletteContainer/>
+                    </div>
+
+                </div>
+
+            );
+
         }
     }
 }
