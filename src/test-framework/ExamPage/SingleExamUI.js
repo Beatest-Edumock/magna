@@ -1,18 +1,60 @@
-// author @ Kyaw Khant Nyar
 import React from 'react';
-// TODO:
-function ExamUI(props) {
+import {LoadingScreen} from "./LoadingScreen";
+import {connect} from 'react-redux'
+import {decrementLoadingAC, incrementLoadingAC} from "../../_Redux/ActionCreators/Test/Test-ActionCreator";
 
-    return (
-        <div>
-            <h3 className="alert-danger text-center">
-                Web page Under Construction!
-            </h3>
-            <div className="text-center">
-                <img src="https://media.giphy.com/media/EIiJp9cQ3GeEU/giphy.gif"/>
-            </div>
-        </div>
-    )
+
+class ExamUIPage extends React.Component {
+
+    componentDidMount() {
+
+        this.props.addLoader();
+        this.props.addLoader();
+        this.props.addLoader();
+        this.props.addLoader();
+        this.props.addLoader();
+
+        this.props.removeLoader();
+        this.props.removeLoader();
+        this.props.removeLoader();
+        this.props.removeLoader();
+        this.props.removeLoader();
+        this.props.removeLoader();
+    }
+
+
+    render() {
+        if (this.props.loadingCount)
+            return <LoadingScreen/>;
+
+        else {
+            return <div>Read</div>;
+        }
+
+    }
 }
 
+
+function mapStateToProps(state, ownProps) {
+    return {
+        loadingCount: state.test.loadingCount
+    }
+
+}
+
+
+function mapDispatchToProps(dispatch) {
+
+    return {
+        addLoader: () => {
+            dispatch(incrementLoadingAC())
+        },
+        removeLoader: () => {
+            dispatch(decrementLoadingAC());
+        }
+    }
+
+}
+
+const ExamUI = connect(mapStateToProps, mapDispatchToProps)(ExamUIPage);
 export {ExamUI}

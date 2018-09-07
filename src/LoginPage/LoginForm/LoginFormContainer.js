@@ -6,7 +6,6 @@ import {LoginUserApi} from "../../_Api/User";
 import {toast} from 'react-toastify';
 import {history} from "../../__internals/CustomHistory";
 
-
 class LoginFormContainer extends React.Component {
 
     constructor() {
@@ -37,6 +36,15 @@ class LoginFormContainer extends React.Component {
 
 }
 
+function mapStateToProps(state, ownProps) {
+
+
+    return {
+        isUserLoggedIn: state.user,
+        ...ownProps
+    }
+
+}
 
 
 function mapDispatchToProps(dispatch) {

@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import beatestLogo from "./imgs/beatest.png";
 import beatestDarkLogo from "./imgs/beatest-dark.png";
 import PropTypes from 'prop-types';
+import {NavLink} from 'react-router-dom';
 
 
 /**
@@ -36,12 +37,13 @@ class NavBar extends React.Component {
 
 
     render() {
+
         return (
 
-            <Navbar color={this.state.bgColor} light expand="md" sticky="top" className="shadow-sm py-0 border-dark ">
+            <Navbar color={this.state.bgColor} light expand="md" sticky="top" className="shadow py-0 border-dark ">
 
                 <Container>
-                    <NavbarBrand tag={Link} to="/"> <img src={this.props.lightLogo ? beatestLogo : beatestDarkLogo} height="30"/> </NavbarBrand>
+                    <NavbarBrand tag={Link} to="" active={false}> <img src={this.props.lightLogo ? beatestLogo : beatestDarkLogo} height="45"/> </NavbarBrand>
 
                     {!this.props.logoOnly &&
                     <div>

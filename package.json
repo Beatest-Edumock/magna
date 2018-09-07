@@ -34,6 +34,8 @@
     "react-router-transition": "^1.2.1",
     "react-scripts": "1.1.4",
     "react-select": "^2.0.0",
+    "react-spinkit": "^3.0.0",
+    "react-spinner": "^0.2.7",
     "react-toastify": "^4.1.0",
     "react-typed": "^1.0.9",
     "reactstrap": "^6.3.1",
@@ -63,7 +65,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://new-struct-lb-5a48b9f92a560a6c.elb.ap-south-1.amazonaws.com"
+      "target": "http://localhost:5000"
     }
   }
 }

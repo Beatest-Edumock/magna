@@ -5,7 +5,7 @@
 // Imports
 import React, {Component} from 'react'
 import {DisplayInstructionUI} from "./DisplayInstructionUI";
-import {GetTestWithIDAPI, StartTestAPI} from "../../../_Api/Tests";
+import {GetTestWithIDAPI, StartTestAPI} from "../../../_Api/Tests/Tests";
 import {history} from "../../../__internals/CustomHistory";
 import PropTypes from 'prop-types';
 
@@ -42,7 +42,6 @@ class DisplayInstructionContainer extends Component {
             .then(({data}) => {
                 const instructions = data.instruction_html;
                 const test_title = data.name;
-                console.log(test_title);
                 // instruction state is now loaded with raw html instruction
                 this.setState ( {
                     instructions: instructions,

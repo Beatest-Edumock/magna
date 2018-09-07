@@ -1,20 +1,20 @@
 import {ADD_USER, REMOVE_USER} from "_Redux/actions/user"
 
-function userReducer(state, action) {
+function userReducer(state = null, action) {
+
 
     switch (action.type) {
         case ADD_USER:
-            console.log("add user case reached");
-            return {...state, user: action.user};
+            return action.user;
 
         case REMOVE_USER:
-            console.log("remove user case reached");
-            return {...state, user: null};
+            return null;
 
         default:
             return state;
 
     }
+
 
 }
 

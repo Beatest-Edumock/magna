@@ -10,7 +10,9 @@ function LogoutUserApi() {
 }
 
 function GetUserDetailsApi() {
-    return axios.get('/user');
+    console.log('base url is this');
+    console.log(axios.defaults.baseURL);
+    return axios.get('user');
 }
 
 

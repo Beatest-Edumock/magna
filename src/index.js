@@ -29,6 +29,7 @@ import 'core-js/fn/array/from';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './_CSS/fonts.css'
+import './_CSS/index.css'
 
 
 setUpApp();

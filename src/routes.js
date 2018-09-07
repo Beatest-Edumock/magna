@@ -18,10 +18,7 @@ import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage"
 
 const Routes = () => (
     <Router history={history}>
-        <AnimatedSwitch
-            atEnter={{opacity: 0}}
-            atLeave={{opacity: 1}}
-            atActive={{opacity: 1}}>
+        <Switch >
 
 
             <Route exact path="/" component={HomePage}/>
@@ -33,8 +30,7 @@ const Routes = () => (
             <Route exact path="/terms" component={TermsPage}/>
 
             <Route exact path="/about-us" component={AboutUsPage}/>
-            <Route path="/tests/:testID" component={InstructionPage}/>
-        </AnimatedSwitch>
+        </Switch>
     </Router>
 );
 

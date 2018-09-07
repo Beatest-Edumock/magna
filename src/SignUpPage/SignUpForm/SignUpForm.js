@@ -5,7 +5,7 @@ import Recaptcha from 'react-recaptcha';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import config from 'config';
 
-import Select, {createFilter} from 'react-select';
+import Select from 'react-select';
 
 
 const schema = yup.object().shape({
@@ -17,7 +17,6 @@ const schema = yup.object().shape({
         return password === value;
 
     }),
-    recaptcha: yup.string().required("You must complete the recaptcha"),
 
     phoneNo: yup.number("Invalid Phone Number")
         .lessThan(10000000000, "Invalid Phone number, must be 10 digits")
@@ -121,24 +120,9 @@ function SignUpForm(props) {
                         onBlur={handleBlur}
                         value={values.college}
                         filterOption={filterConfig}
-                        noOptionsMessage={() => {
-                            // setFieldValue('college', {value: null, label: "Not Listed"});
-                            return "AGHAHA"
-                        }}
+
                     />
 
-                    {/*<Input type="select"*/}
-                    {/*name="college"*/}
-                    {/*value={values.college}*/}
-                    {/*onChange={handleChange}*/}
-                    {/*onBlur={handleBlur}>*/}
-
-                    {/*<option value="unselected" disabled selected>Select your College</option>*/}
-
-                    {/*<option value={null}>Other/Not Listed</option>*/}
-                    {/*{props.colleges.map((cur) => <option value={cur.id}>{cur.college_name}</option>)}*/}
-
-                    {/*</Input>*/}
                 </FormGroup>
 
                 <FormGroup>
@@ -147,11 +131,11 @@ function SignUpForm(props) {
                         ref={props.registerRecaptchaInstanceCallback}
 
                         sitekey={config.recaptchaKey}
-                        render="explicit"
                         theme="light"
+                        size='invisible'
 
                         verifyCallback={(response) => {
-                            setFieldValue("recaptcha", response);
+                            props.captchaVerifiedCallback(response);
                         }}
                     />
                     <Label className="text-danger text-left">{touched.recaptcha && errors.recaptcha && errors.recaptcha}</Label>
