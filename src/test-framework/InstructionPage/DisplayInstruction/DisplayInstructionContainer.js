@@ -31,11 +31,14 @@ class DisplayInstructionContainer extends Component {
      * on click handler for start test button
      */
     startTestHandelClick() {
-        StartTestAPI(this.props.testID);
+        StartTestAPI(this.props.testID)
+            .then(()=>{
+                history.push({
+                    pathname: `/tests/${this.props.testID}`,
+                })
+            });
         // reroute to /tests/:testID
-        history.push({
-            pathname: `/tests/${this.props.testID}`,
-        })
+
     };
 
     componentDidMount() {

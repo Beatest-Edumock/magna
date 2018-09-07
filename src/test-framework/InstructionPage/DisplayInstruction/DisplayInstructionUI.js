@@ -4,6 +4,7 @@
 // imports
 import React, {Component} from 'react'
 import PropTypes from 'prop-types';
+import {LoadingScreen} from "../../ExamPage/LoadingScreen";
 
 /**
  * DisplayInstructionUI renders the Instructions and Start Test button
@@ -15,9 +16,7 @@ function DisplayInstructionUI(props) {
     // return a loading UI while the instructions is being loaded
     if(props.instructions === '') {
         return (
-            <h3>
-                Loading
-            </h3>
+            <LoadingScreen/>
         )
     }
     return (
