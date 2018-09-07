@@ -2,6 +2,7 @@ import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {faCogs, faUserTie, faBinoculars, faHeadphones, faWindowMaximize, faSpinner, faCodeBranch, faMicrochip, faUsers} from '@fortawesome/free-solid-svg-icons'
 import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
+import {Container} from 'reactstrap'
 
 
 export const FEATURE_CARD_ELEMENTS = [
@@ -60,6 +61,81 @@ export const LARGE_FEATURE_CARD_ELEMENTS = [
 
 ]
 
+
+export const FLIP_CARD_ELEMENTS = [
+
+	{
+		front:<div className="container" style={{padding: "10%"}}>
+
+                <div className="text-center " style={{}}>
+
+                    <Container>
+                        <FontAwesomeIcon size={"6x"} icon={faCogs} color="#8C9EFF"/>
+                    </Container>
+
+                </div>
+
+                <hr/>
+
+                <div className="text-center" style={{marginTop: "10%"}}>
+                    <Container>
+                            <div><h4>Technology</h4>
+		<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Gear up your skills on industry relevant courses and a must solve capstone that would add the much needed X-factor to your resume.</div></div>
+                    </Container>
+
+                </div>
+            </div>
+
+	},
+
+	{
+		front:<div className="container" style={{padding: "10%"}}>
+
+                <div className="text-center " style={{}}>
+
+                    <Container>
+                        <FontAwesomeIcon size={"6x"} icon={faHeadphones} color="#8C9EFF"/>
+                    </Container>
+
+                </div>
+
+                <hr/>
+
+                <div className="text-center" style={{marginTop: "10%"}}>
+                    <Container>
+                             <div><h4>Aptitude</h4>
+			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Aiming to ace CAT or your campus recruitment exams? Need to learn the tricks to solve a sum in seconds? Learn from IIM and XLRI graduates today.</div></div>
+                </Container>
+            </div>
+            </div>
+    },
+	{
+
+		front:<div className="container" style={{padding: "10%"}}>
+
+                <div className="text-center " style={{}}>
+
+                    <Container>
+                        <FontAwesomeIcon size={"6x"} icon={faUserTie} color="#8C9EFF"/>
+                    </Container>
+
+                </div>
+
+                <hr/>
+
+                <div className="text-center" style={{marginTop: "10%"}}>
+                    <Container>
+                            <div><h4>Business Skills</h4>
+		<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Wisen up with the concepts and skills to make it through to the best industries today.</div></div>
+                    </Container>
+
+                </div>
+            </div>
+    },
+
+
+
+]
 
 export const COLLEGE_IMAGES = [
 

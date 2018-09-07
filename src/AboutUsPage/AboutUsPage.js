@@ -2,14 +2,14 @@ import React from "react";
 import Typed from 'react-typed';
 import Recaptcha from 'react-recaptcha';
 import config from 'config';
-import {NavBarWithButtonsContainer} from "../Layout/NavBarWithButtons/NavBarWithButtonsContainer";
+import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
 import {Button, Container, Jumbotron, Form, FormGroup, Label, Input, FormText, Row, Col} from 'reactstrap';
 import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
 import Flickity from 'react-flickity-component';
 import {NavLink} from 'react-router-dom';
-import {LARGE_FEATURE_CARD_ELEMENTS} from './data'
+import {LARGE_FEATURE_CARD_ELEMENTS,MENTORS} from './data'
 import {ContactUsContainer} from '../ContactUs/ContactUsForm/ContactUsContainer'
 import {Footer} from '../Layout/Footer/Footer'
 
@@ -27,11 +27,11 @@ function AboutUsPage() {
     return (
 
         <div>
-            <div className="container-fluid">
+            <Container fluid={true} style={{padding:0}}>
 
                 <NavBarWithButtonsContainer/>
 
-            </div>
+            </Container>
             <Jumbotron fluid style={bodyStyle}>
 
                 <Container style={{marginTop: "30%",color: 'white'}}>
@@ -68,7 +68,7 @@ function AboutUsPage() {
                 </Row>
 
             </Container>
-            <Container style={{paddingBottom: '4%'}}>
+            <Container fluid={true} style={{paddingBottom: '4%'}}>
                 <Row style={{justifyContent: 'center',paddingBottom:'5%'}}>
                     <h2 style={{paddingTop: '6%',fontWeight: 300,fontFamily: 'Open Sans,Helvetica,Arial,sans-serif'}}>Meet the makers</h2>
                 </Row>  
@@ -80,6 +80,27 @@ function AboutUsPage() {
                                     <LargeFeatureCard  
                                         icon={feature_card.img}
                                         text={feature_card.text}
+                                    />
+                                
+
+                            );
+                        })
+
+                    }
+                </Row>
+            </Container>
+            <Container style={{paddingBottom: '4%'}}>
+                <Row style={{justifyContent: 'center',paddingBottom:'5%'}}>
+                    <h2 style={{paddingTop: '6%',fontWeight: 300,fontFamily: 'Open Sans,Helvetica,Arial,sans-serif'}}>Mentors</h2>
+                </Row>  
+                <Row  style={{justifyContent: 'center'}}>
+                    {
+        
+                        MENTORS.map((mentor) => {
+                            return (
+                                    <LargeFeatureCard  
+                                        icon={mentor.img}
+                                        text={mentor.text}
                                     />
                                 
 
