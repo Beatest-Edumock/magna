@@ -1,15 +1,19 @@
 // Author @ kyawkn
 //
-//
-import axios from 'axios';
 
-function GetTestWithIDAPI(testID) {
+import axios from 'axios';
+import {GeTestAttempt} from "./TestAttempts";
+import {GetSections} from "./Sections/Sections";
+
+function GetTestGroupAPI(testID) {
+    return axios.all(
+        [GetTestDetailsAPI(testID), GetSections(testID), GeTestAttempt(testID)]
+    )
+}
+
+function GetTestDetailsAPI(testID) {
     return axios.get('/tests/' + testID);
 }
 
 
-function StartTestAPI(testID) {
-    return axios.post(`/tests/${testID}/attempts/start`)
-}
-
-export {GetTestWithIDAPI, StartTestAPI}
+export {GetTestDetailsAPI, GetTestGroupAPI}

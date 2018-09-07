@@ -5,7 +5,8 @@
 // Imports
 import React, {Component} from 'react'
 import {DisplayInstructionUI} from "./DisplayInstructionUI";
-import {GetTestWithIDAPI, StartTestAPI} from "../../../_Api/Tests/Tests";
+import {GetTestDetailsAPI} from "../../../_Api/Tests/Tests";
+import {StartTestAPI} from "../../../_Api/Tests/TestAttempts";
 import {history} from "../../../__internals/CustomHistory";
 import PropTypes from 'prop-types';
 
@@ -38,7 +39,7 @@ class DisplayInstructionContainer extends Component {
     };
 
     componentDidMount() {
-        GetTestWithIDAPI(this.props.testID)
+        GetTestDetailsAPI(this.props.testID)
             .then(({data}) => {
                 const instructions = data.instruction_html;
                 const test_title = data.name;
