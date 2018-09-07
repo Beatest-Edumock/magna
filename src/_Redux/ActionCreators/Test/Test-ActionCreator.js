@@ -1,4 +1,4 @@
-import {DECREMENT_LOADING, INCREMENT_LOADING} from "../../actions/test";
+import {DECREMENT_LOADING, INCREMENT_LOADING, SECTION_PUSH_DETAILS, TEST_PUSH_DETAILS} from "../../actions/test";
 
 
 function incrementLoadingAC() {
@@ -11,4 +11,15 @@ function decrementLoadingAC() {
 
 }
 
-export {incrementLoadingAC, decrementLoadingAC}
+
+function pushTestDetailsAC(testDetails) {
+    return {type: TEST_PUSH_DETAILS, testDetails}
+
+}
+
+function pushSectionDetailsAC(sectionsList) {
+    return {type: SECTION_PUSH_DETAILS, sectionsList}
+
+}
+
+export {incrementLoadingAC, decrementLoadingAC, pushTestDetailsAC, pushSectionDetailsAC};

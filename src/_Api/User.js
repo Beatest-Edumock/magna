@@ -10,8 +10,6 @@ function LogoutUserApi() {
 }
 
 function GetUserDetailsApi() {
-    console.log('base url is this');
-    console.log(axios.defaults.baseURL);
     return axios.get('user');
 }
 
@@ -24,4 +22,4 @@ function ResendActivationMailApi(email, recaptcha) {
 
 }
 
-export {LoginUserApi, LogoutUserApi, ResendActivationMailApi,GetUserDetailsApi};
+export {LoginUserApi, LogoutUserApi, ResendActivationMailApi, GetUserDetailsApi};
