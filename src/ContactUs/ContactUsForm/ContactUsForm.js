@@ -63,7 +63,7 @@ function ContactUsForm(props) {
                 <Col md="10" lg="12">
                     <Label>Message:</Label>
                     <Input
-                        style={{width: '80%'}}
+                        style={{width: '100%'}}
                         type="textarea"
                         name="message"
                         placeholder="Enter message"

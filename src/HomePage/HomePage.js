@@ -6,10 +6,14 @@ import {Button, Col, Container, Jumbotron, Row} from 'reactstrap';
 import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
 import Flickity from 'react-flickity-component';
-import {COLLEGE_IMAGES, FEATURE_CARD_ELEMENTS, LARGE_FEATURE_CARD_ELEMENTS, RECOGNITIONS, TESTIMONIALS} from './data'
+import {COLLEGE_IMAGES, FEATURE_CARD_ELEMENTS, LARGE_FEATURE_CARD_ELEMENTS, FLIP_CARD_ELEMENTS,RECOGNITIONS, TESTIMONIALS} from './data'
 import {ContactUsContainer} from '../ContactUs/ContactUsForm/ContactUsContainer'
 import {Footer} from '../Layout/Footer/Footer'
 import {Link} from 'react-router-dom'
+import {FlipCard} from "../Common/FlipCard/FlipCard";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
+import {faCogs, faUserTie, faBinoculars, faHeadphones, faWindowMaximize, faSpinner, faCodeBranch, faMicrochip, faUsers} from '@fortawesome/free-solid-svg-icons'
+import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
 
 //
 //
@@ -93,22 +97,22 @@ function HomePage() {
 
                     <h1 className="text-center" style={{paddingTop: '2%'}}> Our Features</h1>
 
-                    <div className="container-fluid no-gutters">
-                        <div className="row justify-content-center">
+            <Container>
+            <Row style={{justifyContent:'center'}}>
+                {
+                    FLIP_CARD_ELEMENTS.map((flip_card) => {
+                        return (
+                            <FlipCard
+                                front={flip_card.front}
+                                back="hey"
+                            />
 
-                            {
-                                LARGE_FEATURE_CARD_ELEMENTS.map((feature_card) => {
-                                    return (
-                                        <LargeFeatureCard
-                                            icon={feature_card.icon}
-                                            text={feature_card.text}
-                                        />
+                        );
+                    })
+                }
+            </Row>
+            </Container>
 
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
                 </Container>
 
             </div>
@@ -187,7 +191,7 @@ function HomePage() {
                 <Row>
                     <Col style={{paddingRight: '6%'}}>
                         <p><span style={{fontSize: 20,color:'gray',display: 'inline'}}>Email:</span><Link to="mailto:hello@beatest.in"><span style={{fontSize: 20,display: 'inline',textDecoration: 'underline'}}>hello@beatest.in</span></Link></p>
-                        <p style={{fontSize: 24,color:'gray'}}><span>#7th Floor, Monibhandar Building Webel Bhavan Premises, Sector 5, Ring Road, Bidhannagar, West Bengal-700091, India</span></p>
+                        <p style={{fontSize: 20,color:'gray'}}><span>#7th Floor, Monibhandar Building Webel Bhavan Premises, Sector 5, Ring Road, Bidhannagar, West Bengal-700091, India</span></p>
                         <p style={{fontSize: 14,color:'#666'}}><span>Drop us an email or visit us anytime, we endeavour to answer all enquiries within 24 hours on business days.</span></p>
 
                     </Col>
@@ -198,6 +202,7 @@ function HomePage() {
 
             </Container>
             <Footer/>
+
         </div>
     )
 }

@@ -4,10 +4,16 @@ import config from 'config';
 import 'react-toastify/dist/ReactToastify.css';
 import {Button, Container, Jumbotron, Form, FormGroup, Label, Input, FormText, Row, Col} from 'reactstrap';
 import {NavLink,Link} from 'react-router-dom';
+import {Footer} from '../Layout/Footer/Footer';
+import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 
 
 function TermsPage() {
     return (
+        <div>
+        <div>
+            <NavBarWithButtonsContainer/>
+        </div>
         <Container>
             <Row style={{marginTop: '3%'}}>
                 <Link to="/"><img alt="logo" src="/img/beatest-dark.png" style={{height: '2.8em'}}/></Link>
@@ -41,6 +47,8 @@ function TermsPage() {
                 
             </Row>
         </Container>
+        <Footer />
+        </div>
 
     )
 }
