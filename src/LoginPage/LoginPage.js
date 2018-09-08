@@ -8,7 +8,10 @@ function LoginPage() {
     return (
 
         <SingleFormPage title="Log In">
-            <LoginFormContainer/>
+
+            <div >
+                <LoginFormContainer/>
+            </div>
 
         </SingleFormPage>
 

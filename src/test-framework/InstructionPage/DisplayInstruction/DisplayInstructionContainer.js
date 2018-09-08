@@ -1,37 +1,70 @@
 // Author @ Kyaw Khant Nyar
-// Last Edit: Sept 1, 2018
+// Last Edit: Sept 3, 2018
 
 
 // Imports
 import React, {Component} from 'react'
 import {DisplayInstructionUI} from "./DisplayInstructionUI";
-import {GetTestWithIDAPI} from "../../../_Api/Tests";
+import {GetTestDetailsAPI} from "../../../_Api/Tests/Tests";
+import {StartTestAPI} from "../../../_Api/Tests/TestAttempts";
+import {history} from "../../../__internals/CustomHistory";
+import PropTypes from 'prop-types';
+
 
 
 // DisplayInstructionContainer
 class DisplayInstructionContainer extends Component {
 
+    constructor(props) {
+        super(props);
+        this.handleClick = this.startTestHandelClick.bind(this);
+
+    }
     // instructions: the RAW HTML for the test instruction
     state = {
         instructions: '',
+        title: '',
+
+    };
+
+    /**
+     * on click handler for start test button
+     */
+    startTestHandelClick() {
+        StartTestAPI(this.props.testID)
+            .then(()=>{
+                history.push({
+                    pathname: `/tests/${this.props.testID}`,
+                })
+            });
+        // reroute to /tests/:testID
+
     };
 
     componentDidMount() {
-        GetTestWithIDAPI(this.props.testID)
+        GetTestDetailsAPI(this.props.testID)
             .then(({data}) => {
                 const instructions = data.instruction_html;
+                const test_title = data.name;
                 // instruction state is now loaded with raw html instruction
-                this.setState ( {instructions} );
+                this.setState ( {
+                    instructions: instructions,
+                    title: test_title
+                } );
             })
     }
 
     render() {
         return (
             <div>
-                <DisplayInstructionUI instructions={this.state.instructions}/>
+                <DisplayInstructionUI instructions={this.state.instructions} name={this.state.title} startfunc={this.handleClick}/>
             </div>
         )
     }
 }
 
 export {DisplayInstructionContainer}
+
+DisplayInstructionContainer.propTypes = {
+    testID: PropTypes.string
+}

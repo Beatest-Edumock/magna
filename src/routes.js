@@ -1,38 +1,42 @@
 import React from "react";
 import {Route, Router, Switch} from "react-router-dom";
-import {AnimatedSwitch} from 'react-router-transition';
+import {ExamPageC} from "./test-framework/ExamPage";
 import {history} from "./__internals/CustomHistory";
-
 import {HomePage} from "./HomePage/HomePage"
 import {LoginPage} from "./LoginPage/LoginPage"
 import {ResendActivationPage} from "./ResendActivationPage/ResendActivationPage"
 import {SignUpPage} from "./SignUpPage/SignUpPage";
-
+import {SectionsGroupContainer} from "./test-framework/components/Section/SectionsGroupContainer";
 import {TermsPage} from "./TermsPage/TermsPage";
 import {AboutUsPage} from "./AboutUsPage/AboutUsPage";
+<<<<<<< HEAD
 import {TestPage} from "./TestPage/TestPage";
+=======
+import {QuestionPaletteContainer} from "./test-framework/components/QuestionPalette/QuestionPaletteContainer";
+>>>>>>> master
 
 
 import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage";
 
 const Routes = () => (
     <Router history={history}>
-        <AnimatedSwitch
-            atEnter={{opacity: 0}}
-            atLeave={{opacity: 1}}
-            atActive={{opacity: 1}}>
+        <Switch >
 
 
             <Route exact path="/" component={HomePage}/>
             <Route exact path="/login" component={LoginPage}/>
             <Route exact path="/signup" component={SignUpPage}/>
             <Route exact path="/resend-activation" component={ResendActivationPage}/>
-
+            <Route path="/tests/:testID/instructions" component={InstructionPage}/>
+            <Route path="/tests/:testID" component={ExamPageC}/>
             <Route exact path="/terms" component={TermsPage}/>
+            <Route exact path="/tc" component={QuestionPaletteContainer} />
             <Route exact path="/about-us" component={AboutUsPage}/>
             <Route path="/tests/:testID" component={InstructionPage}/>
             <Route exact path="/test-listing" component={TestPage}/>
-        </AnimatedSwitch>
+
+        </Switch>
+
     </Router>
 );
 

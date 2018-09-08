@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import Recaptcha from "react-recaptcha";
 import config from "config"
+import PropTypes from 'prop-types';
 
 
 const schema = yup.object().shape({
@@ -13,6 +14,13 @@ const schema = yup.object().shape({
 });
 
 
+/**
+ * The only true button.
+ *
+ * @version 1.0.1
+ * @author [Artem Sapegin](https://github.com/sapegin)
+ * @author [Andy Krings-Stern](https://github.com/ankri)
+ */
 function ResendActivationForm(props) {
 
     return (<Formik
@@ -76,5 +84,22 @@ function ResendActivationForm(props) {
     />)
 }
 
+ResendActivationForm.propTypes = {
+    /** Boolean indicating whether the button should render as disabled */
+    disabled: PropTypes.bool,
+    /** button label. */
+    label: PropTypes.string.isRequired,
+    /** onClick handler */
+    onClick: PropTypes.func,
+    /** component styles */
+    style: PropTypes.shape,
+};
+
+ResendActivationForm.defaultProps = {
+    disabled: false,
+    onClick: () => {
+    },
+    style: {},
+};
 
 export {ResendActivationForm};

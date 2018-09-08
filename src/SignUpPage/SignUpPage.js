@@ -2,12 +2,18 @@ import React from 'react';
 import {SingleFormPage} from "../Common/SingleFormPage";
 import {SignUpFormContainer} from "./SignUpForm/SignUpFormContainer";
 
-
+/**
+ *
+ * @returns {*}
+ * @constructor
+ */
 function SignUpPage() {
 
     return (
         <SingleFormPage title="Register at Beatest!">
-            <SignUpFormContainer/>
+            <div style={{paddingBottom:'100px'}}>
+                <SignUpFormContainer/>
+            </div>
         </SingleFormPage>
 
 

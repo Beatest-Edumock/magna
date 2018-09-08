@@ -1,6 +1,7 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {faCogs, faUserTie, faBinoculars, faHeadphones, faWindowMaximize, faSpinner, faCodeBranch, faMicrochip, faUsers} from '@fortawesome/free-solid-svg-icons'
+import {faAddressBook} from '@fortawesome/free-regular-svg-icons'
 import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
 import {Container} from 'reactstrap'
 
@@ -9,7 +10,7 @@ export const FEATURE_CARD_ELEMENTS = [
 
 	{
 
-		icon: <FontAwesomeIcon size={"6x"} icon={faMicrochip} color="#8C9EFF"/>,
+		icon: <FontAwesomeIcon size={"6x"} icon={faAddressBook} color="#8C9EFF"/>,
 		text: <p style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Grow your skills with the inspiring mentors</p>
 	},
 

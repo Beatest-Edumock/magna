@@ -2,6 +2,7 @@ import React from 'react';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import PropTypes from 'prop-types'
 
 
 const schema = yup.object().shape({
@@ -66,5 +67,8 @@ function LoginForm(props) {
     />);
 }
 
+LoginForm.propTypes = {
+    onSubmitCallback: PropTypes.func.isRequired
+};
 
 export {LoginForm};

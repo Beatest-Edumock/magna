@@ -10,7 +10,7 @@ function LogoutUserApi() {
 }
 
 function GetUserDetailsApi() {
-    return axios.get('/user');
+    return axios.get('user');
 }
 
 
@@ -22,4 +22,4 @@ function ResendActivationMailApi(email, recaptcha) {
 
 }
 
-export {LoginUserApi, LogoutUserApi, ResendActivationMailApi,GetUserDetailsApi};
+export {LoginUserApi, LogoutUserApi, ResendActivationMailApi, GetUserDetailsApi};

@@ -4,21 +4,28 @@ All setup related to redux is done here.
 This like setting the initial state, combining reducers,etc.
  */
 
-import {applyMiddleware, createStore} from 'redux'
+import {applyMiddleware, createStore, combineReducers} from 'redux'
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {addUserAC} from './ActionCreators/User-ActionCreator'
 
 import userReducer from '_Redux/reducers/User-Reducers'
 import {GetUserDetailsApi} from "../_Api/User";
+import {testReducer} from "./reducers/Tests/Test-Reducers";
 
 
 function initStore() {
 
-    const initState = {user: null};
+
+    const combined = combineReducers(
+        {
+            user: userReducer,
+            test: testReducer
+        }
+    );
 
 
-    const store = createStore(userReducer, initState, composeWithDevTools(applyMiddleware(thunk)));
+    const store = createStore(combined, composeWithDevTools(applyMiddleware(thunk)));
 
 
     GetUserDetailsApi().then(({data}) => {
@@ -26,7 +33,6 @@ function initStore() {
         }
     ).catch(() => {
     });
-
 
 
     return store;

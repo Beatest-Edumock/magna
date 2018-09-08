@@ -1,8 +1,10 @@
 // Author @ Kyaw Khant Nyar
-// Last Edit: Sept 1, 2018
+// Last Edit: Sept 3, 2018
 
 // imports
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
+import {LoadingScreen} from "../../ExamPage/LoadingScreen";
 
 /**
  * DisplayInstructionUI renders the Instructions and Start Test button
@@ -14,20 +16,23 @@ function DisplayInstructionUI(props) {
     // return a loading UI while the instructions is being loaded
     if(props.instructions === '') {
         return (
-            <h3>
-                Loading
-            </h3>
+            <LoadingScreen/>
         )
     }
     return (
         <div className='container my-4'>
 
-            {/*Set the HTML from RAW HTML*/}
+            <div className='my-4'>
+            <h3 className='alert alert-primary text-center'>
+                {props.name}
+            </h3>
+            </div>
 
+            {/*Set the HTML from RAW HTML*/}
             <div dangerouslySetInnerHTML={{__html: props.instructions}} />
 
             <div>
-                <StartTestButton/>
+                <StartTestButton startfunc={props.startfunc}/>
             </div>
 
         </div>
@@ -35,19 +40,17 @@ function DisplayInstructionUI(props) {
 
 }
 
-
-// TODO: add functionality, update comments
 /**
  *
- * @param props
- * @returns {*}
- * @constructor
+ * @param props: a call back function that tells the server that the client wants to start the exam
+ * and create test attempt
+ * @returns {*} the start test button
  */
 function StartTestButton(props) {
     return (
         <div className='container'>
             <div className='row'>
-            <button className="btn btn-primary col-lg-4 offset-4 col-4 offset-4 my-5">
+            <button className="btn btn-primary col-lg-4 offset-4 col-4 offset-4 my-5" onClick={props.startfunc}>
                 Start Test
             </button>
             </div>
@@ -58,3 +61,10 @@ function StartTestButton(props) {
 
 
 export {DisplayInstructionUI}
+
+
+DisplayInstructionUI.propTypes = {
+    startfunc : PropTypes.func,
+    name: PropTypes.string,
+    instructions: PropTypes.string,
+}

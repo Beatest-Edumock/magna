@@ -12,7 +12,7 @@
  *
  *     <SomeForm/>
  *
- * </SingFormPage
+ * </SingFormPage>
  */
 
 
@@ -25,8 +25,8 @@ const formContainerStyle = {
 };
 
 const fullPageDivStyle = {
-    height: "100%",
     width: "100%",
+    minHeight: "100%",
     position: "absolute",
     backgroundImage: "linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5) ),url(/img/inner-2.jpg) "
 
