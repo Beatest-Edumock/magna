@@ -10,6 +10,7 @@ import {SignUpPage} from "./SignUpPage/SignUpPage";
 
 import {TermsPage} from "./TermsPage/TermsPage";
 import {AboutUsPage} from "./AboutUsPage/AboutUsPage";
+import {TestPage} from "./TestPage/TestPage";
 
 
 import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage";
@@ -30,6 +31,7 @@ const Routes = () => (
             <Route exact path="/terms" component={TermsPage}/>
             <Route exact path="/about-us" component={AboutUsPage}/>
             <Route path="/tests/:testID" component={InstructionPage}/>
+            <Route exact path="/test-listing" component={TestPage}/>
         </AnimatedSwitch>
     </Router>
 );

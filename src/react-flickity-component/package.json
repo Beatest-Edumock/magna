@@ -1,0 +1,47 @@
+{
+  "name": "react-flickity-component",
+  "version": "2.0.1",
+  "description": "react flickity component",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "npm run pretty && jest ./__tests__",
+    "pretty": "prettier --single-quote --trailing-comma es5 --write \"src/**/*.js\"",
+    "prepublishOnly": "babel ./src --out-dir ./lib --source-maps"
+  },
+  "author": "theolampert",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/theolampert/react-flickity-component.git"
+  },
+  "keywords": [
+    "react",
+    "carousel",
+    "slider",
+    "flickity",
+    "react-component"
+  ],
+  "dependencies": {
+    "fbjs": "^0.8.12",
+    "flickity": "^2.0.10",
+    "imagesloaded": "^4.1.3",
+    "prop-types": "^15.5.10"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-jest": "^22.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.0.2",
+    "jest": "^22.0.0",
+    "prettier": "^1.6.1",
+    "sinon": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "~16.0.0",
+    "react-dom": "~16.0.0"
+  }
+}

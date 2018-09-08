@@ -77,7 +77,7 @@ function HomePage() {
 
                 </Jumbotron>
                 <div className="container-fluid no-gutters">
-                    <div className="row justify-content-center">
+                    <div className="row justify-content-center" style={{flexWrap: 'wrap'}}>
 
                         {
                             FEATURE_CARD_ELEMENTS.map((feature_card) => {
