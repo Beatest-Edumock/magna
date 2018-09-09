@@ -35,10 +35,10 @@ function AboutUsPage() {
             <Jumbotron fluid style={bodyStyle}>
 
                 <Container style={{marginTop: "30%",color: 'white'}}>
-                        <Row style={{justifyContent:'center'}}>
+                        <Row style={{justifyContent:'center',padding: '2%'}}>
                             <h1 style={{textAlign: 'center',fontWeight: 300,fontFamily: 'Open Sans,Helvetica,Arial,sans-serif'}}>Hi, We're Beatest!</h1>
                         </Row>
-                        <Row style={{justifyContent:'center'}}>
+                        <Row style={{justifyContent:'center',padding: '2%'}}>
                             <h6 style={{textAlign: 'center',opacity:0.5,fontWeight: 300,fontFamily: 'Open Sans,Helvetica,Arial,sans-serif'}}>A group of innovative and like-minded folks making useful and enduring technology for your education</h6>
                         </Row>
                 </Container>
