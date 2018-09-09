@@ -29,7 +29,6 @@ const Routes = () => (
             <Route exact path="/terms" component={TermsPage}/>
             <Route exact path="/tc" component={QuestionPaletteContainer}/>
             <Route exact path="/about-us" component={AboutUsPage}/>
-            <Route path="/tests/:testID" component={InstructionPage}/>
             <Route exact path="/test-listing" component={TestPage}/>
 
         </Switch>

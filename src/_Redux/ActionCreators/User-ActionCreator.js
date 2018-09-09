@@ -3,7 +3,7 @@ import {ADD_USER, REMOVE_USER} from "_Redux/actions/user"
 /**
  *
  * Add the user to the store
- * @param user : the user object retured from api/user
+ * @param user :  user object returned from api/user
  *
  * @returns {{type: string, user: *}}
  */

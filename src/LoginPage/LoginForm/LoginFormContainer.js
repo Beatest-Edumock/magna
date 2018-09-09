@@ -19,8 +19,8 @@ class LoginFormContainer extends React.Component {
         LoginUserApi(values.email, values.password).then(({data}) => {
 
             this.props.addUserAction(data);
-            toast.success(`Welcome ${data.full_name}`);
             history.push("/");
+            toast.success(`Welcome ${data.full_name}`);
 
         }).catch(({response}) => {
             setErrors({info: response.data.message});

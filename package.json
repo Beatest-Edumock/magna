@@ -62,11 +62,12 @@
     "babel-runtime": "^6.26.0",
     "react-storybook-decorator-background": "^1.0.5",
     "redux-devtools-extension": "^2.13.5",
+    "redux-immutable-state-invariant": "^2.1.0",
     "storybook-react-router": "^1.0.1"
   },
   "proxy": {
     "/api": {
-      "target": "http://localhost:5000"
+      "target": "http://trident.beatest.in"
     }
   }
 }
