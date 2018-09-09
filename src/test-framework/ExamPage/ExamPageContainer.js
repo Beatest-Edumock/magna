@@ -1,7 +1,7 @@
 import React from 'react';
 import {LoadingScreen} from "./LoadingScreen";
 import {connect} from 'react-redux'
-import {decrementLoadingAC, incrementLoadingAC, pushSectionDetailsAC, pushTestDetailsAC} from "../../_Redux/ActionCreators/Test/Test-ActionCreator";
+import {decrementLoadingAC, incrementLoadingAC, pushSectionDetailsAC, pushTestDetailsAC, setUpTestAsyncAC} from "../../_Redux/ActionCreators/Test/Test-ActionCreator";
 import {GetTestGroupAPI} from "../../_Api/Tests/Tests";
 import {ExamPageUI} from "./ExamUI";
 import axios from 'axios'
@@ -15,11 +15,12 @@ class ExamPageContainer extends React.Component {
 
         GetTestGroupAPI(testID).then(
             axios.spread((testDetails, sectionDetails, testAttemptDetails) => {
-                this.props.pushTestDetails(testDetails.data);
-                this.props.pushSectionDetails(sectionDetails.data);
-                this.props.pushTestAttemptDetails(testAttemptDetails.data);
+                // this.props.pushTestDetails(testDetails.data);
+                // this.props.pushSectionDetails(sectionDetails.data);
+                // this.props.pushTestAttemptDetails(testAttemptDetails.data);
+                this.props.setupTestStore(testDetails.data, sectionDetails.data, testAttemptDetails.data)
 
-                this.props.removeLoader();
+                // this.props.removeLoader();
 
             })
         );
@@ -28,11 +29,7 @@ class ExamPageContainer extends React.Component {
 
     render() {
 
-        // if (this.props.loadingCount) {
-        //     return <LoadingScreen/>
-        // } else {
-            return <ExamPageUI loading={this.props.loadingCount}/>
-        // }
+        return <ExamPageUI loading={this.props.loadingCount}/>
 
     }
 }
@@ -49,21 +46,11 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
 
     return {
-        addLoader: () => {
-            dispatch(incrementLoadingAC())
-        },
-        removeLoader: () => {
-            dispatch(decrementLoadingAC());
-        },
-        pushTestDetails: (testDetails) => {
-            dispatch(pushTestDetailsAC(testDetails))
 
-        },
-        pushSectionDetails: (sectionDetails) => {
-            dispatch(pushSectionDetailsAC(sectionDetails))
-        },
-        pushTestAttemptDetails: (testDetails) => {
-            dispatch(pushTestAttemptAC(testDetails))
+        setupTestStore: (testDetails, sectionDetails, testAttempt) => {
+
+            dispatch(setUpTestAsyncAC(testDetails, sectionDetails, testAttempt));
+
         }
     }
 

@@ -1,4 +1,6 @@
-import {DECREMENT_LOADING, INCREMENT_LOADING, SECTION_PUSH_DETAILS, TEST_PUSH_DETAILS} from "../../actions/test";
+import {DECREMENT_LOADING, INCREMENT_LOADING, TEST_PUSH_DETAILS} from "../../actions/test";
+import {pushTestAttemptAC} from "./TestAttempt-ActionCreators";
+import {pushSectionDetailsAC} from "./Sections-ActionCreator";
 
 
 function incrementLoadingAC() {
@@ -17,9 +19,29 @@ function pushTestDetailsAC(testDetails) {
 
 }
 
-function pushSectionDetailsAC(sectionsList) {
-    return {type: SECTION_PUSH_DETAILS, sectionsList}
+
+/**
+ * Set up Test details, Section Details and the  Test Attempt
+ * After that, decrement the loading count
+ *
+ * @param testDetails
+ * @param sectionList
+ * @param testAttempt
+ * @returns {Function}
+ */
+function setUpTestAsyncAC(testDetails, sectionList, testAttempt) {
+
+
+    return function (dispatch) {
+
+        dispatch(pushTestDetailsAC(testDetails));
+        dispatch(pushSectionDetailsAC(sectionList));
+        dispatch(pushTestAttemptAC(testAttempt));
+
+        dispatch(decrementLoadingAC());
+
+    }
 
 }
 
-export {incrementLoadingAC, decrementLoadingAC, pushTestDetailsAC, pushSectionDetailsAC};
+export {incrementLoadingAC, decrementLoadingAC, pushTestDetailsAC, setUpTestAsyncAC};

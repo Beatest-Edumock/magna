@@ -10,14 +10,14 @@ class ExamPageUI extends React.Component {
             return <LoadingScreen/>;
         else {
             return (
-                <div className='container-fluid bg-light' style={{height: "100%"}}>
+                <div className='container-fluid bg-light' style={{minHeight: "100%"}}>
                     <div className="row">
                         <div className="col-lg-10 ">
                             <SectionsGroup/>
                         </div>
 
-                        <div className='col-lg-2 '>
-                            <div style={{minHeight: "15%"}}></div>
+                        <div className='col-lg-2    '>
+                            <div style={{}}></div>
                             <QuestionPaletteContainer/>
                         </div>
 
