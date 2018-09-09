@@ -1,5 +1,6 @@
 import React from "react";
 import Typed from 'react-typed';
+import PropTypes from 'prop-types';
 import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
 import {Button, Col, Container, Jumbotron, Row,TabContent, TabPane, Nav, NavItem, NavLink, Card, CardTitle, CardText } from 'reactstrap';
@@ -14,15 +15,27 @@ import {Link} from 'react-router-dom'
 import {FlipCard} from "../Common/FlipCard/FlipCard";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
+import {faBookOpen, faCheck} from '@fortawesome/free-solid-svg-icons';
 import './TestPage.css';
 
 const bodyStyle = {
-    background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-1.jpg) no-repeat center',
+    background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
     backgroundSize: "100% auto",
+    filter: 'brightness(200%)'
 };
 
 
 class TestPage extends React.Component {
+
+    state={
+      data: ""
+    }
+
+    componentWillReceiveProps({data}) {
+
+      this.setState({data: data})
+
+    }
 
     constructor(props) {
         super(props);
@@ -85,9 +98,9 @@ class TestPage extends React.Component {
                             </NavLink>
                           </NavItem>
                         </Nav>
-                        <TabContent activeTab={this.state.activeTab}>
+                        <TabContent style={{marginBottom: '3%'}} activeTab={this.state.activeTab}>
                           <TabPane tabId="1">
-                            <Row>
+                            <Row style={{marginBottom: '3%',width:'100vw'}}>
                               <Col sm="12">
                                 <Container>
                                   <Row style={{justifyContent:'center'}}>
@@ -108,12 +121,52 @@ class TestPage extends React.Component {
                                 </Container>
                               </Col>
                             </Row>
+                            <hr/>
+                            <Row style={{justifyContent:'center',width:'100vw'}}> 
+                              { (this.state.data) &&
+
+                                  this.state.data.map((object)=>{
+                                    return (
+                                        object.character=="Mock" &&
+                                        <FlipCard
+                                        size="small"
+                                        front= {
+                                                <div className="container" style={{padding:0}}>
+
+                                                  <div className="text-center " style={{backgroundColor:'#d3d3d3',height:'90%'}}>
+
+                                                      <Container fluid={true}>
+                                                          <FontAwesomeIcon size={"10x"} icon={faBookOpen} color="#8C9EFF"/>
+                                                      </Container>
+
+                                                  </div>
+
+                                                  <hr/>
+
+                                                  <div className="text-center" style={{marginTop: "10%"}}>
+                                                    <Container>
+                                                      <div><h4>Technology</h4>
+                                                        <div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Gear up your skills on industry relevant courses and a must solve capstone that would add the much needed X-factor to your resume.</div></div>
+                                                    </Container>
+
+                                                  </div>
+                                              </div>
+                                                }
+                                        back="hey"  
+
+                                        />
+                                    );
+
+                                  })
+
+                              }
+                            </Row>
                           </TabPane>
                           <TabPane tabId="2">
                             <Row>
                             <Col sm="12">
                                 <Container>
-                                  <Row style={{justifyContent:'center'}}>
+                                  <Row style={{justifyContent:'center',width:'100vw'}}>
                                       {
                                           TOPIC_TESTS_CARD_ELEMENTS.map((feature_card) => {
                                               return (
@@ -135,23 +188,6 @@ class TestPage extends React.Component {
                           </TabPane>
                         </TabContent>
                     </div>
-                    <div className="container-fluid no-gutters">
-                        <div className="row justify-content-center" style={{flexWrap: 'wrap'}}>
-
-                        </div>
-                    </div>
-
-                    <Container fluid className='bg-light border-top' style={{paddingBottom: '2%'}}>
-
-                        <h1 className="text-center" style={{paddingTop: '2%'}}> Our Features</h1>
-
-                <Container>
-                <Row style={{justifyContent:'center'}}>
-     
-                </Row>
-                </Container>
-
-                    </Container>
 
                 </div>
                 <div style={{paddingTop: '60px', paddingBottom: '60px'}}>
@@ -183,3 +219,7 @@ class TestPage extends React.Component {
 export {TestPage};
 
 
+TestPage.propTypes = {
+  data : PropTypes.object,
+
+}

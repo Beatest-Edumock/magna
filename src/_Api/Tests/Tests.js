@@ -15,5 +15,8 @@ function GetTestDetailsAPI(testID) {
     return axios.get('/tests/' + testID);
 }
 
+function GetTestsListAPI(testType) {
+    return axios.get('/tests?type=' + testType);
+}
 
-export {GetTestDetailsAPI, GetTestGroupAPI}
+export {GetTestDetailsAPI, GetTestGroupAPI,GetTestsListAPI}
