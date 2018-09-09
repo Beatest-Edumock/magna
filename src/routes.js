@@ -1,7 +1,7 @@
 import React from "react";
-import {Route, Router, Switch} from "react-router-dom";
-import {ExamPageC} from "./test-framework/ExamPage";
-import {history} from "./__internals/CustomHistory";
+// import {Route, Router, Switch} from "react-router-dom";
+// import {ExamPageC} from "./test-framework/ExamPage";
+// import {history} from "./__internals/CustomHistory";
 import {HomePage} from "./HomePage/HomePage"
 import {LoginPage} from "./LoginPage/LoginPage"
 import {ResendActivationPage} from "./ResendActivationPage/ResendActivationPage"
@@ -13,7 +13,7 @@ import {TestPage} from "./TestPage/TestPage";
 import {QuestionPaletteContainer} from "./test-framework/components/QuestionPalette/QuestionPaletteContainer";
 
 
-import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage";
+// import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage";
 
 const Routes = () => (
     <Router history={history}>
