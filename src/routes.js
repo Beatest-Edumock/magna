@@ -9,18 +9,15 @@ import {SignUpPage} from "./SignUpPage/SignUpPage";
 import {SectionsGroupContainer} from "./test-framework/components/Section/SectionsGroupContainer";
 import {TermsPage} from "./TermsPage/TermsPage";
 import {AboutUsPage} from "./AboutUsPage/AboutUsPage";
-<<<<<<< HEAD
 import {TestPage} from "./TestPage/TestPage";
-=======
 import {QuestionPaletteContainer} from "./test-framework/components/QuestionPalette/QuestionPaletteContainer";
->>>>>>> master
 
 
 import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage";
 
 const Routes = () => (
     <Router history={history}>
-        <Switch >
+        <Switch>
 
 
             <Route exact path="/" component={HomePage}/>
@@ -30,7 +27,7 @@ const Routes = () => (
             <Route path="/tests/:testID/instructions" component={InstructionPage}/>
             <Route path="/tests/:testID" component={ExamPageC}/>
             <Route exact path="/terms" component={TermsPage}/>
-            <Route exact path="/tc" component={QuestionPaletteContainer} />
+            <Route exact path="/tc" component={QuestionPaletteContainer}/>
             <Route exact path="/about-us" component={AboutUsPage}/>
             <Route path="/tests/:testID" component={InstructionPage}/>
             <Route exact path="/test-listing" component={TestPage}/>
