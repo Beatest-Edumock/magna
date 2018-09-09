@@ -35,11 +35,11 @@ function AboutUsPage() {
             <Jumbotron fluid style={bodyStyle}>
 
                 <Container style={{marginTop: "30%",color: 'white'}}>
-                        <Row>
-                            <h1 style={{paddingLeft: '35%',textAlign: 'center',fontWeight: 300,fontFamily: 'Open Sans,Helvetica,Arial,sans-serif'}}>Hi, We're Beatest!</h1>
+                        <Row style={{justifyContent:'center',padding: '2%'}}>
+                            <h1 style={{textAlign: 'center',fontWeight: 300,fontFamily: 'Open Sans,Helvetica,Arial,sans-serif'}}>Hi, We're Beatest!</h1>
                         </Row>
-                        <Row>
-                            <h6 style={{paddingLeft: '15%',textAlign: 'center',opacity:0.5,fontWeight: 300,fontFamily: 'Open Sans,Helvetica,Arial,sans-serif'}}>A group of innovative and like-minded folks making useful and enduring technology for your education</h6>
+                        <Row style={{justifyContent:'center',padding: '2%'}}>
+                            <h6 style={{textAlign: 'center',opacity:0.5,fontWeight: 300,fontFamily: 'Open Sans,Helvetica,Arial,sans-serif'}}>A group of innovative and like-minded folks making useful and enduring technology for your education</h6>
                         </Row>
                 </Container>
 
@@ -78,6 +78,7 @@ function AboutUsPage() {
                         LARGE_FEATURE_CARD_ELEMENTS.map((feature_card) => {
                             return (
                                     <LargeFeatureCard  
+                                        fullWidthSize="col-lg-2"
                                         icon={feature_card.img}
                                         text={feature_card.text}
                                     />
