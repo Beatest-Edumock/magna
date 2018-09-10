@@ -131,26 +131,15 @@ class TestPage extends React.Component {
                                         <FlipCard
                                         size="small"
                                         front= {
-                                                <div className="container" style={{padding:0}}>
-
-                                                  <div className="text-center " style={{backgroundColor:'#d3d3d3',height:'90%'}}>
-
-                                                      <Container fluid={true}>
-                                                          <FontAwesomeIcon size={"10x"} icon={faBookOpen} color="#8C9EFF"/>
-                                                      </Container>
-
-                                                  </div>
-
-                                                  <hr/>
-
-                                                  <div className="text-center" style={{marginTop: "10%"}}>
-                                                    <Container>
-                                                      <div><h4>Technology</h4>
-                                                        <div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Gear up your skills on industry relevant courses and a must solve capstone that would add the much needed X-factor to your resume.</div></div>
-                                                    </Container>
-
-                                                  </div>
-                                              </div>
+                                                <Container style={{backgroundColor:'#d3d3d3',width:'98%',height:'98%',marginTop:'1%'}}>
+                                                  <Container style={{height:250}}>
+                                                    <Row style={{padding:100,justifyContent:'center'}}>
+                                                      <FontAwesomeIcon size={"10x"} icon={faBookOpen} color="#8C9EFF"/>
+                                                    </Row>
+                                                  </Container>
+                                                  <Container>
+                                                  </Container>
+                                                </Container>
                                                 }
                                         back="hey"  
 
@@ -189,22 +178,6 @@ class TestPage extends React.Component {
                         </TabContent>
                     </div>
 
-                </div>
-                <div style={{paddingTop: '60px', paddingBottom: '60px'}}>
-                    <span style={{
-                        fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',
-                        textAlign: 'center',
-                        display: 'block',
-                        paddingBottom: '32px',
-                        fontSize: '32px'
-                    }}>STUDENT PARTNERS</span>
-                </div>
-                <div style={{paddingTop: '60px', paddingBottom: '60px', backgroundColor: 'black', color: 'white'}}>
-                </div>
-
-                <div style={{paddingTop: '60px', paddingBottom: '60px'}}>
-                    <span
-                        style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif', textAlign: 'center', display: 'block', paddingBottom: '32px', fontSize: '32px'}}>RECOGNITIONS</span>
                 </div>
                 <Footer/>
 
