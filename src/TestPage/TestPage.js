@@ -3,12 +3,9 @@ import Typed from 'react-typed';
 import PropTypes from 'prop-types';
 import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
-import {Button, Col, Container, Jumbotron, Row,TabContent, TabPane, Nav, NavItem, NavLink, Card, CardTitle, CardText } from 'reactstrap';
-import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
+import {Col, Container, Jumbotron, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'reactstrap';
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
-import Flickity from 'react-flickity-component';
-import {MOCK_TESTS_CARD_ELEMENTS,TOPIC_TESTS_CARD_ELEMENTS} from './data';
-import {ContactUsContainer} from '../ContactUs/ContactUsForm/ContactUsContainer'
+import {MOCK_TESTS_CARD_ELEMENTS, TOPIC_TESTS_CARD_ELEMENTS} from './data';
 import {Footer} from '../Layout/Footer/Footer'
 import classnames from 'classnames';
 import {Link} from 'react-router-dom'

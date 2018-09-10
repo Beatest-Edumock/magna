@@ -1,16 +1,9 @@
 import React from "react";
-import Typed from 'react-typed';
-import Recaptcha from 'react-recaptcha';
-import config from 'config';
 import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
-import {Button, Container, Jumbotron, Form, FormGroup, Label, Input, FormText, Row, Col} from 'reactstrap';
-import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
+import {Button, Col, Container, Jumbotron, Row} from 'reactstrap';
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
-import Flickity from 'react-flickity-component';
-import {NavLink} from 'react-router-dom';
-import {LARGE_FEATURE_CARD_ELEMENTS,MENTORS} from './data'
-import {ContactUsContainer} from '../ContactUs/ContactUsForm/ContactUsContainer'
+import {LARGE_FEATURE_CARD_ELEMENTS, MENTORS} from './data'
 import {Footer} from '../Layout/Footer/Footer'
 
 

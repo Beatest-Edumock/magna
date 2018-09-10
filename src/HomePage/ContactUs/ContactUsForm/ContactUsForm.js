@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import {Button, Form, FormGroup, Input, Label, Container, Row, Col} from 'reactstrap';
 import Recaptcha from "react-recaptcha";
-import config from "config"
+import config from '../../../config';
 
 
 const schema = yup.object().shape({
@@ -23,7 +23,7 @@ function ContactUsForm(props) {
 
     return (<Formik
 
-        initialValues={{name: '', email: '', message: '',recaptcha: ''}}
+        initialValues={{name: '', email: '', message: '', recaptcha: ''}}
 
         validationSchema={schema}
 
@@ -60,37 +60,37 @@ function ContactUsForm(props) {
                     </Col>
                 </Row>
                 <Row>
-                <Col md="10" lg="12">
-                    <Label>Message:</Label>
-                    <Input
-                        style={{width: '100%'}}
-                        type="textarea"
-                        name="message"
-                        placeholder="Enter message"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.message}
-                    />
-                    <Label className="text-danger text-left">{touched.message && errors.message && errors.message}</Label>
-                </Col>
-                <Col>
-                </Col>
+                    <Col md="10" lg="12">
+                        <Label>Message:</Label>
+                        <Input
+                            style={{width: '100%'}}
+                            type="textarea"
+                            name="message"
+                            placeholder="Enter message"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.message}
+                        />
+                        <Label className="text-danger text-left">{touched.message && errors.message && errors.message}</Label>
+                    </Col>
+                    <Col>
+                    </Col>
                 </Row>
                 <Row>
-                <Col>
-                    <Recaptcha
-                        ref={props.registerRecaptchaInstanceCallback}
-                        sitekey={config.recaptchaKey}
-                        render="explicit"
-                        theme="light"
-                        verifyCallback={(response) => {
-                            setFieldValue("recaptcha", response);
-                        }}
-                    />
-                </Col>
-                <Label className="text-danger text-left">{touched.recaptcha && errors.recaptcha && errors.recaptcha}</Label>
-                <Col>
-                </Col>
+                    <Col>
+                        <Recaptcha
+                            ref={props.registerRecaptchaInstanceCallback}
+                            sitekey={config.recaptchaKey}
+                            render="explicit"
+                            theme="light"
+                            verifyCallback={(response) => {
+                                setFieldValue("recaptcha", response);
+                            }}
+                        />
+                    </Col>
+                    <Label className="text-danger text-left">{touched.recaptcha && errors.recaptcha && errors.recaptcha}</Label>
+                    <Col>
+                    </Col>
                 </Row>
                 <Button style={{marginTop: 16}} color="primary" type="submit" disabled={isSubmitting}>
                     Submit
