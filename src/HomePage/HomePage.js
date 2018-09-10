@@ -7,7 +7,7 @@ import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
 import Flickity from 'react-flickity-component';
 import {COLLEGE_IMAGES, FEATURE_CARD_ELEMENTS, LARGE_FEATURE_CARD_ELEMENTS, FLIP_CARD_ELEMENTS,RECOGNITIONS, TESTIMONIALS} from './data'
-import {ContactUsContainer} from '../ContactUs/ContactUsForm/ContactUsContainer'
+import {ContactUsContainer} from './ContactUs/ContactUsForm/ContactUsContainer'
 import {Footer} from '../Layout/Footer/Footer'
 import {Link} from 'react-router-dom'
 import {FlipCard} from "../Common/FlipCard/FlipCard";
