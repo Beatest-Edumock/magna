@@ -5,24 +5,24 @@ import beatestLogo from "./imgs/beatest.png";
 import beatestDarkLogo from "./imgs/beatest-dark.png";
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 
 /**
  * Navbar Component for the entire website.
  *
  */
-class NavBar extends React.Component {
+class NavBar1 extends React.Component {
 
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
-
-        this.state = {
-            isOpen: false,
-            bgColor: this.props.transparent ? "transparent" : 'light',
-        };
-
     }
+
+    state = {
+        isOpen: false,
+        bgColor: this.props.transparent ? "transparent" : 'light',
+    };
 
     /**
      * Inverts state when bootstrap's toggler is active (for small screens)
@@ -43,7 +43,7 @@ class NavBar extends React.Component {
             <Navbar color={this.state.bgColor} light expand="md" sticky="top" className="shadow py-0 border-dark ">
 
                 <Container>
-                    <NavbarBrand tag={Link} to="" active={false}> <img src={this.props.lightLogo ? beatestLogo : beatestDarkLogo} height="45"/> </NavbarBrand>
+                    <NavbarBrand tag={this.props.location.pathname=="/" ? 'div' : Link} to={this.props.location.pathname=="/" ? "" : ""} active={false}> <img src={this.props.lightLogo ? beatestLogo : beatestDarkLogo} height="45"/> </NavbarBrand>
 
                     {!this.props.logoOnly &&
                     <div>
@@ -69,7 +69,7 @@ class NavBar extends React.Component {
 }
 
 
-NavBar.propTypes = {
+NavBar1.propTypes = {
     /**
      * Display nothing except Logo (on the left).
      * Setting this will hide all buttons ,links etc on the navbar.
@@ -92,4 +92,6 @@ NavBar.propTypes = {
     lightLogo: PropTypes.bool
 
 };
+
+const NavBar = withRouter(NavBar1)
 export {NavBar};
