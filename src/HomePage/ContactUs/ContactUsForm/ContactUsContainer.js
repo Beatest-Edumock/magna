@@ -1,5 +1,5 @@
 import React from 'react';
-import {ContactUsApi} from "../../_Api/Misc";
+import {ContactUsApi} from "../../../_Api/Misc";
 import {toast} from 'react-toastify';
 import {ContactUsForm} from "./ContactUsForm";
 
