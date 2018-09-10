@@ -48,7 +48,20 @@ const flickityOptions = {
 };
 
 
-function HomePage() {
+
+class HomePage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.ourFeatures = React.createRef();
+    }
+
+    Scroll=()=>{
+
+    this.ourFeatures.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    render(){
     return (
 
         <div>
@@ -68,7 +81,7 @@ function HomePage() {
                             </h2>
 
                             <Container>
-                                <Button color="primary" style={{marginTop: "10%"}}> View </Button>
+                                <Button onClick={this.Scroll} color="primary" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
                             </Container>
 
                         </div>
@@ -95,7 +108,7 @@ function HomePage() {
 
                 <Container fluid className='bg-light border-top' style={{paddingBottom: '2%'}}>
 
-                    <h1 className="text-center" style={{paddingTop: '2%'}}> Our Features</h1>
+                    <h1 ref={this.ourFeatures} className="text-center" style={{paddingTop: '2%'}}> Our Features</h1>
 
             <Container>
             <Row style={{justifyContent:'center'}}>
@@ -204,7 +217,8 @@ function HomePage() {
             <Footer/>
 
         </div>
-    )
+    );
+    }
 }
 
 
