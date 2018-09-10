@@ -15,9 +15,6 @@ function TermsPage() {
             <NavBarWithButtonsContainer/>
         </div>
         <Container>
-            <Row style={{marginTop: '3%'}}>
-                <Link to="/"><img alt="logo" src="/img/beatest-dark.png" style={{height: '2.8em'}}/></Link>
-            </Row>
             <Row style={{marginTop: '5%'}}>
                 <h1 style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 300}}>Terms & Conditions</h1>
             </Row>

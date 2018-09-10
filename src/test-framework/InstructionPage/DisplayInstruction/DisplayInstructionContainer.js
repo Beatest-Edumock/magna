@@ -11,7 +11,6 @@ import {history} from "../../../__internals/CustomHistory";
 import PropTypes from 'prop-types';
 
 
-
 // DisplayInstructionContainer
 class DisplayInstructionContainer extends Component {
 
@@ -20,6 +19,7 @@ class DisplayInstructionContainer extends Component {
         this.handleClick = this.startTestHandelClick.bind(this);
 
     }
+
     // instructions: the RAW HTML for the test instruction
     state = {
         instructions: '',
@@ -31,11 +31,14 @@ class DisplayInstructionContainer extends Component {
      * on click handler for start test button
      */
     startTestHandelClick() {
+        this.setState({...this.state, instructions: ''});
+        let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
+
         StartTestAPI(this.props.testID)
-            .then(()=>{
-                history.push({
-                    pathname: `/tests/${this.props.testID}`,
-                })
+            .then(() => {
+
+                windowReference.location = `/tests/${this.props.testID}`;
+
             });
         // reroute to /tests/:testID
 
@@ -47,10 +50,10 @@ class DisplayInstructionContainer extends Component {
                 const instructions = data.instruction_html;
                 const test_title = data.name;
                 // instruction state is now loaded with raw html instruction
-                this.setState ( {
+                this.setState({
                     instructions: instructions,
                     title: test_title
-                } );
+                });
             })
     }
 
