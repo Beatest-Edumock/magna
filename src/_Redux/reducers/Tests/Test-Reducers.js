@@ -59,7 +59,16 @@
  *
  *
  */
-import {DECREMENT_LOADING, INCREMENT_LOADING, SECTION_PUSH_DETAILS, TEST_PUSH_ATTEMPTS, TEST_PUSH_DETAILS} from "../../actions/test";
+import {
+    DECREMENT_LOADING,
+    INCREMENT_LOADING,
+    QUESTION_FETCH_PUSH_DETAILS,
+    QUESTION_PUSH_DETAILS,
+    SECTION_PUSH_DETAILS,
+    TEST_PUSH_ATTEMPTS,
+    TEST_PUSH_DETAILS
+} from "../../actions/test";
+import {fetchAndPushQuestionDetailsAsyncAC} from "../../ActionCreators/Test/Questions-ActionCreator";
 
 
 const defaultState = {
@@ -74,14 +83,17 @@ function testReducer(state = defaultState, action) {
             return incrementLoading(state, action);
         case DECREMENT_LOADING:
             return decrementLoading(state, action);
-        case TEST_PUSH_DETAILS:
-            return pushTestDetails(state, action);
 
         case SECTION_PUSH_DETAILS:
             return pushSectionDetails(state, action);
 
         case TEST_PUSH_ATTEMPTS:
             return pushTestAttemptDetails(state, action);
+        case QUESTION_PUSH_DETAILS:
+            return pushQuestionDetails(state, action);
+
+        case TEST_PUSH_DETAILS:
+            return pushTestDetails(state, action);
 
         default :
             return state;
@@ -276,5 +288,27 @@ function pushTestAttemptDetails(state, {testAttempt}) {
 
 }
 
+/**
+ * Merge the details of the question attempt (which should be already fetched) with the question details
+ * after fetching the details of the question itself
+ *
+ * The action that calls this reducer should be dispatched
+ * by fetchAndPushQuestionDetailsAsyncAC (i.e. not directly from a component).
+ *
+ * @param state
+ * @param questionDetails
+ * @returns {{questions: {}}}
+ */
+function pushQuestionDetails(state, {questionDetails}) {
+
+    return {
+        ...state,
+        questions: {
+            ...state.questions,
+            [questionDetails.id]: {...state.questions[questionDetails.id], ...questionDetails}
+        }
+    }
+
+}
 
 export {testReducer};

@@ -37,7 +37,7 @@ class DisplayInstructionContainer extends Component {
         StartTestAPI(this.props.testID)
             .then(() => {
 
-                windowReference.location = `/tests/${this.props.testID}`;
+                windowReference.location = `/test/${this.props.testID}`;
 
             });
         // reroute to /tests/:testID

@@ -6,6 +6,8 @@ import {GetTestGroupAPI} from "../../_Api/Tests/Tests";
 import {ExamPageUI} from "./ExamUI";
 import axios from 'axios'
 import {pushTestAttemptAC} from "../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
+import {fetchAndPushQuestionDetailsAsyncAC, pushQuestionDetailsAC} from "../../_Redux/ActionCreators/Test/Questions-ActionCreator";
+import {GetQuestionDetailsAPI} from "../../_Api/Tests/Sections/Questions/Questions";
 
 class ExamPageContainer extends React.Component {
 
@@ -15,12 +17,9 @@ class ExamPageContainer extends React.Component {
 
         GetTestGroupAPI(testID).then(
             axios.spread((testDetails, sectionDetails, testAttemptDetails) => {
-                // this.props.pushTestDetails(testDetails.data);
-                // this.props.pushSectionDetails(sectionDetails.data);
-                // this.props.pushTestAttemptDetails(testAttemptDetails.data);
+
                 this.props.setupTestStore(testDetails.data, sectionDetails.data, testAttemptDetails.data)
 
-                // this.props.removeLoader();
 
             })
         );
@@ -50,6 +49,10 @@ function mapDispatchToProps(dispatch) {
         setupTestStore: (testDetails, sectionDetails, testAttempt) => {
 
             dispatch(setUpTestAsyncAC(testDetails, sectionDetails, testAttempt));
+
+        },
+        pushQuestionDetails: (questionID) => {
+            dispatch(fetchAndPushQuestionDetailsAsyncAC(questionID))
 
         }
     }

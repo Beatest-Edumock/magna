@@ -22,8 +22,9 @@ const Routes = () => (
             <Route exact path="/login" component={LoginPage}/>
             <Route exact path="/signup" component={SignUpPage}/>
             <Route exact path="/resend-activation" component={ResendActivationPage}/>
-            {/*<Route path="/tests/:testID/instructions" component={InstructionPage}/>
-            <Route path="/tests/:testID" component={ExamPageC}/>*/}
+            <Route path="/test/:testID/instructions" component={InstructionPage}/>
+            <Route path="/test/:testID" component={ExamPageC}/>
+
             <Route exact path="/terms" component={TermsPage}/>
             <Route exact path="/tc" component={QuestionPaletteContainer}/>
             <Route exact path="/about-us" component={AboutUsPage}/>
