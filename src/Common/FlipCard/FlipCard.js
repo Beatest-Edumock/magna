@@ -13,12 +13,12 @@ function FlipCard(props) {
 
 
     return (
-        <div className="flip-container">
+        <div className={"flip-container "+ props.size}>
             <div className="flipper">
-                <div className="front">
+                <div className={"front "+ props.size}>
                     {props.front}
                 </div>
-                <div className="back">
+                <div className={"back "+ props.size}>
                     {props.back}
                 </div>
             </div>
