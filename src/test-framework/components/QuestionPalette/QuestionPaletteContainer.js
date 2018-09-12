@@ -1,16 +1,26 @@
 import React, {Component} from 'react';
 import {QuestionPaletteUI} from "./QuestionPaletteUI";
+import {connect} from 'react-redux';
 
-class QuestionPaletteContainer extends Component {
+class QuestionPaletteContainer1 extends Component {
 
     render() {
-        const questions = [1, 2, 390, 4, 7, 40, 4, 5, 4, 4, 6, 5, 6, 5, 5, 7, 540, 4, 5, 4, 4, 6, 5, 6, 5, 5];
+        const questions = this.props.questions;
         return (
-            <QuestionPaletteUI questions={questions} />
+            <QuestionPaletteUI questions={questions}/>
         )
     }
 }
 
 
+function mapStateToProps(state) {
+
+
+    return {
+        questions: state.test.sectionsByID[state.test.currentSection].questions
+    }
+}
+
+const QuestionPaletteContainer = connect(mapStateToProps, null)(QuestionPaletteContainer1);
 
 export {QuestionPaletteContainer}
