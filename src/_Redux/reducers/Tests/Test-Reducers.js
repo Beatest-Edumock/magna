@@ -11,7 +11,7 @@
  *  price : "<price of test>",
  *  currentSection : "<current section id>",
  *  currentQuestion: "<current question id>",
- *  sections: {
+ *  sectionsByID: {
  *
  *
  *  '73': { # section id , guaranteed to be unique
@@ -23,7 +23,8 @@
         created_date: '2017-03-27T18:10:56',
         name: 'Logical Reasoning',
         test_id: 59,
-        total_time: 3600
+        total_time: 3600,
+        questions:["123", "125","128"],  # question ids as strings, will be sorted
       },
        '74': {
         id: 74,
@@ -34,11 +35,12 @@
         created_date: '2017-03-27T18:15:41',
         name: 'Quantitative Aptitude',
         test_id: 59,
-        total_time: 3600
+        total_time: 3600,
+        questions:["12", "18","1811"],  # question ids as strings, will be sorted
       }
  *  },
  *
- *  questions: {
+ *  questionsByID: {
       '966': { # question id, guaranteed to be unique
         attempt_status: null,
         choice_id: null,
@@ -162,7 +164,7 @@ function pushSectionDetails(state, {sectionsList}) {
         return obj;
     }, {});
 
-    return {...state, sections}
+    return {...state, sectionsByID: sections}
 
 }
 
@@ -172,6 +174,13 @@ function pushSectionDetails(state, {sectionsList}) {
  * This should be called ONLY AFTER TEST DETAILS AND SECTION DETAILS ARE PUSHED
  *
  * It will merge the attempts of the test/section with the data of the test & section.
+ *
+ * ~~~~I AM SO SORRY THAT THIS FUNCTION IS SO COMPLEX AND CONVOLUTED~~~~
+ * Fixes will be made on a happy day with sunshine
+ *
+ * This function is expected to be called only once, so a little performance hit doesnt
+ * affect us too much
+ *
  *
  * @param state
  * @param testAttempt
@@ -204,7 +213,8 @@ function pushTestAttemptDetails(state, {testAttempt}) {
     // merge the section attempt and section data together
     const merged = Object.keys(sectionAttemptsByID).reduce((obj, sectionID) => {
 
-        obj[sectionID] = {...sectionAttemptsByID[sectionID], ...state.sections[sectionID]};
+        obj[sectionID] = {...sectionAttemptsByID[sectionID], ...state.sectionsByID[sectionID]};
+
 
         return obj;
 
@@ -256,6 +266,11 @@ function pushTestAttemptDetails(state, {testAttempt}) {
     }, {});
 
 
+    // const questionBySection = questions.reduce((obj, item) => {
+    //
+    // }, {});
+
+
     // we need to find the first section that has is_complete = false
 
     const sortedSectionIds = Object.keys(merged).sort(); // sort sections ids
@@ -277,10 +292,53 @@ function pushTestAttemptDetails(state, {testAttempt}) {
     });
 
 
+    // add a "questions" key under each section , and put all question
+    // ids for that section as an array of strings
+    // (useful for lookups, ordered operations etc)
+
+    let sections = Object.keys(merged).map((sectionKey) => {
+
+
+        let sortedQuestion = Object.keys(questions).map((questionKey) => {
+
+
+            if (merged[sectionKey].id === questions[questionKey].section_id) {
+
+                return questions[questionKey].question_id.toString();
+            }
+
+            return null;
+
+
+        });
+
+        sortedQuestion = sortedQuestion.filter((item) => {
+            return item != null;
+        });
+
+
+        return {
+            ...merged[sectionKey],
+            questions: sortedQuestion
+
+        }
+
+    });
+
+
+    sections = sections.reduce((obj, section) => {
+
+        obj[section.id] = section;
+
+        return obj;
+
+    }, {});
+
+
     return {
         ...state,
-        sections: merged,
-        questions,
+        sectionsByID: sections,
+        questionsByID: questions,
         currentSection: parseInt(firstSectionId),
         currentQuestion: parseInt(firstQuestion)
 
@@ -303,9 +361,9 @@ function pushQuestionDetails(state, {questionDetails}) {
 
     return {
         ...state,
-        questions: {
-            ...state.questions,
-            [questionDetails.id]: {...state.questions[questionDetails.id], ...questionDetails}
+        questionsByID: {
+            ...state.questionsByID,
+            [questionDetails.id]: {...state.questionsByID[questionDetails.id], ...questionDetails}
         }
     }
 

@@ -10,21 +10,22 @@ class SectionsGroupContainer extends Component {
 
     }
 
-    changeSectionHandleClick (sectionID) {
+    changeSectionHandleClick(sectionID) {
         console.log(sectionID)
     }
 
     render() {
 
-        const sectionList = Object.keys(this.props.sections).map(
-            (key) => {
-                return this.props.sections[key]
+        const sectionList = Object.keys(this.props.sectionsByID).sort().map(
+            (key, index) => {
+                return this.props.sectionsByID[key]
             }
         );
+
         console.log(sectionList);
 
         return (
-            <SectionsGroupUI sections={sectionList} sectionFunc={this.changeSection} />
+            <SectionsGroupUI sections={sectionList} sectionFunc={this.changeSection}/>
         )
     }
 }
@@ -32,7 +33,7 @@ class SectionsGroupContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        sections: state.test.sections,
+        sectionsByID: state.test.sectionsByID,
         currentSection: state.test.currentSection,
     }
 
