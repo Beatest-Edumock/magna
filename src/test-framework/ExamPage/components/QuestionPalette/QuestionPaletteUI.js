@@ -8,8 +8,8 @@ function QuestionPaletteUI(props) {
             <div className='row text-center justify-content-center'>
 
                 {
-                    props.questions.map((questionID) =>
-                        <QuestionButton id={questionID}/>
+                    props.questions.map((questionID, idx) =>
+                        <QuestionButton id={idx + 1}/>
                     )
                 }
 

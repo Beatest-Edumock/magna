@@ -1,7 +1,7 @@
 import React from 'react';
 import {LoadingScreen} from "./LoadingScreen";
-import {QuestionPaletteContainer} from "../components/QuestionPalette/QuestionPaletteContainer";
-import {SectionsGroup} from "../components/Section/SectionsGroupContainer";
+import {QuestionPaletteContainer} from "./components/QuestionPalette/QuestionPaletteContainer";
+import {SectionsGroup} from "./components/Section/SectionsGroupContainer";
 
 class ExamPageUI extends React.Component {
 
