@@ -4,6 +4,7 @@
 	background-color: white;
 	margin-bottom: 2%;
 	margin-right: 2%;
+	border-radius: 10%;
 }
 	/* flip the pane when hovered */
 	.flip-container:hover .flipper, .flip-container.hover .flipper {
@@ -79,10 +80,12 @@
 	z-index: 2;
 	/* for firefox 31 */
 	transform: rotateY(0deg);
-	border:0.1px solid gray;
+	border:1px solid gray;
+	border-radius: 10%;
 }
 
 /* back, initially hidden pane */
 .back {
 	transform: rotateY(180deg);
+	border-radius: 10%;
 }

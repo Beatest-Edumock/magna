@@ -81,7 +81,7 @@ class TestPage extends React.Component {
   render(){
     return (
       <div>
-        <div>
+        <div> 
 
           <NavBarWithButtonsContainer/>
             {
@@ -159,13 +159,13 @@ class TestPage extends React.Component {
                           <FlipCard
                           size="small"
                           front= {
-                            <Container fluid={true} style={{backgroundColor:'#d3d3d3',width:'98%',height:'98%',marginTop:'1%',padding:0}}>
-                              <Container style={{height:250}}>
+                            <Container fluid={true} style={{backgroundColor:'#d3d3d3',borderTopLeftRadius:'10%',borderTopRightRadius:'10%',width:'98%',height:'80%',marginTop:'1%',padding:0}}>
+                              <Container style={{height:240}}>
                                 <Row style={{padding:100,justifyContent:'center'}}>
                                   <FontAwesomeIcon size={"10x"} icon={faBookOpen} color="#8C9EFF"/>
                                 </Row>
                               </Container>
-                              <Container style={{backgroundColor:'white',width:'100%',height:45}}>
+                              <Container style={{backgroundColor:'white',width:'97%',height:45}}>
                                 <Row style={{justifyContent:'center',alignItems:'center',height:45}}>
                                   <span>{object.name}</span>
                                 </Row>
