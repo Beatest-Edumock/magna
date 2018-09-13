@@ -6,11 +6,11 @@ import {HomePage} from "./HomePage/HomePage"
 import {LoginPage} from "./LoginPage/LoginPage"
 import {ResendActivationPage} from "./ResendActivationPage/ResendActivationPage"
 import {SignUpPage} from "./SignUpPage/SignUpPage";
-import {SectionsGroupContainer} from "./test-framework/components/Section/SectionsGroupContainer";
+import {SectionsGroupContainer} from "./test-framework/ExamPage/components/Section/SectionsGroupContainer";
 import {TermsPage} from "./TermsPage/TermsPage";
 import {AboutUsPage} from "./AboutUsPage/AboutUsPage";
 import {TestPageContainer} from "./TestPage";
-import {QuestionPaletteContainer} from "./test-framework/components/QuestionPalette/QuestionPaletteContainer";
+import {QuestionPaletteContainer} from "./test-framework/ExamPage/components/QuestionPalette/QuestionPaletteContainer";
 import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage";
 
 const Routes = () => (

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {QuestionPaletteUI} from "./QuestionPaletteUI";
 import {connect} from 'react-redux';
 
-class QuestionPaletteContainer1 extends Component {
+class QuestionPalette extends Component {
 
     render() {
         const questions = this.props.questions;
@@ -21,6 +21,6 @@ function mapStateToProps(state) {
     }
 }
 
-const QuestionPaletteContainer = connect(mapStateToProps, null)(QuestionPaletteContainer1);
+const QuestionPaletteContainer = connect(mapStateToProps, null)(QuestionPalette);
 
 export {QuestionPaletteContainer}
