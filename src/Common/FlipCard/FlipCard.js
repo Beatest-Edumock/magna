@@ -13,12 +13,12 @@ function FlipCard(props) {
 
 
     return (
-        <div className={"flip-container "+ props.size}>
+        <div className={"flip-container "+ props.size + " rounded"}>
             <div className="flipper">
-                <div className={"front "+ props.size}>
+                <div className={"front "+ props.size + " rounded"}>
                     {props.front}
                 </div>
-                <div className={"back "+ props.size} style={{backgroundColor: props.backBackground}}>
+                <div className={"back "+ props.size + " rounded"} style={{backgroundColor: props.backBackground}}>
                     {props.back}
                 </div>
             </div>

@@ -160,7 +160,7 @@ class TestPage extends React.Component {
                           <FlipCard
                           size="small"
                           front= {
-                            <Container fluid={true} style={{backgroundColor:'#d3d3d3',borderTopLeftRadius:'10%',borderTopRightRadius:'10%',width:'98%',height:'80%',marginTop:'1%',padding:0}}>
+                            <Container fluid={true} className="rounded" style={{backgroundColor:'#d3d3d3',width:'98%',height:'80%',marginTop:'1%',padding:0}}>
                               <Container style={{height:240}}>
                                 <Row style={{padding:100,justifyContent:'center'}}>
                                   <FontAwesomeIcon size={"10x"} icon={faBookOpen} color="#8C9EFF"/>
