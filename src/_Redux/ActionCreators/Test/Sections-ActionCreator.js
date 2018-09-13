@@ -1,4 +1,4 @@
-import {SECTION_PUSH_DETAILS, CURR_SECTION_STATE} from "../../actions/test";
+import {SECTION_PUSH_DETAILS, SECTION_UPDATE_CURRENT} from "../../actions/test";
 
 function pushSectionDetailsAC(sectionsList) {
     return {type: SECTION_PUSH_DETAILS, sectionsList}
@@ -6,7 +6,7 @@ function pushSectionDetailsAC(sectionsList) {
 }
 
 function changeCurrentSection(sectionID) {
-    return {type: CURR_SECTION_STATE, sectionID}
+    return {type: SECTION_UPDATE_CURRENT, sectionID}
 
 }
 export {pushSectionDetailsAC, changeCurrentSection};
