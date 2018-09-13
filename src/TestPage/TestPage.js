@@ -72,7 +72,19 @@ class TestPage extends React.Component {
 
 // reroute to /tests/:testID
 
-    }
+  }
+
+  render(){
+    return (
+      <div>
+        <div> 
+
+          <NavBarWithButtonsContainer/>
+            {
+              !this.props.isUserLoggedIn &&
+              <LoginModal modal={this.state.modal}/>
+            }
+
 
     render() {
         return (
@@ -93,10 +105,73 @@ class TestPage extends React.Component {
 
                                 <div className='text-center' style={{}}>
 
-                                    <h2 className="text-light display-4">
-                                        Tests
-                                    </h2>
-                                </div>
+            </Jumbotron>
+            <div>
+              <Nav tabs style={{width: '100%',justifyContent:'center',borderBottom:0,marginBottom: '2%',marginTop: '6%'}}>
+                <NavItem>
+                  <NavLink
+                    style={{borderColor: '#dee2e6'}}
+                    className={classnames({ active: this.state.activeTab === '1' })}
+                    onClick={() => { this.toggle('1'); }}
+                  >
+                    Mock  Tests
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    style={{borderColor: '#dee2e6'}}
+                    className={classnames({ active: this.state.activeTab === '2' })}
+                    onClick={() => { this.toggle('2'); }}
+                  >
+                    Topic Tests
+                  </NavLink>
+                </NavItem>
+              </Nav>
+              <TabContent style={{marginBottom: '3%'}} activeTab={this.state.activeTab}>
+                <TabPane tabId="1">
+                  <Row style={{marginBottom: '3%',marginLeft:0,marginRight:0}}>
+                    <Col sm="12">
+                      <Container>
+                        <Row style={{justifyContent:'center'}}>
+                          {
+                            MOCK_TESTS_CARD_ELEMENTS.map((feature_card) => {
+                              return (
+                                <LargeFeatureCard  
+                                  fullWidthSize="col-lg-4"
+                                  icon={feature_card.icon}
+                                  text={feature_card.text}
+                                />
+
+
+                              );
+                            })
+                          }
+                        </Row>
+                      </Container>
+                    </Col>
+                  </Row>
+                  <hr/>
+                  <Row style={{justifyContent:'center',marginLeft:0,marginRight:0}}> 
+                    { (this.state.data) &&
+
+                      this.state.data.map((object)=>{
+                        return (
+                          object.character=="Mock" &&
+                          <FlipCard
+                          size="small"
+                          front= {
+                            <Container fluid={true} style={{backgroundColor:'#d3d3d3',borderTopLeftRadius:'10%',borderTopRightRadius:'10%',width:'98%',height:'80%',marginTop:'1%',padding:0}}>
+                              <Container style={{height:240}}>
+                                <Row style={{padding:100,justifyContent:'center'}}>
+                                  <FontAwesomeIcon size={"10x"} icon={faBookOpen} color="#8C9EFF"/>
+                                </Row>
+                              </Container>
+                              <Container style={{backgroundColor:'white',width:'97%',height:45}}>
+                                <Row style={{justifyContent:'center',alignItems:'center',height:45}}>
+                                  <span>{object.name}</span>
+                                </Row>
+                              </Container>
+
 
                             </Container>
 
