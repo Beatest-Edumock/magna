@@ -32,12 +32,12 @@ class DisplayInstructionContainer extends Component {
      */
     startTestHandelClick() {
         this.setState({...this.state, instructions: ''});
-        let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
 
         StartTestAPI(this.props.testID)
             .then(() => {
 
-                windowReference.location = `/test/${this.props.testID}`;
+                history.push(`/test/${this.props.testID}`)
+
 
             });
         // reroute to /tests/:testID
