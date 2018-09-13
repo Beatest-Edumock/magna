@@ -26,54 +26,50 @@ const bodyStyle = {
 
 class TestPage extends React.Component {
 
-  state={
-    data: "",
-    modal: false,
-  }
-
-  componentWillReceiveProps({data}) {
-
-    this.setState({data: data})
-
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.showModal = this.showModal.bind(this);
-    this.startTest = this.startTest.bind(this);
-    this.state = {
-      activeTab: '1'
-    };
-  }
-
-  toggle(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab
-      });
+    state = {
+        data: "",
+        modal: false,
     }
-  }
 
-  showModal(){
-    this.setState({
-      modal: true,
-    });
+    componentWillReceiveProps({data}) {
 
-  }
+        this.setState({data: data})
 
-  startTest(testID){
+    }
 
-    let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
+    constructor(props) {
+        super(props);
 
-    StartTestAPI(testID)
-      .then(() => {
-        console.log("hey")
+        this.toggle = this.toggle.bind(this);
+        this.showModal = this.showModal.bind(this);
+        this.startTest = this.startTest.bind(this);
+        this.state = {
+            activeTab: '1'
+        };
+    }
 
-        windowReference.location = `/test/${testID}`;
+    toggle(tab) {
+        if (this.state.activeTab !== tab) {
+            this.setState({
+                activeTab: tab
+            });
+        }
+    }
 
-      });
+    showModal() {
+        this.setState({
+            modal: true,
+        });
+
+    }
+
+    startTest(testID) {
+
+        let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
+
+
+        windowReference.location = `/test/${testID}/instructions`;
+
 // reroute to /tests/:testID
 
   }
@@ -90,19 +86,24 @@ class TestPage extends React.Component {
             }
 
 
-          <div>
+    render() {
+        return (
+            <div>
+                <div>
 
-            <Jumbotron fluid style={bodyStyle}>
-              <Container fluid>
+                    <NavBarWithButtonsContainer/>
+                    {
+                        !this.props.isUserLoggedIn &&
+                        <LoginModal modal={this.state.modal}/>
+                    }
 
-                <div className='text-center' style={{}}>
 
-                  <h2 className="text-light display-4">
-                      Tests
-                  </h2>
-                </div>
+                    <div>
 
-              </Container>
+                        <Jumbotron fluid style={bodyStyle}>
+                            <Container fluid>
+
+                                <div className='text-center' style={{}}>
 
             </Jumbotron>
             <div>
@@ -171,105 +172,193 @@ class TestPage extends React.Component {
                                 </Row>
                               </Container>
 
+
                             </Container>
-                            }
-                            back={( 
-                              <Container>
-                                <Row style={{color:'white',fontSize:14,justifyContent:'space-between',paddingLeft:'10%',paddingRight:'10%',paddingTop:'10%'}}>
-                                  <span>Number of questions</span>
-                                  <span>100</span>
 
-                                </Row>
-                                <Row style={{paddingLeft:'10%',paddingRight:'10%'}}>
-                                  <hr style={{border: '1px solid white',width: '100%'}} />
-                                </Row>
-                                <Row style={{color:'white',fontSize:14,justifyContent:'space-between',paddingLeft:'10%',paddingRight:'10%',paddingTop:'10%'}}>
-                                  <span>Time</span>
-                                  <span>60 mins</span>
-
-                                </Row>
-                                <Row style={{paddingLeft:'10%',paddingRight:'10%'}}>
-                                  <hr style={{border: '1px solid white',width: '100%'}} />
-                                </Row>      
-                                <Row style={{justifyContent: 'center',padding:'10%'}}> 
-                                  {
-                                    this.props.isUserLoggedIn && (!object.is_purchased && !object.price==0) &&
-
-                                    <Link to=''><Button style={{backgroundColor: 'white',color:'black'}}>Buy Now</Button></Link> 
-                                  }  
-                                  {
-                                    this.props.isUserLoggedIn && (object.is_purchased || object.price==0) &&
-                                    <Button onClick={()=>this.startTest(object.id)} style={{backgroundColor: 'white',color:'black'}}>Start Test</Button>
-                                  }
-
-                                  {
-                                    !this.props.isUserLoggedIn && (!object.is_purchased && !object.price==0) &&
-
-                                    <Container>
-                                      <Row style={{justifyContent:'center'}}>
-                                        <Button onClick={this.showModal} style={{backgroundColor: 'white',color:'black'}}>Buy Now</Button>
-                                      </Row>
-                                    </Container>
-
-                                  }
-                                  {
-                                    !this.props.isUserLoggedIn && (object.is_purchased || object.price==0) &&
-
-                                    <Button onClick={this.showModal} style={{backgroundColor: 'white',color:'black'}}>Start Test</Button>
-                                    
-
-                                  }
-                                </Row>                                        
-                              </Container>
+                        </Jumbotron>
+                        <div>
+                            <Nav tabs style={{width: '100%', justifyContent: 'center', borderBottom: 0, marginBottom: '2%', marginTop: '6%'}}>
+                                <NavItem>
+                                    <NavLink
+                                        style={{borderColor: '#dee2e6'}}
+                                        className={classnames({active: this.state.activeTab === '1'})}
+                                        onClick={() => {
+                                            this.toggle('1');
+                                        }}
+                                    >
+                                        Mock Tests
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink
+                                        style={{borderColor: '#dee2e6'}}
+                                        className={classnames({active: this.state.activeTab === '2'})}
+                                        onClick={() => {
+                                            this.toggle('2');
+                                        }}
+                                    >
+                                        Topic Tests
+                                    </NavLink>
+                                </NavItem>
+                            </Nav>
+                            <TabContent style={{marginBottom: '3%'}} activeTab={this.state.activeTab}>
+                                <TabPane tabId="1">
+                                    <Row style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
+                                        <Col sm="12">
+                                            <Container>
+                                                <Row style={{justifyContent: 'center'}}>
+                                                    {
+                                                        MOCK_TESTS_CARD_ELEMENTS.map((feature_card) => {
+                                                            return (
+                                                                <LargeFeatureCard
+                                                                    fullWidthSize="col-lg-4"
+                                                                    icon={feature_card.icon}
+                                                                    text={feature_card.text}
+                                                                />
 
 
+                                                            );
+                                                        })
+                                                    }
+                                                </Row>
+                                            </Container>
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                    <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
+                                        {(this.state.data) &&
 
-                            )} 
-                            backBackground={((object.is_purchased || object.price==0) && "blue")||((!object.is_purchased && !object.price==0) && "gray")}
+                                        this.state.data.map((object) => {
+                                            return (
+                                                object.character == "Mock" &&
+                                                <FlipCard
+                                                    size="small"
+                                                    front={
+                                                        <Container fluid={true} style={{backgroundColor: '#d3d3d3', width: '98%', height: '98%', marginTop: '1%', padding: 0}}>
+                                                            <Container style={{height: 250}}>
+                                                                <Row style={{padding: 100, justifyContent: 'center'}}>
+                                                                    <FontAwesomeIcon size={"10x"} icon={faBookOpen} color="#8C9EFF"/>
+                                                                </Row>
+                                                            </Container>
+                                                            <Container style={{backgroundColor: 'white', width: '100%', height: 45}}>
+                                                                <Row style={{justifyContent: 'center', alignItems: 'center', height: 45}}>
+                                                                    <span>{object.name}</span>
+                                                                </Row>
+                                                            </Container>
 
-                          />
-                        );
+                                                        </Container>
+                                                    }
+                                                    back={(
+                                                        <Container>
+                                                            <Row style={{
+                                                                color: 'white',
+                                                                fontSize: 14,
+                                                                justifyContent: 'space-between',
+                                                                paddingLeft: '10%',
+                                                                paddingRight: '10%',
+                                                                paddingTop: '10%'
+                                                            }}>
+                                                                <span>Number of questions</span>
+                                                                <span>100</span>
 
-                      })
+                                                            </Row>
+                                                            <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
+                                                                <hr style={{border: '1px solid white', width: '100%'}}/>
+                                                            </Row>
+                                                            <Row style={{
+                                                                color: 'white',
+                                                                fontSize: 14,
+                                                                justifyContent: 'space-between',
+                                                                paddingLeft: '10%',
+                                                                paddingRight: '10%',
+                                                                paddingTop: '10%'
+                                                            }}>
+                                                                <span>Time</span>
+                                                                <span>60 mins</span>
 
-                    }
-                  </Row>
-                </TabPane>
-                <TabPane tabId="2">
-                  <Row style={{marginBottom: '3%',marginLeft:0,marginRight:0}}>
-                  <Col sm="12">
-                    <Container>
-                      <Row style={{justifyContent:'center'}}>
-                        {
-                          TOPIC_TESTS_CARD_ELEMENTS.map((feature_card) => {
-                            return (
-                              <LargeFeatureCard  
-                                fullWidthSize="col-lg-4"
-                                icon={feature_card.icon}
-                                text={feature_card.text}
-                              />
+                                                            </Row>
+                                                            <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
+                                                                <hr style={{border: '1px solid white', width: '100%'}}/>
+                                                            </Row>
+                                                            <Row style={{justifyContent: 'center', padding: '10%'}}>
+                                                                {
+                                                                    this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
+
+                                                                    <Link to=''><Button style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button></Link>
+                                                                }
+                                                                {
+                                                                    this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
+                                                                    <Button onClick={() => this.startTest(object.id)} style={{backgroundColor: 'white', color: 'black'}}>Start
+                                                                        Test</Button>
+                                                                }
+
+                                                                {
+                                                                    !this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
+
+                                                                    <Container>
+                                                                        <Row style={{justifyContent: 'center'}}>
+                                                                            <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button>
+                                                                        </Row>
+                                                                    </Container>
+
+                                                                }
+                                                                {
+                                                                    !this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
+
+                                                                    <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Start Test</Button>
 
 
-                            );
-                          })
-                        }
-                      </Row>
-                    </Container>
-                    </Col>
+                                                                }
+                                                            </Row>
+                                                        </Container>
 
-                  </Row>
-                </TabPane>
-              </TabContent>
+
+                                                    )}
+                                                    backBackground={((object.is_purchased || object.price == 0) && "blue") || ((!object.is_purchased && !object.price == 0) && "gray")}
+
+                                                />
+                                            );
+
+                                        })
+
+                                        }
+                                    </Row>
+                                </TabPane>
+                                <TabPane tabId="2">
+                                    <Row style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
+                                        <Col sm="12">
+                                            <Container>
+                                                <Row style={{justifyContent: 'center'}}>
+                                                    {
+                                                        TOPIC_TESTS_CARD_ELEMENTS.map((feature_card) => {
+                                                            return (
+                                                                <LargeFeatureCard
+                                                                    fullWidthSize="col-lg-4"
+                                                                    icon={feature_card.icon}
+                                                                    text={feature_card.text}
+                                                                />
+
+
+                                                            );
+                                                        })
+                                                    }
+                                                </Row>
+                                            </Container>
+                                        </Col>
+
+                                    </Row>
+                                </TabPane>
+                            </TabContent>
+                        </div>
+
+                    </div>
+                    <Footer/>
+
+                </div>
             </div>
+        );
 
-          </div>
-        <Footer/>
-
-        </div>
-      </div>
-    );
-      
-  }
+    }
 }
 
 
@@ -277,9 +366,9 @@ export {TestPage};
 
 
 TestPage.propTypes = {
-  data : PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+    data: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ]),
 
 }
