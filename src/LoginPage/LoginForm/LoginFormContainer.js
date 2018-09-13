@@ -19,7 +19,9 @@ class LoginFormContainer extends React.Component {
         LoginUserApi(values.email, values.password).then(({data}) => {
 
             this.props.addUserAction(data);
-            history.push("/");
+            if (this.props.shouldAutoDirect!=false) {
+                history.push("/");
+            }
             toast.success(`Welcome ${data.full_name}`);
 
         }).catch(({response}) => {
@@ -31,7 +33,7 @@ class LoginFormContainer extends React.Component {
     }
 
     render() {
-        return (<LoginForm onSubmitCallback={this.onSubmitCallback}/>);
+        return (<LoginForm onSubmitCallback={this.onSubmitCallback} shouldAutoDirect={this.props.shouldAutoDirect}/>);
     }
 
 }

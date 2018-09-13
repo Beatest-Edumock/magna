@@ -18,7 +18,7 @@ function FlipCard(props) {
                 <div className={"front "+ props.size}>
                     {props.front}
                 </div>
-                <div className={"back "+ props.size}>
+                <div className={"back "+ props.size} style={{backgroundColor: props.backBackground}}>
                     {props.back}
                 </div>
             </div>

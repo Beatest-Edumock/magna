@@ -62,7 +62,6 @@ function signupLogoutNavLink(props) {
  */
 function NavBarWithButtons(props) {
 
-
     return (
         <NavBar {...props}>
 
