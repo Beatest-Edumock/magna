@@ -54,7 +54,6 @@ function LoginForm(props) {
                 </FormGroup>
 
                 <FormGroup>
-
                     <Button color="primary" type="submit" disabled={isSubmitting}>
                         Submit
                     </Button>
@@ -68,7 +67,12 @@ function LoginForm(props) {
 }
 
 LoginForm.propTypes = {
-    onSubmitCallback: PropTypes.func.isRequired
+    onSubmitCallback: PropTypes.func.isRequired,
+};
+
+LoginForm.defaultProps = {
+  shouldAutoDirect: true,
+  
 };
 
 export {LoginForm};

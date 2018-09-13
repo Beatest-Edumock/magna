@@ -2,9 +2,10 @@ import React from 'react';
 import {GetTestsListAPI} from "../_Api/Tests/Tests";
 import {TestPage} from "./TestPage";
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 
-class TestPageContainer extends React.Component {
+class TestPageWrapper extends React.Component {
 
     state={
         data: ""
@@ -14,6 +15,7 @@ class TestPageContainer extends React.Component {
 
 
         GetTestsListAPI(testType).then(({data}) => {
+            console.log(this.props)
             this.setState(
                     {
                         data: data
@@ -24,11 +26,23 @@ class TestPageContainer extends React.Component {
     }
 
 
+
     render() {
 
-        return <TestPage data={this.state.data}/>
+        return <TestPage data={this.state.data} isUserLoggedIn={this.props.isUserLoggedIn}/>
 
     }
 }
 
+
+function mapStateToProps(state, ownProps) {
+
+    return {
+        isUserLoggedIn: state.user,
+        ownProps
+    }
+
+}
+
+const TestPageContainer = connect(mapStateToProps)(TestPageWrapper);
 export {TestPageContainer}

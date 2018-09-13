@@ -29,7 +29,7 @@
 
 @media screen and (max-width: 979px){
 .flip-container, .front, .back {
-	width: 80vw;
+	width: 400px;
 	height: 400px;
 }
 }
@@ -85,5 +85,4 @@
 /* back, initially hidden pane */
 .back {
 	transform: rotateY(180deg);
-	background-color: blue;
 }
