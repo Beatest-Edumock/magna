@@ -1,8 +1,12 @@
-import {SECTION_PUSH_DETAILS} from "../../actions/test";
+import {SECTION_PUSH_DETAILS, SECTION_UPDATE_CURRENT} from "../../actions/test";
 
 function pushSectionDetailsAC(sectionsList) {
     return {type: SECTION_PUSH_DETAILS, sectionsList}
 
 }
 
-export {pushSectionDetailsAC};
+function changeCurrentSection(sectionID) {
+    return {type: SECTION_UPDATE_CURRENT, sectionID}
+
+}
+export {pushSectionDetailsAC, changeCurrentSection};
