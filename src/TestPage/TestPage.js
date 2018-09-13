@@ -15,6 +15,7 @@ import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
 import {faBookOpen, faCheck} from '@fortawesome/free-solid-svg-icons';
 import './TestPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
+import {StartTestAPI} from '../_Api/Tests/TestAttempts'
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -27,7 +28,7 @@ class TestPage extends React.Component {
 
   state={
     data: "",
-    modal: false
+    modal: false,
   }
 
   componentWillReceiveProps({data}) {
@@ -41,6 +42,7 @@ class TestPage extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.showModal = this.showModal.bind(this);
+    this.startTest = this.startTest.bind(this);
     this.state = {
       activeTab: '1'
     };
@@ -56,8 +58,23 @@ class TestPage extends React.Component {
 
   showModal(){
     this.setState({
-      modal: true
+      modal: true,
     });
+
+  }
+
+  startTest(testID){
+
+    let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
+
+    StartTestAPI(testID)
+      .then(() => {
+        console.log("hey")
+
+        windowReference.location = `/test/${testID}`;
+
+      });
+// reroute to /tests/:testID
 
   }
 
@@ -68,6 +85,7 @@ class TestPage extends React.Component {
 
           <NavBarWithButtonsContainer/>
             {
+              !this.props.isUserLoggedIn &&
               <LoginModal modal={this.state.modal}/>
             }
 
@@ -181,8 +199,7 @@ class TestPage extends React.Component {
                                   }  
                                   {
                                     this.props.isUserLoggedIn && (object.is_purchased || object.price==0) &&
-
-                                    <Link to=''><Button style={{backgroundColor: 'white',color:'black'}}>Start Test</Button></Link> 
+                                    <Button onClick={()=>this.startTest(object.id)} style={{backgroundColor: 'white',color:'black'}}>Start Test</Button>
                                   }
 
                                   {

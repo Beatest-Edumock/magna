@@ -22,6 +22,7 @@ class LoginFormContainer extends React.Component {
             if (this.props.shouldAutoDirect!=false) {
                 history.push("/");
             }
+
             toast.success(`Welcome ${data.full_name}`);
 
         }).catch(({response}) => {
