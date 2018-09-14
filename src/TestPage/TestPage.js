@@ -67,13 +67,9 @@ class TestPage extends React.Component {
 
         let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
 
-        StartTestAPI(testID)
-            .then(() => {
-                console.log("hey")
 
-                windowReference.location = `/test/${testID}`;
+        windowReference.location = `/test/${testID}/instructions`;
 
-            });
 // reroute to /tests/:testID
 
     }
