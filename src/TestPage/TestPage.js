@@ -159,10 +159,9 @@ class TestPage extends React.Component {
                                                 <FlipCard
                                                     size="small"
                                                     front={
-                                                        <Container fluid={true} style={{
+                                                        <Container className="rounded" fluid={true} style={{
                                                             backgroundColor: '#d3d3d3',
-                                                            borderTopLeftRadius: '10%',
-                                                            borderTopRightRadius: '10%',
+                              
                                                             width: '98%',
                                                             height: '80%',
                                                             marginTop: '1%',
