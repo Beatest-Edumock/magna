@@ -68,7 +68,8 @@ import {
     QUESTION_PUSH_DETAILS,
     SECTION_PUSH_DETAILS,
     TEST_PUSH_ATTEMPTS,
-    TEST_PUSH_DETAILS
+    TEST_PUSH_DETAILS,
+    SECTION_UPDATE_CURRENT, QUESTION_UPDATE_CURRENT,
 } from "../../actions/test";
 import {fetchAndPushQuestionDetailsAsyncAC} from "../../ActionCreators/Test/Questions-ActionCreator";
 
@@ -93,15 +94,43 @@ function testReducer(state = defaultState, action) {
             return pushTestAttemptDetails(state, action);
         case QUESTION_PUSH_DETAILS:
             return pushQuestionDetails(state, action);
+        case QUESTION_UPDATE_CURRENT:
+            return changeQuestionCurrent(state, action);
 
         case TEST_PUSH_DETAILS:
             return pushTestDetails(state, action);
-
+        case SECTION_UPDATE_CURRENT:
+            return changeSectionCurrent(state, action);
         default :
             return state;
     }
 
 }
+
+
+/**
+ * change the current section
+ * @param state
+ * @param sectionID
+ * @param firstQuestionID
+ * @returns {{currentSection: number}}
+ */
+function changeSectionCurrent(state, {sectionID, firstQuestionID}) {
+
+    return {...state, currentSection: sectionID , currentQuestion: firstQuestionID}
+}
+
+/**
+ * change the current question
+ * @TODO : fetching details should happen here?
+ * @param state
+ * @param questionID
+ * @returns {{currentQuestion: *}}
+ */
+function changeQuestionCurrent(state, {questionID}) {
+    return {...state, currentQuestion: questionID}
+}
+
 
 /**
  * Increment loading key by one

@@ -1,6 +1,6 @@
 import {QUESTION_PUSH_DETAILS} from "../../actions/test";
 import {GetQuestionDetailsAPI} from "../../../_Api/Tests/Sections/Questions/Questions";
-
+import {QUESTION_UPDATE_CURRENT} from "../../actions/test";
 
 /**
  * Do not call this action creator from any component.
@@ -48,4 +48,23 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
 }
 
-export {pushQuestionDetailsAC, fetchAndPushQuestionDetailsAsyncAC};
+/**
+ * @TODO fetch before and after?
+ * @param questionID
+ * @returns {Function}
+ */
+function changeCurrentQuestion(questionID) {
+    return(dispatch, getState) =>  {
+
+        const state = getState();
+
+        // if the question is not null then
+        // TODO how to check question details?
+        if(state.test.questionsByID[questionID] == null) {
+            dispatch(fetchAndPushQuestionDetailsAsyncAC(questionID))
+        }
+        dispatch({type: QUESTION_UPDATE_CURRENT, questionID: questionID})
+    }
+}
+
+export {pushQuestionDetailsAC, fetchAndPushQuestionDetailsAsyncAC, changeCurrentQuestion};
