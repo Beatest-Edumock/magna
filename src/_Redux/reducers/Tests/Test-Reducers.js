@@ -69,7 +69,7 @@ import {
     SECTION_PUSH_DETAILS,
     TEST_PUSH_ATTEMPTS,
     TEST_PUSH_DETAILS,
-    SECTION_UPDATE_CURRENT,
+    SECTION_UPDATE_CURRENT, QUESTION_UPDATE_CURRENT,
 } from "../../actions/test";
 import {fetchAndPushQuestionDetailsAsyncAC} from "../../ActionCreators/Test/Questions-ActionCreator";
 
@@ -94,11 +94,13 @@ function testReducer(state = defaultState, action) {
             return pushTestAttemptDetails(state, action);
         case QUESTION_PUSH_DETAILS:
             return pushQuestionDetails(state, action);
+        case QUESTION_UPDATE_CURRENT:
+            return changeQuestionCurrent(state, action);
 
         case TEST_PUSH_DETAILS:
             return pushTestDetails(state, action);
         case SECTION_UPDATE_CURRENT:
-            return changeSection(state, action);
+            return changeSectionCurrent(state, action);
         default :
             return state;
     }
@@ -107,13 +109,15 @@ function testReducer(state = defaultState, action) {
 
 
 /**
- * change the currentsection
+ * change the current section
  * @param state
  * @param sectionID
+ * @param firstQuestionID
  * @returns {{currentSection: number}}
  */
-function changeSection(state, {sectionID}) {
-    return {...state, currentSection: sectionID}
+function changeSectionCurrent(state, {sectionID, firstQuestionID}) {
+
+    return {...state, currentSection: sectionID , currentQuestion: firstQuestionID}
 }
 
 /**
@@ -123,7 +127,7 @@ function changeSection(state, {sectionID}) {
  * @param questionID
  * @returns {{currentQuestion: *}}
  */
-function changeQuestion(state, questionID) {
+function changeQuestionCurrent(state, {questionID}) {
     return {...state, currentQuestion: questionID}
 }
 
