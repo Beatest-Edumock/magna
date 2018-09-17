@@ -116,13 +116,11 @@ function testReducer(state = defaultState, action) {
  * @returns {{currentSection: number}}
  */
 function changeSectionCurrent(state, {sectionID, firstQuestionID}) {
-
     return {...state, currentSection: sectionID , currentQuestion: firstQuestionID}
 }
 
 /**
  * change the current question
- * @TODO : fetching details should happen here?
  * @param state
  * @param questionID
  * @returns {{currentQuestion: *}}

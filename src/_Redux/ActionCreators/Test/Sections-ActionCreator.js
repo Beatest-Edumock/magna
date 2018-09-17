@@ -12,20 +12,19 @@ function pushSectionDetailsAC(sectionsList) {
  * @returns {Function} redux thunk that dispatch fetchAndPushQuestionDetailsAsyncAC if the question is
  * not fetch, and update current section and question.
  */
-function changeCurrentSection(sectionID) {
+function changeCurrentSectionAC(sectionID) {
     return (dispatch, getState) => {
 
         const state = getState();
         const currSectionDetails = state.test.sectionsByID[sectionID];
         const firstQuestionID = currSectionDetails.questions[0];
 
-        // TODO question details?
-        if(state.test.questionsByID[firstQuestionID] == null) {
-            dispatch(fetchAndPushQuestionDetailsAsyncAC(firstQuestionID));
-        }
+        // fetch the very first question of the new section.
+        dispatch(fetchAndPushQuestionDetailsAsyncAC(firstQuestionID));
+        // section change action
         dispatch({type: SECTION_UPDATE_CURRENT, sectionID: sectionID, firstQuestionID: firstQuestionID})
 
     }
 
 }
-export {pushSectionDetailsAC, changeCurrentSection};
+export {pushSectionDetailsAC, changeCurrentSectionAC};

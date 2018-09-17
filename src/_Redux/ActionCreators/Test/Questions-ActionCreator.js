@@ -30,7 +30,7 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
         const test_id = state.test.id;
 
-        const question = state.test.questions[questionID];
+        const question = state.test.questionsByID[questionID];
 
         if (question.html) { // we use the 'html' attribute of the question to check if its loaded
             return;
@@ -49,22 +49,31 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 }
 
 /**
- * @TODO fetch before and after?
+ * change and fetch the state of current question, and fetch previous and next question
  * @param questionID
  * @returns {Function}
  */
-function changeCurrentQuestion(questionID) {
+function changeQuestionCurrentAC(questionID, questionIndex) {
     return(dispatch, getState) =>  {
 
         const state = getState();
-
-        // if the question is not null then
-        // TODO how to check question details?
-        if(state.test.questionsByID[questionID] == null) {
-            dispatch(fetchAndPushQuestionDetailsAsyncAC(questionID))
+        const currentSection = state.test.currentSection;
+        const questionsList = state.test.sectionsByID[currentSection].questions;
+        // fetch previous question
+        if(questionIndex > 1) {
+            const previousQuestionID = questionsList [questionIndex - 2];
+            dispatch(fetchAndPushQuestionDetailsAsyncAC(previousQuestionID));
         }
+        // fetch next question
+        if(questionIndex < questionsList.length - 1) {
+            const nextQuestionID = questionsList[questionIndex];
+            dispatch(fetchAndPushQuestionDetailsAsyncAC(nextQuestionID));
+        }
+
+        // fetch current question
+        dispatch(fetchAndPushQuestionDetailsAsyncAC(questionID));
         dispatch({type: QUESTION_UPDATE_CURRENT, questionID: questionID})
     }
 }
 
-export {pushQuestionDetailsAC, fetchAndPushQuestionDetailsAsyncAC, changeCurrentQuestion};
+export {pushQuestionDetailsAC, fetchAndPushQuestionDetailsAsyncAC, changeQuestionCurrentAC};

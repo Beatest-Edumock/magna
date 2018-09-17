@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {QuestionButtonUI} from "./QuestionButtonUI";
-import {changeCurrentQuestion} from "../../../../../_Redux/ActionCreators/Test/Questions-ActionCreator";
+import {changeQuestionCurrentAC} from "../../../../../_Redux/ActionCreators/Test/Questions-ActionCreator";
 import {connect} from 'react-redux';
 
 
@@ -13,7 +13,8 @@ class QuestionButton extends Component{
     }
 
     questionButtonClickHandler() {
-        this.props.changeCurrentQuestion(this.props.questionID);
+        // id is the question current index in the section
+        this.props.changeCurrentQuestion(this.props.questionID, this.props.id);
     }
 
 
@@ -29,9 +30,9 @@ class QuestionButton extends Component{
 
 function mapDispatchToProps(dispatch) {
     return {
-        changeCurrentQuestion: (questionID) => {
+        changeCurrentQuestion: (questionID, questionIndex) => {
 
-            dispatch(changeCurrentQuestion(questionID));
+            dispatch(changeQuestionCurrentAC(questionID, questionIndex));
 
         }
     }
