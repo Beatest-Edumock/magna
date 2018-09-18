@@ -30,6 +30,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './_CSS/fonts.css'
 import './_CSS/index.css'
+import './_CSS/bootstrap-extended.css'
 
 
 setUpApp();
