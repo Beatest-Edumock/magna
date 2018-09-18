@@ -120,7 +120,9 @@ function changeSectionCurrent(state, {sectionID, firstQuestionID}) {
 }
 
 /**
- * change the current question
+ * change the current question, fetching required questions
+ * are done by changeQuestionCurrentAsyncAC by dispatching
+ * fetchAndPushQuestionDetailsAsyncAC on the questionID
  * @param state
  * @param questionID
  * @returns {{currentQuestion: *}}

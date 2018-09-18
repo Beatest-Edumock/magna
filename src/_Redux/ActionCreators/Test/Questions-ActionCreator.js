@@ -49,11 +49,20 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 }
 
 /**
+ *
+ * @param questionID
+ * @returns {{type: string, questionID: *}}
+ */
+function changeQuestionCurrentAC(questionID) {
+    return {type: QUESTION_UPDATE_CURRENT, questionID: questionID}
+}
+
+/**
  * change and fetch the state of current question, and fetch previous and next question
  * @param questionID
  * @returns {Function}
  */
-function changeQuestionCurrentAC(questionID, questionIndex) {
+function changeQuestionCurrentAsyncAC(questionID, questionIndex) {
     return(dispatch, getState) =>  {
 
         const state = getState();
@@ -72,8 +81,8 @@ function changeQuestionCurrentAC(questionID, questionIndex) {
 
         // fetch current question
         dispatch(fetchAndPushQuestionDetailsAsyncAC(questionID));
-        dispatch({type: QUESTION_UPDATE_CURRENT, questionID: questionID})
+        dispatch(changeQuestionCurrentAC(questionID));
     }
 }
 
-export {pushQuestionDetailsAC, fetchAndPushQuestionDetailsAsyncAC, changeQuestionCurrentAC};
+export {pushQuestionDetailsAC, fetchAndPushQuestionDetailsAsyncAC, changeQuestionCurrentAsyncAC};
