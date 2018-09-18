@@ -76,7 +76,7 @@ function changeQuestionCurrentAsyncAC(questionID, questionIndex) {
         const questionsList = state.test.sectionsByID[currentSection].questions;
 
 
-        for (let i = 1; i <= 0; i++) {
+        for (let i = 1; i <= 3; i++) {
 
             const previousQuestionID = questionsList[questionIndex - i];
             if (previousQuestionID !== undefined)

@@ -117,7 +117,7 @@ function testReducer(state = defaultState, action) {
  * @returns {{currentSection: number}}
  */
 function changeSectionCurrent(state, {sectionID, firstQuestionID}) {
-    return {...state, currentSection: sectionID , currentQuestion: firstQuestionID}
+    return {...state, currentSection: sectionID, currentQuestion: firstQuestionID}
 }
 
 /**
@@ -369,8 +369,8 @@ function pushTestAttemptDetails(state, {testAttempt}) {
         ...state,
         sectionsByID: sections,
         questionsByID: questions,
-        currentSection: parseInt(firstSectionId),
-        currentQuestion: parseInt(firstQuestion)
+        currentSection: firstSectionId.toString(),
+        currentQuestion: firstQuestion.toString()
 
     }
 
