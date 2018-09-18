@@ -1,5 +1,5 @@
 import React from 'react';
-import {LoadingScreen} from "./LoadingScreen";
+import {LoadingSpinner} from "./LoadingSpinner";
 import {QuestionPaletteContainer} from "./components/QuestionPalette/QuestionPaletteContainer";
 import {SectionsGroup} from "./components/Section/SectionsGroupContainer";
 import {QuestionContent} from "./components/QuestionContent";
@@ -8,7 +8,7 @@ class ExamPageUI extends React.Component {
 
     render() {
         if (this.props.loading)
-            return <LoadingScreen/>;
+            return <LoadingSpinner/>;
         else {
             return (
                 <div className='container-fluid bg-white p-lg-5' style={{minHeight: "100%"}}>
