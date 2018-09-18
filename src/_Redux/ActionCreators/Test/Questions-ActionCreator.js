@@ -65,15 +65,16 @@ function changeQuestionCurrentAC(questionID) {
  * change and fetch the state of current question, and fetch previous and next question
  *
  * @param questionID
- * @param questionIndex
  * @returns {Function}
  */
-function changeQuestionCurrentAsyncAC(questionID, questionIndex) {
+function changeQuestionCurrentAsyncAC(questionID) {
     return (dispatch, getState) => {
 
         const state = getState();
         const currentSection = state.test.currentSection;
         const questionsList = state.test.sectionsByID[currentSection].questions;
+
+        const questionIndex = questionsList.indexOf(questionID);
 
 
         for (let i = 1; i <= 3; i++) {

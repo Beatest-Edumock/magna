@@ -19,7 +19,6 @@ class QuestionButton extends Component {
 
 
     render() {
-        console.log(this.props.questionID === this.props.currentQuestion);
 
         return (
             <QuestionButtonUI id={this.props.id} questionCallback={this.questionClickHandler} isCurrent={this.props.questionID === this.props.currentQuestion}/>
@@ -43,7 +42,7 @@ function mapDispatchToProps(dispatch) {
     return {
         changeCurrentQuestion: (questionID, questionIndex) => {
 
-            dispatch(changeQuestionCurrentAsyncAC(questionID, questionIndex));
+            dispatch(changeQuestionCurrentAsyncAC(questionID));
 
         }
     }
