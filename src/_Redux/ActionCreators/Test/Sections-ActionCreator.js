@@ -1,5 +1,5 @@
 import {SECTION_PUSH_DETAILS, SECTION_UPDATE_CURRENT} from "../../actions/test";
-import {fetchAndPushQuestionDetailsAsyncAC} from "./Questions-ActionCreator";
+import {changeQuestionCurrentAsyncAC, fetchAndPushQuestionDetailsAsyncAC} from "./Questions-ActionCreator";
 
 function pushSectionDetailsAC(sectionsList) {
     return {type: SECTION_PUSH_DETAILS, sectionsList}
@@ -20,7 +20,7 @@ function changeCurrentSectionAC(sectionID) {
         const firstQuestionID = currSectionDetails.questions[0];
 
         // fetch the very first question of the new section.
-        dispatch(fetchAndPushQuestionDetailsAsyncAC(firstQuestionID));
+        dispatch(changeQuestionCurrentAsyncAC(firstQuestionID));
         // section change action
         dispatch({type: SECTION_UPDATE_CURRENT, sectionID: sectionID, firstQuestionID: firstQuestionID})
 

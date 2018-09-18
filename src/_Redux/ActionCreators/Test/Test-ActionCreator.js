@@ -1,7 +1,7 @@
 import {DECREMENT_LOADING, INCREMENT_LOADING, TEST_PUSH_DETAILS} from "../../actions/test";
 import {pushTestAttemptAC} from "./TestAttempt-ActionCreators";
 import {pushSectionDetailsAC} from "./Sections-ActionCreator";
-import {fetchAndPushQuestionDetailsAsyncAC} from "./Questions-ActionCreator";
+import {changeQuestionCurrentAsyncAC, fetchAndPushQuestionDetailsAsyncAC} from "./Questions-ActionCreator";
 
 
 function incrementLoadingAC() {
@@ -46,7 +46,9 @@ function setUpTestAsyncAC(testDetails, sectionList, testAttempt) {
 
         const state = getState();
 
-        dispatch(fetchAndPushQuestionDetailsAsyncAC(state.test.currentQuestion.toString()));
+        // current question key will be set by pushTestAttempt
+        // we just 'change' to that again so that the next N are fetched
+        dispatch(changeQuestionCurrentAsyncAC(state.test.currentQuestion));
 
         dispatch(decrementLoadingAC());
 

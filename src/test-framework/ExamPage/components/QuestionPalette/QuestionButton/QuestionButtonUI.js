@@ -2,7 +2,8 @@ import React from 'react';
 
 function QuestionButtonUI(props) {
 
-    const primary = props.isCurrent ? 'btn-primary' : 'btn-outline-primary';
+    let primary = props.isCurrent ? 'btn-primary' : 'btn-outline-primary';
+    primary = props.isCurrent ? 'btn-indigo' : 'btn-outline-primary';
 
 
     return (
