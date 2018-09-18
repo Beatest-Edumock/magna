@@ -2,6 +2,7 @@ import React from 'react';
 import {LoadingScreen} from "./LoadingScreen";
 import {QuestionPaletteContainer} from "./components/QuestionPalette/QuestionPaletteContainer";
 import {SectionsGroup} from "./components/Section/SectionsGroupContainer";
+import {QuestionContent} from "./components/QuestionContent";
 
 class ExamPageUI extends React.Component {
 
@@ -16,13 +17,19 @@ class ExamPageUI extends React.Component {
                             <SectionsGroup/>
                         </div>
 
-                        <div className='col-lg-2    '>
-                            <div style={{}}></div>
-                            <QuestionPaletteContainer/>
-                        </div>
 
                     </div>
 
+                    <div className="row">
+
+                        <div className="col-lg-10">
+                            <QuestionContent/>
+
+                        </div>
+                        <div className='col-lg-2    '>
+                            <QuestionPaletteContainer/>
+                        </div>
+                    </div>
                 </div>
 
             );

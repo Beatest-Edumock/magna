@@ -32,6 +32,10 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
         const question = state.test.questionsByID[questionID];
 
+        if (question === undefined) {
+            return;
+        }
+
         if (question.html) { // we use the 'html' attribute of the question to check if its loaded
             return;
         }
@@ -59,25 +63,32 @@ function changeQuestionCurrentAC(questionID) {
 
 /**
  * change and fetch the state of current question, and fetch previous and next question
+ *
  * @param questionID
+ * @param questionIndex
  * @returns {Function}
  */
 function changeQuestionCurrentAsyncAC(questionID, questionIndex) {
-    return(dispatch, getState) =>  {
+    return (dispatch, getState) => {
 
         const state = getState();
         const currentSection = state.test.currentSection;
         const questionsList = state.test.sectionsByID[currentSection].questions;
-        // fetch previous question
-        if(questionIndex > 1) {
-            const previousQuestionID = questionsList [questionIndex - 2];
-            dispatch(fetchAndPushQuestionDetailsAsyncAC(previousQuestionID));
+
+
+        for (let i = 1; i <= 0; i++) {
+
+            const previousQuestionID = questionsList[questionIndex - i];
+            if (previousQuestionID !== undefined)
+                dispatch(fetchAndPushQuestionDetailsAsyncAC(previousQuestionID));
+
+            const nextQuestionID = questionsList[questionIndex + i];
+
+            if (nextQuestionID !== undefined)
+                dispatch(fetchAndPushQuestionDetailsAsyncAC(nextQuestionID));
+
         }
-        // fetch next question
-        if(questionIndex < questionsList.length - 1) {
-            const nextQuestionID = questionsList[questionIndex];
-            dispatch(fetchAndPushQuestionDetailsAsyncAC(nextQuestionID));
-        }
+
 
         // fetch current question
         dispatch(fetchAndPushQuestionDetailsAsyncAC(questionID));

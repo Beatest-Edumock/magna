@@ -75,7 +75,8 @@ import {fetchAndPushQuestionDetailsAsyncAC} from "../../ActionCreators/Test/Ques
 
 
 const defaultState = {
-    loadingCount: 1 // initially start with loading state
+    loadingCount: 1, // initially start with loading state
+    fatalError: {message: ""}
 
 };
 

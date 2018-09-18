@@ -4,7 +4,7 @@ import {changeQuestionCurrentAsyncAC} from "../../../../../_Redux/ActionCreators
 import {connect} from 'react-redux';
 
 
-class QuestionButton extends Component{
+class QuestionButton extends Component {
 
     constructor(props) {
         super(props);
@@ -19,12 +19,23 @@ class QuestionButton extends Component{
 
 
     render() {
-        return(
-            <QuestionButtonUI id = {this.props.id} questionCallback = {this.questionClickHandler}/>
+        console.log(this.props.questionID === this.props.currentQuestion);
+
+        return (
+            <QuestionButtonUI id={this.props.id} questionCallback={this.questionClickHandler} isCurrent={this.props.questionID === this.props.currentQuestion}/>
         )
     }
 
 
+}
+
+function mapStateToProps(state, ownProps) {
+
+    return {
+        currentQuestion: state.test.currentQuestion,
+        ...ownProps
+
+    }
 
 }
 
@@ -38,6 +49,6 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-const QuestionButtonContainer = connect(null, mapDispatchToProps)(QuestionButton);
+const QuestionButtonContainer = connect(mapStateToProps, mapDispatchToProps)(QuestionButton);
 
 export {QuestionButtonContainer}

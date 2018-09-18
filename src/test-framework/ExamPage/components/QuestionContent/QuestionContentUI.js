@@ -4,36 +4,19 @@ const MCQ = 'MCQ';
 const RC = 'RC';
 const TITA = 'TITA';
 
-function QuestionComponentUI(props) {
 
-
-    switch (props.type) {
-        case RC:
-            return (<RC/>);
-        case TITA:
-            return (<TITA/>);
-        case MCQ:
-            return (<MCQ/>);
-        default:
-            return
-
-        
-    }
-
+function createHTML(html) {
+    return {__html: html}
 
 }
 
+function QuestionContentUI(props) {
 
-function MCQ(props) {
-    return()
-}
 
-function RC(props) {
-
-}
-
-function TITA(props) {
-
+    return (
+        <p dangerouslySetInnerHTML={createHTML(props.question.html)}/>
+    )
 }
 
 
+export {QuestionContentUI}
