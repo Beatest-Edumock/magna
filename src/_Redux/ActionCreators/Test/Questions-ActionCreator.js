@@ -1,6 +1,6 @@
 import {QUESTION_PUSH_DETAILS} from "../../actions/test";
 import {GetQuestionDetailsAPI} from "../../../_Api/Tests/Sections/Questions/Questions";
-
+import {QUESTION_UPDATE_CURRENT} from "../../actions/test";
 
 /**
  * Do not call this action creator from any component.
@@ -30,7 +30,7 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
         const test_id = state.test.id;
 
-        const question = state.test.questions[questionID];
+        const question = state.test.questionsByID[questionID];
 
         if (question.html) { // we use the 'html' attribute of the question to check if its loaded
             return;
@@ -48,4 +48,41 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
 }
 
-export {pushQuestionDetailsAC, fetchAndPushQuestionDetailsAsyncAC};
+/**
+ *
+ * @param questionID
+ * @returns {{type: string, questionID: *}}
+ */
+function changeQuestionCurrentAC(questionID) {
+    return {type: QUESTION_UPDATE_CURRENT, questionID: questionID}
+}
+
+/**
+ * change and fetch the state of current question, and fetch previous and next question
+ * @param questionID
+ * @returns {Function}
+ */
+function changeQuestionCurrentAsyncAC(questionID, questionIndex) {
+    return(dispatch, getState) =>  {
+
+        const state = getState();
+        const currentSection = state.test.currentSection;
+        const questionsList = state.test.sectionsByID[currentSection].questions;
+        // fetch previous question
+        if(questionIndex > 1) {
+            const previousQuestionID = questionsList [questionIndex - 2];
+            dispatch(fetchAndPushQuestionDetailsAsyncAC(previousQuestionID));
+        }
+        // fetch next question
+        if(questionIndex < questionsList.length - 1) {
+            const nextQuestionID = questionsList[questionIndex];
+            dispatch(fetchAndPushQuestionDetailsAsyncAC(nextQuestionID));
+        }
+
+        // fetch current question
+        dispatch(fetchAndPushQuestionDetailsAsyncAC(questionID));
+        dispatch(changeQuestionCurrentAC(questionID));
+    }
+}
+
+export {pushQuestionDetailsAC, fetchAndPushQuestionDetailsAsyncAC, changeQuestionCurrentAsyncAC};
