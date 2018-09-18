@@ -8,18 +8,21 @@ class QuestionPalette extends Component {
         const questions = this.props.questions;
         return (
             <QuestionPaletteUI questions={questions}/>
+
         )
     }
 }
 
 
-function mapStateToProps(state) {
 
+
+function mapStateToProps(state) {
 
     return {
         questions: state.test.sectionsByID[state.test.currentSection].questions
     }
 }
+
 
 const QuestionPaletteContainer = connect(mapStateToProps, null)(QuestionPalette);
 
