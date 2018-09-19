@@ -9,7 +9,7 @@ function LoadingSpinner(props) {
         <div className="d-flex justify-content-center text-center" style={{height: "100%", minHeight: "100%"}}>
 
             <div style={{paddingTop: "25%", paddingBottom: "25%"}}>
-                <Spinner name="line-scale-pulse-out-rapid" color="DodgerBlue" fadeIn={0}/>
+                <Spinner name="line-scale-pulse-out-rapid" color="DodgerBlue" />
             </div>
         </div>
     )

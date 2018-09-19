@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {SectionsGroupUI} from "./SectionsGroupUI";
 import connect from "react-redux/es/connect/connect";
-import {changeCurrentSectionAC} from "../../../../_Redux/ActionCreators/Test/Sections-ActionCreator";
+import {changeCurrentSectionAsyncAC} from "../../../../_Redux/ActionCreators/Test/Sections-ActionCreator";
 
 class SectionsGroupContainer extends Component {
 
@@ -35,7 +35,7 @@ function mapDispatchToProps(dispatch) {
     return {
         changeCurrentSection: (sectionID) => {
 
-            dispatch(changeCurrentSectionAC(sectionID));
+            dispatch(changeCurrentSectionAsyncAC(sectionID));
 
         }
     }

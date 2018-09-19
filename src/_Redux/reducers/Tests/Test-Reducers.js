@@ -116,8 +116,8 @@ function testReducer(state = defaultState, action) {
  * @param firstQuestionID
  * @returns {{currentSection: number}}
  */
-function changeSectionCurrent(state, {sectionID, firstQuestionID}) {
-    return {...state, currentSection: sectionID, currentQuestion: firstQuestionID}
+function changeSectionCurrent(state, {sectionID}) {
+    return {...state, currentSection: sectionID}
 }
 
 /**

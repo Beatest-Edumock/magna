@@ -25,7 +25,7 @@ class ExamPageContainer extends React.Component {
 
     render() {
 
-        return <ExamPageUI loading={this.props.loadingCount}/>
+        return <ExamPageUI loading={this.props.loadingCount > 0}/>
 
     }
 }
