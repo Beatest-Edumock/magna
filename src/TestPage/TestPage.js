@@ -16,6 +16,7 @@ import {faBookOpen, faCheck} from '@fortawesome/free-solid-svg-icons';
 import './TestPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
 import {StartTestAPI} from '../_Api/Tests/TestAttempts'
+import {TEST_INSTRUCTIONS_ROUTE} from "../route";
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -68,7 +69,7 @@ class TestPage extends React.Component {
         let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
 
 
-        windowReference.location = `/test/${testID}/instructions`;
+        windowReference.location = TEST_INSTRUCTIONS_ROUTE(testID);
 
 // reroute to /tests/:testID
 
