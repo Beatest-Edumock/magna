@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {QuestionButtonUI} from "./QuestionButtonUI";
-import {changeQuestionCurrentAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Questions-ActionCreator";
+import {changeCurrentQuestionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Questions-ActionCreator";
 import {connect} from 'react-redux';
 
 
@@ -43,7 +43,7 @@ function mapDispatchToProps(dispatch) {
     return {
         changeCurrentQuestion: (questionID) => {
 
-            dispatch(changeQuestionCurrentAsyncAC(questionID));
+            dispatch(changeCurrentQuestionAsyncAC(questionID));
 
         }
     }

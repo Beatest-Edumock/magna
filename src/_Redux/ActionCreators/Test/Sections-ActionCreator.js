@@ -1,11 +1,19 @@
 import {SECTION_PUSH_DETAILS, SECTION_UPDATE_CURRENT} from "../../actions/test";
-import {changeQuestionCurrentAsyncAC, fetchAndPushQuestionDetailsAsyncAC} from "./Questions-ActionCreator";
+import {changeCurrentQuestionAsyncAC} from "./Questions-ActionCreator";
 
-function pushSectionDetailsAC(sectionsList) {
+function _pushSectionDetailsAC(sectionsList) {
     return {type: SECTION_PUSH_DETAILS, sectionsList}
 
 }
 
+/**
+ *
+ * !!!! ONLY CALL THIS FROM INSIDE changeCurrentSectionAsyncAC !!!!
+ *
+ * @param sectionID
+ * @returns {{type: string, sectionID: *}}
+ * @private
+ */
 function _changeCurrentSectionAC(sectionID) {
     return {type: SECTION_UPDATE_CURRENT, sectionID: sectionID}
 
@@ -13,9 +21,17 @@ function _changeCurrentSectionAC(sectionID) {
 
 /**
  *
+ * Change the current section to a given section id.
+ *
+ * This will also change the current question to the first question
+ * in the newly changed section.
+ *
+ * The changeInQuestion is handled by changeCurrentQuestionAsyncAC,
+ * which means the next N questions are fetched too.
+ *
  * @param sectionID
- * @returns {Function} redux thunk that dispatch fetchAndPushQuestionDetailsAsyncAC if the question is
- * not fetch, and update current section and question.
+ * @returns {Function}
+ *
  */
 function changeCurrentSectionAsyncAC(sectionID) {
     return (dispatch, getState) => {
@@ -26,15 +42,14 @@ function changeCurrentSectionAsyncAC(sectionID) {
 
         const firstQuestionID = currSectionDetails.questions[0];
 
-        // section change action
         dispatch(_changeCurrentSectionAC(sectionID));
 
         // fetch the very first question of the new section.
-        dispatch(changeQuestionCurrentAsyncAC(firstQuestionID));
+        dispatch(changeCurrentQuestionAsyncAC(firstQuestionID));
 
 
     }
 
 }
 
-export {pushSectionDetailsAC, changeCurrentSectionAsyncAC};
+export {_pushSectionDetailsAC, changeCurrentSectionAsyncAC};

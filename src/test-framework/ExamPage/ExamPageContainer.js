@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {pushSectionDetailsAC, setUpTestAsyncAC} from "../../_Redux/ActionCreators/Test/Test-ActionCreator";
+import {_pushSectionDetailsAC, setUpTestAsyncAC} from "../../_Redux/ActionCreators/Test/Test-ActionCreator";
 import {GetTestGroupAPI} from "../../_Api/Tests/Tests";
 import {ExamPageUI} from "./ExamUI";
 import axios from 'axios'
-import {fetchAndPushQuestionDetailsAsyncAC} from "../../_Redux/ActionCreators/Test/Questions-ActionCreator";
+import {_fetchAndPushQuestionDetailsAsyncAC} from "../../_Redux/ActionCreators/Test/Questions-ActionCreator";
 
 class ExamPageContainer extends React.Component {
 
@@ -49,7 +49,7 @@ function mapDispatchToProps(dispatch) {
 
         },
         pushQuestionDetails: (questionID) => {
-            dispatch(fetchAndPushQuestionDetailsAsyncAC(questionID))
+            dispatch(_fetchAndPushQuestionDetailsAsyncAC(questionID))
 
         }
     }

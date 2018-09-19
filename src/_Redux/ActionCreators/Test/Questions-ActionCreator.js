@@ -8,7 +8,7 @@ import {QUESTION_UPDATE_CURRENT} from "../../actions/test";
  * @param questionDetails
  * @returns {{type: string, questionDetails: *}}
  */
-function pushQuestionDetailsAC(questionDetails) {
+function _pushQuestionDetailsAC(questionDetails) {
     return {type: QUESTION_PUSH_DETAILS, questionDetails}
 
 }
@@ -22,7 +22,7 @@ function pushQuestionDetailsAC(questionDetails) {
  * @param questionID
  * @returns {Function}
  */
-function fetchAndPushQuestionDetailsAsyncAC(questionID) {
+function _fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
     return (dispatch, getState) => {
 
@@ -44,7 +44,7 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
 
         GetQuestionDetailsAPI(test_id, section_id, questionID).then(({data}) => {
-            dispatch(pushQuestionDetailsAC(data));
+            dispatch(_pushQuestionDetailsAC(data));
 
         });
 
@@ -53,11 +53,12 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 }
 
 /**
+ * !!!! ONLY CALL THIS FROM INSIDE changeCurrentQuestionAsyncAC !!!!
  *
  * @param questionID
  * @returns {{type: string, questionID: *}}
  */
-function changeQuestionCurrentAC(questionID) {
+function _changeCurrentQuestionAC(questionID) {
     return {type: QUESTION_UPDATE_CURRENT, questionID: questionID}
 }
 
@@ -67,7 +68,7 @@ function changeQuestionCurrentAC(questionID) {
  * @param questionID
  * @returns {Function}
  */
-function changeQuestionCurrentAsyncAC(questionID) {
+function changeCurrentQuestionAsyncAC(questionID) {
     return (dispatch, getState) => {
 
         const state = getState();
@@ -81,20 +82,20 @@ function changeQuestionCurrentAsyncAC(questionID) {
 
             const previousQuestionID = questionsList[questionIndex - i];
             if (previousQuestionID !== undefined)
-                dispatch(fetchAndPushQuestionDetailsAsyncAC(previousQuestionID));
+                dispatch(_fetchAndPushQuestionDetailsAsyncAC(previousQuestionID));
 
             const nextQuestionID = questionsList[questionIndex + i];
 
             if (nextQuestionID !== undefined)
-                dispatch(fetchAndPushQuestionDetailsAsyncAC(nextQuestionID));
+                dispatch(_fetchAndPushQuestionDetailsAsyncAC(nextQuestionID));
 
         }
 
 
         // fetch current question
-        dispatch(fetchAndPushQuestionDetailsAsyncAC(questionID));
-        dispatch(changeQuestionCurrentAC(questionID));
+        dispatch(_fetchAndPushQuestionDetailsAsyncAC(questionID));
+        dispatch(_changeCurrentQuestionAC(questionID));
     }
 }
 
-export {pushQuestionDetailsAC, fetchAndPushQuestionDetailsAsyncAC, changeQuestionCurrentAsyncAC};
+export {_pushQuestionDetailsAC, _fetchAndPushQuestionDetailsAsyncAC, changeCurrentQuestionAsyncAC};
