@@ -4,6 +4,6 @@ html, body, #root, #root > div > div, .switch-wrapper {
     min-height: 100% !important;
 }
 
-
-
-
+.sk-spinner {
+    transform: scale(2);
+}

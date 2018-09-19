@@ -11,7 +11,7 @@ class ExamPageUI extends React.Component {
             return <LoadingSpinner/>;
         else {
             return (
-                <div className='container-fluid bg-white p-lg-5' style={{minHeight: "100%"}}>
+                <div className='container-fluid bg-white p-x-lg-5' style={{minHeight: "100%"}}>
 
                     <div className="row bg-light rounded ">
                         <div className="col-lg-10">
@@ -22,7 +22,7 @@ class ExamPageUI extends React.Component {
 
                     <div className="row">
 
-                        <div className="col-lg-10">
+                        <div className="col-lg-10 card p-3 py-sm-0 m-sm-3 m-md-0">
                             <QuestionContent/>
 
                         </div>
