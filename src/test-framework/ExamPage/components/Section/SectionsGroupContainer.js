@@ -23,7 +23,7 @@ class SectionsGroupContainer extends Component {
             }
         );
 
-        console.log(sectionList);
+
 
         return (
             <SectionsGroupUI sections={sectionList} sectionFunc={this.changeSection}/>

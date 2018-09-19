@@ -4,10 +4,12 @@ import React from 'react';
 
 function LoadingSpinner(props) {
 
+
     return (
-        <div className="d-flex justify-content-center text-center">
-            <div style={{marginTop: "45%", marginBottom: "45%"}}>
-                <Spinner name="line-scale" color="DodgerBlue" fadeIn={0}/>
+        <div className="d-flex justify-content-center text-center" style={{height: "100%", minHeight: "100%"}}>
+
+            <div style={{paddingTop: "25%", paddingBottom: "25%"}}>
+                <Spinner name="line-scale-pulse-out-rapid" color="DodgerBlue" fadeIn={0}/>
             </div>
         </div>
     )

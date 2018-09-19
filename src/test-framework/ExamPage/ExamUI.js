@@ -12,11 +12,11 @@ class ExamPageUI extends React.Component {
         else {
             return (
                 <div className='container-fluid bg-white p-lg-5' style={{minHeight: "100%"}}>
-                    <div className="row">
-                        <div className="col-lg-10 ">
+
+                    <div className="row bg-light rounded ">
+                        <div className="col-lg-10">
                             <SectionsGroup/>
                         </div>
-
 
                     </div>
 

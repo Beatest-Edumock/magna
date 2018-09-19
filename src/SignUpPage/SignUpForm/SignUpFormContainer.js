@@ -35,8 +35,8 @@ class SignUpFormContainer extends React.Component {
      * @param response recaptcha response (should be sent to beatest server as is)
      */
     captchaVerifiedCallback(response) {
-        console.log("all done");
-        console.log(response);
+
+
         this.response = response;
         this.performSignup();
     }
@@ -81,12 +81,12 @@ class SignUpFormContainer extends React.Component {
     }
 
     performSignup() {
-        console.log("i have reached perform signup");
+
         this.setErrors({info: ""});
         this.setSubmitting(false);
         this.recaptchaInstance.reset();
         // this.resetForm();
-        console.log(this.values);
+
 
 
 

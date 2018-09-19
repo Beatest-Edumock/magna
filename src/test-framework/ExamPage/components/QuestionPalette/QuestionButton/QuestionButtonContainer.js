@@ -14,7 +14,7 @@ class QuestionButton extends Component {
 
     questionButtonClickHandler() {
         // id is the question current index in the section
-        this.props.changeCurrentQuestion(this.props.questionID, this.props.id);
+        this.props.changeCurrentQuestion(this.props.questionID);
     }
 
 
@@ -39,8 +39,9 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
+
     return {
-        changeCurrentQuestion: (questionID, questionIndex) => {
+        changeCurrentQuestion: (questionID) => {
 
             dispatch(changeQuestionCurrentAsyncAC(questionID));
 

@@ -36,7 +36,8 @@ class DisplayInstructionContainer extends Component {
         StartTestAPI(this.props.testID)
             .then(() => {
 
-                history.push(`/test/${this.props.testID}`)
+                // user should not be able to go 'back'
+                history.replace(`/test/${this.props.testID}`)
 
 
             });
