@@ -14,7 +14,7 @@ import {FlipCard} from "../Common/FlipCard/FlipCard";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {faCogs, faUserTie, faBinoculars, faHeadphones, faWindowMaximize, faSpinner, faCodeBranch, faMicrochip, faUsers} from '@fortawesome/free-solid-svg-icons'
 import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
-
+import {App} from 'basic-react-calculator';
 //
 //
 function typedString() {
@@ -67,6 +67,7 @@ class HomePage extends React.Component {
         <div>
 
             <NavBarWithButtonsContainer/>
+            <App />
 
 
             <div>
