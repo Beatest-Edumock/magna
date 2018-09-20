@@ -15,6 +15,7 @@ class SectionsGroupContainer extends Component {
         this.props.changeCurrentSection(sectionID)
     }
 
+
     render() {
 
         const sectionList = Object.keys(this.props.sectionsByID).sort().map(
@@ -26,7 +27,7 @@ class SectionsGroupContainer extends Component {
 
 
         return (
-            <SectionsGroupUI sections={sectionList} sectionFunc={this.changeSection}/>
+            <SectionsGroupUI sections={sectionList} currentSection={this.props.currentSection} sectionFunc={this.changeSection}/>
         )
     }
 }
