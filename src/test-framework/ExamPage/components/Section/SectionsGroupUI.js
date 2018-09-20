@@ -8,8 +8,8 @@ function SectionsGroupUI(props) {
                 {
                     props.sections.map((section) => {
                             return (
-                                <SectionButton sectionName={section.name} sectionID={section.id} sectionFunc={props.sectionFunc}
-                                               disabled={section.is_complete ? true : false}
+                                <SectionButton key={section.id} sectionName={section.name} sectionID={section.id} sectionFunc={props.sectionFunc}
+                                               disabled={ !!(section.is_complete || (props.currentSection === section.id.toString()))}
                                 />
 
                             )
@@ -25,11 +25,10 @@ function SectionButton(props) {
     const disabled = props.disabled ? "disabled btn-secondary" : "btn-outline-secondary";
     return (
 
-
-        <button type='button' className={` offset-md-2 col-md-8 col-lg-3 btn py-3 rounded-0 rounded mx-1 my-2  ${disabled}`}
-                onClick={() => {
-                    props.sectionFunc(props.sectionID)
-                }}>
+        <button id={`section-button-${props.sectionID}`}
+                disabled={props.disabled}
+                className={` offset-md-2 col-md-8 col-lg-3 btn py-3 rounded-0 rounded mx-1 my-2  ${disabled}`}
+                onClick={()=>props.sectionFunc(props.sectionID)}>
             {props.sectionName}
         </button>
     );

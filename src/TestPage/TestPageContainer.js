@@ -15,7 +15,7 @@ class TestPageWrapper extends React.Component {
 
 
         GetTestsListAPI(testType).then(({data}) => {
-            console.log(this.props)
+
             this.setState(
                     {
                         data: data

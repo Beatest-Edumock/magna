@@ -66,15 +66,17 @@ import {
     INCREMENT_LOADING,
     QUESTION_FETCH_PUSH_DETAILS,
     QUESTION_PUSH_DETAILS,
+    QUESTION_UPDATE_CURRENT,
     SECTION_PUSH_DETAILS,
+    SECTION_UPDATE_CURRENT,
     TEST_PUSH_ATTEMPTS,
-    TEST_PUSH_DETAILS
+    TEST_PUSH_DETAILS,
 } from "../../actions/test";
-import {fetchAndPushQuestionDetailsAsyncAC} from "../../ActionCreators/Test/Questions-ActionCreator";
 
 
 const defaultState = {
-    loadingCount: 1 // initially start with loading state
+    loadingCount: 1, // initially start with loading state
+    fatalError: {message: ""}
 
 };
 
@@ -87,21 +89,49 @@ function testReducer(state = defaultState, action) {
             return decrementLoading(state, action);
 
         case SECTION_PUSH_DETAILS:
-            return pushSectionDetails(state, action);
+            return _pushSectionDetails(state, action);
 
         case TEST_PUSH_ATTEMPTS:
-            return pushTestAttemptDetails(state, action);
+            return _pushTestAttemptDetails(state, action);
         case QUESTION_PUSH_DETAILS:
-            return pushQuestionDetails(state, action);
+            return _pushQuestionDetails(state, action);
+        case QUESTION_UPDATE_CURRENT:
+            return _changeCurrentQuestion(state, action);
 
         case TEST_PUSH_DETAILS:
-            return pushTestDetails(state, action);
-
+            return _pushTestDetails(state, action);
+        case SECTION_UPDATE_CURRENT:
+            return _changeCurrentSection(state, action);
         default :
             return state;
     }
 
 }
+
+
+/**
+ * change the current section
+ * @param state
+ * @param sectionID
+ * @param firstQuestionID
+ * @returns {{currentSection: number}}
+ */
+function _changeCurrentSection(state, {sectionID}) {
+    return {...state, currentSection: sectionID}
+}
+
+/**
+ * change the current question, fetching required questions
+ * are done by changeCurrentQuestionAsyncAC by dispatching
+ * _fetchAndPushQuestionDetailsAsyncAC on the questionID
+ * @param state
+ * @param questionID
+ * @returns {{currentQuestion: *}}
+ */
+function _changeCurrentQuestion(state, {questionID}) {
+    return {...state, currentQuestion: questionID}
+}
+
 
 /**
  * Increment loading key by one
@@ -140,7 +170,7 @@ function decrementLoading(state, action) {
  * @param action
  * @returns {{}}
  */
-function pushTestDetails(state, action) {
+function _pushTestDetails(state, action) {
 
     const {testDetails} = action;
     delete testDetails.instruction_html;
@@ -157,7 +187,7 @@ function pushTestDetails(state, action) {
  * @param sectionsList
  * @returns {{sections: *}}
  */
-function pushSectionDetails(state, {sectionsList}) {
+function _pushSectionDetails(state, {sectionsList}) {
 
     const sections = sectionsList.reduce((obj, item) => {
         obj[item.id] = item;
@@ -186,7 +216,7 @@ function pushSectionDetails(state, {sectionsList}) {
  * @param testAttempt
  * @returns {{sections: {}, questions: ({}|*), currentSection: number, currentQuestion: number}}
  */
-function pushTestAttemptDetails(state, {testAttempt}) {
+function _pushTestAttemptDetails(state, {testAttempt}) {
 
 
     // get the section attempts from testAttempt object
@@ -339,8 +369,8 @@ function pushTestAttemptDetails(state, {testAttempt}) {
         ...state,
         sectionsByID: sections,
         questionsByID: questions,
-        currentSection: parseInt(firstSectionId),
-        currentQuestion: parseInt(firstQuestion)
+        currentSection: firstSectionId.toString(),
+        currentQuestion: firstQuestion.toString()
 
     }
 
@@ -351,13 +381,13 @@ function pushTestAttemptDetails(state, {testAttempt}) {
  * after fetching the details of the question itself
  *
  * The action that calls this reducer should be dispatched
- * by fetchAndPushQuestionDetailsAsyncAC (i.e. not directly from a component).
+ * by _fetchAndPushQuestionDetailsAsyncAC (i.e. not directly from a component).
  *
  * @param state
  * @param questionDetails
  * @returns {{questions: {}}}
  */
-function pushQuestionDetails(state, {questionDetails}) {
+function _pushQuestionDetails(state, {questionDetails}) {
 
     return {
         ...state,

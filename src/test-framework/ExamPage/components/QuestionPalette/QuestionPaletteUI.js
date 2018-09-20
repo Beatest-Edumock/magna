@@ -9,7 +9,7 @@ function QuestionPaletteUI(props) {
 
                 {
                     props.questions.map((questionID, idx) =>
-                        <QuestionButton id={idx + 1}/>
+                        <QuestionButton key={questionID} id={idx + 1} questionID={questionID}/>
                     )
                 }
 

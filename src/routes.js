@@ -6,29 +6,38 @@ import {HomePage} from "./HomePage/HomePage"
 import {LoginPage} from "./LoginPage/LoginPage"
 import {ResendActivationPage} from "./ResendActivationPage/ResendActivationPage"
 import {SignUpPage} from "./SignUpPage/SignUpPage";
-import {SectionsGroupContainer} from "./test-framework/ExamPage/components/Section/SectionsGroupContainer";
 import {TermsPage} from "./TermsPage/TermsPage";
 import {AboutUsPage} from "./AboutUsPage/AboutUsPage";
 import {TestPageContainer} from "./TestPage";
-import {QuestionPaletteContainer} from "./test-framework/ExamPage/components/QuestionPalette/QuestionPaletteContainer";
 import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage";
+import {
+    ABOUT_US_ROUTE,
+    LOGIN_ROUTE,
+    RESEND_ACTIVATION_ROUTE,
+    ROOT_ROUTE,
+    SIGNUP_ROUTE,
+    TERMS_AND_CONDS_ROUTE,
+    TEST_INSTRUCTIONS_ROUTE,
+    TEST_LIST_ROUTE,
+    TEST_PAGE_ROUTE
+} from "./route";
+
 
 const Routes = () => (
     <Router history={history}>
         <Switch>
 
 
-            <Route exact path="/" component={HomePage}/>
-            <Route exact path="/login" component={LoginPage}/>
-            <Route exact path="/signup" component={SignUpPage}/>
-            <Route exact path="/resend-activation" component={ResendActivationPage}/>
-            <Route path="/test/:testID/instructions" component={InstructionPage}/>
-            <Route path="/test/:testID" component={ExamPageC}/>
+            <Route exact path={ROOT_ROUTE()} component={HomePage}/>
+            <Route exact path={LOGIN_ROUTE()} component={LoginPage}/>
+            <Route exact path={SIGNUP_ROUTE()} component={SignUpPage}/>
+            <Route exact path={RESEND_ACTIVATION_ROUTE()} component={ResendActivationPage}/>
+            <Route exact path={TERMS_AND_CONDS_ROUTE()} component={TermsPage}/>
+            <Route exact path={ABOUT_US_ROUTE()} component={AboutUsPage}/>
+            <Route exact path={TEST_LIST_ROUTE(null, true)} component={TestPageContainer}/>
 
-            <Route exact path="/terms" component={TermsPage}/>
-            <Route exact path="/tc" component={QuestionPaletteContainer}/>
-            <Route exact path="/about-us" component={AboutUsPage}/>
-            <Route exact path="/tests/:testType" component={TestPageContainer}/>
+            <Route path={TEST_INSTRUCTIONS_ROUTE(null, true)} component={InstructionPage}/>
+            <Route path={TEST_PAGE_ROUTE(null, true)} component={ExamPageC}/>
 
         </Switch>
 

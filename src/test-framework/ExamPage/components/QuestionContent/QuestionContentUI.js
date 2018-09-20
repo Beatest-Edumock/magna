@@ -1,39 +1,29 @@
 import React from 'react';
+import "./styles.css"
+import {LoadingSpinner} from "../../LoadingSpinner";
 
 const MCQ = 'MCQ';
 const RC = 'RC';
 const TITA = 'TITA';
 
-function QuestionComponentUI(props) {
+function createHTML(html) {
+    return {__html: html}
 
+}
 
-    switch (props.type) {
-        case RC:
-            return (<RC/>);
-        case TITA:
-            return (<TITA/>);
-        case MCQ:
-            return (<MCQ/>);
-        default:
-            return
+function QuestionContentUI(props) {
 
-        
+    if (props.question.html == null) {
+        return <LoadingSpinner/>
     }
 
 
+    return (
+        <div className="my-5 my-md-0" id="question-content-wrapper">
+            <div id="question-content" dangerouslySetInnerHTML={createHTML(props.question.html)}/>
+        </div>
+    );
 }
 
 
-function MCQ(props) {
-    return()
-}
-
-function RC(props) {
-
-}
-
-function TITA(props) {
-
-}
-
-
+export {QuestionContentUI}

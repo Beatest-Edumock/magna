@@ -1,8 +1,55 @@
-import {SECTION_PUSH_DETAILS} from "../../actions/test";
+import {SECTION_PUSH_DETAILS, SECTION_UPDATE_CURRENT} from "../../actions/test";
+import {changeCurrentQuestionAsyncAC} from "./Questions-ActionCreator";
 
-function pushSectionDetailsAC(sectionsList) {
+function _pushSectionDetailsAC(sectionsList) {
     return {type: SECTION_PUSH_DETAILS, sectionsList}
 
 }
 
-export {pushSectionDetailsAC};
+/**
+ *
+ * !!!! ONLY CALL THIS FROM INSIDE changeCurrentSectionAsyncAC !!!!
+ *
+ * @param sectionID
+ * @returns {{type: string, sectionID: *}}
+ * @private
+ */
+function _changeCurrentSectionAC(sectionID) {
+    return {type: SECTION_UPDATE_CURRENT, sectionID: sectionID}
+
+}
+
+/**
+ *
+ * Change the current section to a given section id.
+ *
+ * This will also change the current question to the first question
+ * in the newly changed section.
+ *
+ * The changeInQuestion is handled by changeCurrentQuestionAsyncAC,
+ * which means the next N questions are fetched too.
+ *
+ * @param sectionID
+ * @returns {Function}
+ *
+ */
+function changeCurrentSectionAsyncAC(sectionID) {
+    return (dispatch, getState) => {
+
+        const state = getState();
+
+        const currSectionDetails = state.test.sectionsByID[sectionID];
+
+        const firstQuestionID = currSectionDetails.questions[0];
+
+        dispatch(_changeCurrentSectionAC(sectionID));
+
+        // fetch the very first question of the new section.
+        dispatch(changeCurrentQuestionAsyncAC(firstQuestionID));
+
+
+    }
+
+}
+
+export {_pushSectionDetailsAC, changeCurrentSectionAsyncAC};

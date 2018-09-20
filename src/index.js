@@ -15,7 +15,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
-import {BrowserRouter} from 'react-router-dom'
 
 
 import Routes from './routes'
@@ -30,6 +29,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './_CSS/fonts.css'
 import './_CSS/index.css'
+import './_CSS/bootstrap-extended.css'
 
 
 setUpApp();

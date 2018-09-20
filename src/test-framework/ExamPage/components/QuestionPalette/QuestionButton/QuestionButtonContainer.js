@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {QuestionButtonUI} from "./QuestionButtonUI";
+import {changeCurrentQuestionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Questions-ActionCreator";
+import {connect} from 'react-redux';
 
-class QuestionButtonContainer extends Component{
+
+class QuestionButton extends Component {
 
     constructor(props) {
         super(props);
@@ -10,15 +13,42 @@ class QuestionButtonContainer extends Component{
     }
 
     questionButtonClickHandler() {
-        console.log("BLEH")
+        // id is the question current index in the section
+        this.props.changeCurrentQuestion(this.props.questionID);
     }
 
+
     render() {
-        return(
-            <QuestionButtonUI id = {this.props.id} questionFunc = {this.questionClickHandler}/>
+
+        return (
+            <QuestionButtonUI id={this.props.id} questionCallback={this.questionClickHandler} isCurrent={this.props.questionID === this.props.currentQuestion}/>
         )
     }
 
+
 }
+
+function mapStateToProps(state, ownProps) {
+
+    return {
+        currentQuestion: state.test.currentQuestion,
+        ...ownProps
+
+    }
+
+}
+
+function mapDispatchToProps(dispatch) {
+
+    return {
+        changeCurrentQuestion: (questionID) => {
+
+            dispatch(changeCurrentQuestionAsyncAC(questionID));
+
+        }
+    }
+}
+
+const QuestionButtonContainer = connect(mapStateToProps, mapDispatchToProps)(QuestionButton);
 
 export {QuestionButtonContainer}

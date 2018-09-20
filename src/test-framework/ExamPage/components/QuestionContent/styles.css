@@ -1,0 +1,33 @@
+#question-content-wrapper {
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+@media (min-width: 576px) {
+    #question-content img {
+
+    }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+
+    #question-content-wrapper {
+        overflow-x: auto;
+
+    }
+
+    #question-content img {
+        max-width: 100%;
+
+    }
+}
+
+@media (min-width: 1200px) {
+}
+
+
+
+

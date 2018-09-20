@@ -1,6 +1,6 @@
 import {QUESTION_PUSH_DETAILS} from "../../actions/test";
 import {GetQuestionDetailsAPI} from "../../../_Api/Tests/Sections/Questions/Questions";
-
+import {QUESTION_UPDATE_CURRENT} from "../../actions/test";
 
 /**
  * Do not call this action creator from any component.
@@ -8,7 +8,7 @@ import {GetQuestionDetailsAPI} from "../../../_Api/Tests/Sections/Questions/Ques
  * @param questionDetails
  * @returns {{type: string, questionDetails: *}}
  */
-function pushQuestionDetailsAC(questionDetails) {
+function _pushQuestionDetailsAC(questionDetails) {
     return {type: QUESTION_PUSH_DETAILS, questionDetails}
 
 }
@@ -22,7 +22,7 @@ function pushQuestionDetailsAC(questionDetails) {
  * @param questionID
  * @returns {Function}
  */
-function fetchAndPushQuestionDetailsAsyncAC(questionID) {
+function _fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
     return (dispatch, getState) => {
 
@@ -30,7 +30,11 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
         const test_id = state.test.id;
 
-        const question = state.test.questions[questionID];
+        const question = state.test.questionsByID[questionID];
+
+        if (question === undefined) {
+            return;
+        }
 
         if (question.html) { // we use the 'html' attribute of the question to check if its loaded
             return;
@@ -40,7 +44,7 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
 
         GetQuestionDetailsAPI(test_id, section_id, questionID).then(({data}) => {
-            dispatch(pushQuestionDetailsAC(data));
+            dispatch(_pushQuestionDetailsAC(data));
 
         });
 
@@ -48,4 +52,50 @@ function fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
 }
 
-export {pushQuestionDetailsAC, fetchAndPushQuestionDetailsAsyncAC};
+/**
+ * !!!! ONLY CALL THIS FROM INSIDE changeCurrentQuestionAsyncAC !!!!
+ *
+ * @param questionID
+ * @returns {{type: string, questionID: *}}
+ */
+function _changeCurrentQuestionAC(questionID) {
+    return {type: QUESTION_UPDATE_CURRENT, questionID: questionID}
+}
+
+/**
+ * change and fetch the state of current question, and fetch previous and next question
+ *
+ * @param questionID
+ * @returns {Function}
+ */
+function changeCurrentQuestionAsyncAC(questionID) {
+    return (dispatch, getState) => {
+
+        const state = getState();
+        const currentSection = state.test.currentSection;
+        const questionsList = state.test.sectionsByID[currentSection].questions;
+
+        const questionIndex = questionsList.indexOf(questionID);
+
+
+        for (let i = 1; i <= 3; i++) {
+
+            const previousQuestionID = questionsList[questionIndex - i];
+            if (previousQuestionID !== undefined)
+                dispatch(_fetchAndPushQuestionDetailsAsyncAC(previousQuestionID));
+
+            const nextQuestionID = questionsList[questionIndex + i];
+
+            if (nextQuestionID !== undefined)
+                dispatch(_fetchAndPushQuestionDetailsAsyncAC(nextQuestionID));
+
+        }
+
+
+        // fetch current question
+        dispatch(_fetchAndPushQuestionDetailsAsyncAC(questionID));
+        dispatch(_changeCurrentQuestionAC(questionID));
+    }
+}
+
+export {_pushQuestionDetailsAC, _fetchAndPushQuestionDetailsAsyncAC, changeCurrentQuestionAsyncAC};

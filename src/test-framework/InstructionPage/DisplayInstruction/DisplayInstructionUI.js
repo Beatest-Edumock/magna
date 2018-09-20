@@ -2,9 +2,9 @@
 // Last Edit: Sept 3, 2018
 
 // imports
-import React, {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
-import {LoadingScreen} from "../../ExamPage/LoadingScreen";
+import {LoadingSpinner} from "../../ExamPage/LoadingSpinner";
 
 /**
  * DisplayInstructionUI renders the Instructions and Start Test button
@@ -14,22 +14,22 @@ import {LoadingScreen} from "../../ExamPage/LoadingScreen";
 function DisplayInstructionUI(props) {
 
     // return a loading UI while the instructions is being loaded
-    if(props.instructions === '') {
+    if (props.instructions === '') {
         return (
-            <LoadingScreen/>
+            <LoadingSpinner/>
         )
     }
     return (
         <div className='container my-4'>
 
             <div className='my-4'>
-            <h3 className='alert alert-primary text-center'>
-                {props.name}
-            </h3>
+                <h3 className='alert alert-primary text-center'>
+                    {props.name}
+                </h3>
             </div>
 
             {/*Set the HTML from RAW HTML*/}
-            <div dangerouslySetInnerHTML={{__html: props.instructions}} />
+            <div dangerouslySetInnerHTML={{__html: props.instructions}}/>
 
             <div>
                 <StartTestButton startfunc={props.startfunc}/>
@@ -50,9 +50,9 @@ function StartTestButton(props) {
     return (
         <div className='container'>
             <div className='row'>
-            <button className="btn btn-primary col-lg-4 offset-4 col-4 offset-4 my-5" onClick={props.startfunc}>
-                Start Test
-            </button>
+                <button className="btn btn-primary col-lg-4 offset-4 col-4 offset-4 my-5" onClick={props.startfunc}>
+                    Start Test
+                </button>
             </div>
         </div>
     )
@@ -64,7 +64,7 @@ export {DisplayInstructionUI}
 
 
 DisplayInstructionUI.propTypes = {
-    startfunc : PropTypes.func,
+    startfunc: PropTypes.func,
     name: PropTypes.string,
     instructions: PropTypes.string,
 }

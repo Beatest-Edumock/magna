@@ -1,13 +1,10 @@
 import React from 'react';
-import {LoadingScreen} from "./LoadingScreen";
 import {connect} from 'react-redux'
-import {decrementLoadingAC, incrementLoadingAC, pushSectionDetailsAC, pushTestDetailsAC, setUpTestAsyncAC} from "../../_Redux/ActionCreators/Test/Test-ActionCreator";
+import {_pushSectionDetailsAC, setUpTestAsyncAC} from "../../_Redux/ActionCreators/Test/Test-ActionCreator";
 import {GetTestGroupAPI} from "../../_Api/Tests/Tests";
 import {ExamPageUI} from "./ExamUI";
 import axios from 'axios'
-import {pushTestAttemptAC} from "../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
-import {fetchAndPushQuestionDetailsAsyncAC, pushQuestionDetailsAC} from "../../_Redux/ActionCreators/Test/Questions-ActionCreator";
-import {GetQuestionDetailsAPI} from "../../_Api/Tests/Sections/Questions/Questions";
+import {_fetchAndPushQuestionDetailsAsyncAC} from "../../_Redux/ActionCreators/Test/Questions-ActionCreator";
 
 class ExamPageContainer extends React.Component {
 
@@ -28,7 +25,7 @@ class ExamPageContainer extends React.Component {
 
     render() {
 
-        return <ExamPageUI loading={this.props.loadingCount}/>
+        return <ExamPageUI loading={this.props.loadingCount > 0}/>
 
     }
 }
@@ -52,7 +49,7 @@ function mapDispatchToProps(dispatch) {
 
         },
         pushQuestionDetails: (questionID) => {
-            dispatch(fetchAndPushQuestionDetailsAsyncAC(questionID))
+            dispatch(_fetchAndPushQuestionDetailsAsyncAC(questionID))
 
         }
     }

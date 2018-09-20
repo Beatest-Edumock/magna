@@ -1,6 +1,7 @@
 import {DECREMENT_LOADING, INCREMENT_LOADING, TEST_PUSH_DETAILS} from "../../actions/test";
 import {pushTestAttemptAC} from "./TestAttempt-ActionCreators";
-import {pushSectionDetailsAC} from "./Sections-ActionCreator";
+import {_pushSectionDetailsAC} from "./Sections-ActionCreator";
+import {changeCurrentSectionAsyncAC} from "./Sections-ActionCreator";
 
 
 function incrementLoadingAC() {
@@ -14,14 +15,18 @@ function decrementLoadingAC() {
 }
 
 
-function pushTestDetailsAC(testDetails) {
+function _pushTestDetailsAC(testDetails) {
     return {type: TEST_PUSH_DETAILS, testDetails}
 
 }
 
 
 /**
- * Set up Test details, Section Details and the  Test Attempt
+ * Set up Test details, Section Details and the  Test Attempt.
+ *
+ * The current question (that is set by pushTestAttempt)
+ * is loaded.
+ *
  * After that, decrement the loading count
  *
  * @param testDetails
@@ -33,11 +38,18 @@ function pushTestDetailsAC(testDetails) {
 function setUpTestAsyncAC(testDetails, sectionList, testAttempt) {
 
 
-    return function (dispatch) {
+    return function (dispatch,getState) {
 
-        dispatch(pushTestDetailsAC(testDetails));
-        dispatch(pushSectionDetailsAC(sectionList));
+        dispatch(_pushTestDetailsAC(testDetails));
+        dispatch(_pushSectionDetailsAC(sectionList));
         dispatch(pushTestAttemptAC(testAttempt));
+
+        const state = getState();
+
+        // current question key will be set by pushTestAttempt
+        // we just 'change' to that again so that the next N are fetched
+        dispatch(changeCurrentSectionAsyncAC(state.test.currentSection));
+        // dispatch(changeCurrentQuestionAsyncAC(state.test.currentQuestion));
 
         dispatch(decrementLoadingAC());
 
@@ -45,4 +57,4 @@ function setUpTestAsyncAC(testDetails, sectionList, testAttempt) {
 
 }
 
-export {incrementLoadingAC, decrementLoadingAC, pushTestDetailsAC, setUpTestAsyncAC};
+export {incrementLoadingAC, decrementLoadingAC, _pushTestDetailsAC, setUpTestAsyncAC};
