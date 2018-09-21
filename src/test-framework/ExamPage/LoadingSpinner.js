@@ -2,7 +2,7 @@ import Spinner from 'react-spinkit'
 import React from 'react';
 
 
-function LoadingSpinner(props) {
+function LoadingSpinner() {
 
 
     return (

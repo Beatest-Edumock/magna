@@ -1,9 +1,9 @@
 import React from 'react';
 import {LoadingSpinner} from "./LoadingSpinner";
-import {QuestionPaletteContainer} from "./components/QuestionPalette/QuestionPaletteContainer";
 import {SectionsGroup} from "./components/Section/SectionsGroupContainer";
 import {QuestionContent} from "./components/QuestionContent";
 import PropTypes from 'prop-types';
+import {QuestionPalette} from "./components/QuestionPalette"
 
 class ExamPageUI extends React.Component {
 
@@ -28,7 +28,7 @@ class ExamPageUI extends React.Component {
 
                         </div>
                         <div className='col-lg-2    '>
-                            <QuestionPaletteContainer/>
+                            <QuestionPalette/>
                         </div>
                     </div>
                 </div>
@@ -40,6 +40,10 @@ class ExamPageUI extends React.Component {
 }
 
 ExamPageUI.propTypes = {
+    /**
+     * If the loading spinner should be displayed instead of the actual
+     * exam page
+     */
     loading: PropTypes.bool
 };
 

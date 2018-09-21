@@ -1,5 +1,6 @@
 import React from 'react';
-import {QuestionButton} from "./QuestionButton/QuestionButton";
+import {QuestionButton} from "./QuestionButton";
+import PropTypes from 'prop-types';
 
 function QuestionPaletteUI(props) {
 
@@ -19,6 +20,15 @@ function QuestionPaletteUI(props) {
     )
 
 }
+
+QuestionPaletteUI.propTypes = {
+
+    /**
+     * list of question ids that are in the current section.
+     */
+    questions: PropTypes.arrayOf(PropTypes.string)
+
+};
 
 
 export {QuestionPaletteUI}

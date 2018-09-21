@@ -1,15 +1,8 @@
 import React from 'react';
 import "./styles.css"
 import {LoadingSpinner} from "../../LoadingSpinner";
+import PropTypes from 'prop-types';
 
-const MCQ = 'MCQ';
-const RC = 'RC';
-const TITA = 'TITA';
-
-function createHTML(html) {
-    return {__html: html}
-
-}
 
 function QuestionContentUI(props) {
 
@@ -20,10 +13,19 @@ function QuestionContentUI(props) {
 
     return (
         <div className="my-5 my-md-0" id="question-content-wrapper">
-            <div id="question-content" dangerouslySetInnerHTML={createHTML(props.question.html)}/>
+            <div id="question-content" dangerouslySetInnerHTML={{__html: props.question.html}}/>
         </div>
     );
 }
 
 
+QuestionContentUI.propTypes = {
+
+    /**
+     * Current question object
+     */
+    question: PropTypes.shape({
+        html: PropTypes.string
+    })
+};
 export {QuestionContentUI}
