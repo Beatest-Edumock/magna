@@ -1,20 +1,13 @@
 import React, {Component} from 'react';
 import {SectionsGroupUI} from "./SectionsGroupUI";
 import connect from "react-redux/es/connect/connect";
-import {changeCurrentSectionAsyncAC} from "../../../../_Redux/ActionCreators/Test/Sections-ActionCreator";
+// import {changeCurrentSectionAsyncAC} from "../../../../_Redux/ActionCreators/Test/Sections-ActionCreator";
 
 class SectionsGroupContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.changeSection = this.changeSectionHandleClick.bind(this);
-
     }
-
-    changeSectionHandleClick(sectionID) {
-        this.props.changeCurrentSection(sectionID)
-    }
-
 
     render() {
 
@@ -24,23 +17,13 @@ class SectionsGroupContainer extends Component {
             }
         );
 
-
-
         return (
-            <SectionsGroupUI sections={sectionList} currentSection={this.props.currentSection} sectionFunc={this.changeSection}/>
+            <SectionsGroupUI sections={sectionList}
+                             currentSection={this.props.currentSection} />
         )
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        changeCurrentSection: (sectionID) => {
-
-            dispatch(changeCurrentSectionAsyncAC(sectionID));
-
-        }
-    }
-}
 
 function mapStateToProps(state) {
     return {
@@ -50,5 +33,5 @@ function mapStateToProps(state) {
 
 }
 
-const SectionsGroup = connect(mapStateToProps, mapDispatchToProps)(SectionsGroupContainer);
+const SectionsGroup = connect(mapStateToProps, null)(SectionsGroupContainer);
 export {SectionsGroup}
