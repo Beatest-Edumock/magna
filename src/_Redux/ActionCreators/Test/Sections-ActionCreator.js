@@ -37,6 +37,7 @@ function changeCurrentSectionAsyncAC(sectionID) {
     return (dispatch, getState) => {
 
         const state = getState();
+        sectionID = sectionID.toString();
 
         const currSectionDetails = state.test.sectionsByID[sectionID];
 
