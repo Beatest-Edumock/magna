@@ -43,6 +43,7 @@
     "reactstrap": "^6.3.1",
     "redux": "latest",
     "redux-thunk": "^2.3.0",
+    "why-did-you-update": "^0.1.1",
     "yup": "^0.25.1"
   },
   "scripts": {
@@ -68,7 +69,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://trident.beatest.in"
+      "target": "http://localhost:5000"
     }
   }
 }

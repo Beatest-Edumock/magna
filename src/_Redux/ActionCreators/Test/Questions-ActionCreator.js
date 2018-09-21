@@ -78,6 +78,7 @@ function changeCurrentQuestionAsyncAC(questionID) {
         const questionIndex = questionsList.indexOf(questionID);
 
 
+        // fetch the next three
         for (let i = 1; i <= 3; i++) {
 
             const previousQuestionID = questionsList[questionIndex - i];
