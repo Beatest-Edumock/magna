@@ -1,20 +1,20 @@
 import axios from 'axios';
 
 
-function LoginUserApi(email, password) {
+function loginUserApi(email, password) {
     return axios.post('/user/login', {email, password});
 }
 
-function LogoutUserApi() {
+function logoutUserApi() {
     return axios.post('/user/logout');
 }
 
-function GetUserDetailsApi() {
+function getUserDetailsApi() {
     return axios.get('user');
 }
 
 
-function ResendActivationMailApi(email, recaptcha) {
+function resendActivationMailApi(email, recaptcha) {
     return axios.post('/user/resend_activation', {
         email,
         captcha_token: recaptcha
@@ -22,4 +22,4 @@ function ResendActivationMailApi(email, recaptcha) {
 
 }
 
-export {LoginUserApi, LogoutUserApi, ResendActivationMailApi, GetUserDetailsApi};
+export {loginUserApi, logoutUserApi, resendActivationMailApi, getUserDetailsApi};

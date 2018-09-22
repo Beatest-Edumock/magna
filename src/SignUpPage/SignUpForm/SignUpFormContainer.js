@@ -1,6 +1,6 @@
 import React from 'react';
 import {SignUpForm} from "./SignUpForm";
-import {GetCollegeApi} from "../../_Api/Colleges";
+import {getCollegeApi} from "../../_Api/Colleges";
 
 
 class SignUpFormContainer extends React.Component {
@@ -43,7 +43,7 @@ class SignUpFormContainer extends React.Component {
 
     componentDidMount() {
 
-        GetCollegeApi().then(({data}) => {
+        getCollegeApi().then(({data}) => {
             const colleges = this.state.colleges;
 
             colleges.push(...data);

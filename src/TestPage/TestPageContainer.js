@@ -1,5 +1,5 @@
 import React from 'react';
-import {GetTestsListAPI} from "../_Api/Tests/Tests";
+import {getTestsListAPI} from "../_Api/Tests/Tests";
 import {TestPage} from "./TestPage";
 import axios from 'axios';
 import {connect} from 'react-redux';
@@ -14,7 +14,7 @@ class TestPageWrapper extends React.Component {
         const {testType} = this.props.match.params;
 
 
-        GetTestsListAPI(testType).then(({data}) => {
+        getTestsListAPI(testType).then(({data}) => {
 
             this.setState(
                     {

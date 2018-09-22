@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavItem, NavLink, Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {LogoutUserApi} from "../../../_Api/User";
+import {logoutUserApi} from "../../../_Api/User";
 import {history} from "../../../__internals/CustomHistory";
 import {toast} from 'react-toastify'
 import {NavBar} from "../NavBar";
@@ -31,7 +31,7 @@ function signupLogoutNavLink(props) {
     if (props.isUserLoggedIn) {
         buttonHandler = () => {
 
-            LogoutUserApi().then(() => {
+            logoutUserApi().then(() => {
                     props.removeUserAction();
                     toast.success("Successfully Logged Out");
                 }

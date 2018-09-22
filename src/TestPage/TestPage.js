@@ -15,7 +15,7 @@ import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
 import {faBookOpen, faCheck} from '@fortawesome/free-solid-svg-icons';
 import './TestPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
-import {StartTestAPI} from '../_Api/Tests/TestAttempts'
+import {startTestAPI} from '../_Api/Tests/TestAttempts'
 import {TEST_INSTRUCTIONS_ROUTE} from "../route";
 
 const bodyStyle = {

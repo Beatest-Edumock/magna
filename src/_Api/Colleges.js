@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-function GetCollegeApi() {
+function getCollegeApi() {
     return axios.get('/colleges');
 }
 
-export {GetCollegeApi}
+export {getCollegeApi}

@@ -2,7 +2,7 @@ import React from 'react';
 import "./styles.css"
 import {LoadingSpinner} from "../../LoadingSpinner";
 import PropTypes from 'prop-types';
-
+import {MCQ} from "./Workshop/MCQ/MCQContainer";
 
 function QuestionContentUI(props) {
 
@@ -12,8 +12,18 @@ function QuestionContentUI(props) {
 
 
     return (
-        <div className="my-5 my-md-0" id="question-content-wrapper">
+        <div className="my-5 my-md-0 py-lg-2" id="question-content-wrapper">
             <div id="question-content" dangerouslySetInnerHTML={{__html: props.question.html}}/>
+            <div>
+                {(()=> {
+                    switch (props.question.type) {
+                        case "MCQ": return <MCQ/>;
+                        case "RC": return <MCQ/>;
+                    }
+                })()
+                }
+            </div>
+
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ResendActivationMailApi} from "../../_Api/User";
+import {resendActivationMailApi} from "../../_Api/User";
 import {toast} from 'react-toastify';
 import {ResendActivationForm} from "./ResendActivationForm";
 import {history} from "../../__internals/CustomHistory";
@@ -22,7 +22,7 @@ class ResendActivationContainer extends React.Component {
     onSubmitCallback(values, {setSubmitting, setErrors}) {
 
 
-        ResendActivationMailApi(values.email, values.recaptcha).then(() => {
+        resendActivationMailApi(values.email, values.recaptcha).then(() => {
 
             toast.success("Email Successfully Resent!");
             history.push("/login");

@@ -10,7 +10,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {addUserAC} from './ActionCreators/User-ActionCreator'
 
 import userReducer from '_Redux/reducers/User-Reducers'
-import {GetUserDetailsApi} from "../_Api/User";
+import {getUserDetailsApi} from "../_Api/User";
 import {testReducer} from "./reducers/Tests/Test-Reducers";
 
 
@@ -40,7 +40,7 @@ function initStore() {
     const store = createStore(combined, middleware);
 
 
-    GetUserDetailsApi().then(({data}) => {
+    getUserDetailsApi().then(({data}) => {
             store.dispatch(addUserAC(data));
         }
     ).catch(() => {

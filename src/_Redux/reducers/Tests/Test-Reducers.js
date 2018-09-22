@@ -70,7 +70,7 @@ import {
     SECTION_PUSH_DETAILS,
     SECTION_UPDATE_CURRENT,
     TEST_PUSH_ATTEMPTS,
-    TEST_PUSH_DETAILS,
+    TEST_PUSH_DETAILS, TEST_UNDO_CHOICE_ATTEMPTS, TEST_UPDATE_CHOICE_ATTEMPTS,
 } from "../../actions/test";
 
 
@@ -102,10 +102,61 @@ function testReducer(state = defaultState, action) {
             return _pushTestDetails(state, action);
         case SECTION_UPDATE_CURRENT:
             return _changeCurrentSection(state, action);
+
+        case TEST_UPDATE_CHOICE_ATTEMPTS:
+            return updateTestAttemptChoice(state, action);
+
+        case TEST_UNDO_CHOICE_ATTEMPTS:
+            return undoTestAttemptChoice(state);
         default :
             return state;
     }
 
+}
+
+// TEST ATTEMPTS
+// TODO: this file is getting large, should we break it down into different files?
+
+/**
+ *
+ * @param state
+ * @param choiceID
+ * @returns {{questionsByID: {}}}
+ */
+function updateTestAttemptChoice(state, {choiceID}) {
+
+    const question = state.currentQuestion;
+
+    return {...state,
+        questionsByID: {
+            ...state.questionsByID,
+                [question]: {
+                    ...state.questionsByID[question],
+                    choice_id: choiceID
+                }
+
+        }
+    }
+
+
+}
+
+// TODO: THIS ISNT WORKING!!!!!
+/**
+ * undo the test attempt by reverting to the previous state.
+ * @param state
+ * @returns {{past: *, present: *, future: *[]}}
+ */
+function undoTestAttemptChoice(state) {
+    const {past, present, future} = state;
+    const previous = past[past.length -1]
+    const newPast = past.slice(0, past.length -1)
+
+    return {
+        past: newPast,
+        present: previous,
+        future: [present, ...future]
+    }
 }
 
 
