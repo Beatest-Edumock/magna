@@ -1,5 +1,5 @@
 import {QUESTION_PUSH_DETAILS} from "../../actions/test";
-import {GetQuestionDetailsAPI} from "../../../_Api/Tests/Sections/Questions/Questions";
+import {getQuestionDetailsAPI} from "../../../_Api/Tests/Sections/Questions/Questions";
 import {QUESTION_UPDATE_CURRENT} from "../../actions/test";
 
 /**
@@ -43,7 +43,7 @@ function _fetchAndPushQuestionDetailsAsyncAC(questionID) {
         const section_id = question.section_id;
 
 
-        GetQuestionDetailsAPI(test_id, section_id, questionID).then(({data}) => {
+        getQuestionDetailsAPI(test_id, section_id, questionID).then(({data}) => {
             dispatch(_pushQuestionDetailsAC(data));
 
         });

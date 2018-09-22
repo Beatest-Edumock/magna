@@ -1,5 +1,5 @@
 import React from 'react';
-import {ContactUsApi} from "../../../_Api/Misc";
+import {contactUsApi} from "../../../_Api/Misc";
 import {toast} from 'react-toastify';
 import {ContactUsForm} from "./ContactUsForm";
 
@@ -24,7 +24,7 @@ class ContactUsContainer extends React.Component {
     onSubmitCallback(values, {setSubmitting, setErrors}) {
 
 
-        ContactUsApi(values.name, values.email, values.message, values.recaptcha).then(() => {
+        contactUsApi(values.name, values.email, values.message, values.recaptcha).then(() => {
 
             toast.success("Your Message was Successfully Sent!");
 

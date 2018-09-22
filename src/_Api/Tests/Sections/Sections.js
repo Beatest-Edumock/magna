@@ -1,8 +1,8 @@
 import {testFramAxios} from "../Axios";
 
 
-function GetSections(testID) {
+function getSections(testID) {
     return testFramAxios.get(`/tests/${testID}/sections`);
 }
 
-export {GetSections}
+export {getSections}

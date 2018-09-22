@@ -5,8 +5,8 @@
 // Imports
 import React, {Component} from 'react'
 import {DisplayInstructionUI} from "./DisplayInstructionUI";
-import {GetTestDetailsAPI} from "../../../_Api/Tests/Tests";
-import {StartTestAPI} from "../../../_Api/Tests/TestAttempts";
+import {getTestDetailsAPI} from "../../../_Api/Tests/Tests";
+import {startTestAPI} from "../../../_Api/Tests/TestAttempts";
 import {history} from "../../../__internals/CustomHistory";
 import PropTypes from 'prop-types';
 
@@ -33,7 +33,7 @@ class DisplayInstructionContainer extends Component {
     startTestHandelClick() {
         this.setState({...this.state, instructions: ''});
 
-        StartTestAPI(this.props.testID)
+        startTestAPI(this.props.testID)
             .then(() => {
 
                 // user should not be able to go 'back'
@@ -46,7 +46,7 @@ class DisplayInstructionContainer extends Component {
     };
 
     componentDidMount() {
-        GetTestDetailsAPI(this.props.testID)
+        getTestDetailsAPI(this.props.testID)
             .then(({data}) => {
                 const instructions = data.instruction_html;
                 const test_title = data.name;

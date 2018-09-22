@@ -2,21 +2,21 @@
 //
 
 import axios from 'axios';
-import {GeTestAttempt} from "./TestAttempts";
-import {GetSections} from "./Sections/Sections";
+import {geTestAttempt} from "./TestAttempts";
+import {getSections} from "./Sections/Sections";
 
-function GetTestGroupAPI(testID) {
+function getTestGroupAPI(testID) {
     return axios.all(
-        [GetTestDetailsAPI(testID), GetSections(testID), GeTestAttempt(testID)]
+        [getTestDetailsAPI(testID), getSections(testID), geTestAttempt(testID)]
     )
 }
 
-function GetTestDetailsAPI(testID) {
+function getTestDetailsAPI(testID) {
     return axios.get('/tests/' + testID);
 }
 
-function GetTestsListAPI(testType) {
+function getTestsListAPI(testType) {
     return axios.get('/tests?type=' + testType);
 }
 
-export {GetTestDetailsAPI, GetTestGroupAPI,GetTestsListAPI}
+export {getTestDetailsAPI, getTestGroupAPI,getTestsListAPI}

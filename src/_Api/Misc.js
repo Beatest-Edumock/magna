@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-function ContactUsApi(name,email,message,recaptcha) {
+function contactUsApi(name, email, message, recaptcha) {
     return axios.post('/misc/contact_us', {
         name,
         email,
@@ -10,4 +10,4 @@ function ContactUsApi(name,email,message,recaptcha) {
     });
 }
 
-export {ContactUsApi}
+export {contactUsApi}

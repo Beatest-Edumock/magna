@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {_pushSectionDetailsAC, setUpTestAsyncAC} from "../../_Redux/ActionCreators/Test/Test-ActionCreator";
-import {GetTestGroupAPI} from "../../_Api/Tests/Tests";
+import {getTestGroupAPI} from "../../_Api/Tests/Tests";
 import {ExamPageUI} from "./ExamUI";
 import axios from 'axios'
 import {_fetchAndPushQuestionDetailsAsyncAC} from "../../_Redux/ActionCreators/Test/Questions-ActionCreator";
@@ -12,7 +12,7 @@ class ExamPageContainer extends React.Component {
         const {testID} = this.props.match.params;
 
 
-        GetTestGroupAPI(testID).then(
+        getTestGroupAPI(testID).then(
             axios.spread((testDetails, sectionDetails, testAttemptDetails) => {
 
                 this.props.setupTestStore(testDetails.data, sectionDetails.data, testAttemptDetails.data)

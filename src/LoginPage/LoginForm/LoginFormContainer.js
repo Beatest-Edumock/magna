@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {addUserAC} from '_Redux/ActionCreators/User-ActionCreator'
 import {LoginForm} from './LoginForm'
-import {LoginUserApi} from "../../_Api/User";
+import {loginUserApi} from "../../_Api/User";
 import {toast} from 'react-toastify';
 import {history} from "../../__internals/CustomHistory";
 
@@ -16,7 +16,7 @@ class LoginFormContainer extends React.Component {
 
     onSubmitCallback(values, {setSubmitting, setErrors}) {
 
-        LoginUserApi(values.email, values.password).then(({data}) => {
+        loginUserApi(values.email, values.password).then(({data}) => {
 
             this.props.addUserAction(data);
             if (this.props.shouldAutoDirect!=false) {
