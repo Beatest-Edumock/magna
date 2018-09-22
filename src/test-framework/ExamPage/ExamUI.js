@@ -4,6 +4,7 @@ import {SectionsGroup} from "./components/Section/SectionsGroupContainer";
 import {QuestionContent} from "./components/QuestionContent";
 import PropTypes from 'prop-types';
 import {QuestionPalette} from "./components/QuestionPalette"
+import {Pinger} from "./components/Pinger";
 
 class ExamPageUI extends React.Component {
 
@@ -19,6 +20,11 @@ class ExamPageUI extends React.Component {
                             <SectionsGroup/>
                         </div>
 
+                        <div className="col-lg-2 align-items-center justify-content-center d-flex  py-3 py-lg-0 order-first  order-lg-last">
+                            <Pinger/>
+
+                        </div>
+
                     </div>
 
                     <div className="row">
@@ -27,7 +33,7 @@ class ExamPageUI extends React.Component {
                             <QuestionContent/>
 
                         </div>
-                        <div className='col-lg-2    '>
+                        <div className='col-lg-2 '>
                             <QuestionPalette/>
                         </div>
                     </div>

@@ -25,7 +25,7 @@ class ExamPageContainer extends React.Component {
 
     render() {
 
-        return <ExamPageUI loading={this.props.loadingCount > 0}/>
+        return <ExamPageUI loading={this.props.loadingCount > 0 || this.props.user == null}/>
 
     }
 }
@@ -33,7 +33,8 @@ class ExamPageContainer extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        loadingCount: state.test.loadingCount
+        loadingCount: state.test.loadingCount,
+        user: state.user
     }
 
 }
