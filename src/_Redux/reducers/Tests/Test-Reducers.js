@@ -106,8 +106,9 @@ function testReducer(state = defaultState, action) {
         case TEST_UPDATE_CHOICE_ATTEMPTS:
             return updateTestAttemptChoice(state, action);
 
-        case TEST_UNDO_CHOICE_ATTEMPTS:
-            return undoTestAttemptChoice(state);
+        // TODO khant remove after review.
+        // case TEST_UNDO_CHOICE_ATTEMPTS:
+        //     return undoTestAttemptChoice(state);
         default :
             return state;
     }
@@ -116,6 +117,7 @@ function testReducer(state = defaultState, action) {
 
 // TEST ATTEMPTS
 // TODO: this file is getting large, should we break it down into different files?
+// FIXME YES
 
 /**
  *
@@ -127,13 +129,14 @@ function updateTestAttemptChoice(state, {choiceID}) {
 
     const question = state.currentQuestion;
 
-    return {...state,
+    return {
+        ...state,
         questionsByID: {
             ...state.questionsByID,
-                [question]: {
-                    ...state.questionsByID[question],
-                    choice_id: choiceID
-                }
+            [question]: {
+                ...state.questionsByID[question],
+                choice_id: choiceID
+            }
 
         }
     }
@@ -141,23 +144,24 @@ function updateTestAttemptChoice(state, {choiceID}) {
 
 }
 
-// TODO: THIS ISNT WORKING!!!!!
+// TODO: THIS ISNT WORKING!!!!! NO NEED FOR THIS. The same action can be dispatched
+//
 /**
  * undo the test attempt by reverting to the previous state.
  * @param state
  * @returns {{past: *, present: *, future: *[]}}
  */
-function undoTestAttemptChoice(state) {
-    const {past, present, future} = state;
-    const previous = past[past.length -1]
-    const newPast = past.slice(0, past.length -1)
-
-    return {
-        past: newPast,
-        present: previous,
-        future: [present, ...future]
-    }
-}
+// function undoTestAttemptChoice(state) {
+//     const {past, present, future} = state;
+//     const previous = past[past.length -1]
+//     const newPast = past.slice(0, past.length -1)
+//
+//     return {
+//         past: newPast,
+//         present: previous,
+//         future: [present, ...future]
+//     }
+// }
 
 
 /**
