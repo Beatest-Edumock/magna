@@ -6,7 +6,7 @@ function QuestionPaletteUI(props) {
 
     return (
         <div className=''>
-            <div className='row text-center justify-content-center'>
+            <div className='row text-center justify-content-center d-flex no-gutters flex-wrap'>
 
                 {
                     props.questions.map((questionID, idx) =>

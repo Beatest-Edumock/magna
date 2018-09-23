@@ -38,6 +38,7 @@ class Pinger extends React.Component {
         };
 
         this.interval = setInterval(this.tick, 1000);
+        this.tickCount = 0;
 
     }
 
