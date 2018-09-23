@@ -144,25 +144,6 @@ function updateTestAttemptChoice(state, {choiceID}) {
 
 }
 
-// TODO: THIS ISNT WORKING!!!!! NO NEED FOR THIS. The same action can be dispatched
-//
-/**
- * undo the test attempt by reverting to the previous state.
- * @param state
- * @returns {{past: *, present: *, future: *[]}}
- */
-// function undoTestAttemptChoice(state) {
-//     const {past, present, future} = state;
-//     const previous = past[past.length -1]
-//     const newPast = past.slice(0, past.length -1)
-//
-//     return {
-//         past: newPast,
-//         present: previous,
-//         future: [present, ...future]
-//     }
-// }
-
 
 /**
  * change the current section
