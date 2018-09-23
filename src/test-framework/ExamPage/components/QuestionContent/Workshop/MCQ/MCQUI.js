@@ -15,7 +15,7 @@ function MCQUI(props) {
                 console.log(choice.id + " : " + props.currentChoice + " -> " +shouldChecked);
                 return (
                     <div className="card">
-                <div className="card-body">
+                <div className="card-body mx-2">
                 <input className="form-check-input" name="choiceRadio" type="radio"
                        onChange={()=>props.mcqCallback(choice.id)}
                        id={choice.id} checked={shouldChecked}/>

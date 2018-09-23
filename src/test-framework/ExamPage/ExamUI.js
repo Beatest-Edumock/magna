@@ -29,7 +29,7 @@ class ExamPageUI extends React.Component {
 
                     <div className="row">
 
-                        <div className="col-lg-10 card p-3 py-sm-0 m-sm-3 m-md-0">
+                        <div className="col-lg-10 p-3 py-sm-0 m-sm-3 m-md-0">
                             <QuestionContent/>
 
                         </div>
