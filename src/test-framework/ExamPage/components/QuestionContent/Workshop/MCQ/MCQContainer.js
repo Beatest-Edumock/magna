@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {MCQUI} from "./MCQUI";
 import {connect} from  'react-redux';
-import {updateQuestionAttemptChoiceAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
+import {updateQuestionAttemptAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
 
 class MCQContainer extends Component{
 
@@ -35,7 +35,7 @@ class MCQContainer extends Component{
 function mapDispatchToProps(dispatch) {
     return {
         updateQuestionAttempt: (choiceId) => {
-            dispatch(updateQuestionAttemptChoiceAsyncAC(choiceId));
+            dispatch(updateQuestionAttemptAsyncAC({"choice_id": choiceId}));
         }
     }
 

@@ -128,17 +128,16 @@ function testReducer(state = defaultState, action) {
  * @param choiceID
  * @returns {{questionsByID: {}}}
  */
-function updateTestAttemptChoice(state, {choiceID}) {
+function updateTestAttemptChoice(state, action) {
 
     const question = state.currentQuestion;
-
     return {
         ...state,
         questionsByID: {
             ...state.questionsByID,
             [question]: {
                 ...state.questionsByID[question],
-                choice_id: choiceID
+                ...action.changes
             }
 
         }
