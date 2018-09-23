@@ -4,6 +4,7 @@ import {LoadingSpinner} from "../../LoadingSpinner";
 import PropTypes from 'prop-types';
 import {MCQ} from "./Workshop/MCQ/MCQContainer";
 import {RC} from "./Workshop/RC/RCContainer";
+import {QuestionStateButton} from "../QuestionButtonsGroup/QuestionStateButtonContainer";
 
 function QuestionContentUI(props) {
 
@@ -23,7 +24,11 @@ function QuestionContentUI(props) {
                     }
                 })()
                 }
+                <div><QuestionStateButton type="CA"/></div>
+                <div><QuestionStateButton type="MR"/></div>
+
             </div>
+
 
         </div>
     );

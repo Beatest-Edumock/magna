@@ -1,13 +1,13 @@
 import {TEST_PUSH_ATTEMPTS, TEST_UPDATE_CHOICE_ATTEMPTS, TEST_UNDO_CHOICE_ATTEMPTS} from "../../actions/test";
-import {updateQuestionAttemptChoiceAPI} from "../../../_Api/Tests/TestAttempts";
+import {updateQuestionAttemptAPI} from "../../../_Api/Tests/TestAttempts";
 
 function pushTestAttemptAC(testAttempt) {
     return {type: TEST_PUSH_ATTEMPTS, testAttempt}
 }
 
 
-function _updateTestAttemptChoiceAC(choiceID) {
-    return {type: TEST_UPDATE_CHOICE_ATTEMPTS, choiceID}
+function _updateTestAttemptChoiceAC(changes) {
+    return {type: TEST_UPDATE_CHOICE_ATTEMPTS, changes}
 }
 
 // TODO Khant review and remove
@@ -24,9 +24,9 @@ function _updateTestAttemptChoiceAC(choiceID) {
  * If the request fails for some reason, the choice is reverted to the
  * original value
  *
- * @param choiceID
+ * @param change an object to update the question attempt
  */
-function updateQuestionAttemptChoiceAsyncAC(choiceID) {
+function updateQuestionAttemptAsyncAC(changes) {
     return (dispatch, getState) => {
 
         const state = getState();
@@ -35,9 +35,9 @@ function updateQuestionAttemptChoiceAsyncAC(choiceID) {
         const questionID = state.test.currentQuestion;
         const originalChoiceID = state.test.questionsByID[questionID].choice_id;
 
-        dispatch(_updateTestAttemptChoiceAC(choiceID));
+        dispatch(_updateTestAttemptChoiceAC(changes));
 
-        updateQuestionAttemptChoiceAPI(testID, sectionID, questionID, choiceID)
+        updateQuestionAttemptAPI(testID, sectionID, questionID, changes)
             .catch(() => {
                     dispatch(_updateTestAttemptChoiceAC(originalChoiceID));
                 }
@@ -47,4 +47,4 @@ function updateQuestionAttemptChoiceAsyncAC(choiceID) {
 
 }
 
-export {pushTestAttemptAC, updateQuestionAttemptChoiceAsyncAC};
+export {pushTestAttemptAC, updateQuestionAttemptAsyncAC};
