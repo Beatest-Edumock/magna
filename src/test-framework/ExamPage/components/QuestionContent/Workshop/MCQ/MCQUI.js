@@ -5,7 +5,7 @@ function MCQUI(props) {
 
     return (
 
-        <div>
+        <div className="">
             <div dangerouslySetInnerHTML={{__html: props.questionHtml}}/>
             <div className='form-check'>
                 {

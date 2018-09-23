@@ -13,7 +13,7 @@ function QuestionContentUI(props) {
 
 
     return (
-        <div className="my-5 my-md-0 py-lg-2" id="question-content-wrapper">
+        <div className="my-5 my-md-0 py-lg-2 " >
             <div>
                 {(()=> {
                     switch (props.question.type) {
