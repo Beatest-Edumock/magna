@@ -21,7 +21,7 @@ class ExamPageUI extends React.Component {
                             <SectionsGroup/>
                         </div>
 
-                        <div className="col-lg-2 align-items-center justify-content-center d-flex  py-3 py-lg-0 order-first  order-lg-last">
+                        <div className="sticky-top bg-white col-lg-2 align-items-center justify-content-center d-flex  py-3 py-lg-0 order-first  order-lg-last">
                             <Pinger/>
 
                         </div>

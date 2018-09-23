@@ -2386,6 +2386,12 @@
 /*Small devices (landscape phones, 576px and up)*/
 
 @media (min-width: 576px) {
+    .h-60vh-sm-scroll {
+        height: 60vh;
+        max-height: 60vh;
+        overflow-y: auto;
+
+    }
 
 }
 
