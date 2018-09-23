@@ -13,12 +13,12 @@ function QuestionContentUI(props) {
 
     return (
         <div className="my-5 my-md-0 py-lg-2" id="question-content-wrapper">
-            <div id="question-content" dangerouslySetInnerHTML={{__html: props.question.html}}/>
             <div>
                 {(()=> {
                     switch (props.question.type) {
-                        case "MCQ": return <MCQ/>;
-                        case "RC": return <MCQ/>;
+                        case "MCQ": return <MCQ question={props.question}/>;
+                        case "RC": return <MCQ question={props.question}/>;
+                        case "TITA": return <h1>TITA</h1>;
                     }
                 })()
                 }

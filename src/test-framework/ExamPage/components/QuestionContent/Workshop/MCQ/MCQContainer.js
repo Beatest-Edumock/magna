@@ -22,9 +22,10 @@ class MCQContainer extends Component{
 
     render() {
         return(
-            <MCQUI choices={this.props.choices}
+            <MCQUI choices={this.props.question.choices}
                    mcqCallback={this.mcqChoiceSubmit}
-                   currentChoice={this.props.chosenID}/>
+                   questionHtml={this.props.question.html}
+                   currentChoice={this.props.question.choice_id}/>
         )
     }
 
@@ -40,14 +41,7 @@ function mapDispatchToProps(dispatch) {
 
 }
 
-function mapStatesToProps(state) {
 
-    return {
-        choices: state.test.questionsByID[state.test.currentQuestion].choices,
-        chosenID: state.test.questionsByID[state.test.currentQuestion].choice_id
-    }
 
-}
-
-const MCQ = connect(mapStatesToProps, mapDispatchToProps)(MCQContainer);
+const MCQ = connect(null, mapDispatchToProps)(MCQContainer);
 export {MCQ}
