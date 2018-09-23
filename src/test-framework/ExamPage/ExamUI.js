@@ -5,6 +5,7 @@ import {QuestionContent} from "./components/QuestionContent";
 import PropTypes from 'prop-types';
 import {QuestionPalette} from "./components/QuestionPalette"
 import {Pinger} from "./components/Pinger";
+import {ErrorModal} from "./components/ErrorModal";
 
 class ExamPageUI extends React.Component {
 
@@ -37,6 +38,8 @@ class ExamPageUI extends React.Component {
                             <QuestionPalette/>
                         </div>
                     </div>
+
+                    <ErrorModal/>
                 </div>
 
             );

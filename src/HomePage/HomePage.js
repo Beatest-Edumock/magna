@@ -67,7 +67,7 @@ class HomePage extends React.Component {
         <div>
 
             <NavBarWithButtonsContainer/>
-            <App />
+            {/*<App />*/}
 
 
             <div>

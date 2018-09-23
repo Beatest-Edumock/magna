@@ -70,13 +70,13 @@ import {
     SECTION_PUSH_DETAILS,
     SECTION_UPDATE_CURRENT,
     TEST_PUSH_ATTEMPTS,
-    TEST_PUSH_DETAILS, TEST_UNDO_CHOICE_ATTEMPTS, TEST_UPDATE_CHOICE_ATTEMPTS,
+    TEST_PUSH_DETAILS, TEST_PUSH_ERROR, TEST_UNDO_CHOICE_ATTEMPTS, TEST_UPDATE_CHOICE_ATTEMPTS,
 } from "../../actions/test";
 
 
 const defaultState = {
     loadingCount: 1, // initially start with loading state
-    fatalError: {message: ""}
+    error: null
 
 };
 
@@ -105,6 +105,9 @@ function testReducer(state = defaultState, action) {
 
         case TEST_UPDATE_CHOICE_ATTEMPTS:
             return updateTestAttemptChoice(state, action);
+
+        case TEST_PUSH_ERROR:
+            return pushError(state, action);
 
         // TODO khant remove after review.
         // case TEST_UNDO_CHOICE_ATTEMPTS:
@@ -433,6 +436,19 @@ function _pushQuestionDetails(state, {questionDetails}) {
         }
     }
 
+}
+
+
+function pushError(state, {errorDetails}) {
+
+    return {
+        ...state,
+        error: {
+            ...errorDetails,
+
+        }
+
+    }
 }
 
 export {testReducer};

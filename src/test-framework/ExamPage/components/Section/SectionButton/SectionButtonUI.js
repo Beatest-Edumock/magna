@@ -8,7 +8,7 @@ function SectionButtonUI(props) {
 
             <button id={`section-button-${props.sectionID}`}
                     disabled={props.disabled}
-                    className={` offset-md-2 col-md-8 col-lg-3 btn py-3 rounded-0 rounded mx-1 my-2  ${disabled}`}
+                    className={` offset-md-2  col-md-8 col-lg-3 btn py-3 rounded-0 rounded mx-1 my-2  ${disabled}`}
                     onClick={()=>props.sectionCallBack(props.sectionID)}>
                 {props.sectionName}
             </button>

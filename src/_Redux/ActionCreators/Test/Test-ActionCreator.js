@@ -1,4 +1,4 @@
-import {DECREMENT_LOADING, INCREMENT_LOADING, TEST_PUSH_DETAILS} from "../../actions/test";
+import {DECREMENT_LOADING, INCREMENT_LOADING, TEST_PUSH_DETAILS, TEST_PUSH_ERROR} from "../../actions/test";
 import {pushTestAttemptAC} from "./TestAttempt-ActionCreators";
 import {_pushSectionDetailsAC} from "./Sections-ActionCreator";
 import {changeCurrentSectionAsyncAC} from "./Sections-ActionCreator";
@@ -20,6 +20,12 @@ function _pushTestDetailsAC(testDetails) {
 
 }
 
+function pushError(text, isFatal) {
+
+    return {type: TEST_PUSH_ERROR, errorDetails: {text, isFatal}}
+
+}
+
 
 /**
  * Set up Test details, Section Details and the  Test Attempt.
@@ -38,7 +44,7 @@ function _pushTestDetailsAC(testDetails) {
 function setUpTestAsyncAC(testDetails, sectionList, testAttempt) {
 
 
-    return function (dispatch,getState) {
+    return function (dispatch, getState) {
 
         dispatch(_pushTestDetailsAC(testDetails));
         dispatch(_pushSectionDetailsAC(sectionList));
@@ -57,4 +63,4 @@ function setUpTestAsyncAC(testDetails, sectionList, testAttempt) {
 
 }
 
-export {incrementLoadingAC, decrementLoadingAC, _pushTestDetailsAC, setUpTestAsyncAC};
+export {incrementLoadingAC, decrementLoadingAC, _pushTestDetailsAC, setUpTestAsyncAC, pushError};

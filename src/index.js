@@ -50,3 +50,4 @@ ReactDOM.render(App,
 );
 
 
+export {store};

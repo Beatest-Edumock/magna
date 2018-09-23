@@ -4,8 +4,8 @@ import {SectionButton} from "./SectionButton/SectionButtonContainer";
 function SectionsGroupUI(props) {
 
     return (
-        <div className="container-fluid">
-            <div className="row justify-content-center">
+        <div className="container-fluid my-2">
+            <div className="row justify-content-center ">
                 {
                     props.sections.map((section) => {
                             return (
