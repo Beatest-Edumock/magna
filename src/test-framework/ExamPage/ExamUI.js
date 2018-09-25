@@ -38,16 +38,20 @@ class ExamPageUI extends React.Component {
                         <div className="col-lg-10 p-3 py-sm-0 m-sm-3 m-md-0">
                             <QuestionContent/>
 
-                            <div className="row ">
+                            <div className="container-fluid">
+                                <div className="row ">
 
-                                <div class="col-12 col-md-2 my-2">
-                                    <MarkForReviewButton/>
+                                    <div class="col-12 col-md-3 my-2 ">
+                                        <MarkForReviewButton/>
+                                    </div>
+
+
+                                    <div class="col-12 col-md-3 my-2 ml-md-auto">
+                                        <ClearResponseButton/>
+                                    </div>
+
+
                                 </div>
-
-                                <div class="col-12 col-md-2 my-2">
-                                    <ClearResponseButton/>
-                                </div>
-
                             </div>
 
                         </div>

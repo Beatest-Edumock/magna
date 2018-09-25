@@ -20,8 +20,16 @@ function startTestAPI(testID) {
  * @returns {AxiosPromise<any> | IDBRequest | Promise<void>}
  */
 function updateQuestionAttemptAPI(testID, sectionID, questionID, change) {
-    console.log("data: " + change);
-    return testFramAxios.put(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts`,change)
+
+    Object.keys(change).map((key) => {
+
+        if (change[key] == null) {
+            change[key] = "--None--" //FIXME BACKEND BUG Read docs!!!!!
+        }
+
+    });
+
+    return testFramAxios.put(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts`, change)
 }
 
 export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI}
