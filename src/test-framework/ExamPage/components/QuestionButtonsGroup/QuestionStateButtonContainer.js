@@ -3,8 +3,8 @@ import connect from "react-redux/es/connect/connect"
 import {QuestionStateButtonUI} from "./QuestionStateButtonUI";
 import {
     setCurrentQuestionChoiceIDAsyncAC,
-    setCurrentQuestionToReviewAsyncAC, setCurrentQuestionToSeenAsyncAC,
-    updateQuestionAttemptAsyncAC
+    setCurrentQuestionToReviewAsyncAC,
+    setCurrentQuestionToSeenAsyncAC
 } from "../../../../_Redux/ActionCreators/Test/QuestionAttempt-ActionCreator";
 
 class QuestionStateButtonContainer extends Component {
@@ -12,9 +12,6 @@ class QuestionStateButtonContainer extends Component {
     constructor(props) {
         super(props);
         this.questionClickHandler = this.questionButtonClickHandler.bind(this);
-        this.state = {
-            type: this.props.type
-        }
 
     }
 
@@ -24,29 +21,29 @@ class QuestionStateButtonContainer extends Component {
     // MR: Mark For Review
     // RR: Remove Review
     questionButtonClickHandler() {
-        switch (this.state.type) {
-            case "CA":
-                this.props.clearQuestionChoice();
-                break;
-            case "MR":
-                this.props.markForReview();
-                this.setState({type: "RR"})
-                break;
-            case "RR":
-                this.props.removeMarkForReview()
-                this.setState({type: "MR"})
-
-
-        }
     }
 
 
     render() {
-        return <QuestionStateButtonUI questionCallBack={this.questionClickHandler} type={this.state.type}/>
+        return <QuestionStateButtonUI
+            questionCallBack={this.questionClickHandler}
+            type={this.state.type}/>
     }
 
 
 }
+
+function mapStateToProps(state, ownProps) {
+
+    const currentQuestion = state.test.questionsByID[state.test.currentQuestion];
+
+    return {
+        marked: currentQuestion.attempt_status === "marked",
+        attempted: currentQuestion.choice_id !== null || currentQuestion.tita_choice !== null
+
+    }
+}
+
 
 function mapDispatchToProps(dispatch) {
 

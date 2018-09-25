@@ -70,7 +70,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://trident.beatest.in"
+      "target": "http://localhost:5000"
     }
   }
 }
