@@ -1,8 +1,7 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
-import {faCogs, faUserTie, faBinoculars, faHeadphones, faWindowMaximize, faSpinner, faCodeBranch, faMicrochip, faUsers} from '@fortawesome/free-solid-svg-icons'
+import {faBinoculars, faCogs, faHeadphones, faUsers, faUserTie, faWindowMaximize} from '@fortawesome/free-solid-svg-icons'
 import {faAddressBook} from '@fortawesome/free-regular-svg-icons'
-import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
 import {Container} from 'reactstrap'
 
 

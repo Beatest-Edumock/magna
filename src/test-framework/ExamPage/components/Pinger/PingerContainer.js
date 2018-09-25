@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {PingerUI} from "./PingerUI";
+import {pingAPI} from "../../../../_Api/Tests/TestAttempts";
+import {changeCurrentSectionAsyncAC, markCurrentSectionCompleteAC} from "../../../../_Redux/ActionCreators/Test/Sections/Sections-ActionCreator";
 
 /**
  * Orchestrate the Ping process.
@@ -26,6 +28,35 @@ class Pinger extends React.Component {
             return {timeLeft: state.timeLeft - 1}
 
         });
+
+
+        if (this.tickCount > 0 && this.tickCount % 5 === 0) {
+            pingAPI(this.props.testID, this.props.currentSectionID, this.props.currentQuestionID);
+
+        }
+
+
+        const timeLeft = this.state.timeLeft;
+
+        if (timeLeft <= 0) {
+            let sections = this.props.sections;
+
+            sections = Object.keys(sections).sort();
+
+
+            this.props.markCurrentSectionComplete();
+            this.props.changeCurrentSection(Object.keys(sections).indexOf(this.props.currentSectionID) + 1);
+
+            this.setState((state, props) => {
+                return {timeLeft: this.props.timeLeft}
+
+            });
+
+
+        }
+
+
+        this.tickCount++;
 
     }
 
@@ -54,7 +85,7 @@ function mapStateToProps(state, ownProps) {
 
     let timeLeft = 0;
 
-    // TODO change hardcoded "CAT" after db update
+    // FIXME change hardcoded "CAT" after db update
 
     if (state.test.type === "CAT") {
 
@@ -80,11 +111,31 @@ function mapStateToProps(state, ownProps) {
 
     return {
         timeLeft,
-        user: state.user
+        user: state.user,
+        testID: state.test.id,
+        currentSectionID: state.test.currentSection,
+        currentQuestionID: state.test.currentQuestion,
+        sections: state.test.sectionsByID
+
     };
 
 }
 
-export const PingerContainer = connect(mapStateToProps)(Pinger);
+function mapDispatchToProps(dispatch) {
+
+    return {
+        changeCurrentSection: (sectionID) => {
+            dispatch(changeCurrentSectionAsyncAC(sectionID))
+        },
+        markCurrentSectionComplete: () => {
+            dispatch(markCurrentSectionCompleteAC());
+
+        }
+    }
+
+
+}
+
+export const PingerContainer = connect(mapStateToProps, mapDispatchToProps)(Pinger);
 
 

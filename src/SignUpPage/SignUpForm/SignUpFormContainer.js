@@ -15,7 +15,7 @@ class SignUpFormContainer extends React.Component {
         this.values = null;
 
 
-        this.state = {colleges: new Array()};
+        this.state = {colleges: []};
     }
 
     registerRecaptchaInstanceCallback(e) {

@@ -6,10 +6,7 @@ import PropTypes from 'prop-types';
 import {QuestionPalette} from "./components/QuestionPalette"
 import {Pinger} from "./components/Pinger";
 import {ErrorModal} from "./components/ErrorModal";
-import {QuestionStateButton} from "./components/QuestionButtonsGroup/QuestionStateButtonContainer";
-import {ClearResponseButtonUI} from "./components/QuestionButtonsGroup/ClearResponseButton/ClearResponseButtonUI";
 import {ClearResponseButton} from "./components/QuestionButtonsGroup/ClearResponseButton";
-import {MarkForReviewButtonUI} from "./components/QuestionButtonsGroup/MarkForReviewButton/MarkForReviewButtonUI";
 import {MarkForReviewButton} from "./components/QuestionButtonsGroup/MarkForReviewButton";
 
 class ExamPageUI extends React.Component {

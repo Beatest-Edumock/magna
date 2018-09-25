@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {SectionsGroupUI} from "./SectionsGroupUI";
 import connect from "react-redux/es/connect/connect";
+
 // import {changeCurrentSectionAsyncAC} from "../../../../_Redux/ActionCreators/Test/Sections-ActionCreator";
 
 class SectionsGroupContainer extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     render() {
 

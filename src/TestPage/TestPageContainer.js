@@ -1,7 +1,6 @@
 import React from 'react';
 import {getTestsListAPI} from "../_Api/Tests/Tests";
 import {TestPage} from "./TestPage";
-import axios from 'axios';
 import {connect} from 'react-redux';
 
 

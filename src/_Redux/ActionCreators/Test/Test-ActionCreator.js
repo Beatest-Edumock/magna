@@ -1,7 +1,6 @@
 import {DECREMENT_LOADING, INCREMENT_LOADING, TEST_PUSH_DETAILS, TEST_PUSH_ERROR} from "../../actions/test";
 import {pushTestAttemptAC} from "./TestAttempt-ActionCreators";
-import {_pushSectionDetailsAC} from "./Sections/Sections-ActionCreator";
-import {changeCurrentSectionAsyncAC} from "./Sections/Sections-ActionCreator";
+import {_pushSectionDetailsAC, changeCurrentSectionAsyncAC} from "./Sections/Sections-ActionCreator";
 
 
 function incrementLoadingAC() {

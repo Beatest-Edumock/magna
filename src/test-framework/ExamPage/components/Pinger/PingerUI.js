@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import {toast} from 'react-toastify';
 
 
 /**
@@ -14,6 +15,12 @@ import PropTypes from 'prop-types';
 function PingerUI(props) {
 
     let borderColor = props.timeLeft < 600 ? "border-danger" : "border-dark";
+
+    if (props.timeLeft === 1233) {
+        toast.error("10 minutes left!");
+
+
+    }
 
 
     return (

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {MCQ} from "../MCQ/MCQContainer";
 
 function RCUI(props) {

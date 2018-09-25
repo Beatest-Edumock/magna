@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 function QuestionStateButtonUI(props) {
 
@@ -19,6 +19,10 @@ function QuestionStateButtonUI(props) {
         case "RR":
             btn_color = "btn-danger";
             btn_text = "Remove Mark";
+            break;
+        default:
+            break;
+
     }
     return (
         <button className={`btn ${btn_color}`} onClick={() => props.questionCallBack()}>

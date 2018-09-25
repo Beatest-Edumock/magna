@@ -23,7 +23,7 @@ class QuestionButton extends Component {
 
         return (
             <QuestionButtonUI id={this.props.id}
-                              html={this.props.questionDetails}
+                              loaded={this.props.questionDetails.html === undefined}
                               questionCallback={this.questionClickHandler}
                               isCurrent={this.props.questionID === this.props.currentQuestion}
                               attempt_status={this.props.questionDetails.attempt_status}

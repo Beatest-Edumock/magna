@@ -1,9 +1,7 @@
 import React from "react";
-import Typed from 'react-typed';
-import config from 'config';
 import 'react-toastify/dist/ReactToastify.css';
-import {Button, Container, Jumbotron, Form, FormGroup, Label, Input, FormText, Row, Col} from 'reactstrap';
-import {NavLink,Link} from 'react-router-dom';
+import {Container, Row} from 'reactstrap';
+import {Link} from 'react-router-dom';
 import {Footer} from '../Layout/Footer/Footer';
 import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 

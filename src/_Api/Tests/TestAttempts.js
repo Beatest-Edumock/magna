@@ -27,6 +27,7 @@ function updateQuestionAttemptAPI(testID, sectionID, questionID, change) {
             change[key] = "--None--" //FIXME BACKEND BUG Read docs!!!!!
         }
 
+        return null;
     });
 
     return testFramAxios.put(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts`, change)

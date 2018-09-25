@@ -167,7 +167,7 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
     questions = questions.map((item) => {
         const section_id = sectionAttemptToSection[item.section_attempt_id];
 
-        return {...item, section_id: parseInt(section_id)} //keys become strings, so force them back to int
+        return {...item, section_id: parseInt(section_id, 10)} //keys become strings, so force them back to int
 
     });
 
@@ -189,7 +189,7 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
     const sortedSectionIds = Object.keys(merged).sort(); // sort sections ids
 
     const firstSectionId = sortedSectionIds.find((item) => {
-        const intItem = parseInt(item);
+        const intItem = parseInt(item, 10);
 
         return merged[intItem].is_complete === false;
     });
@@ -201,7 +201,8 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
 
     const firstQuestion = sortedQuestions.find((item) => {
 
-        return parseInt(questions[item].section_id) === parseInt(firstSectionId);
+
+        return parseInt(questions[item].section_id, 10) === parseInt(firstSectionId, 10);
     });
 
 

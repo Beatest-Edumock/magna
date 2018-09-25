@@ -43,7 +43,8 @@ class NavBar1 extends React.Component {
             <Navbar color={this.state.bgColor} light expand="md" sticky="top" className="shadow py-0 border-dark ">
 
                 <Container>
-                    <NavbarBrand tag={this.props.location.pathname===ROOT_ROUTE() ? 'div' : Link} to={this.props.location.pathname===ROOT_ROUTE() ? "" : ""} active={false}> <img src={this.props.lightLogo ? beatestLogo : beatestDarkLogo} height="45"/> </NavbarBrand>
+                    <NavbarBrand tag={this.props.location.pathname === ROOT_ROUTE() ? 'div' : Link} to={this.props.location.pathname === ROOT_ROUTE() ? "" : ""} active={false}>
+                        <img alt="" src={this.props.lightLogo ? beatestLogo : beatestDarkLogo} height="45"/> </NavbarBrand>
 
                     {!this.props.logoOnly &&
                     <div>

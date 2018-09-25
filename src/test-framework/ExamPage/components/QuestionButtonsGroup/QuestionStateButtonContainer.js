@@ -5,7 +5,7 @@ import {
     setCurrentQuestionChoiceIDAsyncAC,
     setCurrentQuestionToReviewAsyncAC,
     setCurrentQuestionToSeenAsyncAC
-} from "../../../../_Redux/ActionCreators/Test/QuestionAttempt-ActionCreator";
+} from "../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
 
 class QuestionStateButtonContainer extends Component {
 

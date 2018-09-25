@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 
 function QuestionButtonUI(props) {
 
-    let primary = props.isCurrent ? 'btn-primary' : 'btn-outline-primary';
-    primary = props.isCurrent ? 'btn-primary' : 'btn-outline-primary';
 
-    let rounded = "";
+    let rounded = "rounded";
 
-    if (props.html != null) {
+    if (!props.loaded) {
         rounded = "rounded rounded-0"
-
     }
 
 

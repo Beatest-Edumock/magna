@@ -98,6 +98,7 @@ function updateQuestionAttemptAsyncAC(changes) {
                 diff[key] = changes[key];
                 originalState[key] = question[key];
             }
+            return null;
 
         });
 
