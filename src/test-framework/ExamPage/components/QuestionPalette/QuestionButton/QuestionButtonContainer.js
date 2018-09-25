@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {QuestionButtonUI} from "./QuestionButtonUI";
-import {changeCurrentQuestionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Questions-ActionCreator";
+import {changeCurrentQuestionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections/Questions/Questions-ActionCreator";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 

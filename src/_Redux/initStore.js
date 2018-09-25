@@ -9,9 +9,9 @@ import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {addUserAC} from './ActionCreators/User-ActionCreator'
 
-import userReducer from '_Redux/reducers/User-Reducers'
+import userReducer from '_Redux/reducers/User/User-Reducers'
 import {getUserDetailsApi} from "../_Api/User";
-import {testReducer} from "./reducers/Tests/Test-Reducers";
+import {testReducer} from "./reducers/Tests/Reducer-Entry";
 
 
 function initStore() {

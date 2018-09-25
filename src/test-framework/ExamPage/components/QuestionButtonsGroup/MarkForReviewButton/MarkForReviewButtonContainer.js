@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {setCurrentQuestionToReviewAsyncAC, setCurrentQuestionToSeenAsyncAC} from "../../../../../_Redux/ActionCreators/Test/QuestionAttempt-ActionCreator";
+import {setCurrentQuestionToReviewAsyncAC, setCurrentQuestionToSeenAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
 import {MarkForReviewButtonUI} from "./MarkForReviewButtonUI";
 
 

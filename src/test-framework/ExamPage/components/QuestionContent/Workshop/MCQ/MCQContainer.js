@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {MCQUI} from "./MCQUI";
 import {connect} from 'react-redux';
-import {setCurrentQuestionChoiceIDAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/QuestionAttempt-ActionCreator";
+import {setCurrentQuestionChoiceIDAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
 
 class MCQContainer extends Component {
 
@@ -16,7 +16,6 @@ class MCQContainer extends Component {
 
     mcqChoiceSubmitCallback(choiceID) {
         this.props.updateQuestionAttempt(choiceID);
-        console.log(this.props.chosenID);
     }
 
 

@@ -1,6 +1,6 @@
-import {QUESTION_PUSH_DETAILS} from "../../actions/test";
-import {getQuestionDetailsAPI} from "../../../_Api/Tests/Sections/Questions/Questions";
-import {QUESTION_UPDATE_CURRENT} from "../../actions/test";
+import {QUESTION_PUSH_DETAILS} from "../../../../actions/test";
+import {getQuestionDetailsAPI} from "../../../../../_Api/Tests/Sections/Questions/Questions";
+import {QUESTION_UPDATE_CURRENT} from "../../../../actions/test";
 import {setCurrentQuestionToSeenAsyncAC} from "./QuestionAttempt-ActionCreator";
 
 /**

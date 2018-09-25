@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {setCurrentQuestionChoiceIDAsyncAC} from "../../../../../_Redux/ActionCreators/Test/QuestionAttempt-ActionCreator";
+import {setCurrentQuestionChoiceIDAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
 import {ClearResponseButtonUI} from "./ClearResponseButtonUI";
 
 

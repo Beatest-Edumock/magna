@@ -1,5 +1,5 @@
-import {SECTION_PUSH_DETAILS, SECTION_UPDATE_CURRENT} from "../../actions/test";
-import {changeCurrentQuestionAsyncAC} from "./Questions-ActionCreator";
+import {SECTION_PUSH_DETAILS, SECTION_UPDATE_CURRENT, TEST_MARK_CURRENT_SECTION_COMPLETE} from "../../../actions/test";
+import {changeCurrentQuestionAsyncAC} from "./Questions/Questions-ActionCreator";
 
 function _pushSectionDetailsAC(sectionsList) {
     return {type: SECTION_PUSH_DETAILS, sectionsList}
@@ -34,6 +34,8 @@ function _changeCurrentSectionAC(sectionID) {
  *
  */
 function changeCurrentSectionAsyncAC(sectionID) {
+
+
     return (dispatch, getState) => {
 
         const state = getState();
@@ -53,4 +55,8 @@ function changeCurrentSectionAsyncAC(sectionID) {
 
 }
 
-export {_pushSectionDetailsAC, changeCurrentSectionAsyncAC};
+function markCurrentSectionCompleteAC() {
+    return {type: TEST_MARK_CURRENT_SECTION_COMPLETE}
+}
+
+export {_pushSectionDetailsAC, changeCurrentSectionAsyncAC, markCurrentSectionCompleteAC};

@@ -4,7 +4,7 @@ import {_pushSectionDetailsAC, setUpTestAsyncAC} from "../../_Redux/ActionCreato
 import {getTestGroupAPI} from "../../_Api/Tests/Tests";
 import {ExamPageUI} from "./ExamUI";
 import axios from 'axios'
-import {_fetchAndPushQuestionDetailsAsyncAC} from "../../_Redux/ActionCreators/Test/Questions-ActionCreator";
+import {_fetchAndPushQuestionDetailsAsyncAC} from "../../_Redux/ActionCreators/Test/Sections/Questions/Questions-ActionCreator";
 
 class ExamPageContainer extends React.Component {
 

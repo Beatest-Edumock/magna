@@ -1,7 +1,7 @@
-import {TEST_UPDATE_QUESTIONATTEMPT} from "../../actions/test";
-import {updateQuestionAttemptAPI} from "../../../_Api/Tests/TestAttempts";
+import {TEST_UPDATE_QUESTIONATTEMPT} from "../../../../actions/test";
+import {updateQuestionAttemptAPI} from "../../../../../_Api/Tests/TestAttempts";
 
-function _updateTestAttemptAC(changes) {
+function _updateQuestionAttemptAC(changes) {
     return {type: TEST_UPDATE_QUESTIONATTEMPT, changes}
 }
 
@@ -104,12 +104,12 @@ function updateQuestionAttemptAsyncAC(changes) {
 
         // dispatch actions only if some diff exists
         if (Object.keys(diff).length !== 0) {
-            dispatch(_updateTestAttemptAC(changes));
+            dispatch(_updateQuestionAttemptAC(changes));
 
             updateQuestionAttemptAPI(testID, sectionID, questionID, changes)
                 .catch(() => {
                         // revert back to original state if some error occurred
-                        dispatch(_updateTestAttemptAC(originalState));
+                        dispatch(_updateQuestionAttemptAC(originalState));
                     }
                 )
         }

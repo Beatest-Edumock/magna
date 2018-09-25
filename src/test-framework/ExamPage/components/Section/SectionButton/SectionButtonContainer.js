@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {changeCurrentSectionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections-ActionCreator";
+import {changeCurrentSectionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections/Sections-ActionCreator";
 import connect from "react-redux/es/connect/connect";
 import {SectionButtonUI} from "./SectionButtonUI";
 
