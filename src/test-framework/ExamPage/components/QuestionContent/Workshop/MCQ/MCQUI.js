@@ -5,8 +5,10 @@ function MCQUI(props) {
 
     return (
 
-        <div className="">
-            <div dangerouslySetInnerHTML={{__html: props.questionHtml}}/>
+        <div>
+            <div className="max-w-100-md scroll-x-auto">
+                <div className="" dangerouslySetInnerHTML={{__html: props.questionHtml}}/>
+            </div>
             <div className=''>
                 {
                     props.choices.map((choice) => {

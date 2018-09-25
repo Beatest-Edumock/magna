@@ -32,4 +32,10 @@ function updateQuestionAttemptAPI(testID, sectionID, questionID, change) {
     return testFramAxios.put(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts`, change)
 }
 
-export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI}
+
+function pingAPI(testID, sectionID, questionID) {
+
+    return testFramAxios.post(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts/ping`)
+}
+
+export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI}
