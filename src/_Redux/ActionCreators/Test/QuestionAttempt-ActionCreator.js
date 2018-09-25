@@ -54,7 +54,7 @@ function setCurrentQuestionChoiceIDAsyncAC(choiceID) {
 function setCurrentQuestionTITAAnswerAsyncAC(titaAnswer) {
     return (dispatch, getState) => {
 
-        dispatch(updateQuestionAttemptAsyncAC({"tita_answer": titaAnswer}))
+        dispatch(updateQuestionAttemptAsyncAC({"tita_choice": titaAnswer}))
     }
 }
 
