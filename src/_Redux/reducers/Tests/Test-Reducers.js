@@ -70,7 +70,10 @@ import {
     SECTION_PUSH_DETAILS,
     SECTION_UPDATE_CURRENT,
     TEST_PUSH_ATTEMPTS,
-    TEST_PUSH_DETAILS, TEST_PUSH_ERROR, TEST_UNDO_CHOICE_ATTEMPTS, TEST_UPDATE_CHOICE_ATTEMPTS,
+    TEST_PUSH_DETAILS,
+    TEST_PUSH_ERROR,
+    TEST_UNDO_CHOICE_ATTEMPTS,
+    TEST_UPDATE_QUESTIONATTEMPT,
 } from "../../actions/test";
 
 
@@ -103,15 +106,12 @@ function testReducer(state = defaultState, action) {
         case SECTION_UPDATE_CURRENT:
             return _changeCurrentSection(state, action);
 
-        case TEST_UPDATE_CHOICE_ATTEMPTS:
+        case TEST_UPDATE_QUESTIONATTEMPT:
             return updateTestAttemptChoice(state, action);
 
         case TEST_PUSH_ERROR:
             return pushError(state, action);
 
-        // TODO khant remove after review.
-        // case TEST_UNDO_CHOICE_ATTEMPTS:
-        //     return undoTestAttemptChoice(state);
         default :
             return state;
     }

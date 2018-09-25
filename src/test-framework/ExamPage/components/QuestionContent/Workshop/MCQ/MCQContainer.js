@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {MCQUI} from "./MCQUI";
-import {connect} from  'react-redux';
-import {updateQuestionAttemptAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
+import {connect} from 'react-redux';
+import {setCurrentQuestionChoiceIDAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/QuestionAttempt-ActionCreator";
 
-class MCQContainer extends Component{
+class MCQContainer extends Component {
 
 
     constructor(props) {
@@ -21,7 +21,7 @@ class MCQContainer extends Component{
 
 
     render() {
-        return(
+        return (
             <MCQUI choices={this.props.question.choices}
                    mcqCallback={this.mcqChoiceSubmit}
                    questionHtml={this.props.question.html}
@@ -35,12 +35,11 @@ class MCQContainer extends Component{
 function mapDispatchToProps(dispatch) {
     return {
         updateQuestionAttempt: (choiceId) => {
-            dispatch(updateQuestionAttemptAsyncAC({"choice_id": choiceId}));
+            dispatch(setCurrentQuestionChoiceIDAsyncAC(choiceId));
         }
     }
 
 }
-
 
 
 const MCQ = connect(null, mapDispatchToProps)(MCQContainer);

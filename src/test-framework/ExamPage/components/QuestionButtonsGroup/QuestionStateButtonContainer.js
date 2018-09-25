@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
-import {updateQuestionAttemptAsyncAC} from "../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
 import connect from "react-redux/es/connect/connect"
 import {QuestionStateButtonUI} from "./QuestionStateButtonUI";
+import {
+    setCurrentQuestionChoiceIDAsyncAC,
+    setCurrentQuestionToReviewAsyncAC, setCurrentQuestionToSeenAsyncAC,
+    updateQuestionAttemptAsyncAC
+} from "../../../../_Redux/ActionCreators/Test/QuestionAttempt-ActionCreator";
 
-class QuestionStateButtonContainer extends Component{
+class QuestionStateButtonContainer extends Component {
 
     constructor(props) {
         super(props);
@@ -19,7 +23,7 @@ class QuestionStateButtonContainer extends Component{
     // CA: Clear All
     // MR: Mark For Review
     // RR: Remove Review
-    questionButtonClickHandler(){
+    questionButtonClickHandler() {
         switch (this.state.type) {
             case "CA":
                 this.props.clearQuestionChoice();
@@ -47,14 +51,14 @@ class QuestionStateButtonContainer extends Component{
 function mapDispatchToProps(dispatch) {
 
     return {
-            clearQuestionChoice: () => {
-                dispatch(updateQuestionAttemptAsyncAC({"choice_id": null}));
-            }, markForReview: ()=> {
-                dispatch(updateQuestionAttemptAsyncAC({"attempt_status" : "review"}));
-            } , removeMarkForReview: () => {
-                dispatch(updateQuestionAttemptAsyncAC({"attempt_status" : "seen"}));
-            }
+        clearQuestionChoice: () => {
+            dispatch(setCurrentQuestionChoiceIDAsyncAC(null));
+        }, markForReview: () => {
+            dispatch(setCurrentQuestionToReviewAsyncAC());
+        }, removeMarkForReview: () => {
+            dispatch(setCurrentQuestionToSeenAsyncAC());
         }
+    }
 
 }
 
