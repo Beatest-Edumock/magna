@@ -21,14 +21,6 @@ function startTestAPI(testID) {
  */
 function updateQuestionAttemptAPI(testID, sectionID, questionID, change) {
 
-    Object.keys(change).map((key) => {
-
-        if (change[key] == null) {
-            change[key] = "--None--" //FIXME BACKEND BUG Read docs!!!!!
-        }
-
-        return null;
-    });
 
     return testFramAxios.put(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts`, change)
 }

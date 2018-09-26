@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {setCurrentQuestionChoiceIDAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
+import {
+    setCurrentQuestionChoiceIDAsyncAC,
+    setCurrentQuestionTITAAnswerAsyncAC
+} from "../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
 import {ClearResponseButtonUI} from "./ClearResponseButtonUI";
 
 
@@ -31,6 +34,7 @@ function mapDispatchToProps(dispatch) {
     return {
         clearResponse: () => {
             dispatch(setCurrentQuestionChoiceIDAsyncAC(null));
+            dispatch(setCurrentQuestionTITAAnswerAsyncAC(null));
         }
     }
 }

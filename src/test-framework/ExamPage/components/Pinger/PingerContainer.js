@@ -68,7 +68,7 @@ class Pinger extends React.Component {
             timeLeft: this.props.timeLeft
         };
 
-        this.interval = setInterval(this.tick, 1000);
+        // this.interval = setInterval(this.tick, 1000);
         this.tickCount = 0;
 
     }
