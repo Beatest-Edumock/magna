@@ -17,7 +17,7 @@ function TITAKeyPad(props) {
                 }
                 <button type="button" className="my-1 col-4 btn btn-outline-black" onClick={() => props.handleValueUpdate(".")}> .</button>
                 <button type="button" className="my-1 col-4 btn btn-outline-black" onClick={() => props.handleValueUpdate(0)}> {0}</button>
-                <button type="button" className="my-1 col-4 btn btn-outline-success" onClick={() => props.handleSubmit()}>Submit</button>
+                <button type="button" className="my-1 col-4 btn btn-outline-success " onClick={() => props.handleSubmit()}>Submit</button>
                 <button type="button" className="my-1 col-4 btn btn-outline-danger" onClick={() => props.handleBackSpace()}> Delete</button>
 
 
