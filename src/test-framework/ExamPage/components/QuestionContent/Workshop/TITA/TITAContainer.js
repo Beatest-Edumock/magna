@@ -5,6 +5,24 @@ import {
     setCurrentQuestionTITAAnswerAsyncAC
 } from "../../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
 
+/**
+ *
+ * The TITA number pad.
+ *
+ * It displays a text input field (non editable)
+ * and a set of buttons to store a user's answer.
+ *
+ * This takes in the state from the redux store and displays it as a placeholder in
+ * the text area.
+ *
+ * If the user starts using the numpad, the text area changes to the numbers
+ * he is pressing.
+ *
+ * If user clicks on submit, then the action is dispatched to the redux store (along with an api call).
+ *
+ * if the user moves away from a question while he has unsubmitted input, that input is lost.
+ *
+ */
 class TITAContainer extends Component {
 
     constructor (props) {
@@ -47,7 +65,7 @@ class TITAContainer extends Component {
 
     render() {
 
-        if(this.state.localQuestionID != this.props.currentQuestionID) {
+        if(this.state.localQuestionID !== this.props.currentQuestionID) {
             this.setState({
                 localQuestionID: this.props.currentQuestionID,
                 localValue: ""
