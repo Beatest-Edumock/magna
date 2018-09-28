@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 function MCQUI(props) {
 
@@ -14,9 +15,8 @@ function MCQUI(props) {
                     props.choices.map((choice) => {
                         const shouldChecked = (choice.id === props.currentChoice);
 
-                        console.log(choice.id + " : " + props.currentChoice + " -> " + shouldChecked);
                         return (
-                            <div className="card rounded rounded-0 bg-light">
+                            <div key={choice.id} className="card rounded rounded-0 bg-light">
                                 <div className="card-body mx-2 align-items-center d-flex d-inline">
 
                                     <input className="form-check-input " name="choiceRadio" type="radio"
@@ -36,5 +36,14 @@ function MCQUI(props) {
         </div>
     )
 }
+
+
+MCQUI.propTypes = {
+    choices: PropTypes.array.isRequired,
+    currentChoice: PropTypes.number,
+    mcqCallback: PropTypes.func.isRequired,
+    questionHtml: PropTypes.string.isRequired,
+};
+
 
 export {MCQUI}

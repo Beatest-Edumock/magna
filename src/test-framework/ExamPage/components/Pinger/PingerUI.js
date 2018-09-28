@@ -36,7 +36,7 @@ function PingerUI(props) {
 }
 
 PingerUI.propTypes = {
-    timeLeft: PropTypes.number.required,
-    userName: PropTypes.string.required,
+    timeLeft: PropTypes.number.isRequired,
+    userName: PropTypes.string.isRequired,
 };
 export {PingerUI};

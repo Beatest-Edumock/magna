@@ -38,12 +38,12 @@ class ExamPageUI extends React.Component {
                             <div className="container-fluid">
                                 <div className="row ">
 
-                                    <div class="col-12 col-md-3 my-2 ">
+                                    <div className="col-12 col-md-3 my-2 ">
                                         <MarkForReviewButton/>
                                     </div>
 
 
-                                    <div class="col-12 col-md-3 my-2 ml-md-auto">
+                                    <div className="col-12 col-md-3 my-2 ml-md-auto">
                                         <ClearResponseButton/>
                                     </div>
 

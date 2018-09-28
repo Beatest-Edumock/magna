@@ -89,7 +89,7 @@ QuestionButton.propTypes = {
      *
      */
 
-    questionDetails: PropTypes.string
+    questionDetails: PropTypes.object
 
 
 };

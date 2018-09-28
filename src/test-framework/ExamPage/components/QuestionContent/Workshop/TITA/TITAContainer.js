@@ -53,8 +53,6 @@ class TITAContainer extends Component {
     }
 
     handleValueUpdateFunc(value) {
-        console.log(value);
-        console.log(this.state.localValue);
         this.setState(
             {
             localValue: this.state.localValue + String(value)
@@ -63,7 +61,7 @@ class TITAContainer extends Component {
 
 
 
-    render() {
+    componentDidUpdate(prevProps, prevState) {
 
         if(this.state.localQuestionID !== this.props.currentQuestionID) {
             this.setState({
@@ -71,6 +69,10 @@ class TITAContainer extends Component {
                 localValue: ""
             })
         }
+    }
+
+    render() {
+
 
         return(
             <TITAUI localValue={this.state.localValue}

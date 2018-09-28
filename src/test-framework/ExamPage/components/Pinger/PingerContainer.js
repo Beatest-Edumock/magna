@@ -68,7 +68,7 @@ class Pinger extends React.Component {
             timeLeft: this.props.timeLeft
         };
 
-        // this.interval = setInterval(this.tick, 1000);
+        this.interval = setInterval(this.tick, 1000);
         this.tickCount = 0;
 
     }
@@ -77,6 +77,13 @@ class Pinger extends React.Component {
     render() {
 
         return (<PingerUI timeLeft={this.state.timeLeft} userName={this.props.user.full_name}/>)
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.isError) {
+            clearInterval(this.interval);
+        }
+
     }
 }
 
@@ -115,7 +122,8 @@ function mapStateToProps(state, ownProps) {
         testID: state.test.id,
         currentSectionID: state.test.currentSection,
         currentQuestionID: state.test.currentQuestion,
-        sections: state.test.sectionsByID
+        sections: state.test.sectionsByID,
+        isError: state.test.error !== null
 
     };
 
@@ -131,6 +139,7 @@ function mapDispatchToProps(dispatch) {
             dispatch(markCurrentSectionCompleteAC());
 
         }
+
     }
 
 
