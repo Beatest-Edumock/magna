@@ -80,7 +80,7 @@ class Pinger extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.isError) {
+        if (this.props.isError) {
             clearInterval(this.interval);
         }
 
