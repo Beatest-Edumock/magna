@@ -12,7 +12,7 @@ import {
     QUESTION_PUSH_DETAILS,
     QUESTION_UPDATE_CURRENT,
     SECTION_PUSH_DETAILS,
-    SECTION_UPDATE_CURRENT,
+    SECTION_UPDATE_CURRENT, TEST_MARK_COMPLETE,
     TEST_MARK_CURRENT_SECTION_COMPLETE,
     TEST_PUSH_ATTEMPTS,
     TEST_PUSH_DETAILS,
@@ -24,7 +24,7 @@ import {
 import {_changeCurrentSection, _pushQuestionDetails, _pushSectionDetails, markCurrentSectionComplete} from "./Sections/Sections-Reducer";
 import {_changeCurrentQuestion, updateQuestionAttempt} from "./Sections/Questions/Questions-Reducer";
 import {decrementLoading, incrementLoading, pushError} from "./UI-Reducers";
-import {_pushTestAttemptDetails, _pushTestDetails} from "./Test-Reducers";
+import {_pushTestAttemptDetails, _pushTestDetails, markTestComplete} from "./Test-Reducers";
 
 
 const defaultState = {
@@ -64,6 +64,9 @@ function testReducer(state = defaultState, action) {
 
         case TEST_MARK_CURRENT_SECTION_COMPLETE:
             return markCurrentSectionComplete(state);
+
+        case TEST_MARK_COMPLETE:
+            return markTestComplete(state);
 
         default :
             return state;

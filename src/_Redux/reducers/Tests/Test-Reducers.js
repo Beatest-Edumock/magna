@@ -188,12 +188,15 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
 
     const sortedSectionIds = Object.keys(merged).sort(); // sort sections ids
 
-    const firstSectionId = sortedSectionIds.find((item) => {
+    let firstSectionId = sortedSectionIds.find((item) => {
         const intItem = parseInt(item, 10);
 
         return merged[intItem].is_complete === false;
     });
 
+    if (testAttempt.is_complete) {
+        firstSectionId = sortedSectionIds[0]
+    }
 
     // we need to find the first question in the section that was just found
 
@@ -251,6 +254,7 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
 
     return {
         ...state,
+        is_complete: testAttempt.is_complete,
         sectionsByID: sections,
         questionsByID: questions,
         currentSection: firstSectionId.toString(),
@@ -260,5 +264,14 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
 
 }
 
+function markTestComplete(state) {
 
-export {_pushTestAttemptDetails, _pushTestDetails};
+    return {
+        ...state,
+        is_complete: true
+
+    }
+
+}
+
+export {_pushTestAttemptDetails, _pushTestDetails, markTestComplete};

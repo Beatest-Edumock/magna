@@ -1,5 +1,6 @@
 import {SECTION_PUSH_DETAILS, SECTION_UPDATE_CURRENT, TEST_MARK_CURRENT_SECTION_COMPLETE} from "../../../actions/test";
 import {changeCurrentQuestionAsyncAC} from "./Questions/Questions-ActionCreator";
+import {submitSectionAPI} from "../../../../_Api/Tests/Sections/SectionAttempts";
 
 function _pushSectionDetailsAC(sectionsList) {
     return {type: SECTION_PUSH_DETAILS, sectionsList}
@@ -59,4 +60,39 @@ function markCurrentSectionCompleteAC() {
     return {type: TEST_MARK_CURRENT_SECTION_COMPLETE}
 }
 
-export {_pushSectionDetailsAC, changeCurrentSectionAsyncAC, markCurrentSectionCompleteAC};
+/**
+ * Mark the current section as complete
+ *
+ * If this is not
+ *
+ */
+function submitCurrentSectionAsyncAC(shouldMove = true) {
+    
+    console.log("in submit async ac");
+    return (dispatch, getState) => {
+        const state = getState();
+
+        let sections = Object.keys(state.test.sectionsByID).sort();
+        let currentSectionID = state.test.currentSection;
+
+        let currentSectionIdx = sections.indexOf(currentSectionID);
+
+        let nextSectionIdx = currentSectionIdx + 1;
+
+        dispatch(markCurrentSectionCompleteAC());
+        console.log("current section sync ac has been dispatched");
+
+        submitSectionAPI(state.test.id, currentSectionID).then(() => {
+
+            if (nextSectionIdx < sections.length && shouldMove) {
+                dispatch(changeCurrentSectionAsyncAC(sections[nextSectionIdx]));
+            }
+
+        });
+
+
+    }
+
+}
+
+export {_pushSectionDetailsAC, changeCurrentSectionAsyncAC, markCurrentSectionCompleteAC, submitCurrentSectionAsyncAC};

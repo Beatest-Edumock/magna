@@ -80,6 +80,7 @@ function updateQuestionAttemptAsyncAC(changes) {
         const state = getState();
         const testID = state.test.id;
         const sectionID = state.test.currentSection;
+        const currentSection = state.test.sectionsByID[sectionID];
         const questionID = state.test.currentQuestion;
         const question = state.test.questionsByID[questionID];
 
@@ -105,7 +106,8 @@ function updateQuestionAttemptAsyncAC(changes) {
 
 
         // dispatch actions only if some diff exists
-        if (Object.keys(diff).length !== 0) {
+        // and if current section is not marked complete
+        if (Object.keys(diff).length !== 0 && !currentSection.is_complete && !state.test.is_complete) {
             dispatch(_updateQuestionAttemptAC(changes));
 
             updateQuestionAttemptAPI(testID, sectionID, questionID, changes)
