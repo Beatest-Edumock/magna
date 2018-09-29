@@ -7,6 +7,7 @@ import {PING_TIME} from "./config";
 import {markTestComplete} from "../../../../_Redux/reducers/Tests/Test-Reducers";
 import {markTestCompleteAC} from "../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
 import {toast} from 'react-toastify';
+import {submitSectionAPI} from "../../../../_Api/Tests/Sections/SectionAttempts";
 
 /**
  * Orchestrate the Ping process.
@@ -31,6 +32,8 @@ import {toast} from 'react-toastify';
  */
 class Pinger extends React.Component {
 
+    isPinging = false;
+
     /**
      * Tick function.
      * Will be called every second unless clear is called
@@ -38,37 +41,61 @@ class Pinger extends React.Component {
     tick() {
 
 
-        if (this.tickCount > 0 && this.tickCount % PING_TIME === 0 && this.shouldPing) {
-            pingAPI(this.props.testID, this.props.currentSectionID, this.props.currentQuestionID);
-        }
-
         const timeLeft = this.state.timeLeft;
 
 
-        if (timeLeft <= 0) {
+        /**
+         * If ping should happen, and it is currently time to ping
+         *
+         */
+        if (this.tickCount > 0 && this.tickCount % PING_TIME === 0 && this.shouldPing) {
+
+            pingAPI(this.props.testID,
+                this.props.currentSectionID,
+                this.props.currentQuestionID).then(() => {
 
 
-            let sections = Object.keys(this.props.sections).sort();
+                /**
+                 * if time of current section is <0,
+                 * proceed to submit section.
+                 *
+                 */
+                if (timeLeft <= 0) {
 
-            let isLast = sections.indexOf(this.props.currentSectionID) === sections.length - 1;
+                    this.shouldPing = false;
+                    clearInterval(this.interval);
+                    this.tickCount = 0;
 
-            if (!this.props.allowJumps) {
-                this.props.submitCurrentSection(!isLast);
-            }
-            else {
-                this.props.markTestComplete();
-            }
+                    let sections = Object.keys(this.props.sections).sort();
 
+                    let isLast = sections.indexOf(this.props.currentSectionID) === sections.length - 1;
+
+                    /**
+                     * Submitting the section will cause the conditions
+                     * in componentDidUpdate to run (read comments in that method below)
+                     */
+                    if (!this.props.allowJumps) {
+                        this.props.submitCurrentSection(!isLast);
+                    }
+                    else {
+                        this.props.markTestComplete();
+                    }
+
+                }
+
+
+            });
         }
+
 
         if (timeLeft > 0) {
             this.setState((state, props) => {
                 return {timeLeft: state.timeLeft - 1}
 
             });
-            this.tickCount++;
         }
 
+        this.tickCount++;
     }
 
     constructor(props) {
@@ -92,52 +119,49 @@ class Pinger extends React.Component {
 
     render() {
 
-        return (<PingerUI timeLeft={this.state.timeLeft} userName={this.props.user.full_name}/>)
+        return (<PingerUI
+            timeLeft={this.state.timeLeft}
+            userName={this.props.user.full_name}/>)
     }
 
     componentDidUpdate(prevProps, prevState) {
 
+        /**
+         * the current section was marked complete.
+         * Stop the tick and disable ping.
+         */
         if (!prevProps.sections[this.props.currentSectionID].is_complete
             &&
             this.props.sections[this.props.currentSectionID].is_complete) {
 
-            clearInterval(this.interval);
-            this.shouldPing = false;
+
             toast.info("Section was automatically submitted");
             this.tickCount = 0;
-            console.log("section was marked complete");
+            this.shouldPing = false;
+            clearInterval(this.interval);
 
         }
 
 
+        /**
+         * Section has changed, set the interval (which should be disabled)
+         * again.
+         */
+        if (prevProps.currentSectionID !== this.props.currentSectionID && !this.props.allowJumps) {
+
+            this.shouldPing = true;
+            this.setState({timeLeft: this.props.timeLeft});
+            this.interval = setInterval(this.tick, 1000);
+
+        }
+
+
+        /**
+         * If any error happens, disable the pinger.
+         */
         if (this.props.isError) {
             clearInterval(this.interval);
         }
-
-        if (prevProps.currentSectionID !== this.props.currentSectionID) {
-            console.log("currentSection changed");
-            clearInterval(this.interval);
-            this.shouldPing = false;
-
-            this.tickCount = 0;
-            this.shouldPing = true;
-
-            this.tick();
-            this.interval = setInterval(this.tick, 1000);
-
-            let sections = Object.keys(this.props.sections).sort();
-
-            if (sections.indexOf(this.props.currentSectionID) < sections.length - 1) {
-            }
-
-
-            this.setState({timeLeft: this.props.timeLeft});
-
-        }
-
-        // if (prevProps.timeLeft !== this.props.timeLeft) {
-        //
-        // }
 
     }
 }

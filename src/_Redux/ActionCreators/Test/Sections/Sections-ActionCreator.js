@@ -67,8 +67,7 @@ function markCurrentSectionCompleteAC() {
  *
  */
 function submitCurrentSectionAsyncAC(shouldMove = true) {
-    
-    console.log("in submit async ac");
+
     return (dispatch, getState) => {
         const state = getState();
 
@@ -80,7 +79,6 @@ function submitCurrentSectionAsyncAC(shouldMove = true) {
         let nextSectionIdx = currentSectionIdx + 1;
 
         dispatch(markCurrentSectionCompleteAC());
-        console.log("current section sync ac has been dispatched");
 
         submitSectionAPI(state.test.id, currentSectionID).then(() => {
 
