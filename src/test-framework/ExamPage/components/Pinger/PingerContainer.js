@@ -4,10 +4,9 @@ import {PingerUI} from "./PingerUI";
 import {pingAPI} from "../../../../_Api/Tests/TestAttempts";
 import {changeCurrentSectionAsyncAC, markCurrentSectionCompleteAC, submitCurrentSectionAsyncAC} from "../../../../_Redux/ActionCreators/Test/Sections/Sections-ActionCreator";
 import {PING_TIME} from "./config";
-import {markTestComplete} from "../../../../_Redux/reducers/Tests/Test-Reducers";
 import {markTestCompleteAC} from "../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
 import {toast} from 'react-toastify';
-import {submitSectionAPI} from "../../../../_Api/Tests/Sections/SectionAttempts";
+import {disableInputsAC, enableInputsAC} from "../../../../_Redux/ActionCreators/Test/Test-ActionCreator";
 
 /**
  * Orchestrate the Ping process.
@@ -61,6 +60,8 @@ class Pinger extends React.Component {
                  *
                  */
                 if (timeLeft <= 0) {
+                    this.props.disableInputs();
+
 
                     this.shouldPing = false;
                     clearInterval(this.interval);
@@ -76,10 +77,15 @@ class Pinger extends React.Component {
                      */
                     if (!this.props.allowJumps) {
                         this.props.submitCurrentSection(!isLast);
+
+                        if (isLast) {
+                            this.props.markTestComplete();
+                        }
                     }
                     else {
                         this.props.markTestComplete();
                     }
+
 
                 }
 
@@ -152,6 +158,7 @@ class Pinger extends React.Component {
             this.shouldPing = true;
             this.setState({timeLeft: this.props.timeLeft});
             this.interval = setInterval(this.tick, 1000);
+            // this.props.enableInputs();
 
         }
 
@@ -191,6 +198,7 @@ function mapStateToProps(state, ownProps) {
             return obj;
 
         }, {total_time: 0, time_spent: 0});
+
         timeLeft = time_details.total_time - time_details.time_spent;
 
     }
@@ -226,7 +234,9 @@ function mapDispatchToProps(dispatch) {
         },
         markTestComplete: () => {
             dispatch(markTestCompleteAC());
-        }
+        },
+        disableInputs: () => dispatch(disableInputsAC()),
+        enableInputs: () => dispatch(enableInputsAC())
 
 
     }

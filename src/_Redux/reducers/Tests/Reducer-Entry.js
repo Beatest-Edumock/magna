@@ -12,7 +12,7 @@ import {
     QUESTION_PUSH_DETAILS,
     QUESTION_UPDATE_CURRENT,
     SECTION_PUSH_DETAILS,
-    SECTION_UPDATE_CURRENT, TEST_MARK_COMPLETE,
+    SECTION_UPDATE_CURRENT, TEST_DISABLE_INPUTS, TEST_ENABLE_INPUTS, TEST_MARK_COMPLETE,
     TEST_MARK_CURRENT_SECTION_COMPLETE,
     TEST_PUSH_ATTEMPTS,
     TEST_PUSH_DETAILS,
@@ -23,13 +23,14 @@ import {
 
 import {_changeCurrentSection, _pushQuestionDetails, _pushSectionDetails, markCurrentSectionComplete} from "./Sections/Sections-Reducer";
 import {_changeCurrentQuestion, updateQuestionAttempt} from "./Sections/Questions/Questions-Reducer";
-import {decrementLoading, incrementLoading, pushError} from "./UI-Reducers";
+import {decrementLoading, disableInputs, enableInputs, incrementLoading, pushError} from "./UI-Reducers";
 import {_pushTestAttemptDetails, _pushTestDetails, markTestComplete} from "./Test-Reducers";
 
 
 const defaultState = {
     loadingCount: 1, // initially start with loading state
-    error: null
+    error: null,
+    inputsDisabled: false
 
 };
 
@@ -67,6 +68,12 @@ function testReducer(state = defaultState, action) {
 
         case TEST_MARK_COMPLETE:
             return markTestComplete(state);
+
+        case TEST_DISABLE_INPUTS:
+            return disableInputs(state);
+
+        case TEST_ENABLE_INPUTS:
+            return enableInputs(state);
 
         default :
             return state;

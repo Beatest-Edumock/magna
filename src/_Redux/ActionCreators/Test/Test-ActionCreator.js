@@ -1,4 +1,4 @@
-import {DECREMENT_LOADING, INCREMENT_LOADING, TEST_PUSH_DETAILS, TEST_PUSH_ERROR} from "../../actions/test";
+import {DECREMENT_LOADING, INCREMENT_LOADING, TEST_DISABLE_INPUTS, TEST_ENABLE_INPUTS, TEST_PUSH_DETAILS, TEST_PUSH_ERROR} from "../../actions/test";
 import {pushTestAttemptAC} from "./TestAttempt-ActionCreators";
 import {_pushSectionDetailsAC, changeCurrentSectionAsyncAC} from "./Sections/Sections-ActionCreator";
 
@@ -62,4 +62,14 @@ function setUpTestAsyncAC(testDetails, sectionList, testAttempt) {
 
 }
 
-export {incrementLoadingAC, decrementLoadingAC, _pushTestDetailsAC, setUpTestAsyncAC, pushErrorAC};
+function enableInputsAC() {
+    return {type: TEST_ENABLE_INPUTS}
+
+}
+
+function disableInputsAC() {
+    return {type: TEST_DISABLE_INPUTS}
+
+}
+
+export {incrementLoadingAC, decrementLoadingAC, _pushTestDetailsAC, setUpTestAsyncAC, pushErrorAC, enableInputsAC, disableInputsAC};

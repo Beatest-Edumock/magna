@@ -107,7 +107,7 @@ function updateQuestionAttemptAsyncAC(changes) {
 
         // dispatch actions only if some diff exists
         // and if current section is not marked complete
-        if (Object.keys(diff).length !== 0 && !currentSection.is_complete && !state.test.is_complete) {
+        if (Object.keys(diff).length !== 0 && !currentSection.is_complete && !state.test.is_complete && !state.test.inputsDisabled) {
             dispatch(_updateQuestionAttemptAC(changes));
 
             updateQuestionAttemptAPI(testID, sectionID, questionID, changes)

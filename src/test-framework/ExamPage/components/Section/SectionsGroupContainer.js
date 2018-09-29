@@ -17,7 +17,8 @@ class SectionsGroupContainer extends Component {
 
         return (
             <SectionsGroupUI sections={sectionList}
-                             currentSection={this.props.currentSection} />
+                             currentSection={this.props.currentSection}
+                             isComplete={this.props.isComplete}/>
         )
     }
 }
@@ -27,6 +28,9 @@ function mapStateToProps(state) {
     return {
         sectionsByID: state.test.sectionsByID,
         currentSection: state.test.currentSection,
+        isComplete: state.test.is_complete,
+        allowJumps: state.test.type === "CAT" // FIXME remove hardcoded string
+
     }
 
 }

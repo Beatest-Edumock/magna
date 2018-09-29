@@ -41,4 +41,12 @@ function decrementLoading(state, action) {
 }
 
 
-export {incrementLoading, decrementLoading, pushError}
+function disableInputs(state) {
+    return {...state, inputsDisabled: true}
+}
+
+function enableInputs(state) {
+    return {...state, inputsDisabled: false}
+}
+
+export {incrementLoading, decrementLoading, pushError, disableInputs, enableInputs}

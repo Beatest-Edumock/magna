@@ -1,6 +1,7 @@
 import {SECTION_PUSH_DETAILS, SECTION_UPDATE_CURRENT, TEST_MARK_CURRENT_SECTION_COMPLETE} from "../../../actions/test";
 import {changeCurrentQuestionAsyncAC} from "./Questions/Questions-ActionCreator";
 import {submitSectionAPI} from "../../../../_Api/Tests/Sections/SectionAttempts";
+import {enableInputsAC} from "../Test-ActionCreator";
 
 function _pushSectionDetailsAC(sectionsList) {
     return {type: SECTION_PUSH_DETAILS, sectionsList}
@@ -84,6 +85,7 @@ function submitCurrentSectionAsyncAC(shouldMove = true) {
 
             if (nextSectionIdx < sections.length && shouldMove) {
                 dispatch(changeCurrentSectionAsyncAC(sections[nextSectionIdx]));
+                dispatch(enableInputsAC());
             }
 
         });

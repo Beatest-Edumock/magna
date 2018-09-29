@@ -4,11 +4,17 @@ import {store} from "../../index";
 
 const testFramAxios = axios.create({});
 
+let errCount = 0;
 //
 testFramAxios.interceptors.response.use(null,
     function (error) {
 
-        store.dispatch(pushErrorAC("", true));
+        if (error.response.data.error_code === "PF0253" || error.response.data.error_code === "PF666")
+            errCount++;
+
+
+        if (errCount > 4)
+            store.dispatch(pushErrorAC("", true));
 
         return Promise.reject(error);
     }
