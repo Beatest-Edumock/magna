@@ -5,4 +5,7 @@ function getQuestionDetailsAPI(testID, sectionID, questID) {
     return testFramAxios.get(`tests/${testID}/sections/${sectionID}/questions/${questID}`)
 }
 
-export {getQuestionDetailsAPI}
+function getQuestionSolutionsAPI(testID, sectionID, questID) {
+    return testFramAxios.get(`tests/${testID}/sections/${sectionID}/questions/${questID}/solutions`)
+}
+export {getQuestionDetailsAPI,getQuestionSolutionsAPI}

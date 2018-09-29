@@ -15,20 +15,29 @@ function MCQUI(props) {
                     props.choices.map((choice) => {
                         const shouldChecked = (choice.id === props.currentChoice);
 
+
+                        let bg = choice.is_correct ? "alert-success" : "bg-light";
+
+                        if (shouldChecked && !choice.is_correct && props.isComplete) {
+                            bg = "alert-danger"
+                        }
+
                         return (
-                            <div key={choice.id} className="card rounded rounded-0 bg-light">
+                            <div key={choice.id} className={"card rounded rounded-0 " + bg}>
                                 <div className="card-body mx-2 align-items-center d-flex d-inline">
 
                                     <input className="form-check-input " name="choiceRadio" type="radio"
                                            onChange={() => props.mcqCallback(choice.id)}
-                                           id={choice.id} checked={shouldChecked}/>
+                                           id={choice.id}
+                                           checked={shouldChecked}/>
+
                                     <label className="form-check-label">
                                         <div dangerouslySetInnerHTML={{__html: choice.html}}/>
                                     </label>
 
                                 </div>
                             </div>
-                        )
+                        );
                     })
                 }
 

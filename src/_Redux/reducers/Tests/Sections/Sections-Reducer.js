@@ -44,27 +44,5 @@ function markCurrentSectionComplete(state) {
 
 }
 
-/**
- * Merge the details of the question attempt (which should be already fetched) with the question details
- * after fetching the details of the question itself
- *
- * The action that calls this reducer should be dispatched
- * by _fetchAndPushQuestionDetailsAsyncAC (i.e. not directly from a component).
- *
- * @param state
- * @param questionDetails
- * @returns {{questions: {}}}
- */
-function _pushQuestionDetails(state, {questionDetails}) {
 
-    return {
-        ...state,
-        questionsByID: {
-            ...state.questionsByID,
-            [questionDetails.id]: {...state.questionsByID[questionDetails.id], ...questionDetails}
-        }
-    }
-
-}
-
-export {_changeCurrentSection, markCurrentSectionComplete, _pushSectionDetails, _pushQuestionDetails}
+export {_changeCurrentSection, markCurrentSectionComplete, _pushSectionDetails}

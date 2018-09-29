@@ -35,5 +35,67 @@ function updateQuestionAttempt(state, {changes}) {
 
 }
 
-export {_changeCurrentQuestion, updateQuestionAttempt}
+/**
+ * Merge the details of the question attempt (which should be already fetched) with the question details
+ * after fetching the details of the question itself
+ *
+ * The action that calls this reducer should be dispatched
+ * by _fetchAndPushQuestionDetailsAsyncAC (i.e. not directly from a component).
+ *
+ * @param state
+ * @param questionDetails
+ * @returns {{questions: {}}}
+ */
+function _pushQuestionDetails(state, {questionDetails}) {
+
+    return {
+        ...state,
+        questionsByID: {
+            ...state.questionsByID,
+            [questionDetails.id]: {...state.questionsByID[questionDetails.id], ...questionDetails}
+        }
+    }
+
+}
+
+
+function _pushQuestionSolutions(state, {solutions}) {
+
+
+
+    // let solutionsWithoutChoices = solutions;
+    // delete  solutionsWithoutChoices['choices'];
+
+    const choices = state.questionsByID[solutions.id].choices;
+
+
+    const choicesWithSolutions = choices.map((choice) => {
+
+        if (solutions.choices)
+            if (solutions.choices[0].id === choice.id) {
+                return {...choice, ...solutions.choices[0]}
+            }
+
+
+        return {...choice};
+
+
+    });
+
+
+    return {
+        ...state,
+        questionsByID: {
+            ...state.questionsByID,
+            [solutions.id]: {
+                ...state.questionsByID[solutions.id],
+                choices: choicesWithSolutions
+            }
+        }
+    }
+
+}
+
+
+export {_changeCurrentQuestion, updateQuestionAttempt, _pushQuestionDetails, _pushQuestionSolutions}
 

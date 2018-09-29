@@ -1,5 +1,5 @@
-import {QUESTION_PUSH_DETAILS, QUESTION_UPDATE_CURRENT} from "../../../../actions/test";
-import {getQuestionDetailsAPI} from "../../../../../_Api/Tests/Sections/Questions/Questions";
+import {QUESTION_PUSH_DETAILS, QUESTION_PUSH_SOLUTIONS, QUESTION_UPDATE_CURRENT} from "../../../../actions/test";
+import {getQuestionDetailsAPI, getQuestionSolutionsAPI} from "../../../../../_Api/Tests/Sections/Questions/Questions";
 import {setCurrentQuestionToSeenAsyncAC} from "./QuestionAttempt-ActionCreator";
 
 /**
@@ -10,6 +10,12 @@ import {setCurrentQuestionToSeenAsyncAC} from "./QuestionAttempt-ActionCreator";
  */
 function _pushQuestionDetailsAC(questionDetails) {
     return {type: QUESTION_PUSH_DETAILS, questionDetails}
+
+}
+
+
+function _pushQuestionSolutionsAC(solutions) {
+    return {type: QUESTION_PUSH_SOLUTIONS, solutions}
 
 }
 
@@ -37,6 +43,11 @@ function _fetchAndPushQuestionDetailsAsyncAC(questionID) {
         }
 
         if (question.html) { // we use the 'html' attribute of the question to check if its loaded
+
+            if (state.test.is_complete) {
+                if (question.tita_answer === undefined)
+                    dispatch(_pushQuestionSolutionsAsyncAC(questionID));
+            }
             return;
         }
 
@@ -45,6 +56,11 @@ function _fetchAndPushQuestionDetailsAsyncAC(questionID) {
 
         getQuestionDetailsAPI(test_id, section_id, questionID).then(({data}) => {
             dispatch(_pushQuestionDetailsAC(data));
+
+            if (state.test.is_complete) {
+                if (question.tita_answer === undefined)
+                    dispatch(_pushQuestionSolutionsAsyncAC(questionID));
+            }
 
         });
 
@@ -100,6 +116,26 @@ function changeCurrentQuestionAsyncAC(questionID) {
     }
 }
 
+
+function _pushQuestionSolutionsAsyncAC(questionID) {
+
+    return (dispatch, getState) => {
+
+        const state = getState();
+
+        const testID = state.test.id;
+
+        const question = state.test.questionsByID[questionID];
+
+        getQuestionSolutionsAPI(testID, question.section_id, questionID).then(
+            ({data}) => {
+
+                dispatch(_pushQuestionSolutionsAC(data));
+
+            });
+    }
+
+}
 
 
 export {_pushQuestionDetailsAC, _fetchAndPushQuestionDetailsAsyncAC, changeCurrentQuestionAsyncAC};

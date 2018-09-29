@@ -153,7 +153,7 @@ class Pinger extends React.Component {
          * Section has changed, set the interval (which should be disabled)
          * again.
          */
-        if (prevProps.currentSectionID !== this.props.currentSectionID && !this.props.allowJumps) {
+        if (prevProps.currentSectionID !== this.props.currentSectionID && !this.props.allowJumps && !this.props.isTestComplete) {
 
             this.shouldPing = true;
             this.setState({timeLeft: this.props.timeLeft});

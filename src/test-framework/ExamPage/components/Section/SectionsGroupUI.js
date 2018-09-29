@@ -19,7 +19,7 @@ function SectionsGroupUI(props) {
                                 disabled = true;
                             }
                             else {
-                                disabled = false || props.currentSection === section.id.toString();
+                                disabled = props.currentSection === section.id.toString();
                             }
 
 
