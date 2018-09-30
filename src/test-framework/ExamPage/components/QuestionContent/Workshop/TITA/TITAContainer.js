@@ -81,6 +81,8 @@ class TITAContainer extends Component {
                     handleSubmit={this.handleSubmit}
                     questionHtml={this.props.currentQuestion.html}
                     handleBackSpace={this.handleBackSpace}
+                    isComplete={this.props.isComplete}
+                    titaAnswer={this.props.titaCorrectAnswer}
             />
         )
     }
@@ -93,6 +95,9 @@ function mapStateToProps(state) {
         tita_choice: state.test.questionsByID[state.test.currentQuestion].tita_choice,
         currentQuestion: state.test.questionsByID[state.test.currentQuestion],
         currentQuestionID: state.test.currentQuestion,
+        isComplete: state.test.is_complete,
+        titaCorrectAnswer: state.test.questionsByID[state.test.currentQuestion].tita_answer
+
     }
 
 }
