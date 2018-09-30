@@ -69,6 +69,7 @@ function _pushQuestionSolutions(state, {solutions}) {
     const choices = state.questionsByID[solutions.id].choices;
 
 
+    console.log(solutions);
     const choicesWithSolutions = choices.map((choice) => {
 
         if (solutions.choices)
@@ -82,6 +83,13 @@ function _pushQuestionSolutions(state, {solutions}) {
 
     });
 
+    const solutionsWithoutChoices = Object.keys(solutions).reduce((object, key) => {
+        if(key !== 'choices') {
+            object[key] = solutions[key]
+        }
+        return object
+    }, {});
+
 
     return {
         ...state,
@@ -89,7 +97,8 @@ function _pushQuestionSolutions(state, {solutions}) {
             ...state.questionsByID,
             [solutions.id]: {
                 ...state.questionsByID[solutions.id],
-                choices: choicesWithSolutions
+                choices: choicesWithSolutions,
+                ...solutionsWithoutChoices
             }
         }
     }

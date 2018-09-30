@@ -13,6 +13,8 @@ function TITAUI(props) {
                             handleValueUpdate={props.handleValueUpdate}
                             handleSubmit={props.handleSubmit}
                             handleBackSpace={props.handleBackSpace}
+                            isComplete={props.isComplete}
+                            titaAnswer={props.titaAnswer}
                             />
                 </div>
         </div>
