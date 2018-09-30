@@ -8,6 +8,7 @@ import {Pinger} from "./components/Pinger";
 import {ErrorModal} from "./components/ErrorModal";
 import {ClearResponseButton} from "./components/QuestionButtonsGroup/ClearResponseButton";
 import {MarkForReviewButton} from "./components/QuestionButtonsGroup/MarkForReviewButton";
+import {Logic} from "./components/QuestionContent/Workshop/Logic";
 
 class ExamPageUI extends React.Component {
 
@@ -34,6 +35,7 @@ class ExamPageUI extends React.Component {
 
                         <div className="col-lg-10 p-3 py-sm-0  m-md-0">
                             <QuestionContent/>
+                            <Logic/>
 
                             <div className="container-fluid">
                                 <div className="row ">
