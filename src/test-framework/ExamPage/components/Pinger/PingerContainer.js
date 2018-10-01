@@ -105,7 +105,7 @@ class Pinger extends React.Component {
     }
 
     constructor(props) {
-        console.log("cons called");
+
         super(props);
         this.tick = this.tick.bind(this);
         this.shouldPing = true;
@@ -160,6 +160,16 @@ class Pinger extends React.Component {
             this.interval = setInterval(this.tick, 1000);
             // this.props.enableInputs();
 
+        }
+        else if (prevProps.currentSectionID !== this.props.currentSectionID) {
+
+            this.setState({timeLeft: this.props.timeLeft})
+
+        }
+
+        if (prevProps.isTestComplete !== this.props.isTestComplete) {
+            this.shouldPing = false;
+            clearInterval(this.interval);
         }
 
 

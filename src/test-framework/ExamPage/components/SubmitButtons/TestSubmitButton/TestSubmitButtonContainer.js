@@ -3,9 +3,8 @@ import connect from "react-redux/es/connect/connect";
 import {TestSubmitButtonUI} from "./TestSubmitButtonUI";
 import {finishTestAPI} from "../../../../../_Api/Tests/TestAttempts";
 import {markTestCompleteAC} from "../../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
-import {history} from "../../../../../__internals/CustomHistory";
 
-class TestSubmitButtonContainer extends Component{
+class TestSubmitButtonContainer extends Component {
 
     constructor(props) {
         super(props)
@@ -13,12 +12,11 @@ class TestSubmitButtonContainer extends Component{
         this.shouldDisplay = this.shouldDisplay.bind(this)
     }
 
-    shouldDisplay () {
+    shouldDisplay() {
         console.log(this.props.sections)
         const sectionsArray = Object.keys(this.props.sections).sort();
         // FIXME
-        if (this.props.testType !== "CAT")
-        {
+        if (this.props.testType !== "CAT") {
             return true;
         }
         else {
@@ -30,12 +28,12 @@ class TestSubmitButtonContainer extends Component{
 
     handleTestSubmit() {
         finishTestAPI(this.props.testID)
-            .then
-        (
-            this.props.markTestComplete(),
-            window.close()
-
-    )}
+            .then(() => {
+                    this.props.markTestComplete();
+                    window.close()
+                }
+            )
+    }
 
     render() {
 
@@ -61,7 +59,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        markTestComplete: ()=> {
+        markTestComplete: () => {
             dispatch(markTestCompleteAC())
         }
     }

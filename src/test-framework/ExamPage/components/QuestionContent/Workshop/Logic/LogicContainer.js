@@ -27,9 +27,5 @@ function mapStateToProps(state) {
 
 }
 
-function mapDispatchToProps(dispatch) {
 
-}
-
-
-export const LogicContainer = connect(mapStateToProps, mapDispatchToProps)(Logic);
+export const LogicContainer = connect(mapStateToProps, null)(Logic);

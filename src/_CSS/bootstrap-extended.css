@@ -2391,9 +2391,11 @@
 
 /********************************************/
 
-.scroll-x-auto * {
-    overflow-x: auto;
-    overflow-y: hidden;
+@media (max-width: 576px) {
+    .scroll-x-auto * {
+        overflow-x: auto;
+        overflow-y: auto;
+    }
 }
 
 /*Small devices (landscape phones, 576px and up)*/
@@ -2410,7 +2412,7 @@
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
 
-    .h-60vh-md-scroll {
+    .h-60vh-md-scroll  {
         height: 60vh;
         max-height: 60vh;
         overflow-y: auto;

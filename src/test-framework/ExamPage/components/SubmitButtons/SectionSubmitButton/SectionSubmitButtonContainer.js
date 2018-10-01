@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import {SectionSubmitButtonUI} from "./SectionSubmitButtonUI";
-import {submitSectionAPI} from "../../../../../_Api/Tests/Sections/SectionAttempts";
 import {submitCurrentSectionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections/Sections-ActionCreator";
 
 class SectionSubmitButtonContainer extends Component {

@@ -69,7 +69,7 @@ function _pushQuestionSolutions(state, {solutions}) {
     const choices = state.questionsByID[solutions.id].choices;
 
 
-    console.log(solutions);
+
     const choicesWithSolutions = choices.map((choice) => {
 
         if (solutions.choices)

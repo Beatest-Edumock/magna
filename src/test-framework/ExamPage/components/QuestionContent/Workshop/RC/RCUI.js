@@ -5,7 +5,7 @@ function RCUI(props) {
     return(
         <div className="container-fluid ">
         <div className="row ">
-            <div className="col-md-6 mx-md-1 my-sm-3 card h-60vh-md-scroll">
+            <div className="col-md-6 mx-md-1 my-sm-3 card h-60vh-md-scroll scroll-x-auto">
                 <div dangerouslySetInnerHTML={{__html: props.passageHtml}}/>
             </div>
             <hr/>
