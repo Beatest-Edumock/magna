@@ -4,7 +4,7 @@ function ClearResponseButtonUI(props) {
 
     let text = "Clear Response";
 
-    let color = "btn-danger";
+    let color = "btn-orange";
 
     let visibility = "d-none";
 
