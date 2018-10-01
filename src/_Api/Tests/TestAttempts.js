@@ -11,6 +11,8 @@ function startTestAPI(testID) {
     return axios.post(`/tests/${testID}/attempts/start`)
 }
 
+
+
 /**
  *
  * @param testID
@@ -31,8 +33,8 @@ function pingAPI(testID, sectionID, questionID) {
     return testFramAxios.post(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts/ping`)
 }
 
-function finishTest(testID) {
+function finishTestAPI(testID) {
     return testFramAxios.post(`/tests/${testID}/attempts/finish`)
 }
 
-export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTest}
+export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTestAPI}

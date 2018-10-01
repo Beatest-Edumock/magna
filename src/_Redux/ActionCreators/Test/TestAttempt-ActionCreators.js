@@ -6,9 +6,7 @@ function pushTestAttemptAC(testAttempt) {
 }
 
 function markTestCompleteAC() {
-
     return {type: TEST_MARK_COMPLETE}
-
 }
 
 export {pushTestAttemptAC,markTestCompleteAC};
