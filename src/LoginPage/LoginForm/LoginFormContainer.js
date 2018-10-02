@@ -19,7 +19,7 @@ class LoginFormContainer extends React.Component {
         loginUserApi(values.email, values.password).then(({data}) => {
 
             this.props.addUserAction(data);
-            if (this.props.shouldAutoDirect!=false) {
+            if (this.props.shouldAutoDirect !== false) {
                 history.push("/");
             }
 
@@ -61,6 +61,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-LoginFormContainer = connect(null, mapDispatchToProps)(LoginFormContainer);
+LoginFormContainer = connect(mapStateToProps, mapDispatchToProps)(LoginFormContainer);
 
 export {LoginFormContainer};

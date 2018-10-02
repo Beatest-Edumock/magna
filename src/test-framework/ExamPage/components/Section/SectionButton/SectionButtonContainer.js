@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {changeCurrentSectionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections-ActionCreator";
+import {changeCurrentSectionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections/Sections-ActionCreator";
 import connect from "react-redux/es/connect/connect";
 import {SectionButtonUI} from "./SectionButtonUI";
 
@@ -18,14 +18,16 @@ class SectionButtonContainer extends Component {
 
 
     render() {
-        return <SectionButtonUI
+        return <
+            SectionButtonUI
             sectionName={this.props.sectionName}
             disabled={this.props.disabled}
             sectionID={this.props.sectionID}
             isCompleted={this.props.isCompleted}
-            sectionCallBack={this.sectionClickHandler} />
-    }
+            sectionCallBack={this.sectionClickHandler}
+            isTestComplete={this.props.isTestComplete}/>
 
+    }
 
 
 }
@@ -42,10 +44,10 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     return {
         currentSection: state.test.currentSection,
+        isTestComplete: state.test.is_complete
     }
 
 }
-
 
 
 const SectionButton = connect(mapStateToProps, mapDispatchToProps)(SectionButtonContainer);

@@ -1,17 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Card, Container} from 'reactstrap';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
-import {faCoffee, faCompactDisc, faCode, faSpinner, faCodeBranch, faUserFriends, fa} from '@fortawesome/free-regular-svg-icons'
-import {faUser,} from '@fortawesome/free-regular-svg-icons'
-import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons'
 
-
-const style = {
-    width: "100%",
-    height: "100%",
-    padding: "10%"
-};
 
 /**
  * The large feature cards that receive icon and text as props and need to be placed in a row component for them to work properly.
@@ -21,7 +11,7 @@ function LargeFeatureCard(props) {
 
 
     return (
-        <Card className={"col-md-5 shadow-sm"+" "+props.fullWidthSize} style={{margin: "10px",width: '100%'}}>
+        <Card className={`col-md-5 shadow-sm ${props.fullWidthSize}`} style={{margin: "10px", width: '100%'}}>
 
             <div className="container" style={{padding: "4%"}}>
 
@@ -37,7 +27,7 @@ function LargeFeatureCard(props) {
 
                 <div className="text-center" style={{marginTop: "10%"}}>
                     <Container>
-                            {props.text}
+                        {props.text}
                     </Container>
 
                 </div>

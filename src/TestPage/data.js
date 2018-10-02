@@ -1,8 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {faBookOpen, faCheck} from '@fortawesome/free-solid-svg-icons'
-import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
-import {Container} from 'reactstrap'
 
 export const MOCK_TESTS_CARD_ELEMENTS = [
 

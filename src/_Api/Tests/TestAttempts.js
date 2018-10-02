@@ -11,10 +11,30 @@ function startTestAPI(testID) {
     return axios.post(`/tests/${testID}/attempts/start`)
 }
 
-function updateQuestionAttemptChoiceAPI(testID, sectionID, questionID, choiceID) {
-    return testFramAxios.put(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts`,{
-            "choice_id": choiceID
-    })
+
+
+/**
+ *
+ * @param testID
+ * @param sectionID
+ * @param questionID
+ * @param change an object tto update the question attempt
+ * @returns {AxiosPromise<any> | IDBRequest | Promise<void>}
+ */
+function updateQuestionAttemptAPI(testID, sectionID, questionID, change) {
+
+
+    return testFramAxios.put(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts`, change)
 }
 
-export {startTestAPI, geTestAttempt, updateQuestionAttemptChoiceAPI}
+
+function pingAPI(testID, sectionID, questionID) {
+
+    return testFramAxios.post(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts/ping`)
+}
+
+function finishTestAPI(testID) {
+    return testFramAxios.post(`/tests/${testID}/attempts/finish`)
+}
+
+export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTestAPI}

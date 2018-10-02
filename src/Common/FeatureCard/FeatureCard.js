@@ -1,15 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Card, Container} from 'reactstrap';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
-import {faCoffee, faCompactDisc, faCode, faSpinner, faCodeBranch} from '@fortawesome/free-solid-svg-icons'
-
-
-const style = {
-    width: "100%",
-    height: "100%",
-    padding: "10%"
-};
 
 
 /**
@@ -36,7 +27,7 @@ function FeatureCard(props) {
 
                 <div className="text-center" style={{marginTop: "5%"}}>
                     <Container>
-                            {props.text}
+                        {props.text}
                     </Container>
 
                 </div>

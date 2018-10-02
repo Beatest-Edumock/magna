@@ -3,11 +3,11 @@
 
 import axios from 'axios';
 import {geTestAttempt} from "./TestAttempts";
-import {getSections} from "./Sections/Sections";
+import {getSectionsAPI} from "./Sections/Sections";
 
 function getTestGroupAPI(testID) {
     return axios.all(
-        [getTestDetailsAPI(testID), getSections(testID), geTestAttempt(testID)]
+        [getTestDetailsAPI(testID), getSectionsAPI(testID), geTestAttempt(testID)]
     )
 }
 

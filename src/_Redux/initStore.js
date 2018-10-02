@@ -9,9 +9,10 @@ import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {addUserAC} from './ActionCreators/User-ActionCreator'
 
-import userReducer from '_Redux/reducers/User-Reducers'
+import userReducer from '_Redux/reducers/User/User-Reducers'
 import {getUserDetailsApi} from "../_Api/User";
-import {testReducer} from "./reducers/Tests/Test-Reducers";
+import {testReducer} from "./reducers/Tests/Reducer-Entry";
+import React from 'react';
 
 
 function initStore() {
@@ -29,6 +30,8 @@ function initStore() {
 
 
     if (process.env.NODE_ENV !== 'production') {
+        const {whyDidYouUpdate} = require('why-did-you-update');
+        whyDidYouUpdate(React);
         middleware = composeWithDevTools(applyMiddleware(require('redux-immutable-state-invariant').default(), thunk))
     }
     else {

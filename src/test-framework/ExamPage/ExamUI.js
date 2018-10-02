@@ -6,6 +6,10 @@ import PropTypes from 'prop-types';
 import {QuestionPalette} from "./components/QuestionPalette"
 import {Pinger} from "./components/Pinger";
 import {ErrorModal} from "./components/ErrorModal";
+import {ClearResponseButton} from "./components/QuestionButtonsGroup/ClearResponseButton";
+import {MarkForReviewButton} from "./components/QuestionButtonsGroup/MarkForReviewButton";
+import {Logic} from "./components/QuestionContent/Workshop/Logic";
+
 
 class ExamPageUI extends React.Component {
 
@@ -30,14 +34,32 @@ class ExamPageUI extends React.Component {
 
                     <div className="row">
 
-                        <div className="col-lg-10 p-3 py-sm-0 m-sm-3 m-md-0">
+                        <div className="col-lg-10 p-3 py-sm-0  m-md-0">
                             <QuestionContent/>
+                            <Logic/>
+
+                            <div className="container-fluid">
+                                <div className="row ">
+
+                                    <div className="col-12 col-md-3 my-2 ">
+                                        <MarkForReviewButton/>
+                                    </div>
+
+
+                                    <div className="col-12 col-md-3 my-2 ml-md-auto">
+                                        <ClearResponseButton/>
+                                    </div>
+
+
+                                </div>
+                            </div>
 
                         </div>
                         <div className='col-lg-2 '>
                             <QuestionPalette/>
                         </div>
                     </div>
+
 
                     <ErrorModal/>
                 </div>

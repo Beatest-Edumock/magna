@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {MCQUI} from "./MCQUI";
-import {connect} from  'react-redux';
-import {updateQuestionAttemptChoiceAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
+import {connect} from 'react-redux';
+import {setCurrentQuestionChoiceIDAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
 
-class MCQContainer extends Component{
+class MCQContainer extends Component {
 
 
     constructor(props) {
@@ -16,32 +16,40 @@ class MCQContainer extends Component{
 
     mcqChoiceSubmitCallback(choiceID) {
         this.props.updateQuestionAttempt(choiceID);
-        console.log(this.props.chosenID);
     }
 
 
     render() {
-        return(
+        return (
             <MCQUI choices={this.props.question.choices}
                    mcqCallback={this.mcqChoiceSubmit}
                    questionHtml={this.props.question.html}
-                   currentChoice={this.props.question.choice_id}/>
+                   currentChoice={this.props.question.choice_id}
+                   isComplete={this.props.isComplete}
+                   correctChoiceID={this.props.question.choices.filter(choice => choice.is_correct === true)[0]}
+            />
         )
     }
 
 
 }
 
+function mapStateToProps(state) {
+    return {
+        isComplete: state.test.is_complete
+    }
+
+}
+
 function mapDispatchToProps(dispatch) {
     return {
         updateQuestionAttempt: (choiceId) => {
-            dispatch(updateQuestionAttemptChoiceAsyncAC(choiceId));
+            dispatch(setCurrentQuestionChoiceIDAsyncAC(choiceId));
         }
     }
 
 }
 
 
-
-const MCQ = connect(null, mapDispatchToProps)(MCQContainer);
+const MCQ = connect(mapStateToProps, mapDispatchToProps)(MCQContainer);
 export {MCQ}

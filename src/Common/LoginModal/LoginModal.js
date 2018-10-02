@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { LoginFormContainer } from '../../LoginPage/LoginForm/LoginFormContainer'
+import {Modal, ModalBody, ModalHeader} from 'reactstrap';
+import {LoginFormContainer} from '../../LoginPage/LoginForm/LoginFormContainer'
 
 class LoginModal extends React.Component {
   constructor(props) {

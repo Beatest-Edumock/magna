@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card, Container} from 'reactstrap';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
-import {faCoffee, faCompactDisc, faCode, faSpinner, faCodeBranch} from '@fortawesome/free-solid-svg-icons'
 import './FlipCard.css'
 
 /**

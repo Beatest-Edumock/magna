@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
-import {faGoogle,faLinkedinIn,faFacebookF} from '@fortawesome/free-brands-svg-icons';
-import {Button, Container, Row, Col} from 'reactstrap'
+import {faFacebookF, faGoogle, faLinkedinIn} from '@fortawesome/free-brands-svg-icons';
+import {Container, Row} from 'reactstrap'
 import {Link} from 'react-router-dom'
 
 /**
@@ -11,7 +10,6 @@ import {Link} from 'react-router-dom'
 
 function Footer() {
 
-
     return (
         <Container fluid={true} style={{padding: 0}}>
             <Container fluid={true} style={{filter: 'brightness(80%)',height:200,backgroundColor: '#404040',backgroundSize: 'cover',backgroundPosition: 'center'}}>
@@ -19,9 +17,11 @@ function Footer() {
                     <Link to="/about-us" style={{marginRight:'2%',color: 'inherit',opacity:1,fontSize:14}}>Our Team</Link>
                     <Link to="/faq" style={{color: 'inherit',opacity:1,fontSize:14}}>FAQs</Link>
                     <Row style={{justifyContent: 'flex-end',width: '70%'}} >
-                        <Link to="/" style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://plus.google.com/112722904416257444024" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faGoogle} style={{background: "#dd4b39",color: "white",width:'1em',height:'1em'}}/></Link>
-                        <Link to="/" style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://www.linkedin.com/company/beatest/"><FontAwesomeIcon icon={faLinkedinIn} style={{background: "#007bb5",color: "white",width:'1em',height:'1em'}}/></Link>
-                        <Link to="/" style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://www.facebook.com/beatest.in/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faFacebookF}   style={{background: "#3B5998",color: "white",width:'1em',height:'1em'}}/></Link>
+
+                        <Link  style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://plus.google.com/112722904416257444024" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faGoogle} style={{background: "#dd4b39",color: "white",width:'1em',height:'1em'}}/></Link>
+                        <Link  style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://www.linkedin.com/company/beatest/"><FontAwesomeIcon icon={faLinkedinIn} style={{background: "#007bb5",color: "white",width:'1em',height:'1em'}}/></Link>
+                        <Link  style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://www.facebook.com/beatest.in/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faFacebookF}   style={{background: "#3B5998",color: "white",width:'1em',height:'1em'}}/></Link>
+
                     </Row>
                 </Row>
                 <Row style={{paddingTop:32,paddingLeft  :'4%',color:'#fff',alignItems: 'center'}}>

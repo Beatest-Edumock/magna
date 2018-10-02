@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {QuestionButtonUI} from "./QuestionButtonUI";
-import {changeCurrentQuestionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Questions-ActionCreator";
+import {changeCurrentQuestionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections/Questions/Questions-ActionCreator";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -23,9 +23,13 @@ class QuestionButton extends Component {
 
         return (
             <QuestionButtonUI id={this.props.id}
+                              loaded={this.props.questionDetails.html === undefined}
                               questionCallback={this.questionClickHandler}
                               isCurrent={this.props.questionID === this.props.currentQuestion}
-                              html={this.props.questionHTML}
+                              attempt_status={this.props.questionDetails.attempt_status}
+                              choice_id={this.props.questionDetails.choice_id}
+                              tita_choice={this.props.questionDetails.tita_choice}
+
             />
         )
     }
@@ -37,7 +41,8 @@ function mapStateToProps(state, ownProps) {
 
     return {
         currentQuestion: state.test.currentQuestion,
-        questionHTML: state.test.questionsByID[ownProps.questionID].html,
+
+        questionDetails: state.test.questionsByID[ownProps.questionID],
         ...ownProps
 
     }
@@ -84,8 +89,7 @@ QuestionButton.propTypes = {
      *
      */
 
-    questionHTML: PropTypes.string
-
+    questionDetails: PropTypes.object
 
 
 };

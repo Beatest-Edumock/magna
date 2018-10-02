@@ -1,7 +1,14 @@
 import React from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
+import {toast} from 'react-toastify';
+import moment from 'moment';
 
+
+function getTime(seconds) {
+    const time = moment.utc(seconds * 1000).format("HH:mm:ss");
+
+    return `Time Left: ${time}`
+}
 
 /**
  * Displays the time left along with the name
@@ -15,21 +22,28 @@ function PingerUI(props) {
 
     let borderColor = props.timeLeft < 600 ? "border-danger" : "border-dark";
 
+    if (props.timeLeft === 1233) {
+        toast.error("10 minutes left!");
+
+
+    }
+
 
     return (
 
-        <div className={`h-100 w-100 py-3 py-md-0 px-1 row justify-content-center align-items-center ${borderColor} border `}>
+        <div className={`h-100 w-100 py-3 py-md-0 px-1 row justify-content-center align-items-center ${borderColor} border `
+        }>
             <div className=" align-items-center text-center">
                 <span className="font-weight-bold">{props.userName}</span>
                 <br/>
-                Time Left: {moment.utc(props.timeLeft * 1000).format("HH:mm:ss")}
+                {!props.isTestComplete && getTime(props.timeLeft)}
             </div>
         </div>
     );
 }
 
 PingerUI.propTypes = {
-    timeLeft: PropTypes.number.required,
-    userName: PropTypes.string.required,
+    timeLeft: PropTypes.number.isRequired,
+    userName: PropTypes.string.isRequired,
 };
 export {PingerUI};

@@ -2,7 +2,7 @@ import React from 'react';
 import {Formik} from 'formik';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
-import {Button, Form, FormGroup, Input, Label, Container, Row, Col} from 'reactstrap';
+import {Button, Col, Form, Input, Label, Row} from 'reactstrap';
 import Recaptcha from "react-recaptcha";
 import config from '../../../config';
 

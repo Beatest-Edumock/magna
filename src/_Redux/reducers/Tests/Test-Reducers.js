@@ -8,6 +8,7 @@
  *  character : "<character>",
  *  id: "<test_id>",
  *  name: "<name of test>",
+ *  type: "<CAT or IBPS or SBI>"
  *  price : "<price of test>",
  *  currentSection : "<current section id>",
  *  currentQuestion: "<current question id>",
@@ -61,146 +62,7 @@
  *
  *
  */
-import {
-    DECREMENT_LOADING,
-    INCREMENT_LOADING,
-    QUESTION_FETCH_PUSH_DETAILS,
-    QUESTION_PUSH_DETAILS,
-    QUESTION_UPDATE_CURRENT,
-    SECTION_PUSH_DETAILS,
-    SECTION_UPDATE_CURRENT,
-    TEST_PUSH_ATTEMPTS,
-    TEST_PUSH_DETAILS, TEST_PUSH_ERROR, TEST_UNDO_CHOICE_ATTEMPTS, TEST_UPDATE_CHOICE_ATTEMPTS,
-} from "../../actions/test";
 
-
-const defaultState = {
-    loadingCount: 1, // initially start with loading state
-    error: null
-
-};
-
-function testReducer(state = defaultState, action) {
-
-    switch (action.type) {
-        case INCREMENT_LOADING:
-            return incrementLoading(state, action);
-        case DECREMENT_LOADING:
-            return decrementLoading(state, action);
-
-        case SECTION_PUSH_DETAILS:
-            return _pushSectionDetails(state, action);
-
-        case TEST_PUSH_ATTEMPTS:
-            return _pushTestAttemptDetails(state, action);
-        case QUESTION_PUSH_DETAILS:
-            return _pushQuestionDetails(state, action);
-        case QUESTION_UPDATE_CURRENT:
-            return _changeCurrentQuestion(state, action);
-
-        case TEST_PUSH_DETAILS:
-            return _pushTestDetails(state, action);
-        case SECTION_UPDATE_CURRENT:
-            return _changeCurrentSection(state, action);
-
-        case TEST_UPDATE_CHOICE_ATTEMPTS:
-            return updateTestAttemptChoice(state, action);
-
-        case TEST_PUSH_ERROR:
-            return pushError(state, action);
-
-        // TODO khant remove after review.
-        // case TEST_UNDO_CHOICE_ATTEMPTS:
-        //     return undoTestAttemptChoice(state);
-        default :
-            return state;
-    }
-
-}
-
-// TEST ATTEMPTS
-// TODO: this file is getting large, should we break it down into different files?
-// FIXME YES
-
-/**
- *
- * @param state
- * @param choiceID
- * @returns {{questionsByID: {}}}
- */
-function updateTestAttemptChoice(state, {choiceID}) {
-
-    const question = state.currentQuestion;
-
-    return {
-        ...state,
-        questionsByID: {
-            ...state.questionsByID,
-            [question]: {
-                ...state.questionsByID[question],
-                choice_id: choiceID
-            }
-
-        }
-    }
-
-
-}
-
-
-/**
- * change the current section
- * @param state
- * @param sectionID
- * @param firstQuestionID
- * @returns {{currentSection: number}}
- */
-function _changeCurrentSection(state, {sectionID}) {
-    return {...state, currentSection: sectionID}
-}
-
-/**
- * change the current question, fetching required questions
- * are done by changeCurrentQuestionAsyncAC by dispatching
- * _fetchAndPushQuestionDetailsAsyncAC on the questionID
- * @param state
- * @param questionID
- * @returns {{currentQuestion: *}}
- */
-function _changeCurrentQuestion(state, {questionID}) {
-    return {...state, currentQuestion: questionID}
-}
-
-
-/**
- * Increment loading key by one
- *
- * @param state
- * @param action
- * @returns {{loadingCount: number}}
- */
-function incrementLoading(state, action) {
-    const loadingCount = state.loadingCount;
-    return {...state, loadingCount: loadingCount + 1}
-
-}
-
-/**
- * Decrement loading key one.
- * If the state's loadingCount is 0, it will not be
- * decremented (i.e. the minimum value of loadingCount is 0 )
- *
- * @param state
- * @param action
- * @returns {{loadingCount: number}}
- */
-function decrementLoading(state, action) {
-    const loadingCount = state.loadingCount;
-    const newCount = loadingCount > 0 ? loadingCount - 1 : 0;
-
-    return {...state, loadingCount: newCount}
-
-}
 
 /**
  * Insert details of the test (fetched from GET /tests/ID)
@@ -216,24 +78,6 @@ function _pushTestDetails(state, action) {
 
     return {...state, ...testDetails}
 
-
-}
-
-/**
- * Insert section details (fetched from GET /tests/<TEST_ID>/sections)
- *
- * @param state
- * @param sectionsList
- * @returns {{sections: *}}
- */
-function _pushSectionDetails(state, {sectionsList}) {
-
-    const sections = sectionsList.reduce((obj, item) => {
-        obj[item.id] = item;
-        return obj;
-    }, {});
-
-    return {...state, sectionsByID: sections}
 
 }
 
@@ -323,7 +167,7 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
     questions = questions.map((item) => {
         const section_id = sectionAttemptToSection[item.section_attempt_id];
 
-        return {...item, section_id: parseInt(section_id)} //keys become strings, so force them back to int
+        return {...item, section_id: parseInt(section_id, 10)} //keys become strings, so force them back to int
 
     });
 
@@ -344,12 +188,15 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
 
     const sortedSectionIds = Object.keys(merged).sort(); // sort sections ids
 
-    const firstSectionId = sortedSectionIds.find((item) => {
-        const intItem = parseInt(item);
+    let firstSectionId = sortedSectionIds.find((item) => {
+        const intItem = parseInt(item, 10);
 
         return merged[intItem].is_complete === false;
     });
 
+    if (testAttempt.is_complete) {
+        firstSectionId = sortedSectionIds[0]
+    }
 
     // we need to find the first question in the section that was just found
 
@@ -357,7 +204,8 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
 
     const firstQuestion = sortedQuestions.find((item) => {
 
-        return parseInt(questions[item].section_id) === parseInt(firstSectionId);
+
+        return parseInt(questions[item].section_id, 10) === parseInt(firstSectionId, 10);
     });
 
 
@@ -406,6 +254,7 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
 
     return {
         ...state,
+        is_complete: testAttempt.is_complete,
         sectionsByID: sections,
         questionsByID: questions,
         currentSection: firstSectionId.toString(),
@@ -415,40 +264,14 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
 
 }
 
-/**
- * Merge the details of the question attempt (which should be already fetched) with the question details
- * after fetching the details of the question itself
- *
- * The action that calls this reducer should be dispatched
- * by _fetchAndPushQuestionDetailsAsyncAC (i.e. not directly from a component).
- *
- * @param state
- * @param questionDetails
- * @returns {{questions: {}}}
- */
-function _pushQuestionDetails(state, {questionDetails}) {
+function markTestComplete(state) {
 
     return {
         ...state,
-        questionsByID: {
-            ...state.questionsByID,
-            [questionDetails.id]: {...state.questionsByID[questionDetails.id], ...questionDetails}
-        }
+        is_complete: true
+
     }
 
 }
 
-
-function pushError(state, {errorDetails}) {
-
-    return {
-        ...state,
-        error: {
-            ...errorDetails,
-
-        }
-
-    }
-}
-
-export {testReducer};
+export {_pushTestAttemptDetails, _pushTestDetails, markTestComplete};
