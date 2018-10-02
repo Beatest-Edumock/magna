@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import {TestSubmitButtonUI} from "./TestSubmitButtonUI";
-import {finishTestAPI} from "../../../../../_Api/Tests/TestAttempts";
-import {markTestCompleteAC} from "../../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
+import {submitTestAsyncAc} from "../../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
 
 class TestSubmitButtonContainer extends Component {
 
@@ -27,12 +26,8 @@ class TestSubmitButtonContainer extends Component {
     }
 
     handleTestSubmit() {
-        finishTestAPI(this.props.testID)
-            .then(() => {
-                    this.props.markTestComplete();
-                    window.close()
-                }
-            )
+
+        this.props.submitTest();
     }
 
     render() {
@@ -59,8 +54,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        markTestComplete: () => {
-            dispatch(markTestCompleteAC())
+        submitTest: () => {
+            dispatch(submitTestAsyncAc())
         }
     }
 }

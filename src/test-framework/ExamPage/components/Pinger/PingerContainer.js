@@ -2,9 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {PingerUI} from "./PingerUI";
 import {pingAPI} from "../../../../_Api/Tests/TestAttempts";
-import {changeCurrentSectionAsyncAC, markCurrentSectionCompleteAC, submitCurrentSectionAsyncAC} from "../../../../_Redux/ActionCreators/Test/Sections/Sections-ActionCreator";
+import {changeCurrentSectionAsyncAC, submitCurrentSectionAsyncAC} from "../../../../_Redux/ActionCreators/Test/Sections/Sections-ActionCreator";
 import {PING_TIME} from "./config";
-import {markTestCompleteAC} from "../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
+import {submitTestAsyncAc} from "../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
 import {toast} from 'react-toastify';
 import {disableInputsAC, enableInputsAC} from "../../../../_Redux/ActionCreators/Test/Test-ActionCreator";
 
@@ -79,11 +79,11 @@ class Pinger extends React.Component {
                         this.props.submitCurrentSection(!isLast);
 
                         if (isLast) {
-                            this.props.markTestComplete();
+                            this.props.submitTest();
                         }
                     }
                     else {
-                        this.props.markTestComplete();
+                        this.props.submitTest();
                     }
 
 
@@ -127,7 +127,8 @@ class Pinger extends React.Component {
 
         return (<PingerUI
             timeLeft={this.state.timeLeft}
-            userName={this.props.user.full_name}/>)
+            userName={this.props.user.full_name}
+            isTestComplete={this.props.isTestComplete}/>)
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -159,11 +160,6 @@ class Pinger extends React.Component {
             this.setState({timeLeft: this.props.timeLeft});
             this.interval = setInterval(this.tick, 1000);
             // this.props.enableInputs();
-
-        }
-        else if (prevProps.currentSectionID !== this.props.currentSectionID) {
-
-            this.setState({timeLeft: this.props.timeLeft})
 
         }
 
@@ -235,15 +231,12 @@ function mapDispatchToProps(dispatch) {
             dispatch(changeCurrentSectionAsyncAC(sectionID))
         },
 
-        markCurrentSectionComplete: () => {
-            dispatch(markCurrentSectionCompleteAC());
-        },
 
         submitCurrentSection: (shouldMove) => {
             dispatch(submitCurrentSectionAsyncAC(shouldMove));
         },
-        markTestComplete: () => {
-            dispatch(markTestCompleteAC());
+        submitTest: () => {
+            dispatch(submitTestAsyncAc());
         },
         disableInputs: () => dispatch(disableInputsAC()),
         enableInputs: () => dispatch(enableInputsAC())
