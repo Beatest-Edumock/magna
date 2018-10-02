@@ -1,8 +1,9 @@
 import React from "react";
+import Typed from 'react-typed';
 import PropTypes from 'prop-types';
 import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
-import {Button, Col, Container, Jumbotron, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'reactstrap';
+import {Col, Container, Jumbotron, Nav, NavItem, NavLink, Row, TabContent, TabPane, Button} from 'reactstrap';
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
 import {MOCK_TESTS_CARD_ELEMENTS, TOPIC_TESTS_CARD_ELEMENTS} from './data';
 import {Footer} from '../Layout/Footer/Footer'
@@ -10,10 +11,13 @@ import classnames from 'classnames';
 import {Link} from 'react-router-dom'
 import {FlipCard} from "../Common/FlipCard/FlipCard";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
-import {faBookOpen} from '@fortawesome/free-solid-svg-icons';
-import './TestPage.css';
+import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
+import {faBookOpen, faCheck} from '@fortawesome/free-solid-svg-icons';
+import './PlacementsPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
+import {startTestAPI} from '../_Api/Tests/TestAttempts'
 import {TEST_INSTRUCTIONS_ROUTE} from "../route";
+import {PlacementsFormContainer} from "./PlacementsForm/PlacementsFormContainer";
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -22,17 +26,18 @@ const bodyStyle = {
 };
 
 
-class TestPage extends React.Component {
+class PlacementsPage extends React.Component {
 
     state = {
         data: "",
         modal: false,
     }
 
-    componentWillReceiveProps({data}) {
+    componentWillReceiveProps({data,isUserLoggedIn}) {
 
         this.setState({data: data})
         console.log(data);
+        //console.log(isUserLoggedIn.college_id);
 
     }
 
@@ -101,6 +106,22 @@ class TestPage extends React.Component {
                             </Container>
 
                         </Jumbotron>
+                        <Container>
+                            {
+                            (this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id==null) &&
+                                    <Row style={{justifyContent: 'center'}}>
+                                        <PlacementsFormContainer/>
+                                    </Row>
+                            }
+
+                            {
+                            (this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id!=null) &&
+                                    <Row style={{justifyContent: 'center'}}>
+                                        <span style={{color: 'blue',fontSize: 24}}>Share this code with your friends</span>
+                                    </Row>
+                            }
+
+                        </Container>
                         <div>
                             <Nav tabs style={{width: '100%', justifyContent: 'center', borderBottom: 0, marginBottom: '2%', marginTop: '6%'}}>
                                 <NavItem>
@@ -154,15 +175,16 @@ class TestPage extends React.Component {
                                         {(this.state.data) &&
 
                                         this.state.data.map((object) => {
+                                            return (    
+                                                
 
-                                            return (
-                                                object.character === "Mock" &&  
+                                                object.character == "Mock" &&
                                                 <FlipCard
                                                     size="small"
                                                     front={
                                                         <Container className="rounded" fluid={true} style={{
                                                             backgroundColor: '#d3d3d3',
-
+                              
                                                             width: '98%',
                                                             height: '80%',
                                                             marginTop: '1%',
@@ -227,18 +249,18 @@ class TestPage extends React.Component {
                                                             </Row>
                                                             <Row style={{justifyContent: 'center', padding: '10%'}}>
                                                                 {
-                                                                    this.props.isUserLoggedIn && (!object.is_purchased && !object.price === 0) &&
+                                                                    this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
 
                                                                     <Link to=''><Button style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button></Link>
                                                                 }
                                                                 {
-                                                                    this.props.isUserLoggedIn && (object.is_purchased || object.price === 0) &&
+                                                                    this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
                                                                     <Button onClick={() => this.startTest(object.id)} style={{backgroundColor: 'white', color: 'black'}}>Start
                                                                         Test</Button>
                                                                 }
 
                                                                 {
-                                                                    !this.props.isUserLoggedIn && (!object.is_purchased && !object.price === 0) &&
+                                                                    !this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
 
                                                                     <Container>
                                                                         <Row style={{justifyContent: 'center'}}>
@@ -248,7 +270,7 @@ class TestPage extends React.Component {
 
                                                                 }
                                                                 {
-                                                                    !this.props.isUserLoggedIn && (object.is_purchased || object.price === 0) &&
+                                                                    !this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
 
                                                                     <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Start Test</Button>
 
@@ -259,7 +281,7 @@ class TestPage extends React.Component {
 
 
                                                     )}
-                                                    backBackground={((object.is_purchased || object.price === 0) && "blue") || ((!object.is_purchased && !object.price === 0) && "gray")}
+                                                    backBackground={((object.is_purchased || object.price == 0) && "blue") || ((!object.is_purchased && !object.price == 0) && "gray")}
 
                                                 />
 
@@ -425,10 +447,10 @@ class TestPage extends React.Component {
 }
 
 
-export {TestPage};
+export {PlacementsPage};
 
 
-TestPage.propTypes = {
+PlacementsPage.propTypes = {
     data: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object

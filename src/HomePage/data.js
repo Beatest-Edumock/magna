@@ -10,22 +10,22 @@ export const FEATURE_CARD_ELEMENTS = [
 	{
 
 		icon: <FontAwesomeIcon size={"4x"} icon={faAddressBook} color="#8C9EFF"/>,
-		text: <p style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Grow your skills with the inspiring mentors</p>
+		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Grow your skills with the inspiring mentors</p>
 	},
 
 	{
 		icon: <FontAwesomeIcon size={"4x"} icon={faUsers} color="#8C9EFF" style={{}}/>,
-		text: <p style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Learn with your peer group across the globe</p>
+		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Learn with your peer group across the globe</p>
 
 	},
 	{
 		icon: <FontAwesomeIcon size={"4x"} icon={faWindowMaximize} color="#8C9EFF"/>,
-		text: <p style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Learn to apply knowledge with capstone projects</p>
+		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Learn to apply knowledge with capstone projects</p>
 
 	},
 	{
 		icon: <FontAwesomeIcon size={"4x"} icon={faBinoculars} color="#8C9EFF"/>,
-		text: <p style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Holistic learning approach with small learning units</p>
+		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Holistic learning approach with small learning units</p>
 
 	}
 

@@ -78,7 +78,6 @@ class HomePage extends React.Component {
                                 <Container>
                                     <Button onClick={this.Scroll} color="primary" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
                                 </Container>
-
                             </div>
 
                         </Container>
