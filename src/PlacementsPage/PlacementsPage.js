@@ -13,10 +13,11 @@ import {FlipCard} from "../Common/FlipCard/FlipCard";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
 import {faBookOpen, faCheck} from '@fortawesome/free-solid-svg-icons';
-import './TestPage.css';
+import './PlacementsPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
 import {startTestAPI} from '../_Api/Tests/TestAttempts'
 import {TEST_INSTRUCTIONS_ROUTE} from "../route";
+import {PlacementsFormContainer} from "./PlacementsForm/PlacementsFormContainer";
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -25,17 +26,18 @@ const bodyStyle = {
 };
 
 
-class TestPage extends React.Component {
+class PlacementsPage extends React.Component {
 
     state = {
         data: "",
         modal: false,
     }
 
-    componentWillReceiveProps({data}) {
+    componentWillReceiveProps({data,isUserLoggedIn}) {
 
         this.setState({data: data})
         console.log(data);
+        //console.log(isUserLoggedIn.college_id);
 
     }
 
@@ -104,6 +106,22 @@ class TestPage extends React.Component {
                             </Container>
 
                         </Jumbotron>
+                        <Container>
+                            {
+                            (this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id==null) &&
+                                    <Row style={{justifyContent: 'center'}}>
+                                        <PlacementsFormContainer/>
+                                    </Row>
+                            }
+
+                            {
+                            (this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id!=null) &&
+                                    <Row style={{justifyContent: 'center'}}>
+                                        <span style={{color: 'blue',fontSize: 24}}>Share this code with your friends</span>
+                                    </Row>
+                            }
+
+                        </Container>
                         <div>
                             <Nav tabs style={{width: '100%', justifyContent: 'center', borderBottom: 0, marginBottom: '2%', marginTop: '6%'}}>
                                 <NavItem>
@@ -429,10 +447,10 @@ class TestPage extends React.Component {
 }
 
 
-export {TestPage};
+export {PlacementsPage};
 
 
-TestPage.propTypes = {
+PlacementsPage.propTypes = {
     data: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object

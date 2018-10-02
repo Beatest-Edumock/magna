@@ -9,6 +9,7 @@ import {SignUpPage} from "./SignUpPage/SignUpPage";
 import {TermsPage} from "./TermsPage/TermsPage";
 import {AboutUsPage} from "./AboutUsPage/AboutUsPage";
 import {TestPageContainer} from "./TestPage";
+import {PlacementsPageContainer} from "./PlacementsPage";
 import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage";
 import {
     ABOUT_US_ROUTE,
@@ -19,7 +20,9 @@ import {
     TERMS_AND_CONDS_ROUTE,
     TEST_INSTRUCTIONS_ROUTE,
     TEST_LIST_ROUTE,
-    TEST_PAGE_ROUTE
+    TEST_PAGE_ROUTE,
+    PLACEMENTS_PAGE_ROUTE
+
 } from "./route";
 
 
@@ -38,6 +41,7 @@ const Routes = () => (
 
             <Route path={TEST_INSTRUCTIONS_ROUTE(null, true)} component={InstructionPage}/>
             <Route path={TEST_PAGE_ROUTE(null, true)} component={ExamPageC}/>
+            <Route path={PLACEMENTS_PAGE_ROUTE()} component={PlacementsPageContainer}/>
 
         </Switch>
 

@@ -82,6 +82,7 @@ class HomePage extends React.Component {
                             </h2>
 
                             <Container>
+                                <i class="icon icon-CPU icon--lg color--primary"></i>
                                 <Button onClick={this.Scroll} color="primary" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
                             </Container>
 

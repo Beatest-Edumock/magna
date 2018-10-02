@@ -100,3 +100,9 @@ export const TEST_PAGE_ROUTE = (testID, blueprint = false) => {
 
 };
 
+
+export const PLACEMENTS_PAGE_ROUTE = () => {
+
+    return `/placements`
+
+};
