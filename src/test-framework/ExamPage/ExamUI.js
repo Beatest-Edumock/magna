@@ -9,6 +9,7 @@ import {ErrorModal} from "./components/ErrorModal";
 import {ClearResponseButton} from "./components/QuestionButtonsGroup/ClearResponseButton";
 import {MarkForReviewButton} from "./components/QuestionButtonsGroup/MarkForReviewButton";
 import {Logic} from "./components/QuestionContent/Workshop/Logic";
+import {NextQuestionButton} from "./components/QuestionButtonsGroup/NextQuestionButton";
 
 
 class ExamPageUI extends React.Component {
@@ -43,6 +44,13 @@ class ExamPageUI extends React.Component {
 
                                     <div className="col-12 col-md-3 my-2 ">
                                         <MarkForReviewButton/>
+                                    </div>
+
+
+                                    <div className="col-12 col-md-1 my-2 ">
+
+                                        <NextQuestionButton/>
+
                                     </div>
 
 

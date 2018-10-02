@@ -117,6 +117,31 @@ function changeCurrentQuestionAsyncAC(questionID) {
 }
 
 
+function moveToNextQuestionAsyncAC() {
+
+    return (dispatch, getState) => {
+
+        const state = getState();
+        const currentQuestionID = state.test.currentQuestion;
+        const currentSectionID = state.test.currentSection;
+
+        const questions = state.test.sectionsByID[currentSectionID].questions;
+
+        const questionIdx = questions.indexOf(currentQuestionID);
+
+
+        if (questionIdx < questions.length - 1) {
+            const nextIdx = questionIdx + 1;
+            const nextQuestionIdx = questions[nextIdx];
+
+            dispatch(changeCurrentQuestionAsyncAC(nextQuestionIdx));
+        }
+
+    }
+
+}
+
+
 function _pushQuestionSolutionsAsyncAC(questionID) {
 
     return (dispatch, getState) => {
@@ -138,4 +163,4 @@ function _pushQuestionSolutionsAsyncAC(questionID) {
 }
 
 
-export {_pushQuestionDetailsAC, _fetchAndPushQuestionDetailsAsyncAC, changeCurrentQuestionAsyncAC};
+export {_pushQuestionDetailsAC, _fetchAndPushQuestionDetailsAsyncAC, changeCurrentQuestionAsyncAC, moveToNextQuestionAsyncAC};
