@@ -22,7 +22,7 @@ class SectionSubmitButtonContainer extends Component {
         const sectionsArray = Object.keys(this.props.sections).sort();
 
         // FIXME: jumpable types then no submit section
-        if (this.props.testType !== "CAT")
+        if (this.props.testType !== "CAT" || this.props.testIsComplete)
             return false;
         else {
             // disable for last sections
@@ -52,6 +52,7 @@ function mapStateToProps(state) {
         testType: state.test.type,
         currentSection: state.test.currentSection,
         sections: state.test.sectionsByID,
+        testIsComplete: state.test.is_complete,
 
     }
 

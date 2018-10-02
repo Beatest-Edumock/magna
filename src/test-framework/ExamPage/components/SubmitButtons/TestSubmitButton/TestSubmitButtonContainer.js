@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import {TestSubmitButtonUI} from "./TestSubmitButtonUI";
 import {submitTestAsyncAc} from "../../../../../_Redux/ActionCreators/Test/TestAttempt-ActionCreators";
+import {submitCurrentSectionAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections/Sections-ActionCreator";
 
 class TestSubmitButtonContainer extends Component {
 
@@ -12,21 +13,26 @@ class TestSubmitButtonContainer extends Component {
     }
 
     shouldDisplay() {
-        console.log(this.props.sections)
         const sectionsArray = Object.keys(this.props.sections).sort();
         // FIXME
-        if (this.props.testType !== "CAT") {
+        if (this.props.testType !== "CAT" && (!this.props.testIsComplete)) {
             return true;
         }
         else {
-
-            // disable for last sections
-            return (this.props.currentSection === sectionsArray[sectionsArray.length - 1])
+            if(this.props.testIsComplete) {
+                return false
+            } else {
+                // disable for last sections
+                return (this.props.currentSection === sectionsArray[sectionsArray.length - 1])
+            }
         }
     }
 
     handleTestSubmit() {
 
+        if(this.props.testType === "CAT") {
+            this.props.submitSection()
+        }
         this.props.submitTest();
     }
 
@@ -49,13 +55,18 @@ function mapStateToProps(state) {
         currentSection: state.test.currentSection,
         sections: state.test.sectionsByID,
         testType: state.test.type,
+        testIsComplete: state.test.is_complete,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         submitTest: () => {
-            dispatch(submitTestAsyncAc())
+            dispatch(submitTestAsyncAc());
+        },
+        submitSection: ()=> {
+            dispatch(submitCurrentSectionAsyncAC())
+
         }
     }
 }
