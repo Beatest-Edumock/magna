@@ -23,6 +23,9 @@ function submitTestAsyncAc() {
                     const state = getState();
 
                     const sections = Object.keys(state.test.sectionsByID).sort();
+
+                    // refresh the parent window
+                    window.opener.location.reload(true);
                     window.close();
 
                 }
