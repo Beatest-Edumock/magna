@@ -25,6 +25,7 @@ import {
 
 } from "./route";
 import {PerformancePageContainer} from "./test-framework/PerformancePage";
+import {NotFoundPage} from "./404Page/404Page";
 
 
 const Routes = () => (
@@ -46,6 +47,7 @@ const Routes = () => (
 
             <Route exact path={TEST_INSTRUCTIONS_ROUTE(null, true)} component={InstructionPage}/>
             <Route exact path={PERFORMANCE_PAGE_ROUTE(null, true)} component={PerformancePageContainer}/>
+            <Route component={NotFoundPage}/>
 
         </Switch>
 
