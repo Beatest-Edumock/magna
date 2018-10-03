@@ -9,8 +9,6 @@ import {Footer} from '../Layout/Footer/Footer'
 import classnames from 'classnames';
 import {Link} from 'react-router-dom'
 import {FlipCard} from "../Common/FlipCard/FlipCard";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
-import {faBookOpen} from '@fortawesome/free-solid-svg-icons';
 import './TestPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
 import {PERFORMANCE_PAGE_ROUTE, TEST_INSTRUCTIONS_ROUTE} from "../route";

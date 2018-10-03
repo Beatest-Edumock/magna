@@ -1,21 +1,16 @@
 import React from "react";
-import Typed from 'react-typed';
 import PropTypes from 'prop-types';
 import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
-import {Col, Container, Jumbotron, Nav, NavItem, NavLink, Row, TabContent, TabPane, Button} from 'reactstrap';
+import {Button, Col, Container, Jumbotron, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'reactstrap';
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
 import {MOCK_TESTS_CARD_ELEMENTS, TOPIC_TESTS_CARD_ELEMENTS} from './data';
 import {Footer} from '../Layout/Footer/Footer'
 import classnames from 'classnames';
 import {Link} from 'react-router-dom'
 import {FlipCard} from "../Common/FlipCard/FlipCard";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
-import {faConnectdevelop, faAmazon} from '@fortawesome/free-brands-svg-icons';
-import {faBookOpen, faCheck} from '@fortawesome/free-solid-svg-icons';
 import './PlacementsPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
-import {startTestAPI} from '../_Api/Tests/TestAttempts'
 import {TEST_INSTRUCTIONS_ROUTE} from "../route";
 import {PlacementsFormContainer} from "./PlacementsForm/PlacementsFormContainer";
 
