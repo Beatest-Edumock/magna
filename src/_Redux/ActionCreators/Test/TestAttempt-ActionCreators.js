@@ -23,8 +23,8 @@ function submitTestAsyncAc() {
                     const state = getState();
 
                     const sections = Object.keys(state.test.sectionsByID).sort();
+                    window.close();
 
-                    dispatch(changeCurrentSectionAsyncAC(sections[0]));
                 }
             )
 
