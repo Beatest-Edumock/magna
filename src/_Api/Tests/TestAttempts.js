@@ -12,7 +12,6 @@ function startTestAPI(testID) {
 }
 
 
-
 /**
  *
  * @param testID
@@ -37,4 +36,8 @@ function finishTestAPI(testID) {
     return testFramAxios.post(`/tests/${testID}/attempts/finish`)
 }
 
-export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTestAPI}
+function getPerformanceAPI(testID) {
+    return testFramAxios.get(`/tests/${testID}/attempts/performance`)
+}
+
+export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTestAPI, getPerformanceAPI}

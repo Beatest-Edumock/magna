@@ -106,3 +106,12 @@ export const PLACEMENTS_PAGE_ROUTE = () => {
     return `/placements`
 
 };
+export const PERFORMANCE_PAGE_ROUTE = (testID, blueprint = false) => {
+
+    if (blueprint) {
+        return "/test/:testID/performance";
+    }
+
+    return `/test/${testID}/performance`
+
+};

@@ -176,11 +176,11 @@ class TestPage extends React.Component {
                                                             <Container style={{backgroundColor: 'white', width: '100%',height:240}}>
                                                                 <Row style={{justifyContent: 'center', alignItems: 'center',height:240}}>
                                                                     {
-                                                                        (object.is_purchased || object.price == 0) &&
+                                                                        (object.is_purchased || object.price===0) &&
                                                                         <img alt="person" src="/testicons/Mock Exam Icons/Placement - Avail.png" style={{padding:0,width: '100%',height:240}}/>
                                                                     }
                                                                     {
-                                                                        (!object.is_purchased && !object.price == 0) &&
+                                                                        (!object.is_purchased && !object.price===0) &&
                                                                          <img alt="person" src="/testicons/Mock Exam Icons/Placement - Unavail.png" style={{padding:0,width: '100%',height:240}}/>
                                                                     }
                                                                 </Row>
@@ -303,7 +303,7 @@ class TestPage extends React.Component {
                                             return (    
                                                 
 
-                                                object.character == "Topic" &&
+                                                object.character==="Topic" &&
                                                 <FlipCard
                                                     size="small"
                                                     front={
@@ -367,18 +367,18 @@ class TestPage extends React.Component {
                                                             </Row>
                                                             <Row style={{justifyContent: 'center', padding: '10%'}}>
                                                                 {
-                                                                    this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
+                                                                    this.props.isUserLoggedIn && (!object.is_purchased && !object.price===0) &&
 
                                                                     <Link to=''><Button style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button></Link>
                                                                 }
                                                                 {
-                                                                    this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
+                                                                    this.props.isUserLoggedIn && (object.is_purchased || object.price===0) &&
                                                                     <Button onClick={() => this.startTest(object.id)} style={{backgroundColor: 'white', color: 'black'}}>Start
                                                                         Test</Button>
                                                                 }
 
                                                                 {
-                                                                    !this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
+                                                                    !this.props.isUserLoggedIn && (!object.is_purchased && !object.price===0) &&
 
                                                                     <Container>
                                                                         <Row style={{justifyContent: 'center'}}>
@@ -388,7 +388,7 @@ class TestPage extends React.Component {
 
                                                                 }
                                                                 {
-                                                                    !this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
+                                                                    !this.props.isUserLoggedIn && (object.is_purchased || object.price===0) &&
 
                                                                     <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Start Test</Button>
 
@@ -399,7 +399,7 @@ class TestPage extends React.Component {
 
 
                                                     )}
-                                                    backBackground={((object.is_purchased || object.price == 0) && "blue") || ((!object.is_purchased && !object.price == 0) && "gray")}
+                                                    backBackground={((object.is_purchased || object.price===0) && "blue") || ((!object.is_purchased && !object.price===0) && "gray")}
 
                                                 />
 
