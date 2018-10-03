@@ -22,4 +22,17 @@ function resendActivationMailApi(email, recaptcha) {
 
 }
 
-export {loginUserApi, logoutUserApi, resendActivationMailApi, getUserDetailsApi};
+function signupAPI(full_name, email, password, phone_no, college_id, captcha_token) {
+
+    return axios.post('/user/signup', {
+        full_name,
+        email,
+        password,
+        phone_no,
+        college_id,
+        captcha_token
+    });
+
+}
+
+export {loginUserApi, signupAPI, logoutUserApi, resendActivationMailApi, getUserDetailsApi};
