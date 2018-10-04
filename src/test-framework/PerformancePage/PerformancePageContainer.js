@@ -26,7 +26,7 @@ class PerformancePage extends React.Component {
 
 
     render() {
-        if (this.state.data === null || this.state.testDetails === null) {
+        if (this.state.data === null || this.state.testDetails === null || props.user == null) {
             return <LoadingSpinner/>
         }
         return <PerformancePageUI testDetails={this.state.testDetails}
