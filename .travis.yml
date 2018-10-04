@@ -16,7 +16,8 @@ deploy:
   secret_access_key:
     secure: NCWqMeVwkCj6/kjwMSFvOvciX9GcnsCVs/KLL1m9PKbNLWOiR2ImJZIurIlPtGN/FQ8JNEnG58gXX6voBnmHu5yMxGgbZnqqvBnuR10IqAN+DeltTh8/eYRNCHiaQnzGEUiOYHyup+iFAsZvQRUEaEuN2ML0iIlU8GIURaqj2HzIM/W5xVZz9kf472FywFYP5FxAlQq732ugsXbL+tNeFkxEZ6M5D580yD6a/0MH7U4B7/dMS4wN+zZ/+hC924qjepclHhv00xL1qhLLFvP9VMrky1sVpc9s/KcRQjcxlZOAWa/CxA58PdTKL42zqhGoKoELNiTyue1OfHEam9ICmXoAmDuG5l9KU9EmzbsUhy5T00Zw7m6wjPWCRHi7h5+eF22ngAQstNUeXJEyZrwM9JwOTCVAh6t61S5teJjvOC0Ax/SUIceWnOPATqQ0sxWr2UXuJMyIF7Q4vNiA6bgvgKuFHW4XP1kcMS0jbPtKUnykThxlKPriS1Zl5d+WHCg3cMdxGFTmrfWgtWAPHnSE+tyzu6GhXYigJ3BR6dD+J55Ki5/WlH+pRh18YpeZBzM0kacDlQj5An24VPtEwJjX5AIQnlgiXIRMnpKLVquhCgYB9DqggN9Dnruu0X6HBY5erSI1rBKwSr6ju/uiQttSq3b0//oe390/7XaGfPzSSk4=
   bucket: beatest-magna-prod
-  local-dir: build/
+  local-dir: build
   acl: public_read
+  skip_cleanup: true
   on:
     repo: Beatest-Edumock/magna
