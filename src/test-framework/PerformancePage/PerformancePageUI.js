@@ -2,6 +2,23 @@ import React from 'react';
 import {Table} from 'reactstrap';
 
 
+function calculateOverallAccuracy(sectionsObj) {
+
+    const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0};
+
+    const accuracy = Object.keys(sectionsObj).map(sectionID => {
+
+        overall.attempts += sectionsObj[sectionID].attempts;
+        overall.score += sectionsObj[sectionID].attempts;
+        overall.incorrect += sectionsObj[sectionID].incorrect;
+
+        overall.score += sectionsObj[sectionID].score;
+
+
+    })
+
+}
+
 function PerformancePageUI(props) {
 
     const sections = props.data.sections;
@@ -39,11 +56,12 @@ function PerformancePageUI(props) {
 
                     const section = sections[sectionID];
 
-                    overall.accuracy += section.accuracy;
                     overall.attempts += section.attempt_count;
                     overall.correct += section.correct_qtn_count;
                     overall.incorrect += section.incorrect_qtn_count;
                     overall.score += section.score;
+
+                    overall.accuracy = 100 * overall.correct / overall.attempts;
 
 
                     return (
@@ -54,7 +72,7 @@ function PerformancePageUI(props) {
                                 <td>{section.correct_qtn_count}</td>
                                 <td>{section.incorrect_qtn_count}</td>
                                 <td>{section.score}</td>
-                                <td>{section.accuracy}</td>
+                                <td>{section.accuracy * 100}</td>
                             </tr>
                         </React.Fragment>
                     )
