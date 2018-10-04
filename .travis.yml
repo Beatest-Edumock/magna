@@ -1,12 +1,22 @@
 language: node_js
 env:
-    - CI=false
+  matrix:
+  - CI=false
+  global:
+    secure: EkOa40z8nesZm/0bQ+BpZt3ouE9p1XyueFNY7RKzoeA8xW7M96sv2pZkcAWrG2NEDlZqmNauvZJtsQqM3X8puwH1sZocSp6DXgE4cknd9KeePEJhe71PDYfROXggX2e68FQgd+iB2PY16JWO+c/9bvdPVGiyNhAksWTpczDu0ZpTl2Ux1oiXd8NcWvFz/qX7QbMAUvgN0XLfaJl/b5EWb8rqhGknB3gOSYshol5HqSJBR6uAqnuRPcfjeC8Cqs2z64nlexB1U4MW/Qa/axXVUoYPQl4Drz+PgIgY6yL81t8mw/w5UcEFVCTjU4sCqz4cN0h8JsrZ3S8UHRO48wUZD97HAcbglKkuTxVd05nV5riG+GaYMN61UeeCVK/xqZ9i+Adoq7wGwEaKZDfVvL92omRKWVTDTHTypiHw5UdZC6yz/1sDvwzdRtIwBprK7c6N4mhpCzJCfoNjuhW/jrS1G1dnoeAk0IJUsqvRXbJgFWeGC5b8/NvAe3WlcTYOf5JYuKNy4AcdHpxtjVtE7tYsg55SmygaISmQ2UMVpYUOzBsp1DMwJarmbE3MUqUUvw4F6D3Tq58rGZ2aE3/q7vw4ylUQwzuIBMwkTDbQIxjA88szNqh1WyWIY6Poip7unoVqBxxTRLzGwOwttCAzZwtcm6oyj1MVO4f/trEirrAuFNg=
 node_js:
-  - "8"
-
+- '8'
 install:
-  - npm install
-  - npm run build
-
+- npm install
 script:
-  - npm run build
+- npm run build
+deploy:
+  provider: s3
+  access_key_id: AKIAINSISFEV3RBI2IFA
+  secret_access_key:
+    secure: NCWqMeVwkCj6/kjwMSFvOvciX9GcnsCVs/KLL1m9PKbNLWOiR2ImJZIurIlPtGN/FQ8JNEnG58gXX6voBnmHu5yMxGgbZnqqvBnuR10IqAN+DeltTh8/eYRNCHiaQnzGEUiOYHyup+iFAsZvQRUEaEuN2ML0iIlU8GIURaqj2HzIM/W5xVZz9kf472FywFYP5FxAlQq732ugsXbL+tNeFkxEZ6M5D580yD6a/0MH7U4B7/dMS4wN+zZ/+hC924qjepclHhv00xL1qhLLFvP9VMrky1sVpc9s/KcRQjcxlZOAWa/CxA58PdTKL42zqhGoKoELNiTyue1OfHEam9ICmXoAmDuG5l9KU9EmzbsUhy5T00Zw7m6wjPWCRHi7h5+eF22ngAQstNUeXJEyZrwM9JwOTCVAh6t61S5teJjvOC0Ax/SUIceWnOPATqQ0sxWr2UXuJMyIF7Q4vNiA6bgvgKuFHW4XP1kcMS0jbPtKUnykThxlKPriS1Zl5d+WHCg3cMdxGFTmrfWgtWAPHnSE+tyzu6GhXYigJ3BR6dD+J55Ki5/WlH+pRh18YpeZBzM0kacDlQj5An24VPtEwJjX5AIQnlgiXIRMnpKLVquhCgYB9DqggN9Dnruu0X6HBY5erSI1rBKwSr6ju/uiQttSq3b0//oe390/7XaGfPzSSk4=
+  bucket: beatest-magna-prod
+  local-dir: build/
+  acl: public_read
+  on:
+    repo: Beatest-Edumock/magna
