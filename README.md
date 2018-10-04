@@ -1,5 +1,7 @@
 # Beatest - Magna
 
+[![Build Status](https://travis-ci.org/Beatest-Edumock/magna.svg?branch=master)](https://travis-ci.org/Beatest-Edumock/magna)
+
 This is the source of our (Hopefully) upcoming UI. 
 
 
