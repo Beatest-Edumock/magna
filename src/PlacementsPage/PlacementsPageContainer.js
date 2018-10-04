@@ -1,7 +1,6 @@
 import React from 'react';
 import {getTestsListAPI} from "../_Api/Tests/Tests";
 import {PlacementsPage} from "./PlacementsPage";
-import axios from 'axios';
 import {connect} from 'react-redux';
 
 
@@ -11,7 +10,6 @@ class PlacementsPageWrapper extends React.Component {
         data: ""
     }
     componentDidMount() {
-        const {testType} = this.props.match.params;
 
 
         getTestsListAPI("COLLEGE").then(({data}) => {
