@@ -71,9 +71,9 @@ class HomePage extends React.Component {
 
                             <div className='text-center' style={{marginTop: "25%"}}>
 
-                                <h2 className="text-light display-4">
+                                <h1 className="text-light display-2">
                                     {typedString()}
-                                </h2>
+                                </h1>
 
                                 <Container>
                                     <Button onClick={this.Scroll} color="primary" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
