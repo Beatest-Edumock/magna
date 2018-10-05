@@ -33,7 +33,7 @@ function PerformancePageUI(props) {
 
                 <div className="row my-5">
                     <h3 className="col text-monospace text-muted">{props.testDetails.name}</h3>
-                    <h4 className="col text-monospace">Rank: {props.data.rank}</h4>
+                    {/*<h4 className="col text-monospace">Rank: {props.data.rank}</h4>*/}
                     <h4 className="col text-monospace">Percentile: {props.data.percentile}</h4>
                 </div>
             </div>
