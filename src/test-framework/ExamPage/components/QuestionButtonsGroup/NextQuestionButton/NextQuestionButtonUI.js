@@ -2,7 +2,7 @@ import React from 'react';
 
 function NextQuestionButtonUI(props) {
 
-    let text = "Save & Next";
+    let text = "Save";
 
     let color = "btn-primary";
 

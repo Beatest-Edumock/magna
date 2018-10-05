@@ -211,7 +211,7 @@ class TestPage extends React.Component {
                                                                 paddingTop: '10%'
                                                             }}>
                                                                 <span>Number of questions</span>
-                                                                <span>100</span>
+                                                                <span>45</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
