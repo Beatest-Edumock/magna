@@ -82,7 +82,9 @@ function ContactUsForm(props) {
                             ref={props.registerRecaptchaInstanceCallback}
                             sitekey={config.recaptchaKey}
                             theme="light"
+                            
                             verifyCallback={(response) => {
+                                console.log("verification done");
                                 setFieldValue("recaptcha", response);
                             }}
                         />
