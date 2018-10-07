@@ -81,7 +81,6 @@ function ContactUsForm(props) {
                         <Recaptcha
                             ref={props.registerRecaptchaInstanceCallback}
                             sitekey={config.recaptchaKey}
-                            render="explicit"
                             theme="light"
                             verifyCallback={(response) => {
                                 setFieldValue("recaptcha", response);
