@@ -1,8 +1,8 @@
 import React from 'react';
 import {Formik} from 'formik';
 import * as yup from 'yup';
-import Recaptcha from 'react-recaptcha';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import Reaptcha from 'reaptcha'
 import config from 'config';
 
 import Select from 'react-select';
@@ -140,7 +140,7 @@ function SignUpForm(props) {
                 </FormGroup>
 
                 <FormGroup>
-                    <Recaptcha
+                    <Reaptcha
 
                         ref={props.registerRecaptchaInstanceCallback}
 
@@ -148,7 +148,7 @@ function SignUpForm(props) {
                         theme="light"
                         size='invisible'
 
-                        verifyCallback={(response) => {
+                        onVerify={(response) => {
                             props.captchaVerifiedCallback(response);
                         }}
                     />
