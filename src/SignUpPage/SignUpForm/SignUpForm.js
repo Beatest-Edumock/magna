@@ -4,7 +4,6 @@ import * as yup from 'yup';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import Reaptcha from 'reaptcha'
 import config from 'config';
-
 import Select from 'react-select';
 
 
@@ -161,7 +160,6 @@ function SignUpForm(props) {
                     </Button>
 
                 </FormGroup>
-
             </Form>
 
         )}

@@ -9,7 +9,8 @@ import {COLLEGE_IMAGES, FEATURE_CARD_ELEMENTS, FLIP_CARD_ELEMENTS, RECOGNITIONS,
 import {ContactUsContainer} from './ContactUs/ContactUsForm/ContactUsContainer'
 import {Footer} from '../Layout/Footer/Footer'
 import {Link} from 'react-router-dom'
-import {FlipCard} from "../Common/FlipCard/FlipCard";
+import {FlipCard} from "../Common/FlipCard/FlipCard"
+import {NavLink} from 'react-router-dom'
 //
 //
 function typedString() {

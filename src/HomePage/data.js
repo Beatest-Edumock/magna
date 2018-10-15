@@ -3,7 +3,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {faBinoculars, faCogs, faHeadphones, faUsers, faUserTie, faWindowMaximize} from '@fortawesome/free-solid-svg-icons'
 import {faAddressBook} from '@fortawesome/free-regular-svg-icons'
 import {Container} from 'reactstrap'
-import {HomePageButton} from "./HomePageButton";
 
 export const FEATURE_CARD_ELEMENTS = [
 
@@ -109,9 +108,10 @@ export const FLIP_CARD_ELEMENTS = [
             </div>
             </div>,
 		back:
-			<div className="text-center py-2"><HomePageButton description="Go to Tests"
-                                                              className="btn btn-light"
-                                                              url="/profile"/>
+			<div className="text-center py-2">
+				<a className="btn btn-light" href="/profile">
+				Go to tests
+				</a>
             </div>
     },
 	// {
