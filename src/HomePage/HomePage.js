@@ -110,9 +110,9 @@ class HomePage extends React.Component {
                                     FLIP_CARD_ELEMENTS.map((flip_card) => {
                                         return (
                                             <FlipCard
-                                                backBackground='blue'
+                                                backBackground={'#4a90e2'}
                                                 front={flip_card.front}
-                                                back="hey"
+                                                back={flip_card.back}
                                             />
 
                                         );

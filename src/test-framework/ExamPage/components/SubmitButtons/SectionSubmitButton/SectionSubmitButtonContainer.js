@@ -6,7 +6,7 @@ import {submitCurrentSectionAsyncAC} from "../../../../../_Redux/ActionCreators/
 class SectionSubmitButtonContainer extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.handleSubmitSectionCallBack = this.handleSubmitSection.bind(this)
         this.shouldDisplay = this.shouldDisplay.bind(this)
     }
