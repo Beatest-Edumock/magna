@@ -103,12 +103,12 @@ export const FLIP_CARD_ELEMENTS = [
                 <div className="text-center" style={{marginTop: "10%"}}>
                     <Container>
                              <div><h4>Aptitude</h4>
-			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Aiming to ace CAT or your campus recruitment exams? Need to learn the tricks to solve a sum in seconds? Learn from IIM and XLRI graduates today.</div></div>
+			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Gear up for your placements with high end analysis of real time corporate mocks, topic tests, sectional exams and much more</div></div>
                 </Container>
             </div>
             </div>,
 		back:
-			<div className="text-center py-2">
+			<div className="text-center py-2" style={{display: 'table-cell', verticalAlign: 'middle'}}>
 				<a className="btn btn-light" href="/profile">
 				Go to tests
 				</a>

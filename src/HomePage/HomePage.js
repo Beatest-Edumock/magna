@@ -103,7 +103,7 @@ class HomePage extends React.Component {
 
                     <Container fluid className='bg-light border-top' style={{paddingBottom: '2%'}}>
 
-                        <h1 ref={this.ourFeatures} className="text-center" style={{paddingTop: '2%'}}> Our Features</h1>
+                        <h1 ref={this.ourFeatures} className="text-center" style={{paddingTop: '2%'}}> Our Offerings</h1>
 
                         <Container>
                             <Row style={{justifyContent: 'center'}}>

@@ -15,7 +15,8 @@ function FlipCard(props) {
                 <div className={"front "+ props.size + " rounded"}>
                     {props.front}
                 </div>
-                <div className={"back "+ props.size + " rounded"} style={{backgroundColor: props.backBackground}}>
+                <div className={"back "+ props.size + " rounded"}
+                     style={{backgroundColor: props.backBackground, display: 'table', 'width': '100%'}}>
                     {props.back}
                 </div>
             </div>
