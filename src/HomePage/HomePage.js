@@ -20,11 +20,7 @@ function typedString() {
      */
     return (
         <Typed
-            strings={
-                ['Here you  can find anything',
-                    "This is awesome",
-                    "brilliant"]
-            }
+            strings={['Learn Less. Apply More!', 'No Exams for Once!', 'New Learning System Begins!']}
             typeSpeed={40}
             loop={true}
         />
@@ -103,7 +99,7 @@ class HomePage extends React.Component {
 
                     <Container fluid className='bg-light border-top' style={{paddingBottom: '2%'}}>
 
-                        <h1 ref={this.ourFeatures} className="text-center" style={{paddingTop: '2%'}}> Our Features</h1>
+                        <h1 ref={this.ourFeatures} className="text-center" style={{paddingTop: '2%'}}> Our Offerings</h1>
 
                         <Container>
                             <Row style={{justifyContent: 'center'}}>
