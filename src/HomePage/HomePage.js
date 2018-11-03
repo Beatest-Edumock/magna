@@ -20,11 +20,7 @@ function typedString() {
      */
     return (
         <Typed
-            strings={
-                ['Here you  can find anything',
-                    "This is awesome",
-                    "brilliant"]
-            }
+            strings={['Learn Less. Apply More!', 'No Exams for Once!', 'New Learning System Begins!']}
             typeSpeed={40}
             loop={true}
         />
