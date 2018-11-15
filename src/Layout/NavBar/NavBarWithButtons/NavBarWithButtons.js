@@ -67,9 +67,9 @@ function NavBarWithButtons(props) {
         <NavBar {...props}>
 
 
-            <NavItem>
-                {profileLoginNavLink(props)}
-            </NavItem>
+            {/*<NavItem>*/}
+                {/*{profileLoginNavLink(props)}*/}
+            {/*</NavItem>*/}
 
             <NavItem>
                 {signupLogoutNavLink(props)}
