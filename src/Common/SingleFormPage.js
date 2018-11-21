@@ -18,6 +18,7 @@
 
 import React from 'react'
 import {NavBar} from "../Layout/NavBar/NavBar";
+import {UserActions} from "./UserActions";
 
 
 const formContainerStyle = {
@@ -50,6 +51,7 @@ function SingleFormPage(props) {
                     <h6 className='text-light text-left'>{props.title}</h6>
                     <hr className="bg-light"/>
                     {props.children}
+                    <UserActions/>
                 </div>
             </div>
         </div>

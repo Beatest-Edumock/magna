@@ -10,7 +10,11 @@ import {DisplayInstruction} from "./DisplayInstruction";
  * pass it on to the container to render the Instruction and a button to start
  * the test.
  */
-class InstructionPage extends Component{
+class InstructionPage extends Component {
+
+    constructor(props) {
+        super(props);
+    }
 
 
     render() {
