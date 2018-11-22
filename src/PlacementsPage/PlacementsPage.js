@@ -94,239 +94,49 @@ class PlacementsPage extends React.Component {
                                 <div className='text-center' style={{}}>
 
                                     <h2 className="text-light display-4">
-                                        Tests
+                                        Placement Exams
                                     </h2>
+
                                 </div>
 
                             </Container>
 
                         </Jumbotron>
-                        <Container>
-                            {
-                            (this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id==null) &&
-                                    <Row style={{justifyContent: 'center'}}>
-                                        <PlacementsFormContainer/>
-                                    </Row>
-                            }
+                        {/*<Container>*/}
+                            {/*{*/}
+                            {/*(this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id==null) &&*/}
+                                    {/*<Row style={{justifyContent: 'center'}}>*/}
+                                        {/*<PlacementsFormContainer/>*/}
+                                    {/*</Row>*/}
+                            {/*}*/}
 
-                            {
-                            (this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id!=null) &&
-                                    <Row style={{justifyContent: 'center'}}>
-                                        <span style={{color: 'blue',fontSize: 24}}>Share this code with your friends</span>
-                                    </Row>
-                            }
+                            {/*{*/}
+                            {/*(this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id!=null) &&*/}
+                                    {/*<Row style={{justifyContent: 'center'}}>*/}
+                                        {/*<span style={{color: 'blue',fontSize: 24}}>Share this code with your friends</span>*/}
+                                    {/*</Row>*/}
+                            {/*}*/}
 
-                        </Container>
+                        {/*</Container>*/}
+
                         <div>
-                            <Nav tabs style={{width: '100%', justifyContent: 'center', borderBottom: 0, marginBottom: '2%', marginTop: '6%'}}>
-                                <NavItem>
-                                    <NavLink
-                                        style={{borderColor: '#dee2e6'}}
-                                        className={classnames({active: this.state.activeTab === '1'})}
-                                        onClick={() => {
-                                            this.toggle('1');
-                                        }}
-                                    >
-                                        Mock Tests
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink
-                                        style={{borderColor: '#dee2e6'}}
-                                        className={classnames({active: this.state.activeTab === '2'})}
-                                        onClick={() => {
-                                            this.toggle('2');
-                                        }}
-                                    >
-                                        Topic Tests
-                                    </NavLink>
-                                </NavItem>
-                            </Nav>
-                            <TabContent style={{marginBottom: '3%'}} activeTab={this.state.activeTab}>
-                                <TabPane tabId="1">
-                                    <Row style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
-                                        <Col sm="12">
-                                            <Container>
-                                                <Row style={{justifyContent: 'center'}}>
-                                                    {
-                                                        MOCK_TESTS_CARD_ELEMENTS.map((feature_card) => {
-                                                            return (
-                                                                <LargeFeatureCard
-                                                                    fullWidthSize="col-lg-4"
-                                                                    icon={feature_card.icon}
-                                                                    text={feature_card.text}
-                                                                />
 
 
-                                                            );
-                                                        })
-                                                    }
-                                                </Row>
-                                            </Container>
-                                        </Col>
-                                    </Row>
-                                    <hr/>
-                                    <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
-                                        {(this.state.data) &&
-
-                                        this.state.data.map((object) => {
-                                            return (    
-                                                
-
-                                                object.character == "Mock" &&
-                                                <FlipCard
-                                                    size="small"
-                                                    front={
-                                                        <Container className="rounded" fluid={true} style={{
-                                                            backgroundColor: '#d3d3d3',
-                              
-                                                            width: '98%',
-                                                            height: '80%',
-                                                            marginTop: '1%',
-                                                            padding: 0
-                                                        }}>
-                                                            {/*<Container style={{height: 240}}>
-                                                                <Row style={{padding: 100, justifyContent: 'center'}}>
-                                                                    <FontAwesomeIcon size={"10x"} icon={faBookOpen} color="#8C9EFF"/>
-                                                                </Row>
-                                                            </Container>*/}
-                                                            <Container style={{backgroundColor: 'white', width: '100%',height:240}}>
-                                                                <Row style={{justifyContent: 'center', alignItems: 'center',height:240}}>
-                                                                    {
-                                                                        (object.is_purchased || object.price == 0) &&
-                                                                        <img alt="person" src="/testicons/Mock Exam Icons/Placement - Avail.png" style={{padding:0,width: '100%',height:240}}/>
-                                                                    }
-                                                                    {
-                                                                        (!object.is_purchased && !object.price == 0) &&
-                                                                         <img alt="person" src="/testicons/Mock Exam Icons/Placement - Unavail.png" style={{padding:0,width: '100%',height:240}}/>
-                                                                    }
-                                                                </Row>
-                                                            </Container>
-                                                            <Container style={{backgroundColor: 'white', width: '97%', height: 45}}>
-                                                                <Row style={{justifyContent: 'center', alignItems: 'center', height: 45}}>
-                                                                    <span>{object.name}</span>
-                                                                </Row>
-                                                            </Container>
-
-                                                        </Container>
-                                                    }
-                                                    back={(
-                                                        <Container>
-                                                            <Row style={{
-                                                                color: 'white',
-                                                                fontSize: 14,
-                                                                justifyContent: 'space-between',
-                                                                paddingLeft: '10%',
-                                                                paddingRight: '10%',
-                                                                paddingTop: '10%'
-                                                            }}>
-                                                                <span>Number of questions</span>
-                                                                <span>100</span>
-
-                                                            </Row>
-                                                            <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
-                                                                <hr style={{border: '1px solid white', width: '100%'}}/>
-                                                            </Row>
-                                                            <Row style={{
-                                                                color: 'white',
-                                                                fontSize: 14,
-                                                                justifyContent: 'space-between',
-                                                                paddingLeft: '10%',
-                                                                paddingRight: '10%',
-                                                                paddingTop: '10%'
-                                                            }}>
-                                                                <span>Time</span>
-                                                                <span>60 mins</span>
-
-                                                            </Row>
-                                                            <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
-                                                                <hr style={{border: '1px solid white', width: '100%'}}/>
-                                                            </Row>
-                                                            <Row style={{justifyContent: 'center', padding: '10%'}}>
-                                                                {
-                                                                    this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
-
-                                                                    <Link to=''><Button style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button></Link>
-                                                                }
-                                                                {
-                                                                    this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
-                                                                    <Button onClick={() => this.startTest(object.id)} style={{backgroundColor: 'white', color: 'black'}}>Start
-                                                                        Test</Button>
-                                                                }
-
-                                                                {
-                                                                    !this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
-
-                                                                    <Container>
-                                                                        <Row style={{justifyContent: 'center'}}>
-                                                                            <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button>
-                                                                        </Row>
-                                                                    </Container>
-
-                                                                }
-                                                                {
-                                                                    !this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
-
-                                                                    <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Start Test</Button>
-
-
-                                                                }
-                                                            </Row>
-                                                        </Container>
-
-
-                                                    )}
-                                                    backBackground={((object.is_purchased || object.price == 0) && "blue") || ((!object.is_purchased && !object.price == 0) && "gray")}
-
-                                                />
-
-
-                                            );
-
-                                        })
-
-                                        }
-                                    </Row>
-                                </TabPane>
-                                <TabPane tabId="2">
-                                    <Row style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
-                                        <Col sm="12">
-                                            <Container>
-                                                <Row style={{justifyContent: 'center'}}>
-                                                    {
-                                                        TOPIC_TESTS_CARD_ELEMENTS.map((feature_card) => {
-                                                            return (
-                                                                <LargeFeatureCard
-                                                                    fullWidthSize="col-lg-4"
-                                                                    icon={feature_card.icon}
-                                                                    text={feature_card.text}
-                                                                />
-
-
-                                                            );
-                                                        })
-                                                    }
-                                                </Row>
-                                            </Container>
-                                        </Col>
-
-                                    </Row>
 
                                     <hr/>
                                     <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
                                         {(this.state.data) &&
 
                                         this.state.data.map((object) => {
-                                            return (    
-                                                
+                                            return (
 
-                                                object.character == "Topic" &&
+
                                                 <FlipCard
                                                     size="small"
                                                     front={
                                                         <Container className="rounded" fluid={true} style={{
                                                             backgroundColor: '#d3d3d3',
-                              
+
                                                             width: '98%',
                                                             height: '80%',
                                                             marginTop: '1%',
@@ -360,8 +170,8 @@ class PlacementsPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Number of questions</span>
-                                                                <span>100</span>
+                                                                {/*<span>Number of questions</span>*/}
+                                                                {/*<span>100</span>*/}
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -375,8 +185,8 @@ class PlacementsPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Time</span>
-                                                                <span>60 mins</span>
+                                                                {/*<span>Time</span>*/}
+                                                                {/*<span>60 mins</span>*/}
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -427,8 +237,6 @@ class PlacementsPage extends React.Component {
 
                                         }
                                     </Row>
-                                </TabPane>
-                            </TabContent>
                         </div>
 
                     </div>

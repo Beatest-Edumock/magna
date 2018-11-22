@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
 import {faBinoculars, faCogs, faHeadphones, faUsers, faUserTie, faWindowMaximize} from '@fortawesome/free-solid-svg-icons'
 import {faAddressBook} from '@fortawesome/free-regular-svg-icons'
 import {Container} from 'reactstrap'
+import {PLACEMENTS_PAGE_ROUTE} from "../route";
 
 export const FEATURE_CARD_ELEMENTS = [
 
@@ -102,14 +103,14 @@ export const FLIP_CARD_ELEMENTS = [
 
                 <div className="text-center" style={{marginTop: "10%"}}>
                     <Container>
-                             <div><h4>Aptitude</h4>
-			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Gear up for your placements with high end analysis of real time corporate mocks, topic tests, sectional exams and much more</div></div>
+                             <div><h4>Placement Exam</h4>
+			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Aiming to ace your placement exams? Learn the tricks and patterns emularing different corporate entrance exams from IIMs and XLRI graduates today</div></div>
                 </Container>
             </div>
             </div>,
 		back:
 			<div className="text-center py-2" style={{display: 'table-cell', verticalAlign: 'middle'}}>
-				<a className="btn btn-light" href="/profile">
+				<a className="btn btn-light" href={PLACEMENTS_PAGE_ROUTE()}>
 				Go to tests
 				</a>
             </div>

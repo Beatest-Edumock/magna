@@ -1,6 +1,7 @@
 import React from 'react';
 import {Modal, ModalBody, ModalHeader} from 'reactstrap';
 import {LoginFormContainer} from '../../LoginPage/LoginForm/LoginFormContainer'
+import {UserActions} from "../UserActions";
 
 class LoginModal extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class LoginModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ modal: nextProps.modal });  
+    this.setState({ modal: nextProps.modal });
   }
 
   toggle() {
@@ -30,6 +31,11 @@ class LoginModal extends React.Component {
           <ModalBody>
             <LoginFormContainer shouldAutoDirect={false}/>
           </ModalBody>
+
+          <div className='text-center my-2'>
+          <UserActions textColor="text-dark"/>
+          </div>
+
         </Modal>
       </div>
     );
