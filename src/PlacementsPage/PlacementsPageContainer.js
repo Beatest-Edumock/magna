@@ -1,5 +1,5 @@
 import React from 'react';
-import {getTestsListAPI} from "../_Api/Tests/Tests";
+import {getCollegeProfile, getTestsListAPI} from "../_Api/Tests/Tests";
 import {PlacementsPage} from "./PlacementsPage";
 import {connect} from 'react-redux';
 
@@ -12,7 +12,7 @@ class PlacementsPageWrapper extends React.Component {
     componentDidMount() {
 
 
-        getTestsListAPI("COLLEGE").then(({data}) => {
+        getCollegeProfile().then(({data}) => {
 
             this.setState(
                     {

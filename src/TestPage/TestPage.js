@@ -210,8 +210,8 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Number of questions</span>
-                                                                <span>45</span>
+                                                                {/*<span>Number of questions</span>*/}
+                                                                {/*<span>45</span>*/}
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -225,8 +225,8 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Time</span>
-                                                                <span>60 mins</span>
+                                                                {/*<span>Time</span>*/}
+                                                                {/*<span>60 mins</span>*/}
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -359,8 +359,6 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Number of questions</span>
-                                                                <span>100</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -374,8 +372,6 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Time</span>
-                                                                <span>60 mins</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
