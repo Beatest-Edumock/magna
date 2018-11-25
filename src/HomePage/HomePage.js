@@ -20,7 +20,7 @@ function typedString() {
      */
     return (
         <Typed
-            strings={['Learn Less. Apply More!', 'No Exams for Once!', 'New Learning System Begins!']}
+            strings={['Finding your best fitting job', 'AI enabled Recruitment Recommendation Engine', 'Making hiring processes 33% faster']}
             typeSpeed={40}
             loop={true}
         />
@@ -29,7 +29,7 @@ function typedString() {
 
 
 const bodyStyle = {
-    background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-1.jpg) no-repeat center',
+    background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/particles.jpg) no-repeat center',
     backgroundSize: "100% auto",
 };
 
