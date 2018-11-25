@@ -21,8 +21,8 @@ import Routes from './routes'
 import {setUpApp} from "./setUp";
 import {MainToastContainer} from "./Common/ToastContainer";
 import {initStore} from "./_Redux/initStore";
-import 'core-js/fn/array/find';
-import 'core-js/fn/array/from';
+// import 'core-js/fn/array/find';
+// import 'core-js/fn/array/from';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -19,4 +19,8 @@ function getTestsListAPI(testType) {
     return axios.get('/tests?type=' + testType);
 }
 
-export {getTestDetailsAPI, getTestGroupAPI,getTestsListAPI}
+function getCollegeProfile() {
+    return axios.get('/colleges/profile');
+}
+
+export {getTestDetailsAPI, getTestGroupAPI,getTestsListAPI,getCollegeProfile}

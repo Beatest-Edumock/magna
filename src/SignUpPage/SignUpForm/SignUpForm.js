@@ -1,15 +1,18 @@
 import React from 'react';
 import {Formik} from 'formik';
 import * as yup from 'yup';
-import Recaptcha from 'react-recaptcha';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import Reaptcha from 'reaptcha'
 import config from 'config';
-
 import Select from 'react-select';
 
 
 const schema = yup.object().shape({
 
+    fullName: yup.string("Full Name")
+        .min(2, " Must be at least 2 characters long")
+        .max(15, " Must be at most 10 characters")
+        .required("Full Name is required"),
     email: yup.string().email().required(),
     password: yup.string().min(6).max(9).required(),
     confirmPassword: yup.string().test('password-match', 'Passwords do not Match', function (value) {
@@ -46,7 +49,7 @@ function SignUpForm(props) {
 
     return (<Formik
 
-        initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "", recaptcha: ""}}
+        initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "", recaptcha: "", fullName: ""}}
 
         validationSchema={schema}
 
@@ -59,6 +62,16 @@ function SignUpForm(props) {
                 <Label className="text-danger">{errors.info}</Label>
 
                 <FormGroup>
+                    <Label className="text-danger text-left">{touched.fullName && errors.fullName && errors.fullName}</Label>
+
+                    <Input
+                        type="string"
+                        name="fullName"
+                        placeholder="Enter full name"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.fullName}
+                    />
                     <Label className="text-danger text-left">{touched.email && errors.email && errors.email}</Label>
 
                     <Input
@@ -126,7 +139,7 @@ function SignUpForm(props) {
                 </FormGroup>
 
                 <FormGroup>
-                    <Recaptcha
+                    <Reaptcha
 
                         ref={props.registerRecaptchaInstanceCallback}
 
@@ -134,7 +147,7 @@ function SignUpForm(props) {
                         theme="light"
                         size='invisible'
 
-                        verifyCallback={(response) => {
+                        onVerify={(response) => {
                             props.captchaVerifiedCallback(response);
                         }}
                     />
@@ -147,7 +160,6 @@ function SignUpForm(props) {
                     </Button>
 
                 </FormGroup>
-
             </Form>
 
         )}

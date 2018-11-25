@@ -22,10 +22,8 @@ function PingerUI(props) {
 
     let borderColor = props.timeLeft < 600 ? "border-danger" : "border-dark";
 
-    if (props.timeLeft === 1233) {
+    if (props.timeLeft === 600) {
         toast.error("10 minutes left!");
-
-
     }
 
 

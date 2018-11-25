@@ -11,7 +11,7 @@ import {Link} from 'react-router-dom'
 import {FlipCard} from "../Common/FlipCard/FlipCard";
 import './TestPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
-import {TEST_INSTRUCTIONS_ROUTE} from "../route";
+import {PERFORMANCE_PAGE_ROUTE, TEST_INSTRUCTIONS_ROUTE} from "../route";
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -40,6 +40,7 @@ class TestPage extends React.Component {
         this.toggle = this.toggle.bind(this);
         this.showModal = this.showModal.bind(this);
         this.startTest = this.startTest.bind(this);
+        this.viewPerformance = this.viewPerformance.bind(this);
         this.state = {
             activeTab: '1'
         };
@@ -61,6 +62,13 @@ class TestPage extends React.Component {
 
     }
 
+    viewPerformance(testID) {
+
+        let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
+
+        windowReference.location = PERFORMANCE_PAGE_ROUTE(testID);
+    }
+
     startTest(testID) {
 
         let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
@@ -68,7 +76,6 @@ class TestPage extends React.Component {
 
         windowReference.location = TEST_INSTRUCTIONS_ROUTE(testID);
 
-// reroute to /tests/:testID
 
     }
 
@@ -154,7 +161,7 @@ class TestPage extends React.Component {
                                         this.state.data.map((object) => {
 
                                             return (
-                                                object.character === "Mock" &&  
+                                                object.character === "Mock" &&
                                                 <FlipCard
                                                     size="small"
                                                     front={
@@ -171,8 +178,8 @@ class TestPage extends React.Component {
                                                                     <FontAwesomeIcon size={"10x"} icon={faBookOpen} color="#8C9EFF"/>
                                                                 </Row>
                                                             </Container>*/}
-                                                            <Container style={{backgroundColor: 'white', width: '100%',height:240}}>
-                                                                <Row style={{justifyContent: 'center', alignItems: 'center',height:240}}>
+                                                            <Container style={{backgroundColor: 'white', width: '100%', height: 240}}>
+                                                                <Row style={{justifyContent: 'center', alignItems: 'center', height: 240}}>
                                                                     {
                                                                         (object.is_purchased || object.price === 0) &&
                                                                         <img alt="person" src="/testicons/Mock Exam Icons/Placement - Avail.png" style={{padding:0,width: '100%',height:240}}/>
@@ -201,8 +208,8 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Number of questions</span>
-                                                                <span>100</span>
+                                                                {/*<span>Number of questions</span>*/}
+                                                                {/*<span>45</span>*/}
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -216,8 +223,8 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Time</span>
-                                                                <span>60 mins</span>
+                                                                {/*<span>Time</span>*/}
+                                                                {/*<span>60 mins</span>*/}
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -231,7 +238,16 @@ class TestPage extends React.Component {
                                                                 }
                                                                 {
                                                                     this.props.isUserLoggedIn && (object.is_purchased || object.price === 0) &&
-                                                                    <Button onClick={() => this.startTest(object.id)} style={{backgroundColor: 'white', color: 'black'}}>Start
+                                                                    <Button onClick={() => {
+                                                                        if (object.is_complete) {
+                                                                            this.viewPerformance(object.id);
+
+                                                                        }
+                                                                        else {
+                                                                            this.startTest(object.id);
+                                                                        }
+                                                                    }}
+                                                                            style={{backgroundColor: 'white', color: 'black'}}>Start
                                                                         Test</Button>
                                                                 }
 
@@ -298,8 +314,7 @@ class TestPage extends React.Component {
                                         {(this.state.data) &&
 
                                         this.state.data.map((object) => {
-                                            return (    
-                                                
+                                            return (
 
                                                 object.character === "Topic" &&
                                                 <FlipCard
@@ -307,7 +322,7 @@ class TestPage extends React.Component {
                                                     front={
                                                         <Container className="rounded" fluid={true} style={{
                                                             backgroundColor: '#d3d3d3',
-                              
+
                                                             width: '98%',
                                                             height: '80%',
                                                             marginTop: '1%',
@@ -318,9 +333,9 @@ class TestPage extends React.Component {
                                                                     <img alt="person" src="/testicons/Available/Algebra.png" style={{maxWidth: '100%'}}/>
                                                                 </Row>
                                                             </Container>*/}
-                                                            <Container style={{backgroundColor: 'white', width: '100%',height:240}}>
-                                                                <Row style={{justifyContent: 'center', alignItems: 'center',height:240}}>
-                                                                    <img alt="person" src="/testicons/Available/Algebra.png" style={{padding:0,width: '100%',height:240}}/>
+                                                            <Container style={{backgroundColor: 'white', width: '100%', height: 240}}>
+                                                                <Row style={{justifyContent: 'center', alignItems: 'center', height: 240}}>
+                                                                    <img alt="person" src="/testicons/Available/Algebra.png" style={{padding: 0, width: '100%', height: 240}}/>
                                                                 </Row>
                                                             </Container>
                                                             <Container style={{backgroundColor: 'white', width: '97%', height: 45}}>
@@ -341,8 +356,6 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Number of questions</span>
-                                                                <span>100</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -356,8 +369,6 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Time</span>
-                                                                <span>60 mins</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>

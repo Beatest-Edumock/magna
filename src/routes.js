@@ -21,9 +21,11 @@ import {
     TEST_INSTRUCTIONS_ROUTE,
     TEST_LIST_ROUTE,
     TEST_PAGE_ROUTE,
-    PLACEMENTS_PAGE_ROUTE
+    PLACEMENTS_PAGE_ROUTE, PERFORMANCE_PAGE_ROUTE
 
 } from "./route";
+import {PerformancePageContainer} from "./test-framework/PerformancePage";
+import {NotFoundPage} from "./404Page/404Page";
 
 
 const Routes = () => (
@@ -39,9 +41,14 @@ const Routes = () => (
             <Route exact path={ABOUT_US_ROUTE()} component={AboutUsPage}/>
             <Route exact path={TEST_LIST_ROUTE(null, true)} component={TestPageContainer}/>
 
-            <Route path={TEST_INSTRUCTIONS_ROUTE(null, true)} component={InstructionPage}/>
-            <Route path={TEST_PAGE_ROUTE(null, true)} component={ExamPageC}/>
-            <Route path={PLACEMENTS_PAGE_ROUTE()} component={PlacementsPageContainer}/>
+            <Route exact path={TEST_PAGE_ROUTE(null, true)} component={ExamPageC}/>
+            <Route exact path={PLACEMENTS_PAGE_ROUTE()} component={PlacementsPageContainer}/>
+
+
+            <Route exact path={TEST_INSTRUCTIONS_ROUTE(null, true)} component={InstructionPage}/>
+            <Route exact path={PERFORMANCE_PAGE_ROUTE(null, true)} component={PerformancePageContainer}/>
+
+            <Route component={NotFoundPage}/>
 
         </Switch>
 

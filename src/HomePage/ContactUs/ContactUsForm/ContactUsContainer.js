@@ -17,6 +17,8 @@ class ContactUsContainer extends React.Component {
     }
 
     registerRecaptchaInstanceCallback(recaptchaInstance) {
+        console.log("registered");
+        console.log(recaptchaInstance);
 
         this.recaptchaInstance = recaptchaInstance;
     }

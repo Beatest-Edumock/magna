@@ -9,7 +9,8 @@ import {COLLEGE_IMAGES, FEATURE_CARD_ELEMENTS, FLIP_CARD_ELEMENTS, RECOGNITIONS,
 import {ContactUsContainer} from './ContactUs/ContactUsForm/ContactUsContainer'
 import {Footer} from '../Layout/Footer/Footer'
 import {Link} from 'react-router-dom'
-import {FlipCard} from "../Common/FlipCard/FlipCard";
+import {FlipCard} from "../Common/FlipCard/FlipCard"
+import {NavLink} from 'react-router-dom'
 //
 //
 function typedString() {
@@ -19,11 +20,7 @@ function typedString() {
      */
     return (
         <Typed
-            strings={
-                ['Here you  can find anything',
-                    "This is awesome",
-                    "brilliant"]
-            }
+            strings={['Finding your best fitting job', 'AI enabled Recruitment Recommendation Engine', 'Making hiring processes 33% faster']}
             typeSpeed={40}
             loop={true}
         />
@@ -71,9 +68,9 @@ class HomePage extends React.Component {
 
                             <div className='text-center' style={{marginTop: "25%"}}>
 
-                                <h2 className="text-light display-4">
+                                <h1 className="text-light display-2">
                                     {typedString()}
-                                </h2>
+                                </h1>
 
                                 <Container>
                                     <Button onClick={this.Scroll} color="primary" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
@@ -102,7 +99,7 @@ class HomePage extends React.Component {
 
                     <Container fluid className='bg-light border-top' style={{paddingBottom: '2%'}}>
 
-                        <h1 ref={this.ourFeatures} className="text-center" style={{paddingTop: '2%'}}> Our Features</h1>
+                        <h1 ref={this.ourFeatures} className="text-center" style={{paddingTop: '2%'}}> Our Offerings</h1>
 
                         <Container>
                             <Row style={{justifyContent: 'center'}}>
@@ -110,9 +107,9 @@ class HomePage extends React.Component {
                                     FLIP_CARD_ELEMENTS.map((flip_card) => {
                                         return (
                                             <FlipCard
-                                                backBackground='blue'
+                                                backBackground={'#4a90e2'}
                                                 front={flip_card.front}
-                                                back="hey"
+                                                back={flip_card.back}
                                             />
 
                                         );

@@ -1,6 +1,7 @@
 import React from 'react';
 import {SignUpForm} from "./SignUpForm";
 import {getCollegeApi} from "../../_Api/Colleges";
+import {signupAPI} from "../../_Api/User";
 
 
 class SignUpFormContainer extends React.Component {
@@ -76,18 +77,32 @@ class SignUpFormContainer extends React.Component {
         this.setSubmitting = setSubmitting;
         this.setErrors = setErrors;
         this.resetForm = resetForm;
+        console.log(setErrors);
 
         this.recaptchaInstance.execute();
     }
 
     performSignup() {
 
-        this.setErrors({info: ""});
-        this.setSubmitting(false);
-        this.recaptchaInstance.reset();
-        // this.resetForm();
+        const {fullName, email, phoneNo, password, college} = this.values;
 
 
+        signupAPI(fullName,
+            email,
+            password,
+            phoneNo,
+            college.id,
+            this.response
+        ).then(() => {
+            this.setErrors({info: "A verification email has been sent, please check your email"});
+
+        }).catch((error) => {
+
+            this.resetForm();
+            this.setErrors({info: error.response.data.message});
+            this.recaptchaInstance.reset();
+
+        });
 
 
     }

@@ -6,9 +6,9 @@ import {connect} from 'react-redux';
 
 class TestPageWrapper extends React.Component {
 
-    state={
+    state = {
         data: ""
-    }
+    };
     componentDidMount() {
         const {testType} = this.props.match.params;
 

@@ -5,7 +5,7 @@ import {logoutUserApi} from "../../../_Api/User";
 import {history} from "../../../__internals/CustomHistory";
 import {toast} from 'react-toastify'
 import {NavBar} from "../NavBar";
-import {LOGIN_ROUTE, SIGNUP_ROUTE} from "../../../route";
+import {LOGIN_ROUTE, PLACEMENTS_PAGE_ROUTE, SIGNUP_ROUTE} from "../../../route";
 
 
 function profileLoginNavLink(props) {
@@ -13,10 +13,10 @@ function profileLoginNavLink(props) {
 
     return (
 
-        <NavLink tag={Link} to={props.isUserLoggedIn ? "NOTIMPLEMENTED" : LOGIN_ROUTE()}>
+        <NavLink tag={Link} to={props.isUserLoggedIn ? PLACEMENTS_PAGE_ROUTE() : PLACEMENTS_PAGE_ROUTE()}>
 
             <Button color="primary" className="btn-sm btn-outline-success btn-block">
-                {props.isUserLoggedIn ? "Profile" : "Login"}
+                {props.isUserLoggedIn ? "Placements" : "Placements"}
             </Button>
 
         </NavLink>

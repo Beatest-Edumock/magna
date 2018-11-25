@@ -30,8 +30,8 @@ function initStore() {
 
 
     if (process.env.NODE_ENV !== 'production') {
-        const {whyDidYouUpdate} = require('why-did-you-update');
-        whyDidYouUpdate(React);
+        // const {whyDidYouUpdate} = require('why-did-you-update');
+        // whyDidYouUpdate(React);
         middleware = composeWithDevTools(applyMiddleware(require('redux-immutable-state-invariant').default(), thunk))
     }
     else {

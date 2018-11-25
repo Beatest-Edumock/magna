@@ -3,8 +3,9 @@ import {Formik} from 'formik';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import {Button, Col, Form, Input, Label, Row} from 'reactstrap';
-import Recaptcha from "react-recaptcha";
 import config from '../../../config';
+import Reaptcha from 'reaptcha';
+
 
 
 const schema = yup.object().shape({
@@ -78,12 +79,13 @@ function ContactUsForm(props) {
                 </Row>
                 <Row>
                     <Col>
-                        <Recaptcha
+                        <Reaptcha
                             ref={props.registerRecaptchaInstanceCallback}
                             sitekey={config.recaptchaKey}
-                            render="explicit"
                             theme="light"
-                            verifyCallback={(response) => {
+                            
+                            onVerify={(response) => {
+                                console.log("verification done");
                                 setFieldValue("recaptcha", response);
                             }}
                         />

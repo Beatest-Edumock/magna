@@ -1,0 +1,24 @@
+language: node_js
+env:
+  matrix:
+  - CI=false
+node_js:
+- '8'
+install:
+- npm install
+script:
+- npm run build
+deploy:
+  provider: s3
+  access_key_id: AKIAITCYBLITQPGI5I6A
+  secret_access_key:
+    secure: r5No68JwwfxpSu5EeP6tJUhZ0l2WcpveiP8UAXMi1Zq4XmFg//JYUwSLKU8MXPuIlgynDP1l/1yYvb2Gb+PPov1mjnwLPULDWhdWwaV24V5SBFnEazyqjjMcSlAFi83V5edzdJaz2b8YVlusj7w5aOtHHmrSwDebjHOAsq1r18W47z7DqeTt471VVmFaP6AQkUoStM2yte7JQddfUJpogGpBCyfWKoqKw8fjSx173yjyi9m1nv8Lxlvj92jDoZXyooNf+z6F30V9o3Q4DOHD1Otcs+ZjE7k758DMDfq8hEDO1LzcQrL58YT7aWJAYmUonl1FbkqR7gOpbZ9F+cBh/ilvWHlH9l2OHomqw9Hsn1Hc5fmtN3xRDl5l3YI00E6Njsv4nSVdICWQ0WYtgCQGM9Qv3gFclBnNeKIf8YyacxE7NiIaamgZXlNeRiAXMkfD3qoLnm8VGyw4hr5QE9RDPfD8/kDUqJCl+Vw4SEGV22zSL1J92/C2Mhjam0L5E/E+kCjNaBI2/PY23KNf/10Y2iVT3CQFVrYZozGtOdhGoOavLb/TXyJW+ZRIGgq8d1MScW/AxvkA3PvpiE1I3jDY0tqkCvyrdLY1ig+rVTc37K8tCwDQ0jAlbCkGdMN0gX8NxFyc7oBstCISSseHvZhfN1L8bG6ralYB8Sz+9VzEnJQ=
+  bucket: beatest-magna-prod
+  local-dir: build
+  skip_cleanup: true
+  acl: public_read
+  on:
+    repo: Beatest-Edumock/magna
+notifications:
+  slack:
+    secure: hPY/GFu3Lb0moktvLgWcwhyV+Pb0jJz/oMVCAhIHVypwlRK59iKymmlmQfMandec2WMl01RiBwgdWUqrB3gRsgrfpODeVxxQwwiShGbCSUlqxghmO39DgL4UmOVpmnGGMqwclE3pH0VkKdFM99j/SlP/QrqGIe59dwEJoKnrAkVEBbbQE1MVv3MaWapp/qlvTjGjxIMJ38gUiOn8Q8zF/QevcoU9KD5270GztO+MbFiwWDdpjTKPOHZeTtPitUlB0wQ3CZnAADA56QqiudSrCSZO9cLaEvKj8vJgRcK/BxC+49ZpBtdzFNlFOahOMEi84FXe8rm+1LaSb0rgQtg67tvXQdXQfLZHiOx8EiEbVohIzGeft4t4YPsoEbqkPFEwC0nZtUGRW3q8oXYYxvBw4jt1hg4qsmdWFc92+pBLv+/bD/gYdtvsxHl+T91NYBN6jVCH/x2U2tKSjJU2rhCac+RKVM2gr/c75P2qORuQPd4l9wVo4KgxsgtSgiiAr5C1S5u1y9CC5sDYhL/qDHnDzhwU6l5imK2JieGvFq7LSymHaqArkCLyBAVPl9yg+PebVOpwe2YgI39O5kVYhacbEXDFv+c8VC2Y+JajM3nXagsfHcEdmwWDS85NEFiCoLocJQDuK7Hc8djcXcXvZz2HWSHAf07giGKAUX+oqrjVi4o=

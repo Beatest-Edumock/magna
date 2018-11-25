@@ -11,7 +11,7 @@ function SignUpPage() {
 
     return (
         <SingleFormPage title="Register at Beatest!">
-            <div style={{paddingBottom:'100px'}}>
+            <div style={{paddingBottom:'10px'}}>
                 <SignUpFormContainer/>
             </div>
         </SingleFormPage>

@@ -13,8 +13,7 @@ export const MOCK_TESTS_CARD_ELEMENTS = [
   				are set according to the latest pattern and test syllabus.
   			</span>
   			<span style={{display:'block',textAlign:'left'}}><FontAwesomeIcon size={"1x"} icon={faCheck} color="#8C9EFF" style={{marginRight: 12}}/>
-				Mocks designed covering all the topics and sections of the IBPS 
-                exam. 
+                Mocks emulating the pattern and questions of various CORPORATES
   			</span>
   			<span style={{display:'block',textAlign:'left'}}><FontAwesomeIcon size={"1x"} icon={faCheck} color="#8C9EFF" style={{marginRight: 12}}/>
 				Up-to-date question content reflects the reality of what 

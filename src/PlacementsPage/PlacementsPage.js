@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
-import {Col, Container, Jumbotron, Nav, NavItem, NavLink, Row, TabContent, TabPane, Button} from 'reactstrap';
+import {Button, Col, Container, Jumbotron, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'reactstrap';
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
 import {MOCK_TESTS_CARD_ELEMENTS, TOPIC_TESTS_CARD_ELEMENTS} from './data';
 import {Footer} from '../Layout/Footer/Footer'
@@ -94,8 +94,9 @@ class PlacementsPage extends React.Component {
                                 <div className='text-center' style={{}}>
 
                                     <h2 className="text-light display-4">
-                                        Tests
+                                        Placement Exams
                                     </h2>
+
                                 </div>
 
                             </Container>
@@ -116,7 +117,6 @@ class PlacementsPage extends React.Component {
                                     </Row>
                             }
 
-                        </Container>
                         <div>
                             <Nav tabs style={{width: '100%', justifyContent: 'center', borderBottom: 0, marginBottom: '2%', marginTop: '6%'}}>
                                 <NavItem>
@@ -312,21 +312,22 @@ class PlacementsPage extends React.Component {
 
                                     </Row>
 
+
                                     <hr/>
                                     <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
                                         {(this.state.data) &&
 
                                         this.state.data.map((object) => {
-                                            return (    
-                                                
+                                            return (
 
                                                 object.character === "Topic" &&
+
                                                 <FlipCard
                                                     size="small"
                                                     front={
                                                         <Container className="rounded" fluid={true} style={{
                                                             backgroundColor: '#d3d3d3',
-                              
+
                                                             width: '98%',
                                                             height: '80%',
                                                             marginTop: '1%',
@@ -360,8 +361,8 @@ class PlacementsPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Number of questions</span>
-                                                                <span>100</span>
+                                                                {/*<span>Number of questions</span>*/}
+                                                                {/*<span>100</span>*/}
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -375,8 +376,8 @@ class PlacementsPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Time</span>
-                                                                <span>60 mins</span>
+                                                                {/*<span>Time</span>*/}
+                                                                {/*<span>60 mins</span>*/}
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -427,8 +428,6 @@ class PlacementsPage extends React.Component {
 
                                         }
                                     </Row>
-                                </TabPane>
-                            </TabContent>
                         </div>
 
                     </div>
