@@ -20,7 +20,7 @@ function typedString() {
      */
     return (
         <Typed
-            strings={['Learn Less. Apply More!', 'No Exams for Once!', 'New Learning System Begins!']}
+            strings={['Finding your best fitting job', 'AI enabled Recruitment Recommendation Engine', 'Making hiring processes 33% faster']}
             typeSpeed={40}
             loop={true}
         />
