@@ -29,7 +29,7 @@ function typedString() {
 
 
 const bodyStyle = {
-    background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-1.jpg) no-repeat center',
+    background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/particles.jpg) no-repeat center',
     backgroundSize: "100% auto",
 };
 
