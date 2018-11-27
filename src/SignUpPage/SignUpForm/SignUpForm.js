@@ -43,6 +43,8 @@ const filterConfig = (candidate, input) => {
 
 };
 
+const hintStyle = {color: 'white', fontSize: '10px'};
+
 
 function SignUpForm(props) {
 
@@ -93,6 +95,7 @@ function SignUpForm(props) {
                         onBlur={handleBlur}
                         value={values.password}
                     />
+                    <label style={hintStyle}>Password should be between 6-15 characters</label>
 
                     <Label className="text-danger text-left">{touched.confirmPassword && errors.confirmPassword && errors.confirmPassword}</Label>
 
@@ -156,7 +159,7 @@ function SignUpForm(props) {
                 <FormGroup>
 
                     <Button color="primary" type="submit" disabled={isSubmitting}>
-                        Submit
+                        Create Account
                     </Button>
 
                 </FormGroup>
