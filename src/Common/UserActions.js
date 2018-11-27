@@ -11,7 +11,7 @@ function UserActionsWithRouter(props) {
 
     return (
         <div>
-            <NavLink to="/forgot-pass" className={ textColor } activeClassName="d-none text-danger">Forgot Password? Reset Now</NavLink>
+        <NavLink to="/forgot-pass" className={ textColor } activeClassName="d-none text-danger">Forgot Password? Reset Now</NavLink>
             {props.location.pathname !== "/forgot-pass" && <br/>}
 
             <NavLink to={RESEND_ACTIVATION_ROUTE()} className={textColor} activeClassName="d-none text-danger">Recover your Account? Resend Activation Email</NavLink>
