@@ -13,7 +13,7 @@ function FeatureCard(props) {
     return (
         <Card className="col-md-4 col-lg-2 shadow-sm" style={{margin: "2%"}}>
 
-            <div className="container" style={{paddingTop: "10%",paddingLeft: "5%",paddingRight: "5%",paddingBottom: "7%"}}>
+            <div className="container " style={{paddingTop: "5%",paddingLeft: "5%",paddingRight: "5%",paddingBottom: "5%"}}>
 
                 <div className="text-center ">
 
