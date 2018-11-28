@@ -120,6 +120,27 @@ class PlacementsPage extends React.Component {
                         {/*</Container>*/}
 
                         <div>
+                            <Row style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
+                                <Col sm="12">
+                                    <Container>
+                                        <Row style={{justifyContent: 'center'}}>
+                                            {
+                                                MOCK_TESTS_CARD_ELEMENTS.map((feature_card) => {
+                                                    return (
+                                                        <LargeFeatureCard
+                                                            fullWidthSize="col-lg-4"
+                                                            icon={feature_card.icon}
+                                                            text={feature_card.text}
+                                                        />
+
+
+                                                    );
+                                                })
+                                            }
+                                        </Row>
+                                    </Container>
+                                </Col>
+                            </Row>
 
 
 
