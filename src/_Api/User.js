@@ -13,6 +13,17 @@ function getUserDetailsApi() {
     return axios.get('user');
 }
 
+function forgotPasswordAPI(email, recaptcha) {
+    return axios.post('/user/forgot_password', {
+        email,
+        captcha_token: recaptcha
+    });
+}
+function resetPasswordAPI(resetToken,new_password) {
+    return axios.post(`/user/reset_password/${resetToken}`, {
+        new_password,
+    });
+}
 
 function resendActivationMailApi(email, recaptcha) {
     return axios.post('/user/resend_activation', {
@@ -35,4 +46,4 @@ function signupAPI(full_name, email, password, phone_no, college_id, captcha_tok
 
 }
 
-export {loginUserApi, signupAPI, logoutUserApi, resendActivationMailApi, getUserDetailsApi};
+export {loginUserApi, signupAPI, logoutUserApi, resendActivationMailApi, getUserDetailsApi,forgotPasswordAPI,resetPasswordAPI};

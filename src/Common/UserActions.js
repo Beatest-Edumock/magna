@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
-import {LOGIN_ROUTE, RESEND_ACTIVATION_ROUTE, SIGNUP_ROUTE} from "../route";
+import {FORGOT_PASSWORD_ROUTE, LOGIN_ROUTE, RESEND_ACTIVATION_ROUTE, SIGNUP_ROUTE} from "../route";
 
 import {withRouter} from "react-router";
 
@@ -11,8 +11,8 @@ function UserActionsWithRouter(props) {
 
     return (
         <div>
-        <NavLink to="/forgot-pass" className={ textColor } activeClassName="d-none text-danger">Forgot Password? Reset Now</NavLink>
-            {props.location.pathname !== "/forgot-pass" && <br/>}
+        <NavLink to={FORGOT_PASSWORD_ROUTE()} className={ textColor } activeClassName="d-none text-danger">Forgot Password? Reset Now</NavLink>
+            {props.location.pathname !== FORGOT_PASSWORD_ROUTE() && <br/>}
 
             <NavLink to={RESEND_ACTIVATION_ROUTE()} className={textColor} activeClassName="d-none text-danger">Recover your Account? Resend Activation Email</NavLink>
             {props.location.pathname !== RESEND_ACTIVATION_ROUTE() && <br/>}

@@ -55,6 +55,17 @@ export const RESEND_ACTIVATION_ROUTE = () => {
 
 };
 
+export const RESET_PASSWORD_ROUTE = () => {
+
+    return "/reset-password*"
+
+};
+
+export const FORGOT_PASSWORD_ROUTE = () => {
+
+    return "/forgot-password"
+
+};
 
 export const TERMS_AND_CONDS_ROUTE = () => {
 

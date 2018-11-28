@@ -25,6 +25,7 @@
     "moment": "^2.22.2",
     "npm": "^6.3.0",
     "prop-types": "latest",
+    "query-string": "^6.2.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-flickity-component": "github:Beatest-Edumock/react-flickity#master",
