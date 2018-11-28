@@ -5,27 +5,32 @@ import {faAddressBook} from '@fortawesome/free-regular-svg-icons'
 import {Container} from 'reactstrap'
 import {PLACEMENTS_PAGE_ROUTE} from "../route";
 
+const pStyle = {
+    height: '80px',
+    textAlign: 'center'
+};
 export const FEATURE_CARD_ELEMENTS = [
 
+
 	{
 
-		icon: <FontAwesomeIcon size={"4x"} icon={faAddressBook} color="#8C9EFF"/>,
-		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Grow your skills with the inspiring mentors</p>
+		icon: <img style={pStyle} src={require('./icons/exam.svg')} />,
+		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Skill Specific assessment to measure your potential</p>
 	},
 
 	{
-		icon: <FontAwesomeIcon size={"4x"} icon={faUsers} color="#8C9EFF" style={{}}/>,
-		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Learn with your peer group across the globe</p>
+        icon: <img style={pStyle} src={require('./icons/recommendation.svg')} />,
+		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>AI enabled Recommendation Engine to find your best fitting job</p>
 
 	},
 	{
-		icon: <FontAwesomeIcon size={"4x"} icon={faWindowMaximize} color="#8C9EFF"/>,
-		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Learn to apply knowledge with capstone projects</p>
+        icon: <img style={pStyle} src={require('./icons/intra_college_percentile.svg')} />,
+		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Intra college percentile to gauge your position amongst peers</p>
 
 	},
 	{
-		icon: <FontAwesomeIcon size={"4x"} icon={faBinoculars} color="#8C9EFF"/>,
-		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Holistic learning approach with small learning units</p>
+        icon: <img style={pStyle} src={require('./icons/analysis.svg')} />,
+		text: <p style={{fontSize:'14px',fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',fontWeight: 600}}>Exam specific analysis to improve your score and the chances of getting hired</p>
 
 	}
 

@@ -153,8 +153,8 @@ class PlacementsPage extends React.Component {
                                                                 </Row>
                                                             </Container>
                                                             <Container style={{backgroundColor: 'white', width: '97%', height: 45}}>
-                                                                <Row style={{justifyContent: 'center', alignItems: 'center', height: 45}}>
-                                                                    <span>{object.name}</span>
+                                                                <Row style={{justifyContent: 'center', alignItems: 'center', height: 60}}>
+                                                                    <h6>{object.name}</h6>
                                                                 </Row>
                                                             </Container>
 
