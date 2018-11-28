@@ -12,6 +12,7 @@ import {FlipCard} from "../Common/FlipCard/FlipCard";
 import './TestPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
 import {PERFORMANCE_PAGE_ROUTE, TEST_INSTRUCTIONS_ROUTE} from "../route";
+import  moment from 'moment'
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -210,8 +211,8 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                {/*<span>Number of questions</span>*/}
-                                                                {/*<span>45</span>*/}
+                                                                <span>Number of questions</span>
+                                                                <span>{object.question_count}</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -225,8 +226,8 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                {/*<span>Time</span>*/}
-                                                                {/*<span>60 mins</span>*/}
+                                                                <span>Time</span>
+                                                                <span>{moment.duration(object.total_time,'seconds').humanize()}</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -331,6 +332,7 @@ class TestPage extends React.Component {
                                                             marginTop: '1%',
                                                             padding: 0
                                                         }}>
+
                                                             {/*<Container style={{height: 240}}>
                                                                 <Row style={{padding: 100, justifyContent: 'center'}}>
                                                                     <img alt="person" src="/testicons/Available/Algebra.png" style={{maxWidth: '100%'}}/>
@@ -340,6 +342,7 @@ class TestPage extends React.Component {
                                                                 <Row style={{justifyContent: 'center', alignItems: 'center', height: 240}}>
                                                                     <img alt="person" src="/testicons/Available/Algebra.png" style={{padding: 0, width: '100%', height: 240}}/>
                                                                 </Row>
+
                                                             </Container>
                                                             <Container style={{backgroundColor: 'white', width: '97%', height: 45}}>
                                                                 <Row style={{justifyContent: 'center', alignItems: 'center', height: 45}}>
@@ -360,6 +363,8 @@ class TestPage extends React.Component {
                                                                 paddingTop: '10%'
                                                             }}>
 
+                                                                <span>Number of questions</span>
+                                                                <span>{object.question_count}</span>
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
                                                                 <hr style={{border: '1px solid white', width: '100%'}}/>
@@ -372,10 +377,13 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
+                                                                <span>Time</span>
+                                                                <span>{moment.duration(object.total_time,'seconds').humanize()}</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
                                                                 <hr style={{border: '1px solid white', width: '100%'}}/>
+
                                                             </Row>
                                                             <Row style={{justifyContent: 'center', padding: '10%'}}>
                                                                 {

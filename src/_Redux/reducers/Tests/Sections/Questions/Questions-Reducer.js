@@ -72,7 +72,7 @@ function _pushQuestionSolutions(state, {solutions}) {
 
     const choicesWithSolutions = choices.map((choice) => {
 
-        if (solutions.choices)
+        if (solutions.choices.length)
             if (solutions.choices[0].id === choice.id) {
                 return {...choice, ...solutions.choices[0]}
             }

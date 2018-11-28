@@ -77,7 +77,7 @@ class HomePage extends React.Component {
                     <Particles
                         height="80vh"
                         width="100%"
-                        style={{backgroundColor: 'rgb(0, 123, 255)' , minHeight:"100%" }}
+                        style={{backgroundColor: 'rgb(66,139,202)' , minHeight:"100%" }}
                         params={config} />
 
                     <div className='text-center' style={{position:'absolute' ,top:"25%" ,width:"100%"}} class="text-center">

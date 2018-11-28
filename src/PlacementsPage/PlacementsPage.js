@@ -13,6 +13,7 @@ import './PlacementsPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
 import {TEST_INSTRUCTIONS_ROUTE} from "../route";
 import {PlacementsFormContainer} from "./PlacementsForm/PlacementsFormContainer";
+import moment from 'moment'
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -163,6 +164,7 @@ class PlacementsPage extends React.Component {
                                                             marginTop: '1%',
                                                             padding: 0
                                                         }}>
+
                                                             {/*<Container style={{height: 240}}>
                                                                 <Row style={{padding: 100, justifyContent: 'center'}}>
                                                                     <img alt="person" src="/testicons/Available/Algebra.png" style={{maxWidth: '100%'}}/>
@@ -191,8 +193,8 @@ class PlacementsPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                {/*<span>Number of questions</span>*/}
-                                                                {/*<span>100</span>*/}
+                                                                <span>Number of questions</span>
+                                                                <span>{object.question_count}</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -208,6 +210,8 @@ class PlacementsPage extends React.Component {
                                                             }}>
                                                                 {/*<span>Time</span>*/}
                                                                 {/*<span>60 mins</span>*/}
+                                                                <span>Time</span>
+                                                                <span>{moment.duration(object.total_time,'seconds').humanize()}</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
