@@ -13,6 +13,8 @@ import {Footer} from '../Layout/Footer/Footer'
 import {Link} from 'react-router-dom'
 import {FlipCard} from "../Common/FlipCard/FlipCard"
 import {NavLink} from 'react-router-dom'
+import {history} from "../__internals/CustomHistory"
+import {LOGIN_ROUTE} from "../route";
 //
 //
 function typedString() {
@@ -49,9 +51,9 @@ class HomePage extends React.Component {
         this.ourFeatures = React.createRef();
     }
 
-    Scroll = () => {
+    GetStartedButton = () => {
 
-        this.ourFeatures.current.scrollIntoView({behavior: 'smooth', block: 'center'});
+        history.push(LOGIN_ROUTE())
     }
 
     render() {
@@ -60,26 +62,25 @@ class HomePage extends React.Component {
             <div>
 
                 <NavBarWithButtonsContainer/>
-                {/*<App />*/}
 
 
                 <div >
 
                     <Particles
-                        height="100vh"
+                        height="80vh"
                         width="100%"
                         style={{backgroundColor: 'rgb(0, 123, 255)' , minHeight:"100%" }}
                         params={config} />
 
                     <div className='text-center' style={{position:'absolute' ,top:"25%" ,width:"100%"}} class="text-center">
 
-                        <h1 className="text-light display-2">
+                        <h1 className="text-light display-5">
                             {typedString()}
                         </h1>
 
                         <Container>
 
-                            <Button onClick={this.Scroll} color="success" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
+                            <Button onClick={this.GetStartedButton} color="success" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
                         </Container>
                     </div>
 
