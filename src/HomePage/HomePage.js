@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import {Button, Col, Container, Jumbotron, Row} from 'reactstrap';
 import {FeatureCard} from "../Common/FeatureCard/FeatureCard";
 import Flickity from 'react-flickity-component';
+import Particles from 'react-particles-js';
+import config from './particlesjsConfig';
 import {COLLEGE_IMAGES, FEATURE_CARD_ELEMENTS, FLIP_CARD_ELEMENTS, RECOGNITIONS, TESTIMONIALS} from './data'
 import {ContactUsContainer} from './ContactUs/ContactUsForm/ContactUsContainer'
 import {Footer} from '../Layout/Footer/Footer'
@@ -61,25 +63,26 @@ class HomePage extends React.Component {
                 {/*<App />*/}
 
 
-                <div>
+                <div >
 
-                    <Jumbotron fluid style={bodyStyle}>
-                        <Container fluid>
+                    <Particles
+                        height="100vh"
+                        width="100%"
+                        style={{backgroundColor: 'rgb(0, 123, 255)' , minHeight:"100%" }}
+                        params={config} />
 
-                            <div className='text-center' style={{marginTop: "25%"}}>
+                    <div className='text-center' style={{position:'absolute' ,top:"25%" ,width:"100%"}} class="text-center">
 
-                                <h1 className="text-light display-2">
-                                    {typedString()}
-                                </h1>
+                        <h1 className="text-light display-2">
+                            {typedString()}
+                        </h1>
 
-                                <Container>
-                                    <Button onClick={this.Scroll} color="primary" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
-                                </Container>
-                            </div>
+                        <Container>
 
+                            <Button onClick={this.Scroll} color="success" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
                         </Container>
+                    </div>
 
-                    </Jumbotron>
                     <div className="container-fluid no-gutters">
                         <div className="row justify-content-center" style={{flexWrap: 'wrap'}}>
 
