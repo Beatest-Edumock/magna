@@ -13,8 +13,9 @@ import {Footer} from '../Layout/Footer/Footer'
 import {Link} from 'react-router-dom'
 import {FlipCard} from "../Common/FlipCard/FlipCard"
 import {NavLink} from 'react-router-dom'
+import {LoginModal} from '../Common/LoginModal/LoginModal'
 import {history} from "../__internals/CustomHistory"
-import {LOGIN_ROUTE, PLACEMENTS_PAGE_ROUTE} from "../route";
+import {LOGIN_ROUTE, PLACEMENTS_PAGE_ROUTE, SIGNUP_ROUTE} from "../route";
 import connect from "react-redux/es/connect/connect";
 import {NavBarWithButtons} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtons";
 //
@@ -51,6 +52,10 @@ class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.ourFeatures = React.createRef();
+
+        this.state = {
+            loginModal: false,
+        };
     }
 
     GetStartedButton = () => {
@@ -59,10 +64,13 @@ class HomePage extends React.Component {
         } else {
             history.push(LOGIN_ROUTE())
         }
+    };
 
-    }
-
-
+    showLoginModal = () => {
+        this.setState({
+            loginModal: true,
+        });
+    };
 
     render() {
         return (
@@ -70,14 +78,17 @@ class HomePage extends React.Component {
             <div>
 
                 <NavBarWithButtonsContainer/>
-
+                {
+                    !this.props.isUserLoggedIn &&
+                    <LoginModal modal={this.state.loginModal}/>
+                }
 
                 <div >
 
                     <Particles
                         height="80vh"
                         width="100%"
-                        style={{backgroundColor: 'rgb(66,139,202)' , minHeight:"100%" }}
+                        style={{backgroundColor: '#17a2b8' , minHeight:"100%" }}
                         params={config} />
 
                     <div className='text-center' style={{position:'absolute' ,top:"25%" ,width:"100%"}} class="text-center">
@@ -87,8 +98,18 @@ class HomePage extends React.Component {
                         </h1>
 
                         <Container>
-
-                            <Button onClick={this.GetStartedButton} color="success" style={{marginTop: "10%"}} size="lg"> Click Here To Get Started </Button>
+                            {
+                                this.props.isUserLoggedIn ? (
+                                    <React.Fragment>
+                                        <Button onClick={this.GetStartedButton} color="success" style={{marginTop: "10%"}} size="lg"> Click Here To Get Started </Button>
+                                    </React.Fragment>
+                                ) : (
+                                    <React.Fragment>
+                                        <Button onClick={this.showLoginModal} color="success" style={{marginTop: "10%", marginRight: '5px'}} size="lg"> Login </Button>
+                                        <Button onClick={() => history.push(SIGNUP_ROUTE())} color="primary" style={{marginTop: "10%", marginLeft: '5px'}} size="lg"> Signup </Button>
+                                    </React.Fragment>
+                                )
+                            }
                         </Container>
                     </div>
 
