@@ -14,7 +14,9 @@ import {Link} from 'react-router-dom'
 import {FlipCard} from "../Common/FlipCard/FlipCard"
 import {NavLink} from 'react-router-dom'
 import {history} from "../__internals/CustomHistory"
-import {LOGIN_ROUTE} from "../route";
+import {LOGIN_ROUTE, PLACEMENTS_PAGE_ROUTE} from "../route";
+import connect from "react-redux/es/connect/connect";
+import {NavBarWithButtons} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtons";
 //
 //
 function typedString() {
@@ -52,9 +54,15 @@ class HomePage extends React.Component {
     }
 
     GetStartedButton = () => {
+        if(this.props.isUserLoggedIn) {
+            history.push(PLACEMENTS_PAGE_ROUTE())
+        } else {
+            history.push(LOGIN_ROUTE())
+        }
 
-        history.push(LOGIN_ROUTE())
     }
+
+
 
     render() {
         return (
@@ -218,9 +226,20 @@ class HomePage extends React.Component {
             </div>
         );
     }
+
+
 }
 
+function mapStateToProps(state, ownProps) {
 
-export {HomePage};
+    return {
+        isUserLoggedIn: state.user,
+        ownProps
+    }
+
+}
+const Homepage = connect(mapStateToProps, null)(HomePage);
+
+export {Homepage};
 
 

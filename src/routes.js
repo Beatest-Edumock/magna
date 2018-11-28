@@ -2,7 +2,7 @@ import React from "react";
 import {Route, Router, Switch} from "react-router-dom";
 import {ExamPageC} from "./test-framework/ExamPage";
 import {history} from "./__internals/CustomHistory";
-import {HomePage} from "./HomePage/HomePage"
+import {Homepage} from "./HomePage/HomePage"
 import {LoginPage} from "./LoginPage/LoginPage"
 import {ResendActivationPage} from "./ResendActivationPage/ResendActivationPage"
 import {SignUpPage} from "./SignUpPage/SignUpPage";
@@ -35,7 +35,7 @@ const Routes = () => (
         <Switch>
 
 
-            <Route exact path={ROOT_ROUTE()} component={HomePage}/>
+            <Route exact path={ROOT_ROUTE()} component={Homepage}/>
             <Route exact path={LOGIN_ROUTE()} component={LoginPage}/>
             <Route exact path={SIGNUP_ROUTE()} component={SignUpPage}/>
             <Route exact path={RESEND_ACTIVATION_ROUTE()} component={ResendActivationPage}/>
