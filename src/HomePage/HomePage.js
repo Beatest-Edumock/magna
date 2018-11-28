@@ -63,19 +63,22 @@ class HomePage extends React.Component {
                 {/*<App />*/}
 
 
-                <div>
+                <div >
 
                     <Particles
-                        style={{backgroundColor: 'rgb(0, 123, 255)', backgroundImage: 'url("")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: '50% 50%'}}
+                        height="100vh"
+                        width="100%"
+                        style={{backgroundColor: 'rgb(0, 123, 255)' , minHeight:"100%" }}
                         params={config} />
 
-                    <div className='text-center' style={{"zIndex":"10","width":"1200px","height":"300px","position":"absolute","top":"35%","left":"12%","margin":"0% 0px 0px -100px","padding":"20px","display":"block"}}>
+                    <div className='text-center' style={{position:'absolute' ,top:"25%" ,width:"100%"}} class="text-center">
 
                         <h1 className="text-light display-2">
                             {typedString()}
                         </h1>
 
                         <Container>
+
                             <Button onClick={this.Scroll} color="success" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
                         </Container>
                     </div>

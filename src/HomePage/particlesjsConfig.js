@@ -1,10 +1,10 @@
 const config = {
     particles: {
         number: {
-            value: 400,
+            value: 60,
             density: {
-                enable: true,
-                value_area: 800
+                enable: false,
+                value_area: 50
             }
         },
         line_linked: {
@@ -21,7 +21,7 @@ const config = {
                 color: '#000000'
             },
             polygon: {
-                nb_sides: 7
+                nb_sides: 3
             }
         }
     },
@@ -29,11 +29,11 @@ const config = {
         detect_on: 'canvas',
         events: {
             onhover: {
-                enable: true,
+                enable: false,
                 mode: 'grab'
             },
             onclick: {
-                enable: true,
+                enable: false,
                 mode: 'push'
             },
             resize: true
