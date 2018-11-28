@@ -88,7 +88,7 @@ class HomePage extends React.Component {
 
                         <Container>
 
-                            <Button onClick={this.GetStartedButton} color="success" style={{marginTop: "10%"}}> Click Here To Get Started </Button>
+                            <Button onClick={this.GetStartedButton} color="success" style={{marginTop: "10%"}} size="lg"> Click Here To Get Started </Button>
                         </Container>
                     </div>
 
