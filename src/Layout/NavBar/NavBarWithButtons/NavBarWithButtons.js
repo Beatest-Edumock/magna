@@ -13,7 +13,7 @@ function profileLoginNavLink(props) {
 
     return (
 
-        <NavLink tag={Link} to={props.isUserLoggedIn ? PLACEMENTS_PAGE_ROUTE() : PLACEMENTS_PAGE_ROUTE()}>
+        <NavLink tag={Link} to={props.isUserLoggedIn ? PLACEMENTS_PAGE_ROUTE() : LOGIN_ROUTE()}>
 
             <Button color="primary" className="btn-sm btn-outline-success btn-block">
                 {props.isUserLoggedIn ? "Placements" : "Placements"}
