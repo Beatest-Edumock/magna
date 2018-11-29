@@ -71,7 +71,7 @@ function ForgotPasswordForm(props) {
 
                 <FormGroup>
                     <Button color="primary" type="submit" disabled={isSubmitting}>
-                        Resend Activation Mail
+                        Reset Password
                     </Button>
                 </FormGroup>
 
