@@ -88,7 +88,7 @@ class HomePage extends React.Component {
                     <Particles
                         height="80vh"
                         width="100%"
-                        style={{backgroundColor: '#17a2b8' , minHeight:"100%" }}
+                        style={{backgroundColor: 'rgb(66,139,202)' , minHeight:"100%" }}
                         params={config} />
 
                     <div className='text-center' style={{position:'absolute' ,top:"25%" ,width:"100%"}} class="text-center">
@@ -105,7 +105,7 @@ class HomePage extends React.Component {
                                     </React.Fragment>
                                 ) : (
                                     <React.Fragment>
-                                        <Button onClick={this.showLoginModal} color="success" style={{marginTop: "10%", marginRight: '5px'}} size="lg"> Login </Button>
+                                        <Button onClick={this.showLoginModal} color="success" style={{marginTop: "10%", marginRight: '5px'}} size="lg" > Login </Button>
                                         <Button onClick={() => history.push(SIGNUP_ROUTE())} color="primary" style={{marginTop: "10%", marginLeft: '5px'}} size="lg"> Signup </Button>
                                     </React.Fragment>
                                 )

@@ -1,10 +1,10 @@
 const config = {
     particles: {
         number: {
-            value: 60,
+            value: 25,
             density: {
                 enable: false,
-                value_area: 50
+                value_area: 800
             }
         },
         line_linked: {
@@ -12,7 +12,7 @@ const config = {
             distance: 150,
             color: '#ffffff',
             opacity: 0.4,
-            width: 1
+            width: 2
         },
         shape: {
             type: 'circle',
@@ -21,7 +21,7 @@ const config = {
                 color: '#000000'
             },
             polygon: {
-                nb_sides: 3
+                nb_sides: 8
             }
         }
     },
@@ -51,7 +51,7 @@ const config = {
             }
         }
     },
-    retina_detect: true
+    retina_detect: false
 };
 
 export default config;
