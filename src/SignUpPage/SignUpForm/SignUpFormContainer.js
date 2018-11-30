@@ -91,7 +91,7 @@ class SignUpFormContainer extends React.Component {
             email,
             password,
             phoneNo,
-            college.id,
+            college.value,
             this.response
         ).then(() => {
             this.setErrors({info: "A verification email has been sent, please check your email"});
