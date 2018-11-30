@@ -99,7 +99,7 @@ export const FLIP_CARD_ELEMENTS = [
                 <div className="text-center " style={{}}>
 
                     <Container>
-                        <FontAwesomeIcon size={"6x"} icon={faHeadphones} color="#8C9EFF"/>
+						<img style={{width:"30%"}} src={require("./icons/placement-2.svg")}/>
                     </Container>
 
                 </div>
