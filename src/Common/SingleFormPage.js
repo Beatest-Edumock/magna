@@ -29,7 +29,7 @@ const fullPageDivStyle = {
     width: "100%",
     minHeight: "100%",
     position: "absolute",
-    backgroundImage: "linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5) ),url(/img/inner-2.jpg) "
+    // backgroundImage: ""
 
 };
 
@@ -38,7 +38,7 @@ function SingleFormPage(props) {
 
     return (
 
-        <div style={fullPageDivStyle}>
+        <div style={fullPageDivStyle} className="bg-gray-dark">
 
             <div className="container-fluid">
                 <div>
