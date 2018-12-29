@@ -12,7 +12,7 @@ import {FlipCard} from "../Common/FlipCard/FlipCard";
 import './TestPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
 import {PERFORMANCE_PAGE_ROUTE, TEST_INSTRUCTIONS_ROUTE} from "../route";
-import  moment from 'moment'
+import moment from 'moment'
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -226,8 +226,8 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Time</span>
-                                                                <span>{moment.duration(object.total_time,'seconds').humanize()}</span>
+                                                                <span>Number of Sections</span>
+                                                                <span>{object.section_count}</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
@@ -377,8 +377,8 @@ class TestPage extends React.Component {
                                                                 paddingRight: '10%',
                                                                 paddingTop: '10%'
                                                             }}>
-                                                                <span>Time</span>
-                                                                <span>{moment.duration(object.total_time,'seconds').humanize()}</span>
+                                                                <span>Number of Sections</span>
+                                                                <span>{object.section_count}</span>
 
                                                             </Row>
                                                             <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>

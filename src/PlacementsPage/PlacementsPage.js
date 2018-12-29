@@ -29,7 +29,7 @@ class PlacementsPage extends React.Component {
         modal: false,
     }
 
-    componentWillReceiveProps({data,isUserLoggedIn}) {
+    componentWillReceiveProps({data, isUserLoggedIn}) {
 
         this.setState({data: data})
         console.log(data);
@@ -89,36 +89,34 @@ class PlacementsPage extends React.Component {
 
                     <div>
 
-                        <Jumbotron fluid style={bodyStyle}>
-                            <Container fluid>
 
-                                <div className='text-center' style={{}}>
+                        <Jumbotron fluid className="bg-white">
+                            <Container>
+                                <h1 className="display-4 text-center"> Placement Exams </h1>
+                                <hr/>
 
-                                    <h2 className="text-light display-4">
-                                        Placement Exams
-                                    </h2>
-
-                                </div>
+                                {/*TODO make this dynamic*/}
+                                {/*<h3 className=" text-center">Rochester Institute of Technology</h3>*/}
 
                             </Container>
-
                         </Jumbotron>
-                        {/*<Container>*/}
-                            {/*{*/}
-                            {/*(this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id==null) &&*/}
-                                    {/*<Row style={{justifyContent: 'center'}}>*/}
-                                        {/*<PlacementsFormContainer/>*/}
-                                    {/*</Row>*/}
-                            {/*}*/}
 
-                            {/*{*/}
-                            {/*(this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id!=null) &&*/}
-                                    {/*<Row style={{justifyContent: 'center'}}>*/}
-                                        {/*<span style={{color: 'blue',fontSize: 24}}>Share this code with your friends</span>*/}
-                                    {/*</Row>*/}
-                            {/*}*/}
+                        <Container>
+                            {
+                                (this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id == null) &&
+                                <Row style={{justifyContent: 'center'}}>
+                                    <PlacementsFormContainer/>
+                                </Row>
+                            }
+                            {/**/}
+                            {
+                                (this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id != null) &&
+                                <Row style={{justifyContent: 'center'}}>
+                                    <span style={{color: 'blue', fontSize: 24}}>Share this code with your friends</span>
+                                </Row>
+                            }
 
-                        {/*</Container>*/}
+                        </Container>
 
                         <div>
                             <Row style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
@@ -144,124 +142,123 @@ class PlacementsPage extends React.Component {
                             </Row>
 
 
+                            <hr/>
+                            <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
+                                {(this.state.data) &&
 
-                                    <hr/>
-                                    <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
-                                        {(this.state.data) &&
-
-                                        this.state.data.map((object) => {
-                                            return (
+                                this.state.data.map((object) => {
+                                    return (
 
 
-                                                <FlipCard
-                                                    size="small"
-                                                    front={
-                                                        <Container className="rounded" fluid={true} style={{
-                                                            backgroundColor: '#d3d3d3',
+                                        <FlipCard
+                                            size="small"
+                                            front={
+                                                <Container className="rounded" fluid={true} style={{
+                                                    backgroundColor: '#d3d3d3',
 
-                                                            width: '98%',
-                                                            height: '80%',
-                                                            marginTop: '1%',
-                                                            padding: 0
-                                                        }}>
+                                                    width: '98%',
+                                                    height: '80%',
+                                                    marginTop: '1%',
+                                                    padding: 0
+                                                }}>
 
-                                                            {/*<Container style={{height: 240}}>
+                                                    {/*<Container style={{height: 240}}>
                                                                 <Row style={{padding: 100, justifyContent: 'center'}}>
                                                                     <img alt="person" src="/testicons/Available/Algebra.png" style={{maxWidth: '100%'}}/>
                                                                 </Row>
                                                             </Container>*/}
-                                                            <Container style={{backgroundColor: 'white', width: '100%',height:240}}>
-                                                                <Row style={{justifyContent: 'center', alignItems: 'center',height:240}}>
-                                                                    <img alt="person" src="/testicons/Available/Algebra.png" style={{padding:0,width: '100%',height:240}}/>
+                                                    <Container style={{backgroundColor: 'white', width: '100%', height: 240}}>
+                                                        <Row style={{justifyContent: 'center', alignItems: 'center', height: 240}}>
+                                                            <img alt="person" src="/testicons/Available/Algebra.png" style={{padding: 0, width: '100%', height: 240}}/>
+                                                        </Row>
+                                                    </Container>
+                                                    <Container style={{backgroundColor: 'white', width: '97%', height: 45}}>
+                                                        <Row style={{justifyContent: 'center', alignItems: 'center', height: 60}}>
+                                                            <h6>{object.name}</h6>
+                                                        </Row>
+                                                    </Container>
+
+                                                </Container>
+                                            }
+                                            back={(
+                                                <Container>
+                                                    <Row style={{
+                                                        color: 'white',
+                                                        fontSize: 14,
+                                                        justifyContent: 'space-between',
+                                                        paddingLeft: '10%',
+                                                        paddingRight: '10%',
+                                                        paddingTop: '10%'
+                                                    }}>
+                                                        <span>Number of questions</span>
+                                                        <span>{object.question_count}</span>
+
+                                                    </Row>
+                                                    <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
+                                                        <hr style={{border: '1px solid white', width: '100%'}}/>
+                                                    </Row>
+                                                    <Row style={{
+                                                        color: 'white',
+                                                        fontSize: 14,
+                                                        justifyContent: 'space-between',
+                                                        paddingLeft: '10%',
+                                                        paddingRight: '10%',
+                                                        paddingTop: '10%'
+                                                    }}>
+                                                        {/*<span>Time</span>*/}
+                                                        {/*<span>60 mins</span>*/}
+                                                        <span>Number of Sections</span>
+                                                        <span>{object.section_count}</span>
+
+                                                    </Row>
+                                                    <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
+                                                        <hr style={{border: '1px solid white', width: '100%'}}/>
+                                                    </Row>
+                                                    <Row style={{justifyContent: 'center', padding: '10%'}}>
+                                                        {
+                                                            this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
+
+                                                            <Link to=''><Button style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button></Link>
+                                                        }
+                                                        {
+                                                            this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
+                                                            <Button onClick={() => this.startTest(object.id)} style={{backgroundColor: 'white', color: 'black'}}>Start
+                                                                Test</Button>
+                                                        }
+
+                                                        {
+                                                            !this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
+
+                                                            <Container>
+                                                                <Row style={{justifyContent: 'center'}}>
+                                                                    <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button>
                                                                 </Row>
                                                             </Container>
-                                                            <Container style={{backgroundColor: 'white', width: '97%', height: 45}}>
-                                                                <Row style={{justifyContent: 'center', alignItems: 'center', height: 60}}>
-                                                                    <h6>{object.name}</h6>
-                                                                </Row>
-                                                            </Container>
 
-                                                        </Container>
-                                                    }
-                                                    back={(
-                                                        <Container>
-                                                            <Row style={{
-                                                                color: 'white',
-                                                                fontSize: 14,
-                                                                justifyContent: 'space-between',
-                                                                paddingLeft: '10%',
-                                                                paddingRight: '10%',
-                                                                paddingTop: '10%'
-                                                            }}>
-                                                                <span>Number of questions</span>
-                                                                <span>{object.question_count}</span>
+                                                        }
+                                                        {
+                                                            !this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
 
-                                                            </Row>
-                                                            <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
-                                                                <hr style={{border: '1px solid white', width: '100%'}}/>
-                                                            </Row>
-                                                            <Row style={{
-                                                                color: 'white',
-                                                                fontSize: 14,
-                                                                justifyContent: 'space-between',
-                                                                paddingLeft: '10%',
-                                                                paddingRight: '10%',
-                                                                paddingTop: '10%'
-                                                            }}>
-                                                                {/*<span>Time</span>*/}
-                                                                {/*<span>60 mins</span>*/}
-                                                                <span>Time</span>
-                                                                <span>{moment.duration(object.total_time,'seconds').humanize()}</span>
-
-                                                            </Row>
-                                                            <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
-                                                                <hr style={{border: '1px solid white', width: '100%'}}/>
-                                                            </Row>
-                                                            <Row style={{justifyContent: 'center', padding: '10%'}}>
-                                                                {
-                                                                    this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
-
-                                                                    <Link to=''><Button style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button></Link>
-                                                                }
-                                                                {
-                                                                    this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
-                                                                    <Button onClick={() => this.startTest(object.id)} style={{backgroundColor: 'white', color: 'black'}}>Start
-                                                                        Test</Button>
-                                                                }
-
-                                                                {
-                                                                    !this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
-
-                                                                    <Container>
-                                                                        <Row style={{justifyContent: 'center'}}>
-                                                                            <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button>
-                                                                        </Row>
-                                                                    </Container>
-
-                                                                }
-                                                                {
-                                                                    !this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
-
-                                                                    <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Start Test</Button>
+                                                            <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Start Test</Button>
 
 
-                                                                }
-                                                            </Row>
-                                                        </Container>
+                                                        }
+                                                    </Row>
+                                                </Container>
 
 
-                                                    )}
-                                                    backBackground={((object.is_purchased || object.price == 0) && "blue") || ((!object.is_purchased && !object.price == 0) && "gray")}
+                                            )}
+                                            backBackground={((object.is_purchased || object.price == 0) && "blue") || ((!object.is_purchased && !object.price == 0) && "gray")}
 
-                                                />
+                                        />
 
 
-                                            );
+                                    );
 
-                                        })
+                                })
 
-                                        }
-                                    </Row>
+                                }
+                            </Row>
                         </div>
 
                     </div>
