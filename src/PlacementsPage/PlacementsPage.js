@@ -101,22 +101,22 @@ class PlacementsPage extends React.Component {
                             </Container>
                         </Jumbotron>
 
-                        <Container>
-                            {
-                                (this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id == null) &&
-                                <Row style={{justifyContent: 'center'}}>
-                                    <PlacementsFormContainer/>
-                                </Row>
-                            }
-                            {/**/}
-                            {
-                                (this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id != null) &&
-                                <Row style={{justifyContent: 'center'}}>
-                                    <span style={{color: 'blue', fontSize: 24}}>Share this code with your friends</span>
-                                </Row>
-                            }
+                        {/*<Container>*/}
+                            {/*{*/}
+                                {/*(this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id == null) &&*/}
+                                {/*<Row style={{justifyContent: 'center'}}>*/}
+                                    {/*<PlacementsFormContainer/>*/}
+                                {/*</Row>*/}
+                            {/*}*/}
+                            {/*/!**!/*/}
+                            {/*{*/}
+                                {/*(this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id != null) &&*/}
+                                {/*<Row style={{justifyContent: 'center'}}>*/}
+                                    {/*<span style={{color: 'blue', fontSize: 24}}>Share this code with your friends</span>*/}
+                                {/*</Row>*/}
+                            {/*}*/}
 
-                        </Container>
+                        {/*</Container>*/}
 
                         <div>
                             <Row style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
