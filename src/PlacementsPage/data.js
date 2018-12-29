@@ -9,19 +9,16 @@ export const MOCK_TESTS_CARD_ELEMENTS = [
 		text: <div><h4 style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif'}}>Mock Exam</h4>
 		<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666',fontSize: 14}}>
 			<span style={{display:'block',textAlign:'left'}}><FontAwesomeIcon size={"1x"} icon={faCheck} color="#8C9EFF" style={{marginRight: 12}}/>
-				20 comprehensive mocks designed by expert faculties which 
-  				are set according to the latest pattern and test syllabus.
+                Comprehensive mock assessments designed by expert faculties, set according to the latest pattern and exam syllabus.
   			</span>
   			<span style={{display:'block',textAlign:'left'}}><FontAwesomeIcon size={"1x"} icon={faCheck} color="#8C9EFF" style={{marginRight: 12}}/>
-				Mocks designed covering all the topics and sections of the IBPS 
-                exam. 
+                Mock Assessments designed emulating all the skill areas for a corporate.
   			</span>
   			<span style={{display:'block',textAlign:'left'}}><FontAwesomeIcon size={"1x"} icon={faCheck} color="#8C9EFF" style={{marginRight: 12}}/>
-				Up-to-date question content reflects the reality of what 
-                you’ll see on test day 
+                Updated question content reflects the reality of what you’ll see on test day
   			</span>
   			<span style={{display:'block',textAlign:'left'}}><FontAwesomeIcon size={"1x"} icon={faCheck} color="#8C9EFF" style={{marginRight: 12}}/>
-				TAKE THE 1st MOCK FOR FREE 
+                Be assigned to a college to receive assessments customized for your college.
   			</span>
 		</div>
 		</div>
@@ -34,18 +31,16 @@ export const MOCK_TESTS_CARD_ELEMENTS = [
 		text: <div><h4 style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif'}}>Analysis</h4>
 		<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666',fontSize: 14}}>
 			<span style={{display:'block',textAlign:'left'}}><FontAwesomeIcon size={"1x"} icon={faCheck} color="#8C9EFF" style={{marginRight: 12}}/>
-				Analyze your strengths and weakness with your personalized 
-                analysis 
+                Analyze your strengths and weakness with your personalized analysis
   			</span>
   			<span style={{display:'block',textAlign:'left'}}><FontAwesomeIcon size={"1x"} icon={faCheck} color="#8C9EFF" style={{marginRight: 12}}/>
-				Get a detailed solution to each and every question. 
+				Learn the tricks to solve every question with their detailed Solution
   			</span>
   			<span style={{display:'block',textAlign:'left'}}><FontAwesomeIcon size={"1x"} icon={faCheck} color="#8C9EFF" style={{marginRight: 12}}/>
-  				Join thousands of others in taking the mocks today and be a part of the race. 
+                Receive customized analytics and intra-college percentile to gauge your performance
   			</span>
   			<span style={{display:'block',textAlign:'left'}}><FontAwesomeIcon size={"1x"} icon={faCheck} color="#8C9EFF" style={{marginRight: 12}}/>
-				Join thousands of others in taking the mocks today 
-                and be a part of the race. 
+                Join thousands of others in taking the mocks today and be a part of the race.
   			</span>
 		</div>
 		</div>
