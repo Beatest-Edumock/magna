@@ -44,6 +44,7 @@
     "react-select": "^2.0.0",
     "react-spinkit": "^3.0.0",
     "react-spinner": "^0.2.7",
+    "react-tabs": "^2.3.0",
     "react-toastify": "^4.1.0",
     "react-typed": "^1.0.9",
     "reactstrap": "^6.3.1",

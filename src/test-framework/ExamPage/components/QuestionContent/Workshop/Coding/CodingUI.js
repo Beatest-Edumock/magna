@@ -2,33 +2,15 @@ import React from "react";
 import AceEditor from 'react-ace';
 import Select from "react-select";
 
+import "react-tabs/style/react-tabs.css"
+import {TestCaseDisplay} from "./OutputArea/TestCaseDisplay";
+
 require('brace/mode/java');
 require('brace/mode/python');
 require('brace/theme/solarized_light');
 
 
-const languages = [
-    {value: 'python', label: 'python'},
-    {value: 'c++', label: 'c++'},
-
-
-];
-
 class CodingUI extends React.Component {
-
-    state = {code: "", selectedLanguage: languages[0]};
-
-    constructor() {
-        super();
-        this.onLanguageChange = this.onLanguageChange.bind(this);
-    }
-
-    onLanguageChange(language) {
-
-        this.setState({...this.state, selectedLanguage: language})
-
-
-    }
 
 
     render() {
@@ -47,9 +29,11 @@ class CodingUI extends React.Component {
 
                         <AceEditor
                             width={"100%"}
-                            mode={this.state.selectedLanguage.value}
+                            mode={this.props.selectedLanguage.value}
                             theme="solarized_light"
                             name="coding-text-area"
+                            value={this.props.code}
+                            onChange={this.props.onCodeChange}
                         />
                     </div>
 
@@ -59,22 +43,31 @@ class CodingUI extends React.Component {
 
                     <div className="col-4 px-1">
                         <Select
-                            value={this.state.selectedLanguage}
-                            onChange={this.onLanguageChange}
-                            options={languages}
+                            value={this.props.selectedLanguage}
+                            onChange={this.props.onLanguageChange}
+                            options={this.props.languages}
                         />
                     </div>
                     <div className="col-2 px-1">
-                        <button className=" btn btn-success">Save and Run</button>
+                        <button className=" btn btn-success"
+                                onClick={this.props.onSaveAndRunClick}>Save and Run
+                        </button>
                     </div>
 
 
                 </div>
-                <div className="row ">
 
-                    <div className="col-12 border">
+                {this.props.outputs &&
+                <div className="row  my-2 ">
+                    <div className="col-12 ">
+                        <TestCaseDisplay inputs={this.props.inputs}
+                                         userOutputs={this.props.outputs}
+                                         correctOutputs={this.props.correctOutputs}/>
                     </div>
+
+
                 </div>
+                }
             </div>
 
         );
