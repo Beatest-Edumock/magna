@@ -45,6 +45,13 @@ function setCurrentQuestionToReviewAsyncAC() {
 }
 
 
+function setCodingQuestionAsyncAC(code, coding_language) {
+    return (dispatch, getState) => {
+
+        dispatch(updateQuestionAttemptAsyncAC({coding_language, long_answer: code}))
+    }
+}
+
 function setCurrentQuestionChoiceIDAsyncAC(choiceID) {
     return (dispatch, getState) => {
 
@@ -123,4 +130,4 @@ function updateQuestionAttemptAsyncAC(changes) {
 }
 
 
-export {setCurrentQuestionChoiceIDAsyncAC, setCurrentQuestionTITAAnswerAsyncAC, setCurrentQuestionToReviewAsyncAC, setCurrentQuestionToSeenAsyncAC, updateQuestionAttemptAsyncAC}
+export {setCurrentQuestionChoiceIDAsyncAC, setCurrentQuestionTITAAnswerAsyncAC, setCurrentQuestionToReviewAsyncAC, setCurrentQuestionToSeenAsyncAC, updateQuestionAttemptAsyncAC,setCodingQuestionAsyncAC}

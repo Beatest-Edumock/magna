@@ -33,6 +33,7 @@
     "react-dom": "^16.4.2",
     "react-flickity-component": "github:Beatest-Edumock/react-flickity#master",
     "react-google-recaptcha": "^0.14.0",
+    "react-loading-overlay": "^1.0.1",
     "react-particles-js": "^2.4.2",
     "react-recaptcha": "^2.3.10",
     "react-redux": "^5.0.7",

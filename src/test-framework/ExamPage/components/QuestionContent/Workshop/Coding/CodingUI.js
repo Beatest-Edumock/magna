@@ -4,6 +4,8 @@ import Select from "react-select";
 
 import "react-tabs/style/react-tabs.css"
 import {TestCaseDisplay} from "./OutputArea/TestCaseDisplay";
+import LoadingOverlay from 'react-loading-overlay';
+
 
 require('brace/mode/java');
 require('brace/mode/python');
@@ -18,6 +20,7 @@ class CodingUI extends React.Component {
 
         return (
             <div className="container-fluid ">
+
                 <div className="row ">
                     <div className="col-md-6 mx-md-0 my-sm-3 card h-60vh-md-scroll scroll-x-auto">
                         <div dangerouslySetInnerHTML={{__html: this.props.question.html}}/>
@@ -27,14 +30,30 @@ class CodingUI extends React.Component {
 
                     <div className="col-md-5 my-sm-3 m-sm-0 py-sm-2 border h-60vh-md-scroll">
 
-                        <AceEditor
-                            width={"100%"}
-                            mode={this.props.selectedLanguage.value}
-                            theme="solarized_light"
-                            name="coding-text-area"
-                            value={this.props.code}
-                            onChange={this.props.onCodeChange}
-                        />
+                        <LoadingOverlay
+                            active={this.props.running}
+                            spinner
+                            text='Running Code'
+                            styles={{
+                                overlay: (base) => ({
+                                    ...base,
+                                    background: 'rgba(0, 0, 0, 0.2)'
+                                })
+                            }}
+                        >
+
+                            <div>
+                                <AceEditor
+                                    width={"100%"}
+                                    mode={this.props.selectedLanguage.value}
+                                    theme="solarized_light"
+                                    name="coding-text-area"
+                                    value={this.props.code}
+                                    onChange={this.props.onCodeChange}
+                                />
+                            </div>
+                        </LoadingOverlay>
+
                     </div>
 
                 </div>
@@ -49,8 +68,13 @@ class CodingUI extends React.Component {
                         />
                     </div>
                     <div className="col-2 px-1">
-                        <button className=" btn btn-success"
-                                onClick={this.props.onSaveAndRunClick}>Save and Run
+                        <button className=" btn btn-success btn-block"
+                                onClick={this.props.onSaveClick}>Save
+                        </button>
+                    </div>
+                    <div className="col-2 px-1">
+                        <button className=" btn btn-secondary btn-block"
+                                onClick={this.props.onRunClick}>Run
                         </button>
                     </div>
 
