@@ -7,6 +7,7 @@ import {setCodingQuestionAsyncAC} from "../../../../../../_Redux/ActionCreators/
 const languages = [
     {value: 'python', label: 'python'},
     {value: 'cpp', label: 'c++'},
+    {value: 'java', label: 'java'}
 
 ];
 
@@ -17,7 +18,8 @@ class Coding extends React.Component {
         this.onRunClick = this.onRunClick.bind(this);
         this.onSaveClick = this.onSaveClick.bind(this);
         this.onCodeChange = this.onCodeChange.bind(this);
-        this.state = {code: props.question.long_answer, selectedLanguage: languages[0], outputs: null, currentlyRunning: false};
+        const long_answer = props.question.long_answer;
+        this.state = {code: long_answer == null ? "" : long_answer, selectedLanguage: languages[0], outputs: null, currentlyRunning: false};
     }
 
     onSaveClick() {
