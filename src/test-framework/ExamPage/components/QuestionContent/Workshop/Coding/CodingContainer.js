@@ -3,6 +3,7 @@ import {CodingUI} from "./CodingUI";
 import {connect} from 'react-redux';
 import {runCodeAPI} from "../../../../../../_Api/Tests/Sections/Questions/Questions";
 import {setCodingQuestionAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
+import {toast} from 'react-toastify';
 
 const languages = [
     {value: 'python', label: 'python'},
@@ -12,19 +13,42 @@ const languages = [
 ];
 
 class Coding extends React.Component {
+
+    showSaveWorkNotification(props) {
+
+        if (!props.isTestComplete) {
+            toast.info(`Remember to save your work!`,{
+                autoClose: 5000
+            });
+        }
+    }
+
     constructor(props) {
         super(props);
         this.onLanguageChange = this.onLanguageChange.bind(this);
         this.onRunClick = this.onRunClick.bind(this);
         this.onSaveClick = this.onSaveClick.bind(this);
         this.onCodeChange = this.onCodeChange.bind(this);
+        this.showSaveWorkNotification = this.showSaveWorkNotification.bind();
+
         const long_answer = props.question.long_answer;
         this.state = {code: long_answer == null ? "" : long_answer, selectedLanguage: languages[0], outputs: null, currentlyRunning: false};
+        this.showSaveWorkNotification(props);
     }
 
     onSaveClick() {
 
         this.props.updateQuestionAttempt(this.state.code, this.state.selectedLanguage.value)
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+
+        if (nextProps.question.id !== this.props.question.id) {
+            this.showSaveWorkNotification(this.props);
+        }
+
+
+        return true;
     }
 
     onRunClick() {
@@ -74,6 +98,7 @@ class Coding extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        isTestComplete: state.test.is_complete,
         question: state.test.questionsByID[state.test.currentQuestion]
     }
 

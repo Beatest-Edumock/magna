@@ -21,7 +21,7 @@ function calculateOverallAccuracy(sectionsObj) {
 
 function PerformancePageUI(props) {
 
-    const sections = props.data.sections;
+    const sectionAttempts = props.data.section_attempts;
 
     const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0};
 
@@ -51,32 +51,46 @@ function PerformancePageUI(props) {
                 </thead>
 
                 <tbody>
-                {Object.keys(sections).map((sectionID) => {
 
 
-                    const section = sections[sectionID];
-
-                    overall.attempts += section.attempt_count;
-                    overall.correct += section.correct_qtn_count;
-                    overall.incorrect += section.incorrect_qtn_count;
-                    overall.score += section.score;
-
-                    overall.accuracy = 100 * overall.correct / overall.attempts;
+                {
+                    sectionAttempts.map((sectionAttempt => {
 
 
-                    return (
-                        <React.Fragment>
-                            <tr>
-                                <th scope="row">{section.name}</th>
-                                <td>{section.attempt_count}</td>
-                                <td>{section.correct_qtn_count}</td>
-                                <td>{section.incorrect_qtn_count}</td>
-                                <td>{section.score}</td>
-                                <td>{section.accuracy * 100}</td>
-                            </tr>
-                        </React.Fragment>
-                    )
-                })}
+                            const totalAttempts = sectionAttempt.correct_question_count + sectionAttempt.incorrect_question_count;
+
+
+                            let accuracy = sectionAttempt.correct_question_count / totalAttempts;
+                            accuracy = Math.round(accuracy * 10000) / 100
+                            if (totalAttempts === 0) {
+                                accuracy = "-"
+                            }
+
+
+                            overall.attempts += totalAttempts;
+                            overall.correct += sectionAttempt.correct_question_count;
+                            overall.incorrect += sectionAttempt.incorrect_question_count;
+                            overall.score += sectionAttempt.score;
+                            overall.accuracy = 100 * overall.correct / overall.attempts;
+                            overall.accuracy = Math.round(overall.accuracy);
+
+
+                            return (
+                                <React.Fragment>
+                                    <tr>
+                                        <th scope="row">{sectionAttempt.section.name}</th>
+                                        <td>{totalAttempts}</td>
+                                        <td>{sectionAttempt.correct_question_count}</td>
+                                        <td>{sectionAttempt.incorrect_question_count}</td>
+                                        <td>{sectionAttempt.score}</td>
+                                        <td>{accuracy}</td>
+                                    </tr>
+                                </React.Fragment>
+                            );
+                        }
+                    ))
+
+                }
 
                 <tr>
                     <th> Overall</th>
