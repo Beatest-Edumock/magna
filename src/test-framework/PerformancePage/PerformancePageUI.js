@@ -71,8 +71,8 @@ function PerformancePageUI(props) {
                             overall.correct += sectionAttempt.correct_question_count;
                             overall.incorrect += sectionAttempt.incorrect_question_count;
                             overall.score += sectionAttempt.score;
-                            overall.accuracy = 100 * overall.correct / overall.attempts;
-                            overall.accuracy = Math.round(overall.accuracy);
+                            overall.accuracy = overall.correct / overall.attempts;
+                            overall.accuracy = Math.round(overall.accuracy * 10000) / 100;
 
 
                             return (
