@@ -2,6 +2,7 @@ import React from 'react';
 import {Table, Container, Row, Col} from 'reactstrap';
 import {StackedBarChart} from '../../Common/Visualization/StackedBarChart';
 import {SimpleBarChart} from '../../Common/Visualization/SimpleBarChart';
+import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
 
 
 function calculateOverallAccuracy(sectionsObj) {
@@ -48,11 +49,29 @@ const scoreColours = {
 
 function scoreStatisticsChartData(scoreStatistics) {
     scoreData = [
-        {name: 'Min', score: -12},
+        {name: 'Min', score: scoreStatistics.min},
         {name: 'User', score: scoreStatistics.score},
         {name: 'Max', score: scoreStatistics.max},
         {name: 'Median', score: scoreStatistics.median},
     ]
+}
+
+const sectionAttemptTime = [];
+const sectionAttemptTimeColours = {
+    time_spent: '#8884d8',
+    total_time: '#82ca9d'
+};
+
+function sectionAttemptTimeChartData(sectionAttempt) {
+    let attempt = {
+        name: sectionAttempt.section.name,
+        total_time: sectionAttempt.section.total_time / 60,
+        time_spent: sectionAttempt.time_spent / 60,
+    };
+
+    sectionAttemptTime.push(attempt);
+
+    console.log(sectionAttemptTime);
 }
 
 const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0, total_questions: 0};
@@ -112,6 +131,8 @@ function PerformancePageUI(props) {
                             overall.total_questions += sectionAttempt.total_question_count;
 
                             sectionAttemptChartData(sectionAttempt.section.name, sectionAttempt.correct_question_count, sectionAttempt.incorrect_question_count, sectionAttempt.total_question_count);
+                            sectionAttemptTimeChartData(sectionAttempt);
+
                             if (index === (sectionAttempts.length - 1)) {
                                 sectionAttemptChartData("Overall", overall.correct, overall.incorrect, overall.total_questions);
                                 scoreStatisticsChartData(props.data);
@@ -152,10 +173,18 @@ function PerformancePageUI(props) {
             <button className=" btn btn-primary" onClick={props.viewPerformanceClickHandler}>View Solutions</button>
 
             {/*Visualization Components*/}
-            <Container fluid>
+            <Container fluid style={{marginTop: '20px'}}>
                 <Row>
                     <Col xs="12" sm="12" md="12" lg="6"><StackedBarChart data={sectionAttemptData} colors={sectionAttemptColors} title="Section Attempt Percentage"/></Col>
                     <Col xs="12" sm="12" md="12" lg="6"><SimpleBarChart data={scoreData} colors={scoreColours} title="Score Analysis"/></Col>
+                </Row>
+                <Row style={{marginTop: '20px'}}>
+                    <Col lg="3"/>
+                    <Col xs="12" sm="12" md="12" lg="6">
+                        <h6>Time Spent Analysis (in minutes)</h6>
+                        <StackedRadarChart data={sectionAttemptTime} colors={sectionAttemptTimeColours} title="Score Analysis" range={{min: 0, max: 10}}/>
+                    </Col>
+                    <Col lg="3"/>
                 </Row>
             </Container>
         </div>);
