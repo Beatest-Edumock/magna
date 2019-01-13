@@ -94,15 +94,11 @@ class TestPage extends React.Component {
 
                     <div>
 
-                        <Jumbotron fluid style={bodyStyle}>
+                        <Jumbotron fluid className="bg-white">
                             <Container fluid>
 
-                                <div className='text-center' style={{}}>
-
-                                    <h2 className="text-light display-4">
-                                        Tests
-                                    </h2>
-                                </div>
+                                <h1 className="display-4 text-center">Exams</h1>
+                                <hr/>
 
                             </Container>
 
