@@ -17,7 +17,7 @@ function StackedBarChart(props) {
                 <XAxis type="number">
                     <Label value={props.title} offset={35} position="bottom"/>
                 </XAxis>
-                <YAxis type="category" dataKey="name" textAnchor="end" tick={{fontSize: 12}}/>
+                <YAxis type="category" dataKey="name" textAnchor="end" angle={-45} tick={{fontSize: 12}}/>
 
                 <Tooltip/>
                 <Legend align="center"/>
