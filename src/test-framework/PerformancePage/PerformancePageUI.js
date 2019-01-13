@@ -31,9 +31,9 @@ const chartData = [];
 function sectionAttemptChartData(sectionName, correct, incorrect, totalQuestions) {
     let section = {
         name: sectionName,
-        correct: (correct / totalQuestions) * 100,
-        incorrect: (incorrect / totalQuestions) * 100,
-        unattempted: ((totalQuestions - (correct + incorrect)) / totalQuestions) * 100
+        correct: Math.round(((correct / totalQuestions) * 10000) / 100),
+        incorrect: Math.round(((incorrect / totalQuestions) * 10000) / 100),
+        unattempted: Math.round(((totalQuestions - (correct + incorrect)) * 10000 / totalQuestions) / 100)
     };
 
     chartData.push(section);
