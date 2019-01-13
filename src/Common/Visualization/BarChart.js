@@ -9,15 +9,10 @@ function StackedBarChart(props) {
     return (
         <ResponsiveContainer width="100%" aspect={1.5}>
             <BarChart data={props.data}
-                      margin={{top: 30, right: 20, left: 10, bottom: 35}}
+                      margin={{top: 30, right: 20, left: 35, bottom: 35}}
                       padding={{left: 30, right: 20}}
                       layout="vertical">
                 <CartesianGrid strokeDasharray="3 3"/>
-
-                {/*<XAxis dataKey="name" textAnchor="end" tick={{angle: 45}}>
-                    <Label value="Sections" offset={35} position="bottom" />
-                </XAxis>
-                <YAxis/>*/}
 
                 <XAxis type="number">
                     <Label value={props.title} offset={35} position="bottom"/>
