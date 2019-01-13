@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table, Container, Row, Col} from 'reactstrap';
-import {StackedBarChart} from '../../Common/Visualization/BarChart'
+import {StackedBarChart} from '../../Common/Visualization/StackedBarChart';
+import {SimpleBarChart} from '../../Common/Visualization/SimpleBarChart';
 
 
 function calculateOverallAccuracy(sectionsObj) {
@@ -26,7 +27,7 @@ const sectionAttemptColors = {
     unattempted: '#708090'
 };
 
-const chartData = [];
+const sectionAttemptData = [];
 
 function sectionAttemptChartData(sectionName, correct, incorrect, totalQuestions) {
     let section = {
@@ -36,7 +37,22 @@ function sectionAttemptChartData(sectionName, correct, incorrect, totalQuestions
         unattempted: Math.round(((totalQuestions - (correct + incorrect)) * 10000 / totalQuestions) / 100)
     };
 
-    chartData.push(section);
+    sectionAttemptData.push(section);
+}
+
+let scoreData = [];
+
+const scoreColours = {
+    score: '#413ea0'
+};
+
+function scoreStatisticsChartData(scoreStatistics) {
+    scoreData = [
+        {name: 'Min', score: -12},
+        {name: 'User', score: scoreStatistics.score},
+        {name: 'Max', score: scoreStatistics.max},
+        {name: 'Median', score: scoreStatistics.median},
+    ]
 }
 
 const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0, total_questions: 0};
@@ -97,7 +113,8 @@ function PerformancePageUI(props) {
 
                             sectionAttemptChartData(sectionAttempt.section.name, sectionAttempt.correct_question_count, sectionAttempt.incorrect_question_count, sectionAttempt.total_question_count);
                             if (index === (sectionAttempts.length - 1)) {
-                                sectionAttemptChartData("Overall", overall.correct, overall.incorrect, overall.total_questions)
+                                sectionAttemptChartData("Overall", overall.correct, overall.incorrect, overall.total_questions);
+                                scoreStatisticsChartData(props.data);
                             }
 
                             return (
@@ -137,8 +154,8 @@ function PerformancePageUI(props) {
             {/*Visualization Components*/}
             <Container fluid>
                 <Row>
-                    <Col xs="12" sm="12" md="12" lg="6"><StackedBarChart data={chartData} colors={sectionAttemptColors} title="Section Attempt Percentage"/></Col>
-                    <Col/>
+                    <Col xs="12" sm="12" md="12" lg="6"><StackedBarChart data={sectionAttemptData} colors={sectionAttemptColors} title="Section Attempt Percentage"/></Col>
+                    <Col xs="12" sm="12" md="12" lg="6"><SimpleBarChart data={scoreData} colors={scoreColours} title="Score Analysis"/></Col>
                 </Row>
             </Container>
         </div>);
