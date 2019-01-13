@@ -13,7 +13,7 @@ function SimpleBarChart(props) {
                       padding={{left: 30, right: 20}}>
                 <CartesianGrid stroke='#f5f5f5'/>
 
-                <XAxis dataKey="name">
+                <XAxis dataKey="name" tick={{fontSize: 12}}>
                     <Label value={props.title} offset={35} position="bottom"/>
                 </XAxis>
                 <YAxis />
