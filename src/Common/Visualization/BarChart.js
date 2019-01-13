@@ -25,9 +25,6 @@ function StackedBarChart(props) {
                 {/*Data Points for the Visualization*/}
                 {
                     Object.keys(props.data[0]).map((key => {
-
-                        console.log(key);
-
                         if (key !== 'name') {
                             return (
                                 <Bar dataKey={key} stackId="a" fill={props.colors[key]} animationBegin={0}/>
