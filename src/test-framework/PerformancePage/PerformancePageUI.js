@@ -31,8 +31,8 @@ const chartData = [];
 function sectionAttemptChartData(sectionName, correct, incorrect, totalQuestions) {
     let section = {
         name: sectionName,
-        correct: (correct/totalQuestions) * 100,
-        incorrect: (incorrect/totalQuestions) * 100,
+        correct: (correct / totalQuestions) * 100,
+        incorrect: (incorrect / totalQuestions) * 100,
         unattempted: ((totalQuestions - (correct + incorrect)) / totalQuestions) * 100
     };
 
@@ -131,12 +131,13 @@ function PerformancePageUI(props) {
 
 
             </Table>
+
             <button className=" btn btn-primary" onClick={props.viewPerformanceClickHandler}>View Solutions</button>
 
             {/*Visualization Components*/}
-            <Container>
+            <Container fluid>
                 <Row>
-                    <Col><StackedBarChart data={chartData} colors={sectionAttemptColors} title="Section Attempt Percentage"/></Col>
+                    <Col xs="12" sm="12" md="12" lg="6"><StackedBarChart data={chartData} colors={sectionAttemptColors} title="Section Attempt Percentage"/></Col>
                     <Col/>
                 </Row>
             </Container>
