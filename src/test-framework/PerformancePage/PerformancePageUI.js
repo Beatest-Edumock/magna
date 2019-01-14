@@ -3,6 +3,8 @@ import {Table, Container, Row, Col} from 'reactstrap';
 import {StackedBarChart} from '../../Common/Visualization/StackedBarChart';
 import {SimpleBarChart} from '../../Common/Visualization/SimpleBarChart';
 import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
+import {CartesianGrid, Legend, Line, Tooltip, XAxis, YAxis} from "recharts";
+import {LineChartUI} from "../../Common/Visualization/LineChart";
 
 
 function calculateOverallAccuracy(sectionsObj) {
@@ -75,9 +77,28 @@ function sectionAttemptTimeChartData(sectionAttempt) {
 
 const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0, total_questions: 0};
 
+
+function prepareTimeSpentData(data) {
+    const questionAttemptTimeSpentData = [];
+
+    let sectionAttemptIdx;
+    for (sectionAttemptIdx in data.section_attempts) {
+        let questionAttemptIdx;
+        for (questionAttemptIdx in data.section_attempts[sectionAttemptIdx].question_attempts) {
+            const obj = data.section_attempts[sectionAttemptIdx].question_attempts[questionAttemptIdx];
+            questionAttemptTimeSpentData.push(obj);
+
+        }
+    }
+
+    return questionAttemptTimeSpentData;
+
+}
+
 function PerformancePageUI(props) {
 
     const sectionAttempts = props.data.section_attempts;
+    const timeSpentData = prepareTimeSpentData(props.data);
 
 
     return (
@@ -92,7 +113,7 @@ function PerformancePageUI(props) {
                 </div>
             </div>
 
-            <Table striped condensed responsive>
+            <Table striped condensed responsive hover bordered>
                 <thead>
                 <tr>
                     <th>Section</th>
@@ -169,7 +190,6 @@ function PerformancePageUI(props) {
 
             </Table>
 
-            <button className=" btn btn-primary" onClick={props.viewPerformanceClickHandler}>View Solutions</button>
 
             {/*Visualization Components*/}
             <Container fluid style={{marginTop: '20px'}}>
@@ -185,8 +205,21 @@ function PerformancePageUI(props) {
                     </Col>
                     <Col lg="3"/>
                 </Row>
+
+
+                <Row style={{marginTop: '20px'}}>
+                    <Col xs="12" sm="12" md="12" lg="6">
+                        <LineChartUI data={timeSpentData}/>
+                    </Col>
+                </Row>
             </Container>
+
+
+            <button className="btn btn-primary btn-lg" onClick={props.viewPerformanceClickHandler}>View Solutions</button>
+
+
         </div>);
+
 
 }
 
