@@ -44,15 +44,15 @@ function sectionAttemptChartData(sectionName, correct, incorrect, totalQuestions
 let scoreData = [];
 
 const scoreColours = {
-    score: '#413ea0'
+    Score: '#413ea0'
 };
 
 function scoreStatisticsChartData(scoreStatistics) {
     scoreData = [
-        {name: 'Min', score: scoreStatistics.min},
-        {name: 'User', score: scoreStatistics.score},
-        {name: 'Max', score: scoreStatistics.max},
-        {name: 'Median', score: scoreStatistics.median},
+        {name: 'Min', Score: scoreStatistics.min},
+        {name: 'You', Score: scoreStatistics.score},
+        {name: 'Median', Score: scoreStatistics.median},
+        {name: 'Topper', Score: scoreStatistics.max},
     ]
 }
 
