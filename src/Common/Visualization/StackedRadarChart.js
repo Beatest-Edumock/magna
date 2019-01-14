@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Legend, Label, ResponsiveContainer} from 'recharts';
+import {RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Legend, Label, ResponsiveContainer, Tooltip} from 'recharts';
 
 
 function StackedRadarChart(props) {
@@ -31,6 +31,7 @@ function StackedRadarChart(props) {
                     }))
                 }
 
+                <Tooltip/>
                 <Legend layout="vertical" verticalAlign="bottom" align="right" />
             </RadarChart>
         </ResponsiveContainer>

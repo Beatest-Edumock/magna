@@ -58,20 +58,19 @@ function scoreStatisticsChartData(scoreStatistics) {
 
 const sectionAttemptTime = [];
 const sectionAttemptTimeColours = {
-    time_spent: '#8884d8',
-    total_time: '#82ca9d'
+    "Time Spent": '#8884d8',
+    "Total Time": '#82ca9d'
 };
 
 function sectionAttemptTimeChartData(sectionAttempt) {
     let attempt = {
         name: sectionAttempt.section.name,
-        total_time: sectionAttempt.section.total_time / 60,
-        time_spent: sectionAttempt.time_spent / 60,
+        "Total Time": sectionAttempt.section.total_time / 60,
+        "Time Spent": sectionAttempt.time_spent / 60,
     };
 
     sectionAttemptTime.push(attempt);
 
-    console.log(sectionAttemptTime);
 }
 
 const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0, total_questions: 0};
