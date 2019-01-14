@@ -9,20 +9,15 @@ function StackedBarChart(props) {
     return (
         <ResponsiveContainer width="100%" aspect={1.5}>
             <BarChart data={props.data}
-                      margin={{top: 30, right: 20, left: 10, bottom: 35}}
+                      margin={{top: 30, right: 20, left: 35, bottom: 35}}
                       padding={{left: 30, right: 20}}
                       layout="vertical">
                 <CartesianGrid strokeDasharray="3 3"/>
 
-                {/*<XAxis dataKey="name" textAnchor="end" tick={{angle: 45}}>
-                    <Label value="Sections" offset={35} position="bottom" />
-                </XAxis>
-                <YAxis/>*/}
-
                 <XAxis type="number">
                     <Label value={props.title} offset={35} position="bottom"/>
                 </XAxis>
-                <YAxis type="category" dataKey="name" textAnchor="end" tick={{fontSize: 12}}/>
+                <YAxis type="category" dataKey="name" textAnchor="end" angle={-45} tick={{fontSize: 12}}/>
 
                 <Tooltip/>
                 <Legend align="center"/>
@@ -30,9 +25,6 @@ function StackedBarChart(props) {
                 {/*Data Points for the Visualization*/}
                 {
                     Object.keys(props.data[0]).map((key => {
-
-                        console.log(key);
-
                         if (key !== 'name') {
                             return (
                                 <Bar dataKey={key} stackId="a" fill={props.colors[key]} animationBegin={0}/>
