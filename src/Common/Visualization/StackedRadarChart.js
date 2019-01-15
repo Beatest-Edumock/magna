@@ -45,13 +45,13 @@ export {StackedRadarChart}
 StackedRadarChart.propTypes = {
 
     /** chart data that needs to be plotted */
-    data: PropTypes.object,
+    data: PropTypes.array,
 
     /** range of the radar. must have property min and max **/
     range: PropTypes.object,
 
     /** title of the chart that needs to be displayed */
-    title: PropTypes.object,
+    title: PropTypes.string,
 
     /** colors for the data point */
     colors: PropTypes.object

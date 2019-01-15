@@ -60,21 +60,27 @@ function scoreStatisticsChartData(scoreStatistics) {
     ]
 }
 
-const sectionAttemptTime = [];
 const sectionAttemptTimeColours = {
     "Time Spent": colors.red,
     "Total Time": colors.green
 };
 
+const sectionAttemptTime = [];
+let maxSectionAttemptTime = 0;
+
 function sectionAttemptTimeChartData(sectionAttempt) {
+    let sectionAttemptTotalTimeInMins = sectionAttempt.section.total_time / 60;
+
+    if (maxSectionAttemptTime < sectionAttemptTotalTimeInMins) {
+        maxSectionAttemptTime = sectionAttemptTotalTimeInMins;
+    }
     let attempt = {
         name: sectionAttempt.section.name,
-        "Total Time": sectionAttempt.section.total_time / 60,
+        "Total Time": sectionAttemptTotalTimeInMins,
         "Time Spent": sectionAttempt.time_spent / 60,
     };
 
     sectionAttemptTime.push(attempt);
-
 }
 
 const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0, total_questions: 0};
@@ -161,7 +167,7 @@ function PerformancePageUI(props) {
                             }
 
                             return (
-                                <React.Fragment>
+                                <React.Fragment key={index}>
                                     <tr>
                                         <th scope="row">{sectionAttempt.section.name}</th>
                                         <td>{totalAttempts}</td>
@@ -216,7 +222,7 @@ function PerformancePageUI(props) {
                         <Row style={{marginTop: '20px'}}>
                             <Col xs="12" sm="12" md="12" lg="6">
                                 <h6>Sectional Time Spent (in minutes)</h6>
-                                <StackedRadarChart data={sectionAttemptTime} colors={sectionAttemptTimeColours} title="Score Analysis" range={{min: 0, max: 10}}/>
+                                <StackedRadarChart data={sectionAttemptTime} colors={sectionAttemptTimeColours} title="Score Analysis" range={{min: 0, max: maxSectionAttemptTime}}/>
                             </Col>
                             <Col xs="12" sm="12" md="12" lg="6">
                                 <AreaChartUI data={timeSpentData} label="Time Spent (Seconds) in each question" stroke={colors.red} />
