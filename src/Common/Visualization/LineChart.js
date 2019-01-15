@@ -8,7 +8,7 @@ function LineChartUI(props) {
 
     return (
         <ResponsiveContainer width="100%" aspect={1.5}>
-            <LineChart width={600} height={300} data={props.data}
+            <LineChart width={500} height={300} data={props.data}
                        margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                 <XAxis name="Questions"/>
                 <YAxis name="Time Spent (Seconds)"/>
