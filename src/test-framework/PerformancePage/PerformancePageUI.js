@@ -69,15 +69,16 @@ const sectionAttemptTime = [];
 let maxSectionAttemptTime = 0;
 
 function sectionAttemptTimeChartData(sectionAttempt) {
-    let sectionAttemptTotalTimeInMins = sectionAttempt.section.total_time / 60;
+    let sectionAttemptTotalTimeInMins = Math.round(sectionAttempt.section.total_time / 60);
 
     if (maxSectionAttemptTime < sectionAttemptTotalTimeInMins) {
         maxSectionAttemptTime = sectionAttemptTotalTimeInMins;
     }
+
     let attempt = {
         name: sectionAttempt.section.name,
         "Total Time": sectionAttemptTotalTimeInMins,
-        "Time Spent": sectionAttempt.time_spent / 60,
+        "Time Spent": Math.round(sectionAttempt.time_spent / 60),
     };
 
     sectionAttemptTime.push(attempt);
