@@ -22,10 +22,10 @@ function StackedRadarChart(props) {
 
                 {/*Data Points for the Visualization*/}
                 {
-                    Object.keys(props.data[0]).map((key => {
+                    Object.keys(props.data[0]).map(((key, index) => {
                         if (key !== 'name') {
                             return (
-                                <Radar name={key} dataKey={key} stroke={props.colors[key]} fill={props.colors[key]} fillOpacity={0.6}/>
+                                <Radar key={index} name={key} dataKey={key} stroke={props.colors[key]} fill={props.colors[key]} fillOpacity={0.6}/>
                             )
                         }
                     }))

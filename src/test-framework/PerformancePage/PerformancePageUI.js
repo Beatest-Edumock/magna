@@ -1,10 +1,11 @@
 import React from 'react';
 import {Table, Container, Row, Col} from 'reactstrap';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {StackedBarChart} from '../../Common/Visualization/StackedBarChart';
 import {SimpleBarChart} from '../../Common/Visualization/SimpleBarChart';
 import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
-import {CartesianGrid, Legend, Line, Tooltip, XAxis, YAxis} from "recharts";
 import {LineChartUI} from "../../Common/Visualization/LineChart";
+import "react-tabs/style/react-tabs.css";
 
 
 function calculateOverallAccuracy(sectionsObj) {
@@ -190,33 +191,49 @@ function PerformancePageUI(props) {
 
             </Table>
 
+            {/*Solutions Button Link*/}
+            <button className="btn btn-primary" onClick={props.viewPerformanceClickHandler}>View Solutions</button>
 
             {/*Visualization Components*/}
-            <Container fluid style={{marginTop: '20px'}}>
-                <Row>
-                    <Col xs="12" sm="12" md="12" lg="6"><StackedBarChart data={sectionAttemptData} colors={sectionAttemptColors} title="Section Attempt Percentage"/></Col>
-                    <Col xs="12" sm="12" md="12" lg="6"><SimpleBarChart data={scoreData} colors={scoreColours} title="Score Analysis"/></Col>
-                </Row>
-                <Row style={{marginTop: '20px'}}>
-                    <Col lg="3"/>
-                    <Col xs="12" sm="12" md="12" lg="6">
-                        <h6>Time Spent Analysis (in minutes)</h6>
-                        <StackedRadarChart data={sectionAttemptTime} colors={sectionAttemptTimeColours} title="Score Analysis" range={{min: 0, max: 10}}/>
-                    </Col>
-                    <Col lg="3"/>
-                </Row>
+            <Tabs style={{marginTop: '20px', marginBottom: '10px'}}>
+                <TabList>
+                    <Tab>Score Analysis</Tab>
+                    <Tab>Sectional Time</Tab>
+                    <Tab>Question Time</Tab>
+                </TabList>
 
-
-                <Row style={{marginTop: '20px'}}>
-                    <Col xs="12" sm="12" md="12" lg="6">
-                        <LineChartUI data={timeSpentData}/>
-                    </Col>
-                </Row>
-            </Container>
-
-
-            <button className="btn btn-primary btn-lg" onClick={props.viewPerformanceClickHandler}>View Solutions</button>
-
+                <TabPanel>
+                    <Container fluid style={{marginTop: '20px'}}>
+                        <Row>
+                            <Col xs="12" sm="12" md="12" lg="6"><StackedBarChart data={sectionAttemptData} colors={sectionAttemptColors} title="Section Attempt Percentage"/></Col>
+                            <Col xs="12" sm="12" md="12" lg="6"><SimpleBarChart data={scoreData} colors={scoreColours} title="Score Analysis"/></Col>
+                        </Row>
+                    </Container>
+                </TabPanel>
+                <TabPanel>
+                    <Container fluid style={{marginTop: '20px'}}>
+                        <Row style={{marginTop: '20px'}}>
+                            <Col lg="3"/>
+                            <Col xs="12" sm="12" md="12" lg="6">
+                                <h6>Time Spent Analysis (in minutes)</h6>
+                                <StackedRadarChart data={sectionAttemptTime} colors={sectionAttemptTimeColours} title="Score Analysis" range={{min: 0, max: 10}}/>
+                            </Col>
+                            <Col lg="3"/>
+                        </Row>
+                    </Container>
+                </TabPanel>
+                <TabPanel>
+                    <Container fluid style={{marginTop: '20px'}}>
+                        <Row style={{marginTop: '20px'}}>
+                            <Col lg="3"/>
+                            <Col xs="12" sm="12" md="12" lg="6">
+                                <LineChartUI data={timeSpentData}/>
+                            </Col>
+                            <Col lg="3"/>
+                        </Row>
+                    </Container>
+                </TabPanel>
+            </Tabs>
 
         </div>);
 
