@@ -24,10 +24,10 @@ function StackedBarChart(props) {
 
                 {/*Data Points for the Visualization*/}
                 {
-                    Object.keys(props.data[0]).map((key => {
+                    Object.keys(props.data[0]).map(((key, index) => {
                         if (key !== 'name') {
                             return (
-                                <Bar dataKey={key} stackId="a" fill={props.colors[key]} animationBegin={0}/>
+                                <Bar key={index} dataKey={key} stackId="a" fill={props.colors[key]} animationBegin={0}/>
                             )
                         }
                     }))
@@ -45,10 +45,10 @@ export {StackedBarChart}
 StackedBarChart.propTypes = {
 
     /** chart data that needs to be plotted */
-    data: PropTypes.object,
+    data: PropTypes.array,
 
     /** title of the chart that needs to be displayed */
-    title: PropTypes.object,
+    title: PropTypes.string,
 
     /** colors for the data point */
     colors: PropTypes.object
