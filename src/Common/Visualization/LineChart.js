@@ -15,7 +15,7 @@ function LineChartUI(props) {
                 <CartesianGrid strokeDasharray="3 3"/>
                 <Tooltip/>
                 <Legend/>
-                <Line type="monotone" name="Time Spent (Seconds) in each question" dataKey="time_spent" stroke="#8884d8" activeDot={{r: 8}}/>
+                <Line type="monotone" name="Time Spent (Seconds) in each question" dataKey="time_spent" stroke={props.stroke} activeDot={{r: 8}}/>
             </LineChart>
         </ResponsiveContainer>
     )

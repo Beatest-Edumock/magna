@@ -6,6 +6,7 @@ import {SimpleBarChart} from '../../Common/Visualization/SimpleBarChart';
 import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
 import {LineChartUI} from "../../Common/Visualization/LineChart";
 import "react-tabs/style/react-tabs.css";
+import colors from '../../Common/Visualization/ColorPalette';
 
 
 function calculateOverallAccuracy(sectionsObj) {
@@ -26,9 +27,9 @@ function calculateOverallAccuracy(sectionsObj) {
 }
 
 const sectionAttemptColors = {
-    correct: '#228B22',
-    incorrect: '#DC143C',
-    unattempted: '#708090'
+    Correct: colors.green,
+    Incorrect: colors.red,
+    UnAttempted: colors.grey
 };
 
 const sectionAttemptData = [];
@@ -36,9 +37,9 @@ const sectionAttemptData = [];
 function sectionAttemptChartData(sectionName, correct, incorrect, totalQuestions) {
     let section = {
         name: sectionName,
-        correct: Math.round(((correct / totalQuestions) * 10000) / 100),
-        incorrect: Math.round(((incorrect / totalQuestions) * 10000) / 100),
-        unattempted: Math.round(((totalQuestions - (correct + incorrect)) * 10000 / totalQuestions) / 100)
+        Correct: Math.round(((correct / totalQuestions) * 10000) / 100),
+        Incorrect: Math.round(((incorrect / totalQuestions) * 10000) / 100),
+        UnAttempted: Math.round(((totalQuestions - (correct + incorrect)) * 10000 / totalQuestions) / 100)
     };
 
     sectionAttemptData.push(section);
@@ -47,22 +48,22 @@ function sectionAttemptChartData(sectionName, correct, incorrect, totalQuestions
 let scoreData = [];
 
 const scoreColours = {
-    Score: '#413ea0'
+    Min: colors.red,
+    You: colors.blue,
+    Median: colors.yellow,
+    Topper: colors.green
 };
 
 function scoreStatisticsChartData(scoreStatistics) {
     scoreData = [
-        {name: 'Min', Score: scoreStatistics.min},
-        {name: 'You', Score: scoreStatistics.score},
-        {name: 'Median', Score: scoreStatistics.median},
-        {name: 'Topper', Score: scoreStatistics.max},
+        {name: 'Score', Min: scoreStatistics.min, You: scoreStatistics.score, Median: scoreStatistics.median, Topper: scoreStatistics.max,},
     ]
 }
 
 const sectionAttemptTime = [];
 const sectionAttemptTimeColours = {
-    "Time Spent": '#8884d8',
-    "Total Time": '#82ca9d'
+    "Time Spent": colors.red,
+    "Total Time": colors.green
 };
 
 function sectionAttemptTimeChartData(sectionAttempt) {
@@ -198,8 +199,8 @@ function PerformancePageUI(props) {
             <Tabs style={{marginTop: '20px', marginBottom: '10px'}}>
                 <TabList>
                     <Tab>Score Analysis</Tab>
-                    <Tab>Sectional Time</Tab>
-                    <Tab>Question Time</Tab>
+                    <Tab>Time Analysis</Tab>
+                    <Tab>Topic Analysis</Tab>
                 </TabList>
 
                 <TabPanel>
@@ -213,12 +214,13 @@ function PerformancePageUI(props) {
                 <TabPanel>
                     <Container fluid style={{marginTop: '20px'}}>
                         <Row style={{marginTop: '20px'}}>
-                            <Col lg="3"/>
                             <Col xs="12" sm="12" md="12" lg="6">
-                                <h6>Time Spent Analysis (in minutes)</h6>
+                                <h6>Sectional Time Spent (in minutes)</h6>
                                 <StackedRadarChart data={sectionAttemptTime} colors={sectionAttemptTimeColours} title="Score Analysis" range={{min: 0, max: 10}}/>
                             </Col>
-                            <Col lg="3"/>
+                            <Col xs="12" sm="12" md="12" lg="6">
+                                <LineChartUI data={timeSpentData}/>
+                            </Col>
                         </Row>
                     </Container>
                 </TabPanel>
@@ -227,7 +229,7 @@ function PerformancePageUI(props) {
                         <Row style={{marginTop: '20px'}}>
                             <Col lg="3"/>
                             <Col xs="12" sm="12" md="12" lg="6">
-                                <LineChartUI data={timeSpentData}/>
+                                <LineChartUI data={timeSpentData} stroke={colors.red} />
                             </Col>
                             <Col lg="3"/>
                         </Row>
