@@ -8,6 +8,10 @@ import {AreaChartUI} from '../../Common/Visualization/AreaChartUI';
 import "react-tabs/style/react-tabs.css";
 import colors from '../../Common/Visualization/ColorPalette';
 
+/*remove this import*/
+import data from '../DummyQuestionData';
+import {PieChartUI} from "../../Common/Visualization/PieChartUI";
+
 
 function calculateOverallAccuracy(sectionsObj) {
 
@@ -83,6 +87,24 @@ function sectionAttemptTimeChartData(sectionAttempt) {
 
     sectionAttemptTime.push(attempt);
 }
+
+const questionLodAttempt = [
+    {name: 'Easy', value: 400, color: colors.green},
+    {name: 'Medium', value: 200, color: colors.yellow},
+    {name: 'Hard', value: 300, color: colors.red}
+];
+
+const questionTopicAttempt = [
+    {name: 'Speed', time_spent: 40},
+    {name: 'Time', time_spent: 20}
+];
+
+const questionTypeAttempt = [
+    {name: 'MCQ', value: 25, color: colors.green},
+    {name: 'Tita', value: 20, color: colors.yellow},
+    {name: 'RC', value: 15, color: colors.red},
+    {name: 'Coding', value: 18, color: colors.blue}
+];
 
 const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0, total_questions: 0};
 
@@ -207,7 +229,7 @@ function PerformancePageUI(props) {
                 <TabList>
                     <Tab>Score Analysis</Tab>
                     <Tab>Time Analysis</Tab>
-                    {/*<Tab>Topic Analysis</Tab>*/}
+                    <Tab>Topic Analysis</Tab>
                 </TabList>
 
                 <TabPanel>
@@ -233,17 +255,23 @@ function PerformancePageUI(props) {
                         </Row>
                     </Container>
                 </TabPanel>
-                {/*<TabPanel>
+                <TabPanel>
                     <Container fluid style={{marginTop: '20px'}}>
                         <Row style={{marginTop: '20px'}}>
-                            <Col lg="3"/>
-                            <Col xs="12" sm="12" md="12" lg="6">
-                                <AreaChartUI data={timeSpentData} stroke={colors.red} />
+                            <Col xs="12" sm="12" md="12" lg="4">
+                                <h6>Attempts by Level of Difficulty</h6>
+                                <PieChartUI data={questionLodAttempt} cx={120} cy={120} innerRadius={20} outerRadius={80} />
                             </Col>
-                            <Col lg="3"/>
+                            <Col xs="12" sm="12" md="12" lg="4">
+                                <h6>Attempts by Question Topic</h6>
+                            </Col>
+                            <Col xs="12" sm="12" md="12" lg="4">
+                                <h6>Attempts by Question Type</h6>
+                                <PieChartUI data={questionTypeAttempt} cx={120} cy={120} innerRadius={20} outerRadius={80} />
+                            </Col>
                         </Row>
                     </Container>
-                </TabPanel>*/}
+                </TabPanel>
             </Tabs>
 
         </div>);

@@ -18,7 +18,7 @@ function AreaChartUI(props) {
                 </defs>
                 {/*<XAxis label="Questions"/>*/}
 
-                <XAxis label={{value: "Question number", offset: "0", position: "bottom"}}/>
+                <XAxis dataKey={props.dataKey} label={{value: "Question number", offset: "0", position: "bottom"}}/>
 
                 <YAxis label={{value: "Time Spent (seconds)", angle: "-90", position: "left", offset: "-10"}}/>
 
