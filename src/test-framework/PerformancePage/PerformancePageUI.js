@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {StackedBarChart} from '../../Common/Visualization/StackedBarChart';
 import {SimpleBarChart} from '../../Common/Visualization/SimpleBarChart';
 import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
-import {LineChartUI} from "../../Common/Visualization/LineChart";
+import {AreaChartUI} from '../../Common/Visualization/AreaChartUI';
 import "react-tabs/style/react-tabs.css";
 import colors from '../../Common/Visualization/ColorPalette';
 
@@ -200,7 +200,7 @@ function PerformancePageUI(props) {
                 <TabList>
                     <Tab>Score Analysis</Tab>
                     <Tab>Time Analysis</Tab>
-                    <Tab>Topic Analysis</Tab>
+                    {/*<Tab>Topic Analysis</Tab>*/}
                 </TabList>
 
                 <TabPanel>
@@ -219,22 +219,22 @@ function PerformancePageUI(props) {
                                 <StackedRadarChart data={sectionAttemptTime} colors={sectionAttemptTimeColours} title="Score Analysis" range={{min: 0, max: 10}}/>
                             </Col>
                             <Col xs="12" sm="12" md="12" lg="6">
-                                <LineChartUI data={timeSpentData}/>
+                                <AreaChartUI data={timeSpentData} label="Time Spent (Seconds) in each question" stroke={colors.red} />
                             </Col>
                         </Row>
                     </Container>
                 </TabPanel>
-                <TabPanel>
+                {/*<TabPanel>
                     <Container fluid style={{marginTop: '20px'}}>
                         <Row style={{marginTop: '20px'}}>
                             <Col lg="3"/>
                             <Col xs="12" sm="12" md="12" lg="6">
-                                <LineChartUI data={timeSpentData} stroke={colors.red} />
+                                <AreaChartUI data={timeSpentData} stroke={colors.red} />
                             </Col>
                             <Col lg="3"/>
                         </Row>
                     </Container>
-                </TabPanel>
+                </TabPanel>*/}
             </Tabs>
 
         </div>);
