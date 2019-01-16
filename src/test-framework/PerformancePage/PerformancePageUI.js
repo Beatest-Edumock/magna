@@ -1,6 +1,6 @@
 import React from 'react';
 import {Table, Container, Row, Col} from 'reactstrap';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import {StackedBarChart} from '../../Common/Visualization/StackedBarChart';
 import {SimpleBarChart} from '../../Common/Visualization/SimpleBarChart';
 import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
@@ -222,10 +222,12 @@ function PerformancePageUI(props) {
                         <Row style={{marginTop: '20px'}}>
                             <Col xs="12" sm="12" md="12" lg="6">
                                 <h6>Sectional Time Spent (in minutes)</h6>
-                                <StackedRadarChart data={sectionAttemptTime} colors={sectionAttemptTimeColours} title="Score Analysis" range={{min: 0, max: maxSectionAttemptTime}}/>
+                                <StackedRadarChart data={sectionAttemptTime} colors={sectionAttemptTimeColours} title="Score Analysis"
+                                                   range={{min: 0, max: maxSectionAttemptTime}}/>
                             </Col>
                             <Col xs="12" sm="12" md="12" lg="6">
-                                <AreaChartUI data={timeSpentData} label="Time Spent (Seconds) in each question" stroke={colors.red} />
+                                <h6>Time spent in each Question(in seconds)</h6>
+                                <AreaChartUI data={timeSpentData} label="Time Spent (Seconds) in each question" stroke={colors.red}/>
                             </Col>
                         </Row>
                     </Container>
