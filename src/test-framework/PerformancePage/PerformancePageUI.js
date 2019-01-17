@@ -7,7 +7,7 @@ import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
 import {AreaChartUI} from '../../Common/Visualization/AreaChartUI';
 import {PieChartUI} from "../../Common/Visualization/PieChartUI";
 import "react-tabs/style/react-tabs.css";
-import colors from '../../Common/Visualization/ColorPalette';
+import {colors, materialColors} from '../../Common/Visualization/ColorPalette';
 
 
 function calculateOverallAccuracy(sectionsObj) {
@@ -134,7 +134,7 @@ function prepareQuestionAttemptedData(data) {
         let obj = {
             name: lods[idx],
             value: lodAttemptCount[lods[idx]],
-            color: random_rgba()
+            color: random_material_color()
         };
 
         questionLodAttempt.push(obj);
@@ -146,7 +146,7 @@ function prepareQuestionAttemptedData(data) {
         let obj = {
             name: types[idx],
             value: questionTypeAttemptCount[types[idx]],
-            color: random_rgba()
+            color: random_material_color()
         };
 
         questionTypeAttempt.push(obj);
@@ -164,12 +164,16 @@ function prepareQuestionAttemptedData(data) {
     }
 }
 
-function random_rgba() {
-    let color = Object.keys(colors);
-    let randomIndex = Math.floor(Math.random() * 15);
+function random_material_color() {
+    /*let result;
+    let count = 0;
+    for (let prop in materialColors)
+        if (Math.random() < 1 / ++count)
+            result = prop;
+    console.log(result);
+    return result;*/
 
-    return colors[color[randomIndex]];
-    //return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+    return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
 }
 
 const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0, total_questions: 0};
