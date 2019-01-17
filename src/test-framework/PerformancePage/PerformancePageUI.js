@@ -165,7 +165,11 @@ function prepareQuestionAttemptedData(data) {
 }
 
 function random_rgba() {
-    return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+    let color = Object.keys(colors);
+    let randomIndex = Math.floor(Math.random() * 15);
+
+    return colors[color[randomIndex]];
+    //return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
 }
 
 const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0, total_questions: 0};
@@ -323,12 +327,12 @@ function PerformancePageUI(props) {
                         <Row style={{marginTop: '20px'}}>
                             <Col xs="12" sm="12" md="12" lg="4">
                                 <h6>Attempts by Level of Difficulty</h6>
-                                <PieChartUI data={questionLodAttempt} cx={120} cy={120} innerRadius={20} outerRadius={80} />
+                                <PieChartUI data={questionLodAttempt} cx={120} cy={120} innerRadius={35} outerRadius={80} />
                             </Col>
                             <Col xs="12" sm="12" md="12" lg="4"/>
                             <Col xs="12" sm="12" md="12" lg="4">
                                 <h6>Attempts by Question Type</h6>
-                                <PieChartUI data={questionTypeAttempt} cx={120} cy={120} innerRadius={20} outerRadius={80} />
+                                <PieChartUI data={questionTypeAttempt} cx={120} cy={120} innerRadius={35} outerRadius={80} />
                             </Col>
                         </Row>
                     </Container>
