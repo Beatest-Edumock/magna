@@ -7,7 +7,7 @@ import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
 import {AreaChartUI} from '../../Common/Visualization/AreaChartUI';
 import {PieChartUI} from "../../Common/Visualization/PieChartUI";
 import "react-tabs/style/react-tabs.css";
-import colors from '../../Common/Visualization/ColorPalette';
+import {colors, materialColors} from '../../Common/Visualization/ColorPalette';
 
 
 function calculateOverallAccuracy(sectionsObj) {
@@ -134,7 +134,7 @@ function prepareQuestionAttemptedData(data) {
         let obj = {
             name: lods[idx],
             value: lodAttemptCount[lods[idx]],
-            color: random_rgba()
+            color: random_material_color()
         };
 
         questionLodAttempt.push(obj);
@@ -146,7 +146,7 @@ function prepareQuestionAttemptedData(data) {
         let obj = {
             name: types[idx],
             value: questionTypeAttemptCount[types[idx]],
-            color: random_rgba()
+            color: random_material_color()
         };
 
         questionTypeAttempt.push(obj);
@@ -164,7 +164,15 @@ function prepareQuestionAttemptedData(data) {
     }
 }
 
-function random_rgba() {
+function random_material_color() {
+    /*let result;
+    let count = 0;
+    for (let prop in materialColors)
+        if (Math.random() < 1 / ++count)
+            result = prop;
+    console.log(result);
+    return result;*/
+
     return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
 }
 
@@ -323,12 +331,12 @@ function PerformancePageUI(props) {
                         <Row style={{marginTop: '20px'}}>
                             <Col xs="12" sm="12" md="12" lg="4">
                                 <h6>Attempts by Level of Difficulty</h6>
-                                <PieChartUI data={questionLodAttempt} cx={120} cy={120} innerRadius={20} outerRadius={80} />
+                                <PieChartUI data={questionLodAttempt} cx={120} cy={120} innerRadius={35} outerRadius={80} />
                             </Col>
                             <Col xs="12" sm="12" md="12" lg="4"/>
                             <Col xs="12" sm="12" md="12" lg="4">
                                 <h6>Attempts by Question Type</h6>
-                                <PieChartUI data={questionTypeAttempt} cx={120} cy={120} innerRadius={20} outerRadius={80} />
+                                <PieChartUI data={questionTypeAttempt} cx={120} cy={120} innerRadius={35} outerRadius={80} />
                             </Col>
                         </Row>
                     </Container>
