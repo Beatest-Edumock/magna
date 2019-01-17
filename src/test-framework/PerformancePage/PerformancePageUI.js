@@ -292,7 +292,7 @@ function PerformancePageUI(props) {
                 <TabList>
                     <Tab>Score Analysis</Tab>
                     <Tab>Time Analysis</Tab>
-                    <Tab>Topic Analysis</Tab>
+                    <Tab>Question Analysis</Tab>
                 </TabList>
 
                 <TabPanel>
