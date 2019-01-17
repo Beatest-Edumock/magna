@@ -5,6 +5,7 @@ import {StackedBarChart} from '../../Common/Visualization/StackedBarChart';
 import {SimpleBarChart} from '../../Common/Visualization/SimpleBarChart';
 import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
 import {AreaChartUI} from '../../Common/Visualization/AreaChartUI';
+import {PieChartUI} from "../../Common/Visualization/PieChartUI";
 import "react-tabs/style/react-tabs.css";
 import colors from '../../Common/Visualization/ColorPalette';
 
@@ -69,18 +70,102 @@ const sectionAttemptTime = [];
 let maxSectionAttemptTime = 0;
 
 function sectionAttemptTimeChartData(sectionAttempt) {
-    let sectionAttemptTotalTimeInMins = sectionAttempt.section.total_time / 60;
+    let sectionAttemptTotalTimeInMins = Math.round(sectionAttempt.section.total_time / 60);
 
     if (maxSectionAttemptTime < sectionAttemptTotalTimeInMins) {
         maxSectionAttemptTime = sectionAttemptTotalTimeInMins;
     }
+
     let attempt = {
         name: sectionAttempt.section.name,
         "Total Time": sectionAttemptTotalTimeInMins,
-        "Time Spent": sectionAttempt.time_spent / 60,
+        "Time Spent": Math.round(sectionAttempt.time_spent / 60),
     };
 
     sectionAttemptTime.push(attempt);
+}
+
+const questionLodAttempt = [];
+const questionTypeAttempt = [];
+const questionTopicAttempt = [];
+
+function prepareQuestionAttemptedData(data) {
+    const topicAttemptedCount = {};
+    const lodAttemptCount = {};
+    const questionTypeAttemptCount= {};
+
+    let sectionAttemptIdx;
+    for (sectionAttemptIdx in data.section_attempts) {
+        let questionAttemptIdx;
+        for (questionAttemptIdx in data.section_attempts[sectionAttemptIdx].question_attempts) {
+            let topic = data.section_attempts[sectionAttemptIdx].question_attempts[questionAttemptIdx].question.topic;
+            let lod = data.section_attempts[sectionAttemptIdx].question_attempts[questionAttemptIdx].question.lod;
+            let type = data.section_attempts[sectionAttemptIdx].question_attempts[questionAttemptIdx].question.type;
+
+            if (topic !== null) {
+                if (typeof topicAttemptedCount[topic] === 'undefined') {
+                    topicAttemptedCount[topic] = 1;
+                } else {
+                    topicAttemptedCount[topic] += 1;
+                }
+            }
+
+            if (lod !== null) {
+                if (typeof lodAttemptCount[lod] === 'undefined') {
+                    lodAttemptCount[lod] = 1;
+                } else {
+                    lodAttemptCount[lod] += 1;
+                }
+            }
+
+            if (type !== null) {
+                if (typeof questionTypeAttemptCount[type] === 'undefined') {
+                    questionTypeAttemptCount[type] = 1;
+                } else {
+                    questionTypeAttemptCount[type] += 1;
+                }
+            }
+        }
+    }
+
+    let lods = Object.keys(lodAttemptCount);
+
+    for (let idx in lods) {
+        let obj = {
+            name: lods[idx],
+            value: lodAttemptCount[lods[idx]],
+            color: random_rgba()
+        };
+
+        questionLodAttempt.push(obj);
+    }
+
+    let types = Object.keys(questionTypeAttemptCount);
+
+    for (let idx in types) {
+        let obj = {
+            name: types[idx],
+            value: questionTypeAttemptCount[types[idx]],
+            color: random_rgba()
+        };
+
+        questionTypeAttempt.push(obj);
+    }
+
+    let topics = Object.keys(topicAttemptedCount);
+
+    for (let idx in topics) {
+        let obj = {
+            name: topics[idx],
+            size: topicAttemptedCount[topics[idx]]
+        };
+
+        questionTopicAttempt.push(obj);
+    }
+}
+
+function random_rgba() {
+    return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
 }
 
 const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0, total_questions: 0};
@@ -108,6 +193,7 @@ function PerformancePageUI(props) {
     const sectionAttempts = props.data.section_attempts;
     const timeSpentData = prepareTimeSpentData(props.data);
 
+    prepareQuestionAttemptedData(props.data);
 
     return (
         <div className="container   text-center">
@@ -206,7 +292,7 @@ function PerformancePageUI(props) {
                 <TabList>
                     <Tab>Score Analysis</Tab>
                     <Tab>Time Analysis</Tab>
-                    {/*<Tab>Topic Analysis</Tab>*/}
+                    <Tab>Question Analysis</Tab>
                 </TabList>
 
                 <TabPanel>
@@ -227,22 +313,26 @@ function PerformancePageUI(props) {
                             </Col>
                             <Col xs="12" sm="12" md="12" lg="6">
                                 <h6>Time spent in each Question(in seconds)</h6>
-                                <AreaChartUI data={timeSpentData} label="Time Spent (Seconds) in each question" stroke={colors.red}/>
+                                <AreaChartUI data={timeSpentData} yAxisDataKey="time_spent" label="Time Spent (Seconds) in each question" stroke={colors.red}/>
                             </Col>
                         </Row>
                     </Container>
                 </TabPanel>
-                {/*<TabPanel>
+                <TabPanel>
                     <Container fluid style={{marginTop: '20px'}}>
                         <Row style={{marginTop: '20px'}}>
-                            <Col lg="3"/>
-                            <Col xs="12" sm="12" md="12" lg="6">
-                                <AreaChartUI data={timeSpentData} stroke={colors.red} />
+                            <Col xs="12" sm="12" md="12" lg="4">
+                                <h6>Attempts by Level of Difficulty</h6>
+                                <PieChartUI data={questionLodAttempt} cx={120} cy={120} innerRadius={20} outerRadius={80} />
                             </Col>
-                            <Col lg="3"/>
+                            <Col xs="12" sm="12" md="12" lg="4"/>
+                            <Col xs="12" sm="12" md="12" lg="4">
+                                <h6>Attempts by Question Type</h6>
+                                <PieChartUI data={questionTypeAttempt} cx={120} cy={120} innerRadius={20} outerRadius={80} />
+                            </Col>
                         </Row>
                     </Container>
-                </TabPanel>*/}
+                </TabPanel>
             </Tabs>
 
         </div>);

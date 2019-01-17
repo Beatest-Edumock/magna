@@ -18,14 +18,14 @@ function AreaChartUI(props) {
                 </defs>
                 {/*<XAxis label="Questions"/>*/}
 
-                <XAxis label={{value: "Question number", offset: "0", position: "bottom"}}/>
+                <XAxis dataKey={props.xAxisDataKey} label={{value: "Question number", offset: "0", position: "bottom"}}/>
 
                 <YAxis label={{value: "Time Spent (seconds)", angle: "-90", position: "left", offset: "-10"}}/>
 
                 <CartesianGrid strokeDasharray="3 3"/>
                 <Tooltip/>
                 {/*<Legend/>*/}
-                <Area type="monotone" name="Time Spent(Seconds) on question" dataKey="time_spent" stroke={props.stroke} fillOpacity={1} fill="url(#areaColour)"/>
+                <Area type="monotone" name="Time Spent(Seconds) on question" dataKey={props.yAxisDataKey} stroke={props.stroke} fillOpacity={1} fill="url(#areaColour)"/>
             </AreaChart>
         </ResponsiveContainer>
     )
