@@ -50,6 +50,7 @@ class CodingUI extends React.Component {
                                     name="coding-text-area"
                                     value={this.props.code}
                                     onChange={this.props.onCodeChange}
+                                    readOnly={this.props.readOnly}
                                 />
                             </div>
                         </LoadingOverlay>

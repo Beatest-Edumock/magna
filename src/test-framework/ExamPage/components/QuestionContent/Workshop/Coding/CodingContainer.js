@@ -17,7 +17,7 @@ class Coding extends React.Component {
     showSaveWorkNotification(props) {
 
         if (!props.isTestComplete) {
-            toast.info(`Remember to save your work!`,{
+            toast.info(`Remember to save your work!`, {
                 autoClose: 5000
             });
         }
@@ -54,10 +54,11 @@ class Coding extends React.Component {
     onRunClick() {
         this.setState({...this.state, currentlyRunning: true});
 
-        runCodeAPI(this.state.code, this.state.selectedLanguage.value, this.props.question.coding_cases.map(el => el.input)).then(({data}) => {
+        runCodeAPI(this.state.code, this.state.selectedLanguage.value, this.props.question.coding_cases.map(el => el.input))
+            .then(({data}) => {
 
-            this.setState({...this.state, outputs: data, currentlyRunning: false})
-        });
+                this.setState({...this.state, outputs: data, currentlyRunning: false})
+            });
 
     }
 
@@ -67,11 +68,12 @@ class Coding extends React.Component {
 
     onCodeChange(code) {
 
+
         this.setState(
             {
                 ...this.state,
                 code
-            })
+            });
     }
 
     render() {
@@ -89,6 +91,7 @@ class Coding extends React.Component {
                           outputs={this.state.outputs}
                           correctOutputs={this.props.question.coding_cases.map(el => el.right_output)}
                           code={this.state.code}
+                          readOnly={this.props.isTestComplete}
 
         />);
 
