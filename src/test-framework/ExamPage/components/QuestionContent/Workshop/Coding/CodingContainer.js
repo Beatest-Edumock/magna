@@ -29,10 +29,17 @@ class Coding extends React.Component {
         this.onRunClick = this.onRunClick.bind(this);
         this.onSaveClick = this.onSaveClick.bind(this);
         this.onCodeChange = this.onCodeChange.bind(this);
-        this.showSaveWorkNotification = this.showSaveWorkNotification.bind();
+        this.showSaveWorkNotification = this.showSaveWorkNotification.bind(this);
 
         const long_answer = props.question.long_answer;
-        this.state = {code: long_answer == null ? "" : long_answer, selectedLanguage: languages[0], outputs: null, currentlyRunning: false};
+        const coding_language = props.question.coding_language;
+
+        this.state = {
+            code: long_answer == null ? "" : long_answer,
+            selectedLanguage: coding_language == null ? languages[0] : coding_language,
+            outputs: null,
+            currentlyRunning: false
+        };
         this.showSaveWorkNotification(props);
     }
 
@@ -45,6 +52,18 @@ class Coding extends React.Component {
 
         if (nextProps.question.id !== this.props.question.id) {
             this.showSaveWorkNotification(this.props);
+
+            const long_answer = nextProps.question.long_answer;
+            const coding_language = nextProps.question.coding_language;
+
+            this.setState({
+                code: long_answer == null ? "" : long_answer,
+                selectedLanguage: coding_language == null ? languages[0] : coding_language,
+                outputs: null,
+                currentlyRunning: false
+            });
+
+
         }
 
 

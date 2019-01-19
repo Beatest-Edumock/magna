@@ -5,6 +5,8 @@ import React from 'react';
 
 
 function CorrectOutputDisplay({output}) {
+    if (output !== null)
+        output = output.replace("\n", "⏎\n");
 
     return (
         <React.Fragment>
@@ -19,6 +21,14 @@ function CorrectOutputDisplay({output}) {
 }
 
 function IncorrectOutputDisplay({userOutput, correctOutput}) {
+
+
+    if (userOutput !== null)
+        userOutput = userOutput.replace("\n", "⏎\n");
+
+    if (correctOutput !== null)
+        correctOutput = correctOutput.replace("\n", "⏎\n");
+
     return (
         <React.Fragment>
             <p className="lead  text-gray blockquote">Your Output <FontAwesomeIcon icon={faTimes} style={{color: 'red'}}/></p>
@@ -59,7 +69,7 @@ export const TestCaseDisplay = ({inputs, userOutputs, correctOutputs}) => {
                 return (
                     <TabPanel className="w-100  p-3 ">
                         <p className="lead  text-gray blockquote">Input</p>
-                        <p className="text-monospace bg-gray-light p-2 rounded" style={{whiteSpace: "pre-line"}}>{inputs[index]}</p>
+                        <p className="text-monospace bg-gray-light p-2 rounded" style={{whiteSpace: "pre-line"}}>{inputs[index].replace("\n", "\n<br>")}</p>
                         <br/>
 
 
