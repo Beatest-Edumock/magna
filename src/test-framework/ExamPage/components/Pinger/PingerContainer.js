@@ -75,7 +75,7 @@ class Pinger extends React.Component {
                      * Submitting the section will cause the conditions
                      * in componentDidUpdate to run (read comments in that method below)
                      */
-                    if (!this.props.allowJumps) {
+                    if (!this.props.allowSectionJumps) {
                         this.props.submitCurrentSection(!isLast);
 
                         if (isLast) {
@@ -154,7 +154,7 @@ class Pinger extends React.Component {
          * Section has changed, set the interval (which should be disabled)
          * again.
          */
-        if (prevProps.currentSectionID !== this.props.currentSectionID && !this.props.allowJumps && !this.props.isTestComplete) {
+        if (prevProps.currentSectionID !== this.props.currentSectionID && !this.props.allowSectionJumps && !this.props.isTestComplete) {
 
             this.shouldPing = true;
             this.setState({timeLeft: this.props.timeLeft});

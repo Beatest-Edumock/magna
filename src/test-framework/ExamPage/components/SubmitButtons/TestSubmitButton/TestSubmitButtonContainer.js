@@ -29,7 +29,7 @@ class TestSubmitButtonContainer extends Component {
 
     handleTestSubmit() {
 
-        if (this.props.allowSectionJumps) {
+        if (!this.props.allowSectionJumps) {
             this.props.submitSection()
         }
         this.props.submitTest();
