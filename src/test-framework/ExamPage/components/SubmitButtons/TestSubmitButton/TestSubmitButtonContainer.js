@@ -7,19 +7,18 @@ import {submitCurrentSectionAsyncAC} from "../../../../../_Redux/ActionCreators/
 class TestSubmitButtonContainer extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.handleTestSubmitCallBack = this.handleTestSubmit.bind(this)
         this.shouldDisplay = this.shouldDisplay.bind(this)
     }
 
     shouldDisplay() {
         const sectionsArray = Object.keys(this.props.sections).sort();
-        // FIXME
-        if (this.props.testType !== "CAT" && (!this.props.testIsComplete)) {
+        if (this.props.allowSectionJumps && (!this.props.testIsComplete)) {
             return true;
         }
         else {
-            if(this.props.testIsComplete) {
+            if (this.props.testIsComplete) {
                 return false
             } else {
                 // disable for last sections
@@ -30,7 +29,7 @@ class TestSubmitButtonContainer extends Component {
 
     handleTestSubmit() {
 
-        if(this.props.testType === "CAT") {
+        if (this.props.allowSectionJumps) {
             this.props.submitSection()
         }
         this.props.submitTest();
@@ -54,7 +53,7 @@ function mapStateToProps(state) {
         testID: state.test.id,
         currentSection: state.test.currentSection,
         sections: state.test.sectionsByID,
-        testType: state.test.type,
+        allowSectionJumps: state.test.allow_section_jumps,
         testIsComplete: state.test.is_complete,
     }
 }
@@ -64,7 +63,7 @@ function mapDispatchToProps(dispatch) {
         submitTest: () => {
             dispatch(submitTestAsyncAc());
         },
-        submitSection: ()=> {
+        submitSection: () => {
             dispatch(submitCurrentSectionAsyncAC())
 
         }

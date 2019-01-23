@@ -6,7 +6,7 @@ import React from 'react';
 
 function CorrectOutputDisplay({output}) {
     if (output !== null)
-        output = output.replace("\n", "⏎\n");
+        output = output.replace("/\n/g", "⏎\n");
 
     return (
         <React.Fragment>
@@ -24,10 +24,10 @@ function IncorrectOutputDisplay({userOutput, correctOutput}) {
 
 
     if (userOutput !== null)
-        userOutput = userOutput.replace("\n", "⏎\n");
+        userOutput = userOutput.replace("/\n/g", "⏎\n");
 
     if (correctOutput !== null)
-        correctOutput = correctOutput.replace("\n", "⏎\n");
+        correctOutput = correctOutput.replace("/\n/g", "⏎\n");
 
     return (
         <React.Fragment>
@@ -69,7 +69,7 @@ export const TestCaseDisplay = ({inputs, userOutputs, correctOutputs}) => {
                 return (
                     <TabPanel className="w-100  p-3 ">
                         <p className="lead  text-gray blockquote">Input</p>
-                        <p className="text-monospace bg-gray-light p-2 rounded" style={{whiteSpace: "pre-line"}}>{inputs[index].replace("\n", "\n<br>")}</p>
+                        <p className="text-monospace bg-gray-light p-2 rounded" style={{whiteSpace: "pre-line"}}>{inputs[index].replace("/\n/g", "\n<br>")}</p>
                         <br/>
 
 

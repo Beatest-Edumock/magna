@@ -31,7 +31,7 @@ function mapStateToProps(state) {
         sectionsByID: state.test.sectionsByID,
         currentSection: state.test.currentSection,
         isComplete: state.test.is_complete,
-        allowJumps: state.test.type !== "CAT" // FIXME remove hardcoded string
+        allowJumps: state.test.allow_section_jumps
 
     }
 

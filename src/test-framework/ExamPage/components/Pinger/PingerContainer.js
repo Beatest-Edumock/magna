@@ -184,9 +184,8 @@ function mapStateToProps(state, ownProps) {
 
     let timeLeft = 0;
 
-    // FIXME change hardcoded "CAT" after db update
 
-    if (state.test.type === "CAT") {
+    if (state.test.allow_section_jumps) {
 
         const timeSpent = state.test.sectionsByID[state.test.currentSection].time_spent;
         const totalTime = state.test.sectionsByID[state.test.currentSection].total_time;
@@ -213,7 +212,7 @@ function mapStateToProps(state, ownProps) {
         timeLeft,
         user: state.user,
         testID: state.test.id,
-        allowJumps: state.test.type !== "CAT", // fixme change from hardcoded string after db upgrade
+        allowSectionJumps: state.test.allow_section_jumps,
         isTestComplete: state.test.is_complete,
         currentSectionID: state.test.currentSection,
         currentQuestionID: state.test.currentQuestion,

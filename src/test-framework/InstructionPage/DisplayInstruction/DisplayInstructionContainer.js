@@ -48,9 +48,7 @@ class DisplayInstructionContainer extends Component {
             // fixme find a better way to take user to
             // the performance page since test is already complete
             if (response.data.error_code === "TAC001") {
-
                 history.replace(PERFORMANCE_PAGE_ROUTE(this.props.testID));
-
             }
 
         });
