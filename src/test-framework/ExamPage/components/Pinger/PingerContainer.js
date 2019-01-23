@@ -185,7 +185,7 @@ function mapStateToProps(state, ownProps) {
     let timeLeft = 0;
 
 
-    if (state.test.allow_section_jumps) {
+    if (!state.test.allow_section_jumps) {
 
         const timeSpent = state.test.sectionsByID[state.test.currentSection].time_spent;
         const totalTime = state.test.sectionsByID[state.test.currentSection].total_time;
