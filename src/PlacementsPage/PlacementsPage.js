@@ -14,6 +14,7 @@ import {LoginModal} from '../Common/LoginModal/LoginModal'
 import {TEST_INSTRUCTIONS_ROUTE} from "../route";
 import {PlacementsFormContainer} from "./PlacementsForm/PlacementsFormContainer";
 import moment from 'moment'
+import {TopBannerUI} from "./TopBannerUI";
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -32,8 +33,6 @@ class PlacementsPage extends React.Component {
     componentWillReceiveProps({data, isUserLoggedIn}) {
 
         this.setState({data: data})
-        console.log(data);
-        //console.log(isUserLoggedIn.college_id);
 
     }
 
@@ -92,8 +91,13 @@ class PlacementsPage extends React.Component {
 
                         <Jumbotron fluid className="bg-white">
                             <Container>
-                                <h1 className="display-4 text-center"> Placement Exams </h1>
-                                <hr/>
+
+
+                                <TopBannerUI user={this.props.user}/>
+
+
+
+
 
                                 {/*TODO make this dynamic*/}
                                 {/*<h3 className=" text-center">Rochester Institute of Technology</h3>*/}

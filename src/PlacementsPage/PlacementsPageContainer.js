@@ -27,7 +27,7 @@ class PlacementsPageWrapper extends React.Component {
 
     render() {
 
-        return <PlacementsPage data={this.state.data} isUserLoggedIn={this.props.isUserLoggedIn}/>
+        return <PlacementsPage user={this.props.user} data={this.state.data} isUserLoggedIn={this.props.isUserLoggedIn}/>
 
     }
 }
@@ -37,6 +37,7 @@ function mapStateToProps(state, ownProps) {
 
     return {
         isUserLoggedIn: state.user,
+        user: state.user,
         ownProps
     }
 
