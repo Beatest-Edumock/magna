@@ -63,6 +63,7 @@ class CodingUI extends React.Component {
 
                     <div className="col-4 px-1">
                         <Select
+                            isDisabled={this.props.readOnly}
                             value={this.props.selectedLanguage}
                             onChange={this.props.onLanguageChange}
                             options={this.props.languages}
