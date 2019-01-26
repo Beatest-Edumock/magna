@@ -1,6 +1,14 @@
 import React from 'react'
 import {Jumbotron} from "reactstrap";
 
+
+/**
+ * Handles the top area of placements page.
+ *
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 function TopBannerUI(props) {
 
 
@@ -33,6 +41,13 @@ function TopBannerUI(props) {
         </React.Fragment>;
     }
 
+    return (
+        <React.Fragment>
+
+            <h1 className="display-4 text-center"> Placement Exams </h1>
+            <hr/>
+        </React.Fragment>
+    )
 
 }
 

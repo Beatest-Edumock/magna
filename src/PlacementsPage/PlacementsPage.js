@@ -2,19 +2,15 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {NavBarWithButtonsContainer} from "../Layout/NavBar/NavBarWithButtons/NavBarWithButtonsContainer";
 import 'react-toastify/dist/ReactToastify.css';
-import {Button, Col, Container, Jumbotron, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'reactstrap';
+import {Col, Container, Jumbotron, Row} from 'reactstrap';
 import {LargeFeatureCard} from "../Common/LargeFeatureCard/LargeFeatureCard";
-import {MOCK_TESTS_CARD_ELEMENTS, TOPIC_TESTS_CARD_ELEMENTS} from './data';
+import {MOCK_TESTS_CARD_ELEMENTS} from './data';
 import {Footer} from '../Layout/Footer/Footer'
-import classnames from 'classnames';
-import {Link} from 'react-router-dom'
-import {FlipCard} from "../Common/FlipCard/FlipCard";
 import './PlacementsPage.css';
 import {LoginModal} from '../Common/LoginModal/LoginModal'
-import {TEST_INSTRUCTIONS_ROUTE} from "../route";
-import {PlacementsFormContainer} from "./PlacementsForm/PlacementsFormContainer";
-import moment from 'moment'
+import {PERFORMANCE_PAGE_ROUTE, TEST_INSTRUCTIONS_ROUTE} from "../route";
 import {TopBannerUI} from "./TopBannerUI";
+import {TestCard} from "../Common/TestCard";
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -42,6 +38,7 @@ class PlacementsPage extends React.Component {
         this.toggle = this.toggle.bind(this);
         this.showModal = this.showModal.bind(this);
         this.startTest = this.startTest.bind(this);
+        this.viewScores = this.viewScores.bind(this);
         this.state = {
             activeTab: '1'
         };
@@ -70,7 +67,16 @@ class PlacementsPage extends React.Component {
 
         windowReference.location = TEST_INSTRUCTIONS_ROUTE(testID);
 
-// reroute to /tests/:testID
+
+    }
+
+    viewScores(testID) {
+
+        let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
+
+
+        windowReference.location = PERFORMANCE_PAGE_ROUTE(testID);
+
 
     }
 
@@ -96,9 +102,6 @@ class PlacementsPage extends React.Component {
                                 <TopBannerUI user={this.props.user}/>
 
 
-
-
-
                                 {/*TODO make this dynamic*/}
                                 {/*<h3 className=" text-center">Rochester Institute of Technology</h3>*/}
 
@@ -106,19 +109,19 @@ class PlacementsPage extends React.Component {
                         </Jumbotron>
 
                         {/*<Container>*/}
-                            {/*{*/}
-                                {/*(this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id == null) &&*/}
-                                {/*<Row style={{justifyContent: 'center'}}>*/}
-                                    {/*<PlacementsFormContainer/>*/}
-                                {/*</Row>*/}
-                            {/*}*/}
-                            {/*/!**!/*/}
-                            {/*{*/}
-                                {/*(this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id != null) &&*/}
-                                {/*<Row style={{justifyContent: 'center'}}>*/}
-                                    {/*<span style={{color: 'blue', fontSize: 24}}>Share this code with your friends</span>*/}
-                                {/*</Row>*/}
-                            {/*}*/}
+                        {/*{*/}
+                        {/*(this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id == null) &&*/}
+                        {/*<Row style={{justifyContent: 'center'}}>*/}
+                        {/*<PlacementsFormContainer/>*/}
+                        {/*</Row>*/}
+                        {/*}*/}
+                        {/*/!**!/*/}
+                        {/*{*/}
+                        {/*(this.props.isUserLoggedIn) && (this.props.isUserLoggedIn.college_id != null) &&*/}
+                        {/*<Row style={{justifyContent: 'center'}}>*/}
+                        {/*<span style={{color: 'blue', fontSize: 24}}>Share this code with your friends</span>*/}
+                        {/*</Row>*/}
+                        {/*}*/}
 
                         {/*</Container>*/}
 
@@ -151,112 +154,39 @@ class PlacementsPage extends React.Component {
                                 {(this.state.data) &&
 
                                 this.state.data.map((object) => {
+
+                                    let func;
+
+
+                                    if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0)) {
+                                        func = () => {
+                                            this.startTest(object.id);
+                                        }
+
+
+                                    }
+                                    if (!this.props.isUserLoggedIn) {
+                                        func = () => {
+                                            this.showModal();
+                                        }
+                                    }
+
+                                    if (object.is_complete) {
+
+                                        func = () => {
+                                            this.viewScores(object.id);
+                                        }
+
+                                    }
+
+
                                     return (
+                                        <div className="col-lg-3 col-md-4 col-sm-6 px-3 py-5">
 
 
-                                        <FlipCard
-                                            size="small"
-                                            front={
-                                                <Container className="rounded" fluid={true} style={{
-                                                    backgroundColor: '#d3d3d3',
+                                            <TestCard testDetails={object} onClick={func}/>
 
-                                                    width: '98%',
-                                                    height: '80%',
-                                                    marginTop: '1%',
-                                                    padding: 0
-                                                }}>
-
-                                                    {/*<Container style={{height: 240}}>
-                                                                <Row style={{padding: 100, justifyContent: 'center'}}>
-                                                                    <img alt="person" src="/testicons/Available/Algebra.png" style={{maxWidth: '100%'}}/>
-                                                                </Row>
-                                                            </Container>*/}
-                                                    <Container style={{backgroundColor: 'white', width: '100%', height: 240}}>
-                                                        <Row style={{justifyContent: 'center', alignItems: 'center', height: 240}}>
-                                                            <img alt="person" src="/testicons/Available/Algebra.png" style={{padding: 0, width: '100%', height: 240}}/>
-                                                        </Row>
-                                                    </Container>
-                                                    <Container style={{backgroundColor: 'white', width: '97%', height: 45}}>
-                                                        <Row style={{justifyContent: 'center', alignItems: 'center', height: 60}}>
-                                                            <h6>{object.name}</h6>
-                                                        </Row>
-                                                    </Container>
-
-                                                </Container>
-                                            }
-                                            back={(
-                                                <Container>
-                                                    <Row style={{
-                                                        color: 'white',
-                                                        fontSize: 14,
-                                                        justifyContent: 'space-between',
-                                                        paddingLeft: '10%',
-                                                        paddingRight: '10%',
-                                                        paddingTop: '10%'
-                                                    }}>
-                                                        <span>Number of questions</span>
-                                                        <span>{object.question_count}</span>
-
-                                                    </Row>
-                                                    <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
-                                                        <hr style={{border: '1px solid white', width: '100%'}}/>
-                                                    </Row>
-                                                    <Row style={{
-                                                        color: 'white',
-                                                        fontSize: 14,
-                                                        justifyContent: 'space-between',
-                                                        paddingLeft: '10%',
-                                                        paddingRight: '10%',
-                                                        paddingTop: '10%'
-                                                    }}>
-                                                        {/*<span>Time</span>*/}
-                                                        {/*<span>60 mins</span>*/}
-                                                        <span>Number of Sections</span>
-                                                        <span>{object.section_count}</span>
-
-                                                    </Row>
-                                                    <Row style={{paddingLeft: '10%', paddingRight: '10%'}}>
-                                                        <hr style={{border: '1px solid white', width: '100%'}}/>
-                                                    </Row>
-                                                    <Row style={{justifyContent: 'center', padding: '10%'}}>
-                                                        {
-                                                            this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
-
-                                                            <Link to=''><Button style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button></Link>
-                                                        }
-                                                        {
-                                                            this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
-                                                            <Button onClick={() => this.startTest(object.id)} style={{backgroundColor: 'white', color: 'black'}}>Start
-                                                                Test</Button>
-                                                        }
-
-                                                        {
-                                                            !this.props.isUserLoggedIn && (!object.is_purchased && !object.price == 0) &&
-
-                                                            <Container>
-                                                                <Row style={{justifyContent: 'center'}}>
-                                                                    <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Buy Now</Button>
-                                                                </Row>
-                                                            </Container>
-
-                                                        }
-                                                        {
-                                                            !this.props.isUserLoggedIn && (object.is_purchased || object.price == 0) &&
-
-                                                            <Button onClick={this.showModal} style={{backgroundColor: 'white', color: 'black'}}>Start Test</Button>
-
-
-                                                        }
-                                                    </Row>
-                                                </Container>
-
-
-                                            )}
-                                            backBackground={((object.is_purchased || object.price == 0) && "blue") || ((!object.is_purchased && !object.price == 0) && "gray")}
-
-                                        />
-
-
+                                        </div>
                                     );
 
                                 })
