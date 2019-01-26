@@ -5,12 +5,6 @@ import {runCodeAPI} from "../../../../../../_Api/Tests/Sections/Questions/Questi
 import {setCodingQuestionAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
 import {toast} from 'react-toastify';
 
-const languages = [
-    {value: 'python', label: 'python'},
-    {value: 'cpp', label: 'c++'},
-    {value: 'java', label: 'java'}
-
-];
 
 class Coding extends React.Component {
 
@@ -34,9 +28,14 @@ class Coding extends React.Component {
         const long_answer = props.question.long_answer;
         const coding_language = props.question.coding_language;
 
+        this.languages = props.question.allowed_languages.map(el => {
+            return {value: el.id, label: el.name}
+        });
+
+
         this.state = {
             code: long_answer == null ? "" : long_answer,
-            selectedLanguage: coding_language == null ? languages[0] : coding_language,
+            selectedLanguage: coding_language == null ? this.languages[0] : coding_language,
             outputs: null,
             currentlyRunning: false
         };
@@ -58,7 +57,7 @@ class Coding extends React.Component {
 
             this.setState({
                 code: long_answer == null ? "" : long_answer,
-                selectedLanguage: coding_language == null ? languages[0] : coding_language,
+                selectedLanguage: coding_language == null ? this.languages[0] : coding_language,
                 outputs: null,
                 currentlyRunning: false
             });
@@ -103,7 +102,7 @@ class Coding extends React.Component {
                           onCodeChange={this.onCodeChange}
 
                           running={this.state.currentlyRunning}
-                          languages={languages}
+                          languages={this.languages}
                           question={this.props.question}
                           selectedLanguage={this.state.selectedLanguage}
                           inputs={this.props.question.coding_cases.map((el) => el.input)}
@@ -128,8 +127,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateQuestionAttempt: (code, coding_language) => {
-            dispatch(setCodingQuestionAsyncAC(code, coding_language));
+        updateQuestionAttempt: (code, language_id) => {
+            dispatch(setCodingQuestionAsyncAC(code, language_id));
         }
     }
 
