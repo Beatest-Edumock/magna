@@ -45,10 +45,10 @@ function setCurrentQuestionToReviewAsyncAC() {
 }
 
 
-function setCodingQuestionAsyncAC(code, language_id) {
+function setCodingQuestionAsyncAC(code, chosen_language_id) {
     return (dispatch, getState) => {
 
-        dispatch(updateQuestionAttemptAsyncAC({language_id, long_answer: code}))
+        dispatch(updateQuestionAttemptAsyncAC({chosen_language_id, long_answer: code}))
     }
 }
 
