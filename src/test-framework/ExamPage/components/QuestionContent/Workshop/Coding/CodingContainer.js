@@ -72,7 +72,7 @@ class Coding extends React.Component {
     onSaveClick() {
 
 
-        if (this.state.code !== "")
+        if (this.state.code !== "" && this.state.selectedLanguage.value)
         //This means that the user tried to click save on just the supplied starter code.
             this.props.updateQuestionAttempt(this.state.code, this.state.selectedLanguage.value);
         else {
