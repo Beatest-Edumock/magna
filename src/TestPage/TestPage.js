@@ -32,6 +32,7 @@ class TestPage extends React.Component {
         this.toggle = this.toggle.bind(this);
         this.showModal = this.showModal.bind(this);
         this.startTest = this.startTest.bind(this);
+        this.viewScores = this.viewScores.bind(this);
         this.viewPerformance = this.viewPerformance.bind(this);
         this.state = {
             activeTab: '1'
@@ -51,6 +52,16 @@ class TestPage extends React.Component {
         this.setState({
             modal: true,
         });
+
+    }
+
+    viewScores(testID) {
+
+        let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
+
+
+        windowReference.location = PERFORMANCE_PAGE_ROUTE(testID);
+
 
     }
 

@@ -31,6 +31,7 @@ function TestCard({testDetails, onClick}) {
     }
 
     if (testDetails.is_complete === true) {
+        buttonColor = "btn-info";
         buttonText = "View Scores";
     }
 
