@@ -15,13 +15,19 @@ class Coding extends React.Component {
 
     getDefaultCodeAndMode(codeId) {
         if (codeId >= 4 && codeId <= 15) {
-            let idx = _.findIndex(CFamilyStarter, function(o) { return o.id === codeId; });
+            let idx = _.findIndex(CFamilyStarter, function (o) {
+                return o.id === codeId;
+            });
             return {defaultCode: CFamilyStarter[idx].default, mode: 'cpp'};
         } else if (codeId >= 26 && codeId <= 28) {
-            let idx = _.findIndex(JavaStarter, function(o) { return o.id === codeId; });
+            let idx = _.findIndex(JavaStarter, function (o) {
+                return o.id === codeId;
+            });
             return {defaultCode: JavaStarter[idx].default, mode: 'java'};
         } else if (codeId >= 34 && codeId < 37) {
-            let idx = _.findIndex(PythonStarter, function(o) { return o.id === codeId; });
+            let idx = _.findIndex(PythonStarter, function (o) {
+                return o.id === codeId;
+            });
             return {defaultCode: PythonStarter[idx].default, mode: 'python'};
         }
 
@@ -65,7 +71,13 @@ class Coding extends React.Component {
 
     onSaveClick() {
 
-        this.props.updateQuestionAttempt(this.state.code, this.state.selectedLanguage.value)
+
+        if (this.state.code !== "")
+        //This means that the user tried to click save on just the supplied starter code.
+            this.props.updateQuestionAttempt(this.state.code, this.state.selectedLanguage.value);
+        else {
+            toast.info("Please attempt the question before saving");
+        }
     }
 
     shouldComponentUpdate(nextProps, nextState) {
