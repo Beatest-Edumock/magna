@@ -19,6 +19,15 @@ class CodingUI extends React.Component {
 
     render() {
 
+        let code;
+
+        if (this.props.code === "") {
+            code = this.props.selectedLanguage.defaultCode;
+        }
+        else {
+            code = this.props.code;
+        }
+
 
         return (
             <div className="container-fluid ">
@@ -52,8 +61,7 @@ class CodingUI extends React.Component {
                                     enableBasicAutocompletion={true}
                                     theme="solarized_light"
                                     name="coding-text-area"
-                                    value={this.props.code}
-                                    defaultValue={this.props.code === null ? this.props.selectedLanguage.defaultCode : this.props.code}
+                                    value={code}
                                     onChange={this.props.onCodeChange}
                                     readOnly={this.props.readOnly}
                                 />
