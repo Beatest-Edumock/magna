@@ -9,7 +9,9 @@ import LoadingOverlay from 'react-loading-overlay';
 
 require('brace/mode/java');
 require('brace/mode/python');
+require('brace/mode/c_cpp');
 require('brace/theme/solarized_light');
+// require('brace/theme/solarized_light');
 
 
 class CodingUI extends React.Component {
@@ -46,6 +48,8 @@ class CodingUI extends React.Component {
                                 <AceEditor
                                     width={"100%"}
                                     mode={this.props.selectedLanguage.value}
+                                    enableLiveAutocompletion={true}
+                                    enableBasicAutocompletion={true}
                                     theme="solarized_light"
                                     name="coding-text-area"
                                     value={this.props.code}
