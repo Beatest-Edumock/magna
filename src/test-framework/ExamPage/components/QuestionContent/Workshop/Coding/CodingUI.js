@@ -47,12 +47,13 @@ class CodingUI extends React.Component {
                             <div>
                                 <AceEditor
                                     width={"100%"}
-                                    mode={this.props.selectedLanguage.value}
+                                    mode={this.props.selectedLanguage.mode}
                                     enableLiveAutocompletion={true}
                                     enableBasicAutocompletion={true}
                                     theme="solarized_light"
                                     name="coding-text-area"
                                     value={this.props.code}
+                                    defaultValue={this.props.code === null ? this.props.selectedLanguage.defaultCode : this.props.code}
                                     onChange={this.props.onCodeChange}
                                     readOnly={this.props.readOnly}
                                 />

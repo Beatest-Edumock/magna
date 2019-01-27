@@ -5,8 +5,28 @@ import {runCodeAPI} from "../../../../../../_Api/Tests/Sections/Questions/Questi
 import {setCodingQuestionAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
 import {toast} from 'react-toastify';
 
+import _ from "lodash";
+import JavaStarter from './StarterCode/JavaStarter';
+import CFamilyStarter from './StarterCode/CFamilyStarter';
+import PythonStarter from './StarterCode/PythonStarter';
+
 
 class Coding extends React.Component {
+
+    getDefaultCodeAndMode(codeId) {
+        if (codeId >= 4 && codeId <= 15) {
+            let idx = _.findIndex(CFamilyStarter, function(o) { return o.id === codeId; });
+            return {defaultCode: CFamilyStarter[idx].default, mode: 'cpp'};
+        } else if (codeId >= 26 && codeId <= 28) {
+            let idx = _.findIndex(JavaStarter, function(o) { return o.id === codeId; });
+            return {defaultCode: JavaStarter[idx].default, mode: 'java'};
+        } else if (codeId >= 34 && codeId < 37) {
+            let idx = _.findIndex(PythonStarter, function(o) { return o.id === codeId; });
+            return {defaultCode: PythonStarter[idx].default, mode: 'python'};
+        }
+
+        return {defaultCode: "", type: 'text'}
+    }
 
     showSaveWorkNotification(props) {
 
@@ -29,9 +49,10 @@ class Coding extends React.Component {
         const coding_language = props.question.coding_language;
 
         this.languages = props.question.allowed_languages.map(el => {
-            return {value: el.id, label: el.name}
+            let getDefaultCodeAndMode = this.getDefaultCodeAndMode(el.id);
+            return {value: el.id, label: el.name, defaultCode: getDefaultCodeAndMode.defaultCode, mode: getDefaultCodeAndMode.mode}
         });
-
+        console.log(this.languages);
 
         this.state = {
             code: long_answer == null ? "" : long_answer,
