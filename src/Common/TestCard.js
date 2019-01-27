@@ -11,7 +11,7 @@ function TestCard({testDetails, onClick}) {
 
     let totalTime = testDetails.total_time;
 
-    if (testDetails.type !== "CAT") {
+    if (testDetails.allow_section_jumps ) {
         totalTime = testDetails.total_time / testDetails.section_count;
 
     }
