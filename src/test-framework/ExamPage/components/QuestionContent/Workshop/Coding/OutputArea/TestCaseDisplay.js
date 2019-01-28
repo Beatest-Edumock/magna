@@ -6,7 +6,7 @@ import React from 'react';
 
 function CorrectOutputDisplay({output}) {
     if (output !== null)
-        output = output.replace("/\n/g", "⏎\n");
+        output = output.replace(/\n/g, "⏎\n");
 
     return (
         <React.Fragment>
@@ -24,10 +24,10 @@ function IncorrectOutputDisplay({userOutput, correctOutput}) {
 
 
     if (userOutput !== null)
-        userOutput = userOutput.replace("/\n/g", "⏎\n");
+        userOutput = userOutput.replace(/\n/g, "⏎\n");
 
     if (correctOutput !== null)
-        correctOutput = correctOutput.replace("/\n/g", "⏎\n");
+        correctOutput = correctOutput.replace(/\n/g, "⏎\n");
 
     return (
         <React.Fragment>
