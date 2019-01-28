@@ -18,7 +18,7 @@ class Coding extends React.Component {
             let idx = _.findIndex(CFamilyStarter, function (o) {
                 return o.id === codeId;
             });
-            return {defaultCode: CFamilyStarter[idx].default, mode: 'cpp'};
+            return {defaultCode: CFamilyStarter[idx].default, mode: 'c_cpp'};
         } else if (codeId >= 26 && codeId <= 28) {
             let idx = _.findIndex(JavaStarter, function (o) {
                 return o.id === codeId;
@@ -59,7 +59,7 @@ class Coding extends React.Component {
             let getDefaultCodeAndMode = this.getDefaultCodeAndMode(el.id);
 
             if (el.id === props.question.chosen_language_id) {
-                selected_language = {value: el.id, label: el.name}
+                selected_language = {value: el.id, label: el.name, mode: getDefaultCodeAndMode.mode}
 
             }
             return {value: el.id, label: el.name, defaultCode: getDefaultCodeAndMode.defaultCode, mode: getDefaultCodeAndMode.mode};
@@ -100,7 +100,7 @@ class Coding extends React.Component {
                 let getDefaultCodeAndMode = this.getDefaultCodeAndMode(el.id);
 
                 if (el.id === nextProps.question.chosen_language_id) {
-                    selected_language = {value: el.id, label: el.name}
+                    selected_language = {value: el.id, label: el.name, mode: getDefaultCodeAndMode.mode}
                 }
 
                 return {value: el.id, label: el.name, defaultCode: getDefaultCodeAndMode.defaultCode, mode: getDefaultCodeAndMode.mode};

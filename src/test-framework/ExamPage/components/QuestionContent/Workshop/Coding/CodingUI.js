@@ -11,6 +11,7 @@ require('brace/mode/java');
 require('brace/mode/python');
 require('brace/mode/c_cpp');
 require('brace/theme/solarized_light');
+
 // require('brace/theme/solarized_light');
 
 
@@ -57,6 +58,8 @@ class CodingUI extends React.Component {
                                 <AceEditor
                                     width={"100%"}
                                     mode={this.props.selectedLanguage.mode}
+                                    // enableBasicAutocompletion={true}
+                                    // enableLiveAutocompletion={true}
                                     theme="solarized_light"
                                     name="coding-text-area"
                                     value={code}
