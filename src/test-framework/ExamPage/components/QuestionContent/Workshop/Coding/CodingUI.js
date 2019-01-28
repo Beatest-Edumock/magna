@@ -5,6 +5,8 @@ import Select from "react-select";
 import "react-tabs/style/react-tabs.css"
 import {TestCaseDisplay} from "./OutputArea/TestCaseDisplay";
 import LoadingOverlay from 'react-loading-overlay';
+import 'brace/ext/language_tools';
+
 
 
 require('brace/mode/java');
@@ -58,8 +60,8 @@ class CodingUI extends React.Component {
                                 <AceEditor
                                     width={"100%"}
                                     mode={this.props.selectedLanguage.mode}
-                                    // enableBasicAutocompletion={true}
-                                    // enableLiveAutocompletion={true}
+                                    enableBasicAutocompletion={true}
+                                    enableLiveAutocompletion={true}
                                     theme="solarized_light"
                                     name="coding-text-area"
                                     value={code}
