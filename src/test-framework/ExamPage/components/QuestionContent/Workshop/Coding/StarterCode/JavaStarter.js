@@ -8,7 +8,7 @@ const JavaStarter = [
         'import java.math.*;\n' +
         'import java.util.regex.*;\n' +
         '\n' +
-        'public class Solution {\n' +
+        'public class Main {\n' +
         '\n' +
         '    public static void main(String[] args) {\n' +
         '        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */\n' +
@@ -24,7 +24,7 @@ const JavaStarter = [
         'import java.math.*;\n' +
         'import java.util.regex.*;\n' +
         '\n' +
-        'public class Solution {\n' +
+        'public class Main {\n' +
         '\n' +
         '    public static void main(String[] args) {\n' +
         '        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */\n' +
@@ -40,7 +40,7 @@ const JavaStarter = [
         'import java.math.*;\n' +
         'import java.util.regex.*;\n' +
         '\n' +
-        'public class Solution {\n' +
+        'public class Main {\n' +
         '\n' +
         '    public static void main(String[] args) {\n' +
         '        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */\n' +
