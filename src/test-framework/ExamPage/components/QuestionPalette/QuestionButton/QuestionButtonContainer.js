@@ -29,6 +29,7 @@ class QuestionButton extends Component {
                               attempt_status={this.props.questionDetails.attempt_status}
                               choice_id={this.props.questionDetails.choice_id}
                               tita_choice={this.props.questionDetails.tita_choice}
+                              long_answer={this.props.questionDetails.long_answer}
 
             />
         )

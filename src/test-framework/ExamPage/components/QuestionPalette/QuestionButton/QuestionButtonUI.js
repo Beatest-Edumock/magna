@@ -13,7 +13,7 @@ function QuestionButtonUI(props) {
 
     let color = 'btn-outline-primary'; // default color
 
-    const hasAnswered = props.choice_id != null || props.tita_choice != null;
+    const hasAnswered = props.choice_id != null || props.tita_choice != null || props.long_answer != null;
 
     if (props.attempt_status === "seen" && !hasAnswered) {
         color = 'btn-danger';
