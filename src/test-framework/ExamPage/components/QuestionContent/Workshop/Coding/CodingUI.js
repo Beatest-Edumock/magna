@@ -78,6 +78,13 @@ class CodingUI extends React.Component {
                 <div className="offset-7 row">
 
                     <div className="col-4 px-1">
+                    {
+                         <input type="checkbox" checked={this.props.isChecked} onChange={this.props.onCheckBoxToggle}/>
+                    }
+                        <span> Custom Input </span>
+                    </div>
+
+                    <div className="col-4 px-1">
                         <Select
                             isDisabled={this.props.readOnly}
                             value={this.props.selectedLanguage}
@@ -95,9 +102,15 @@ class CodingUI extends React.Component {
                                 onClick={this.props.onRunClick}>Run
                         </button>
                     </div>
-
-
                 </div>
+
+
+                {this.props.isChecked &&
+                    <div className="col-2 px-1">
+                        Custom Input :
+                        <textarea rows="2" cols="25" value={this.props.customInput} onChange={this.props.onCustomInputChange}/>
+                    </div>
+                }
 
                 {this.props.outputs &&
                 <div className="row  my-2 ">
@@ -106,8 +119,6 @@ class CodingUI extends React.Component {
                                          userOutputs={this.props.outputs}
                                          correctOutputs={this.props.correctOutputs}/>
                     </div>
-
-
                 </div>
                 }
             </div>

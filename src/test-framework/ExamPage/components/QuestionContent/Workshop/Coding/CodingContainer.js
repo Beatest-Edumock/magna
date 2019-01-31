@@ -50,6 +50,8 @@ class Coding extends React.Component {
         this.onSaveClick = this.onSaveClick.bind(this);
         this.onCodeChange = this.onCodeChange.bind(this);
         this.showSaveWorkNotification = this.showSaveWorkNotification.bind(this);
+        this.onCheckBoxToggle = this.onCheckBoxToggle.bind(this);
+        this.onCustomInputChange = this.onCustomInputChange.bind(this);
 
         const long_answer = props.question.long_answer;
 
@@ -70,6 +72,8 @@ class Coding extends React.Component {
             allLanguages: allLanguages,
             selectedLanguage: selected_language == null ? allLanguages[0] : selected_language,
             outputs: null,
+            isChecked: false,
+            customInput: "",
             currentlyRunning: false
         };
         this.showSaveWorkNotification(props);
@@ -106,12 +110,13 @@ class Coding extends React.Component {
                 return {value: el.id, label: el.name, defaultCode: getDefaultCodeAndMode.defaultCode, mode: getDefaultCodeAndMode.mode};
             });
 
-
             this.setState({
                 code: long_answer == null ? "" : long_answer,
                 allLanguages: allLanguages,
                 selectedLanguage: selected_language == null ? allLanguages[0] : selected_language,
                 outputs: null,
+                isChecked: false,
+                customInput: "",
                 currentlyRunning: false
             });
 
@@ -131,18 +136,32 @@ class Coding extends React.Component {
         return true;
     }
 
+    onCustomInputChange(event) {
+        this.setState({...this.state, customInput: event.target.value});
+    }
+
+    onCheckBoxToggle() {
+        this.setState({...this.state, isChecked: !this.state.isChecked});
+    }
+
     onRunClick() {
 
         if (this.state.code === "") {
             toast.info("Please attempt the question before running");
         }
 
-
         this.setState({...this.state, currentlyRunning: true});
 
-        runCodeAPI(this.state.code, this.state.selectedLanguage.value, this.props.question.coding_cases.map(el => el.input))
-            .then(({data}) => {
+        let inputs = [];
 
+        if (this.state.isChecked) {
+            inputs.push(this.state.customInput);
+        } else {
+            inputs = this.props.question.coding_cases.map(el => el.input);
+        }
+
+        runCodeAPI(this.state.code, this.state.selectedLanguage.value, inputs)
+            .then(({data}) => {
                 this.setState({...this.state, outputs: data, currentlyRunning: false})
             });
 
@@ -163,20 +182,32 @@ class Coding extends React.Component {
     }
 
     render() {
+        let inputTestCase = [];
+        let outputTestCase = [];
+        if (this.state.isChecked) {
+            inputTestCase.push(this.state.customInput);
+            outputTestCase.push("No Expected Output for Custom Test Cases");
+        } else {
+            inputTestCase = this.props.question.coding_cases.map(el => el.input);
+            outputTestCase = this.props.question.coding_cases.map(el => el.right_output);
+        }
 
         return (<CodingUI onLanguageChange={this.onLanguageChange}
                           onRunClick={this.onRunClick}
+                          onCheckBoxToggle={this.onCheckBoxToggle}
                           onSaveClick={this.onSaveClick}
                           onCodeChange={this.onCodeChange}
-
                           running={this.state.currentlyRunning}
                           languages={this.state.allLanguages}
                           question={this.props.question}
                           selectedLanguage={this.state.selectedLanguage}
-                          inputs={this.props.question.coding_cases.map((el) => el.input)}
+                          inputs={inputTestCase}
                           outputs={this.state.outputs}
-                          correctOutputs={this.props.question.coding_cases.map(el => el.right_output)}
+                          correctOutputs={outputTestCase}
+                          isChecked={this.state.isChecked}
                           code={this.state.code}
+                          onCustomInputChange={this.onCustomInputChange}
+                          customInput={this.state.customInput}
                           readOnly={this.props.isTestComplete}
 
         />);
