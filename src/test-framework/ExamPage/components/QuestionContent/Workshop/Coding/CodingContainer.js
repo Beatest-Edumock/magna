@@ -183,13 +183,10 @@ class Coding extends React.Component {
 
     render() {
         let inputTestCase = [];
-        let outputTestCase = [];
         if (this.state.isChecked) {
             inputTestCase.push(this.state.customInput);
-            outputTestCase.push("No Expected Output for Custom Test Cases");
         } else {
             inputTestCase = this.props.question.coding_cases.map(el => el.input);
-            outputTestCase = this.props.question.coding_cases.map(el => el.right_output);
         }
 
         return (<CodingUI onLanguageChange={this.onLanguageChange}
@@ -203,7 +200,7 @@ class Coding extends React.Component {
                           selectedLanguage={this.state.selectedLanguage}
                           inputs={inputTestCase}
                           outputs={this.state.outputs}
-                          correctOutputs={outputTestCase}
+                          correctOutputs={this.props.question.coding_cases.map(el => el.right_output)}
                           isChecked={this.state.isChecked}
                           code={this.state.code}
                           onCustomInputChange={this.onCustomInputChange}
