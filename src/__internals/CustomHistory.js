@@ -24,4 +24,13 @@ import {createBrowserHistory} from 'history';
 
 const history = createBrowserHistory();
 
+
+history.listen((location, action) => {
+
+    const mt = window.mt;
+    mt('send', 'pageview');
+
+
+});
+
 export {history};
