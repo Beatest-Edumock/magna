@@ -20,6 +20,7 @@
 
 
 import {createBrowserHistory} from 'history';
+import {store} from "../index";
 
 
 const history = createBrowserHistory();
@@ -28,7 +29,17 @@ const history = createBrowserHistory();
 history.listen((location, action) => {
 
     const mt = window.mt;
-    mt('send', 'pageview');
+    const user = store.getState().user;
+    let emailObj = {};
+
+    if (user !== null) {
+
+        emailObj = {email: user.email};
+
+
+    }
+
+    mt('send', 'pageview', emailObj);
 
 
 });
