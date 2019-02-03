@@ -17,6 +17,7 @@ import {
     RESEND_ACTIVATION_ROUTE,
     ROOT_ROUTE,
     SIGNUP_ROUTE,
+    REFERRAL_SIGNUP_ROUTE,
     TERMS_AND_CONDS_ROUTE,
     TEST_INSTRUCTIONS_ROUTE,
     TEST_LIST_ROUTE,
@@ -38,6 +39,7 @@ const Routes = () => (
             <Route exact path={ROOT_ROUTE()} component={Homepage}/>
             <Route exact path={LOGIN_ROUTE()} component={LoginPage}/>
             <Route exact path={SIGNUP_ROUTE()} component={SignUpPage}/>
+            <Route exact path={REFERRAL_SIGNUP_ROUTE(null, true)} component={SignUpPage}/>
             <Route exact path={RESEND_ACTIVATION_ROUTE()} component={ResendActivationPage}/>
 
             <Route exact path={FORGOT_PASSWORD_ROUTE()} component={ForgotPassword}/>
