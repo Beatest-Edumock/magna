@@ -6,8 +6,8 @@ import {signupAPI} from "../../_Api/User";
 
 class SignUpFormContainer extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.onSubmitCallback = this.onSubmitCallback.bind(this);
         this.registerRecaptchaInstanceCallback = this.registerRecaptchaInstanceCallback.bind(this);
@@ -109,7 +109,9 @@ class SignUpFormContainer extends React.Component {
 
 
     render() {
+
         return (<SignUpForm colleges={this.state.colleges}
+                            referral_code_used={this.props.referralCode}
                             onSubmitCallback={this.onSubmitCallback}
                             registerRecaptchaInstanceCallback={this.registerRecaptchaInstanceCallback}
                             captchaVerifiedCallback={this.captchaVerifiedCallback}/>);

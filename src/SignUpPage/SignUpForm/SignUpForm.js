@@ -6,7 +6,6 @@ import Reaptcha from 'reaptcha'
 import config from 'config';
 import Select from 'react-select';
 
-
 const schema = yup.object().shape({
 
     fullName: yup.string("Full Name")
@@ -47,10 +46,9 @@ const hintStyle = {color: 'white', fontSize: '10px'};
 
 function SignUpForm(props) {
 
-
     return (<Formik
 
-        initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "", recaptcha: "", fullName: ""}}
+        initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "", recaptcha: "", fullName: "", referral_code_used: props.referral_code_used}}
 
         validationSchema={schema}
 
@@ -137,6 +135,44 @@ function SignUpForm(props) {
                         filterOption={filterConfig}
 
                     />
+
+                    <Label className="text-danger text-left">{touched.referral_code_used && errors.referral_code_used && errors.refferal}</Label>
+
+                    <Input
+                        type="referral_code_used"
+                        name="referral_code_used"
+                        placeholder="Enter Refferal Code"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.referral_code_used}
+
+                    />
+
+                    <Label className="text-danger text-left">{touched.referral_code_used && errors.referral_code_used && errors.referral_code_used}</Label>
+
+
+                    {!props.referral_code_used &&
+                        <Input
+                            type="string"
+                            name="referral_code_used"
+                            placeholder="Enter Refferal Code"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.referral_code_used}
+
+                        />
+                    }
+
+                    {props.referral_code_used &&
+                        <Input
+                            readOnly
+                            type="string"
+                            name="referral_code_used"
+                            placeholder={props.referral_code_used}
+                            value={values.referral_code_used}
+
+                        />
+                    }
 
                 </FormGroup>
 
