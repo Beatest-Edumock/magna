@@ -92,7 +92,7 @@ function SignUpForm(props) {
                         onBlur={handleBlur}
                         value={values.password}
                     />
-                    <label style={hintStyle}>Password should be between 6-15 characters</label>
+                    <label style={hintStyle}>Password should be between 6-9 characters</label>
 
                     <Label className="text-danger text-left">{touched.confirmPassword && errors.confirmPassword && errors.confirmPassword}</Label>
 
@@ -133,18 +133,6 @@ function SignUpForm(props) {
                         onBlur={handleBlur}
                         value={values.college}
                         filterOption={filterConfig}
-
-                    />
-
-                    <Label className="text-danger text-left">{touched.referral_code_used && errors.referral_code_used && errors.refferal}</Label>
-
-                    <Input
-                        type="referral_code_used"
-                        name="referral_code_used"
-                        placeholder="Enter Refferal Code"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.referral_code_used}
 
                     />
 
