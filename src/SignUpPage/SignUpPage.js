@@ -3,22 +3,31 @@ import {SingleFormPage} from "../Common/SingleFormPage";
 import {SignUpFormContainer} from "./SignUpForm/SignUpFormContainer";
 
 /**
- *
- * @returns {*}
- * @constructor
+ * InstructionPage component get testID from the URL and
+ * pass it on to the container to render the Instruction and a button to start
+ * the test.
  */
-function SignUpPage() {
+class SignUpPage extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+
+    render() {
+
+        const {referralCode} = this.props.match.params;
 
     return (
         <SingleFormPage title="Register at Beatest!">
             <div style={{paddingBottom:'10px'}}>
-                <SignUpFormContainer/>
+                <SignUpFormContainer referralCode={referralCode}/>
             </div>
         </SingleFormPage>
 
 
     )
+    }
 }
-
 
 export {SignUpPage};

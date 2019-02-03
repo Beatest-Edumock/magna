@@ -48,6 +48,15 @@ export const SIGNUP_ROUTE = () => {
 
 };
 
+export const REFERRAL_SIGNUP_ROUTE = (referralCode, blueprint = false) => {
+
+    if (blueprint) {
+        return "/signup/:referralCode"
+    }
+
+    return `/signup/${referralCode}`
+
+};
 
 export const RESEND_ACTIVATION_ROUTE = () => {
 
