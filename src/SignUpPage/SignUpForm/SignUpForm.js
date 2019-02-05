@@ -190,7 +190,7 @@ function SignUpForm(props) {
                         })}
                         multi={false}
                         onChange={(val) => {
-                            setFieldValue('degree', val)
+                            setFieldValue('branch', val)
                         }}
                         isValidNewOption={(inputValue, selectValue, selectOptions) => {
 
@@ -210,7 +210,7 @@ function SignUpForm(props) {
                     <Input
                         type="string"
                         name="referral_code_used"
-                        placeholder="Enter Refferal Code"
+                        placeholder="Enter Referral Code"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.referral_code_used}
