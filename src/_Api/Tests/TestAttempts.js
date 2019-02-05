@@ -8,7 +8,7 @@ function geTestAttempt(testID) {
 
 
 function startTestAPI(testID) {
-    return axios.post(`/tests/${testID}/attempts/start`)
+    return testFramAxios.post(`/tests/${testID}/attempts/start`)
 }
 
 

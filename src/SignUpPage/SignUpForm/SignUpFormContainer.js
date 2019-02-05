@@ -2,6 +2,8 @@ import React from 'react';
 import {SignUpForm} from "./SignUpForm";
 import {getCollegeApi} from "../../_Api/Colleges";
 import {signupAPI} from "../../_Api/User";
+import {getDegrees} from "./DegreeList";
+import {getBranches} from "./BranchList";
 
 
 class SignUpFormContainer extends React.Component {
@@ -77,14 +79,13 @@ class SignUpFormContainer extends React.Component {
         this.setSubmitting = setSubmitting;
         this.setErrors = setErrors;
         this.resetForm = resetForm;
-        console.log(setErrors);
 
         this.recaptchaInstance.execute();
     }
 
     performSignup() {
 
-        const {fullName, email, phoneNo, password, college} = this.values;
+        const {fullName, email, phoneNo, password, college, degree, graduation_date, branch} = this.values;
 
 
         signupAPI(fullName,
@@ -92,12 +93,14 @@ class SignUpFormContainer extends React.Component {
             password,
             phoneNo,
             college.value,
+            graduation_date,
+            degree.value,
+            branch.value,
             this.response
         ).then(() => {
             this.setErrors({info: "A verification email has been sent, please check your email"});
 
         }).catch((error) => {
-
             this.resetForm();
             this.setErrors({info: error.response.data.message});
             this.recaptchaInstance.reset();
@@ -111,6 +114,8 @@ class SignUpFormContainer extends React.Component {
     render() {
 
         return (<SignUpForm colleges={this.state.colleges}
+                            degreesList={getDegrees()}
+                            branchesList={getBranches()}
                             referral_code_used={this.props.referralCode}
                             onSubmitCallback={this.onSubmitCallback}
                             registerRecaptchaInstanceCallback={this.registerRecaptchaInstanceCallback}

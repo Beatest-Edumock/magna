@@ -5,6 +5,10 @@ import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import Reaptcha from 'reaptcha'
 import config from 'config';
 import Select from 'react-select';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Creatable from 'react-select/lib/Creatable';
+
 
 const schema = yup.object().shape({
 
@@ -24,11 +28,29 @@ const schema = yup.object().shape({
         .moreThan(999999999, "Invalid Phone number, must be 10 digits")
         .required("Phone number is required"),
 
-    college: yup.object().required("Please select a college")
+    college: yup.object().required("Please select a college"),
+
+    graduation_date: yup.date().required("Graduation date is a required field").typeError("Invalid Date"),
+
+    degree: yup.string().required("Please select a degree")
+
 
 });
 
-const filterConfig = (candidate, input) => {
+const collegeFilter = (candidate, input) => {
+
+    if (candidate.label.toLowerCase().indexOf(input) >= 0) {
+        return true;
+    }
+
+    if (candidate.value === null) {
+        return true;
+    }
+
+
+};
+
+const degreeFilter = (candidate, input) => {
 
     if (candidate.label.toLowerCase().indexOf(input) >= 0) {
         return true;
@@ -48,7 +70,12 @@ function SignUpForm(props) {
 
     return (<Formik
 
-        initialValues={{info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "", recaptcha: "", fullName: "", referral_code_used: props.referral_code_used}}
+        initialValues={{
+            info: '', email: '', password: '', confirmPassword: '', phoneNo: '', college: "", recaptcha: "", fullName: "", referral_code_used: props.referral_code_used,
+            graduation_date: "",
+            degree: "",
+            branch: ""
+        }}
 
         validationSchema={schema}
 
@@ -132,7 +159,47 @@ function SignUpForm(props) {
                         placeholder="Select a College"
                         onBlur={handleBlur}
                         value={values.college}
-                        filterOption={filterConfig}
+                        filterOption={collegeFilter}
+
+                    />
+
+                    <Label className="text-danger text-left">{touched.degree && errors.degree && errors.degree}</Label>
+
+                    <Select
+                        id="color"
+                        options={props.degreesList.map(cur => {
+                            return {value: cur, label: cur}
+                        })}
+                        multi={false}
+                        onChange={(val) => {
+                            setFieldValue('degree', val)
+                        }}
+                        placeholder="Select a degree"
+                        onBlur={handleBlur}
+                        value={values.degree}
+                        filterOption={degreeFilter}
+
+                    />
+
+                    <Label className="text-danger text-left">{touched.branch && errors.branch && errors.branch}</Label>
+
+                    <Creatable
+                        id="color"
+                        options={props.branchesList.map(cur => {
+                            return {value: cur, label: cur}
+                        })}
+                        multi={false}
+                        onChange={(val) => {
+                            setFieldValue('degree', val)
+                        }}
+                        isValidNewOption={(inputValue, selectValue, selectOptions) => {
+
+                            return true;
+                        }}
+                        placeholder="Select your branch"
+                        onBlur={handleBlur}
+                        value={values.branch}
+                        filterOption={degreeFilter}
 
                     />
 
@@ -140,26 +207,40 @@ function SignUpForm(props) {
 
 
                     {!props.referral_code_used &&
-                        <Input
-                            type="string"
-                            name="referral_code_used"
-                            placeholder="Enter Refferal Code"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.referral_code_used}
+                    <Input
+                        type="string"
+                        name="referral_code_used"
+                        placeholder="Enter Refferal Code"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.referral_code_used}
 
-                        />
+                    />
+                    }
+
+
+                    <Label className="text-danger text-left">{touched.graduation_date && errors.graduation_date && errors.graduation_date}</Label>
+                    {!props.graduation_date &&
+                    <DatePicker
+                        className="my-2 py-1 rounded justify-content-start text-left w-100"
+                        placeholderText="Graduation Date"
+                        showYearDropdown
+                        scrollableYearDropdown
+                        selected={values.graduation_date}
+                        onChange={(date) => setFieldValue("graduation_date", date)}
+                    />
+
                     }
 
                     {props.referral_code_used &&
-                        <Input
-                            readOnly
-                            type="string"
-                            name="referral_code_used"
-                            placeholder={props.referral_code_used}
-                            value={values.referral_code_used}
+                    <Input
+                        readOnly
+                        type="string"
+                        name="referral_code_used"
+                        placeholder={props.referral_code_used}
+                        value={values.referral_code_used}
 
-                        />
+                    />
                     }
 
                 </FormGroup>

@@ -22,20 +22,8 @@ testFramAxios.interceptors.request.use((config) => {
 });
 
 
-// just set both, axios as well as testFramAxios to
+// just set testFramAxios to
 // Update local variable (which will be used by pinger)
-axios.interceptors.response.use((response) => {
-
-    if (response.headers.ping) {
-
-        header = response.headers.ping;
-
-    }
-
-    return response;
-});
-
-
 testFramAxios.interceptors.response.use((response) => {
 
     if (response.headers.ping) {
