@@ -4,6 +4,7 @@ import {getCollegeApi} from "../../_Api/Colleges";
 import {signupAPI} from "../../_Api/User";
 import {getDegrees} from "./DegreeList";
 import {getBranches} from "./BranchList";
+import moment from 'moment';
 
 
 class SignUpFormContainer extends React.Component {
@@ -93,7 +94,7 @@ class SignUpFormContainer extends React.Component {
             password,
             phoneNo,
             college.value,
-            graduation_date,
+            moment(graduation_date).format("YYYY-MM-DD"),
             degree.value,
             branch.value,
             this.response

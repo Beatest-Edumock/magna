@@ -44,6 +44,7 @@ function signupAPI(full_name, email, password, phone_no, college_id, graduation_
         college_id,
         graduation_date,
         degree,
+        branch,
         captcha_token
     });
 

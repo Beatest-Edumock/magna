@@ -226,6 +226,7 @@ function SignUpForm(props) {
                         placeholderText="Graduation Date"
                         showYearDropdown
                         scrollableYearDropdown
+                        dateFormat="yyyy-MM-dd"
                         selected={values.graduation_date}
                         onChange={(date) => setFieldValue("graduation_date", date)}
                     />
