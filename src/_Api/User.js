@@ -34,7 +34,7 @@ function resendActivationMailApi(email, recaptcha) {
 
 }
 
-function signupAPI(full_name, email, password, phone_no, college_id, graduation_date, degree, branch, captcha_token) {
+function signupAPI(full_name, email, password, phone_no, college_id, graduation_date, degree, branch, referral_code_used, captcha_token) {
 
     return axios.post('/user/signup', {
         full_name,
@@ -45,6 +45,7 @@ function signupAPI(full_name, email, password, phone_no, college_id, graduation_
         graduation_date,
         degree,
         branch,
+        referral_code_used,
         captcha_token
     });
 

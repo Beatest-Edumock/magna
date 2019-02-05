@@ -86,7 +86,7 @@ class SignUpFormContainer extends React.Component {
 
     performSignup() {
 
-        const {fullName, email, phoneNo, password, college, degree, graduation_date, branch} = this.values;
+        const {fullName, email, phoneNo, password, college, degree, referral_code_used, graduation_date, branch} = this.values;
 
 
         signupAPI(fullName,
@@ -97,6 +97,7 @@ class SignUpFormContainer extends React.Component {
             moment(graduation_date).format("YYYY-MM-DD"),
             degree.value,
             branch.value,
+            referral_code_used,
             this.response
         ).then(() => {
             this.setErrors({info: "A verification email has been sent, please check your email"});
