@@ -12,7 +12,7 @@ function CorrectOutputDisplay({output}) {
         <React.Fragment>
             <p className="lead  text-gray blockquote">Your Output <FontAwesomeIcon icon={faCheck} style={{color: 'green'}}/></p>
             <div className="">
-                <p className="text-monospace alert-success p-2 rounded " style={{whiteSpace: "pre-line"}}>{output}</p>
+                <p className="text-monospace alert-success p-2 rounded " style={{whiteSpace: "pre-line", overflow: "scroll", maxHeight: "150px"}}>{output}</p>
             </div>
         </React.Fragment>
 
@@ -33,13 +33,13 @@ function IncorrectOutputDisplay({userOutput, correctOutput}) {
         <React.Fragment>
             <p className="lead  text-gray blockquote">Your Output <FontAwesomeIcon icon={faTimes} style={{color: 'red'}}/></p>
             <div className="">
-                <p className="text-monospace alert-danger p-2 rounded " style={{whiteSpace: "pre-line"}}>{userOutput}</p>
+                <p className="text-monospace alert-danger p-2 rounded  " style={{whiteSpace: "pre-line", overflow: "scroll", maxHeight: "150px"}}>{userOutput}</p>
             </div>
             <br/>
 
             <p className="lead  text-gray blockquote">Expected Output</p>
             <div className="">
-                <p className="text-monospace bg-gray-light p-2 rounded" style={{whiteSpace: "pre-line"}}>{correctOutput}</p>
+                <p className="text-monospace bg-gray-light p-2 rounded" style={{whiteSpace: "pre-line", maxHeight: "150px", overflow: "scroll"}}>{correctOutput}</p>
             </div>
         </React.Fragment>
 
@@ -56,13 +56,13 @@ function CustomOutputDisplay({userOutput}) {
         <React.Fragment>
             <p className="lead  text-gray blockquote">Your Output</p>
             <div className="">
-                <p className="text-monospace alert-success p-2 rounded " style={{whiteSpace: "pre-line"}}>{userOutput}</p>
+                <p className="text-monospace alert-success p-2 rounded " style={{whiteSpace: "pre-line", maxHeight: "150px", overflow: "scroll"}}>{userOutput}</p>
             </div>
             <br/>
 
             <p className="lead  text-gray blockquote">Expected Output</p>
             <div className="">
-                <p className="text-monospace bg-gray-light p-2 rounded" style={{whiteSpace: "pre-line"}}>
+                <p className="text-monospace bg-gray-light p-2 rounded" style={{whiteSpace: "pre-line", maxHeight: "150px", overflow: "scroll"}}>
                     No Expected Output for Custom Test Case
                 </p>
             </div>
@@ -72,7 +72,7 @@ function CustomOutputDisplay({userOutput}) {
 
 }
 
-export const TestCaseDisplay = ({inputs, userOutputs, correctOutputs, isCustomInput}) => {
+export const TestCaseDisplay = ({inputs, userOutputs, correctOutputs, isCustomInput, runTimes}) => {
 
 
     return (
@@ -93,12 +93,16 @@ export const TestCaseDisplay = ({inputs, userOutputs, correctOutputs, isCustomIn
 
                 return (
                     <TabPanel className="w-100  p-3 ">
+                        <p className="lead  text-gray blockquote">Time Taken</p>
+                        <p className="lead  text-dark blockquote">{runTimes[index]} seconds</p>
+
                         <p className="lead  text-gray blockquote">Input</p>
-                        <p className="text-monospace bg-gray-light p-2 rounded" style={{whiteSpace: "pre-line"}}>{inputs[index].replace("/\n/g", "\n<br>")}</p>
+                        <p className="text-monospace bg-gray-light p-2 rounded"
+                           style={{whiteSpace: "pre-line", maxHeight: "150px", overflow: "scroll"}}>{inputs[index].replace("/\n/g", "\n<br>")}</p>
                         <br/>
 
                         {isCustomInput &&
-                            <CustomOutputDisplay userOutput={userOutputs[index]}/>
+                        <CustomOutputDisplay userOutput={userOutputs[index]}/>
                         }
                         {!isCustomInput && userOutputs[index] === correctOutputs[index] &&
 

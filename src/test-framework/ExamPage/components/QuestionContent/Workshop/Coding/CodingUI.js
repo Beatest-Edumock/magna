@@ -118,6 +118,7 @@ class CodingUI extends React.Component {
                         <TestCaseDisplay inputs={this.props.inputs}
                                          userOutputs={this.props.outputs}
                                          correctOutputs={this.props.correctOutputs}
+                                         runTimes={this.props.runTimes}
                                          isCustomInput={this.props.isChecked}/>
                     </div>
                 </div>

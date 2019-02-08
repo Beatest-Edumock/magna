@@ -72,6 +72,7 @@ class Coding extends React.Component {
             allLanguages: allLanguages,
             selectedLanguage: selected_language == null ? allLanguages[0] : selected_language,
             outputs: null,
+            runTimes: null,
             isChecked: false,
             customInput: "",
             currentlyRunning: false
@@ -115,6 +116,7 @@ class Coding extends React.Component {
                 allLanguages: allLanguages,
                 selectedLanguage: selected_language == null ? allLanguages[0] : selected_language,
                 outputs: null,
+                runTimes: null,
                 isChecked: false,
                 customInput: "",
                 currentlyRunning: false
@@ -162,7 +164,7 @@ class Coding extends React.Component {
 
         runCodeAPI(this.state.code, this.state.selectedLanguage.value, inputs)
             .then(({data}) => {
-                this.setState({...this.state, outputs: data, currentlyRunning: false})
+                this.setState({...this.state, outputs: data[0], runTimes: data[1], currentlyRunning: false,})
             });
 
     }
@@ -200,6 +202,7 @@ class Coding extends React.Component {
                           selectedLanguage={this.state.selectedLanguage}
                           inputs={inputTestCase}
                           outputs={this.state.outputs}
+                          runTimes={this.state.runTimes}
                           correctOutputs={this.props.question.coding_cases.map(el => el.right_output)}
                           isChecked={this.state.isChecked}
                           code={this.state.code}
