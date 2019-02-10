@@ -10,9 +10,15 @@ let errCount = 0;
 
 let header = null;
 
+
+let asUserID = (new URL(document.location)).searchParams.get("asUser");
+
+
 testFramAxios.interceptors.request.use((config) => {
 
     config.headers['ping'] = header;
+    config.headers['corporate_as_user'] = asUserID;
+
 
     return config;
 
