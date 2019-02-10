@@ -6,6 +6,7 @@ import {MCQ} from "./Workshop/MCQ/MCQContainer";
 import {RC} from "./Workshop/RC/RCContainer";
 import {TITA} from "./Workshop/TITA/TITAContainer";
 import {Coding} from "./Workshop/Coding";
+import {Subjective} from "./Workshop/Subjective"
 
 function QuestionContentUI(props) {
 
@@ -29,6 +30,8 @@ function QuestionContentUI(props) {
                             return <TITA/>;
                         case "CODING":
                             return <Coding question={props.question}/>;
+                        case "SUBJECTIVE":
+                            return <Subjective question={props.question}/>;
                         default:
                             break;
 
