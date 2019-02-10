@@ -8,7 +8,8 @@ function setUpApp() {
 
     axios.interceptors.request.use((config) => {
 
-        config.headers['corporate_as_user'] = asUserID;
+        if (asUserID !== null)
+            config.headers['corporate_as_user'] = asUserID;
 
 
         return config;

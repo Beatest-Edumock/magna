@@ -17,7 +17,9 @@ let asUserID = (new URL(document.location)).searchParams.get("asUser");
 testFramAxios.interceptors.request.use((config) => {
 
     config.headers['ping'] = header;
-    config.headers['corporate_as_user'] = asUserID;
+
+    if (asUserID !== null)
+        config.headers['corporate_as_user'] = asUserID;
 
 
     return config;
