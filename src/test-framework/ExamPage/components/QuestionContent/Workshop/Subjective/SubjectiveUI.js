@@ -21,7 +21,7 @@ class SubjectiveUI extends React.Component {
 
                     <div className="col-md-5 my-sm-3 m-sm-0 py-sm-2 border h-60vh-md-scroll">
                         <RichTextEditor
-                            value={this.props.value}
+                            value={this.props.long_answer}
                             onChange={this.props.onTextChange}
                         />
 

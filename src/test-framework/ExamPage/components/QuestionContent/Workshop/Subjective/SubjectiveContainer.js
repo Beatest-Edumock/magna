@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {runCodeAPI} from "../../../../../../_Api/Tests/Sections/Questions/Questions";
 import {setCodingQuestionAsyncAC} from "../../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
 import {toast} from 'react-toastify';
+import RichTextEditor from 'react-rte';
 
 import _ from "lodash";
 
@@ -23,9 +24,12 @@ class Subjective extends React.Component {
         this.onSaveClick = this.onSaveClick.bind(this);
         this.onTextChange = this.onTextChange.bind(this);
         this.showSaveWorkNotification = this.showSaveWorkNotification.bind(this);
+        
+        console.log("long ");
+        console.log(props.long_answer);
 
         this.state = {
-            long_answer: props.question.long_answer == null ? "" : props.question.long_answer,
+            long_answer: props.question.long_answer === null ? RichTextEditor.createEmptyValue() : RichTextEditor.createValueFromString(props.question.long_answer, 'html'),
             currentlyRunning: false
         };
         this.showSaveWorkNotification(props);
@@ -33,7 +37,7 @@ class Subjective extends React.Component {
 
     onSaveClick() {
 
-            this.props.updateQuestionAttempt(this.state.long_answer);
+        this.props.updateQuestionAttempt(this.state.long_answer.toString('html'));
 
     }
 
@@ -44,7 +48,7 @@ class Subjective extends React.Component {
             this.showSaveWorkNotification(this.props);
 
             this.state = {
-                long_answer: nextProps.question.long_answer == null ? "" : nextProps.question.long_answer,
+                long_answer: nextProps.question.long_answer == null ? RichTextEditor.createEmptyValue() : RichTextEditor.createValueFromString(nextProps.question.long_answer, 'html'),
                 currentlyRunning: false
             };
 
@@ -55,7 +59,7 @@ class Subjective extends React.Component {
 
             this.setState({
                 ...this.state,
-                long_answer: ""
+                long_answer: RichTextEditor.createEmptyValue()
             })
 
         }
@@ -64,22 +68,22 @@ class Subjective extends React.Component {
         return true;
     }
 
-    onTextChange(code) {
+    onTextChange(long_answer) {
 
 
         this.setState(
             {
                 ...this.state,
-                code
+                long_answer
             });
     }
 
     render() {
         return (<SubjectiveUI onSaveClick={this.onSaveClick}
-                          onTextChange={this.onTextChange}
-                          running={this.state.currentlyRunning}
-                          question={this.props.question}
-                          long_answer={this.state.long_answer}
+                              onTextChange={this.onTextChange}
+                              running={this.state.currentlyRunning}
+                              question={this.props.question}
+                              long_answer={this.state.long_answer}
         />);
 
     }
