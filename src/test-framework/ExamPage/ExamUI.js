@@ -10,6 +10,7 @@ import {ClearResponseButton} from "./components/QuestionButtonsGroup/ClearRespon
 import {MarkForReviewButton} from "./components/QuestionButtonsGroup/MarkForReviewButton";
 import {Logic} from "./components/QuestionContent/Workshop/Logic";
 import {NextQuestionButton} from "./components/QuestionButtonsGroup/NextQuestionButton";
+import {UpdateScorePalette} from "./components/UpdateScorePalette";
 
 
 class ExamPageUI extends React.Component {
@@ -65,6 +66,7 @@ class ExamPageUI extends React.Component {
                         </div>
                         <div className='col-lg-2 '>
                             <QuestionPalette/>
+                            <UpdateScorePalette/>
                         </div>
                     </div>
 

@@ -66,6 +66,14 @@ function setCurrentQuestionTITAAnswerAsyncAC(titaAnswer) {
     }
 }
 
+function setCurrentQuestionScoreAsyncAC(score) {
+    return (dispatch, getState) => {
+
+        dispatch(updateQuestionAttemptAsyncAC({"score": score}))
+    }
+
+}
+
 /**
  *
  * Update the current question with some data.
@@ -136,5 +144,6 @@ export {
     setCurrentQuestionToReviewAsyncAC,
     setCurrentQuestionToSeenAsyncAC,
     updateQuestionAttemptAsyncAC,
-    setCodingQuestionAsyncAC
+    setCodingQuestionAsyncAC,
+    setCurrentQuestionScoreAsyncAC
 }

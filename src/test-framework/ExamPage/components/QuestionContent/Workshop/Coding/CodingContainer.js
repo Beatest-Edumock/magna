@@ -194,6 +194,7 @@ class Coding extends React.Component {
         return (<CodingUI onLanguageChange={this.onLanguageChange}
                           onRunClick={this.onRunClick}
                           onCheckBoxToggle={this.onCheckBoxToggle}
+                          onCheckBoxToggle={this.onCheckBoxToggle}
                           onSaveClick={this.onSaveClick}
                           onCodeChange={this.onCodeChange}
                           running={this.state.currentlyRunning}
