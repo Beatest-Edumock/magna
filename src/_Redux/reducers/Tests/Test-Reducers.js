@@ -258,7 +258,9 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
         sectionsByID: sections,
         questionsByID: questions,
         currentSection: firstSectionId.toString(),
-        currentQuestion: firstQuestion.toString()
+        currentQuestion: firstQuestion.toString(),
+        score: testAttempt.score,
+        test_attempt_id: testAttempt.id
 
     }
 
@@ -274,4 +276,45 @@ function markTestComplete(state) {
 
 }
 
-export {_pushTestAttemptDetails, _pushTestDetails, markTestComplete};
+
+function updateQuestionScore(state, {questionID, newScore}) {
+
+    const testScoreDiff = state.score - newScore;
+
+    const sectionID = state.questionsByID[questionID].section_id;
+
+    const sectionScoreDiff = state.sectionsByID[sectionID].score - newScore;
+
+
+    return {
+        ...state,
+        score: state.score + testScoreDiff,
+        questionsByID: {
+            ...state.questionsByID,
+            [questionID]: {
+                ...state.questionsByID[questionID],
+                score: newScore
+            }
+
+        },
+        sectionsByID: {
+            ...state.sectionsByID,
+            [sectionID]: {
+                ...state.sectionsByID[sectionID],
+                score: state.sectionsByID[sectionID] + sectionScoreDiff
+            }
+        }
+
+    }
+
+}
+
+function setReviewMode(state) {
+    return {
+        ...state,
+        reviewMode: true
+    }
+
+}
+
+export {_pushTestAttemptDetails, _pushTestDetails, markTestComplete, updateQuestionScore, setReviewMode};

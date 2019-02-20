@@ -11,7 +11,7 @@ import {
     INCREMENT_LOADING,
     QUESTION_PUSH_DETAILS,
     QUESTION_PUSH_SOLUTIONS,
-    QUESTION_UPDATE_CURRENT,
+    QUESTION_UPDATE_CURRENT, QUESTION_UPDATE_SCORE,
     SECTION_PUSH_DETAILS,
     SECTION_UPDATE_CURRENT,
     TEST_DISABLE_INPUTS,
@@ -20,7 +20,7 @@ import {
     TEST_MARK_CURRENT_SECTION_COMPLETE,
     TEST_PUSH_ATTEMPTS,
     TEST_PUSH_DETAILS,
-    TEST_PUSH_ERROR,
+    TEST_PUSH_ERROR, TEST_SET_REVIEW,
     TEST_UPDATE_QUESTIONATTEMPT,
 } from "../../actions/test";
 
@@ -28,7 +28,7 @@ import {
 import {_changeCurrentSection, _pushSectionDetails, markCurrentSectionComplete} from "./Sections/Sections-Reducer";
 import {_changeCurrentQuestion, _pushQuestionDetails, _pushQuestionSolutions, updateQuestionAttempt} from "./Sections/Questions/Questions-Reducer";
 import {decrementLoading, disableInputs, enableInputs, incrementLoading, pushError} from "./UI-Reducers";
-import {_pushTestAttemptDetails, _pushTestDetails, markTestComplete} from "./Test-Reducers";
+import {_pushTestAttemptDetails, _pushTestDetails, markTestComplete, setReviewMode, updateQuestionScore} from "./Test-Reducers";
 
 
 const defaultState = {
@@ -82,6 +82,11 @@ function testReducer(state = defaultState, action) {
         case QUESTION_PUSH_SOLUTIONS:
             return _pushQuestionSolutions(state, action);
 
+        case QUESTION_UPDATE_SCORE:
+            return updateQuestionScore(state, action);
+
+        case TEST_SET_REVIEW:
+            return setReviewMode(state);
         default :
             return state;
     }

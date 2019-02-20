@@ -13,6 +13,7 @@ import userReducer from '_Redux/reducers/User/User-Reducers'
 import {getUserDetailsApi} from "../_Api/User";
 import {testReducer} from "./reducers/Tests/Reducer-Entry";
 import React from 'react';
+import {setReiviewModeAC} from "./ActionCreators/Test/Test-ActionCreator";
 
 
 function initStore() {
@@ -48,6 +49,13 @@ function initStore() {
         }
     ).catch(() => {
     });
+
+
+    let asUserID = (new URL(document.location)).searchParams.get("asUser");
+    if (asUserID !== null) {
+        store.dispatch(setReiviewModeAC());
+
+    }
 
 
     return store;

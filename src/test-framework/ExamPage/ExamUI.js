@@ -66,7 +66,9 @@ class ExamPageUI extends React.Component {
                         </div>
                         <div className='col-lg-2 '>
                             <QuestionPalette/>
+                            {this.props.isReviewMode &&
                             <UpdateScorePalette/>
+                            }
                         </div>
                     </div>
 

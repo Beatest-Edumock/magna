@@ -14,16 +14,6 @@ class UpdateScorePalette extends Component {
         };
     }
 
-    componentWillReceiveProps(nextProps, nextState) {
-        if (nextProps.question.id !== this.props.question.id) {
-            this.setState({
-                customInput: ""
-            });
-        }
-
-        return true;
-    }
-
 
     onCustomInputChange(event) {
         this.setState({...this.state, customInput: event.target.value});
@@ -36,6 +26,8 @@ class UpdateScorePalette extends Component {
                 testIsComplete={this.props.testIsComplete}
                 onCustomInputChange={this.onCustomInputChange}
                 customInput={this.state.customInput}
+                maxScore={this.props.currentQuestion.points_correct}
+                obtainedScore={this.props.currentQuestion.score}
             />
 
         )
@@ -43,10 +35,12 @@ class UpdateScorePalette extends Component {
 }
 
 
-
 function mapStateToProps(state) {
+
+
     return {
         testIsComplete: state.test.is_complete,
+        currentQuestion: state.test.questionsByID[state.test.currentQuestion]
     }
 }
 

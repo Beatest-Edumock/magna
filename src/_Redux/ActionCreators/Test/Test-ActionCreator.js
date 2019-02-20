@@ -1,6 +1,17 @@
-import {DECREMENT_LOADING, INCREMENT_LOADING, TEST_DISABLE_INPUTS, TEST_ENABLE_INPUTS, TEST_PUSH_DETAILS, TEST_PUSH_ERROR} from "../../actions/test";
+import {
+    DECREMENT_LOADING,
+    INCREMENT_LOADING,
+    QUESTION_UPDATE_SCORE,
+    TEST_DISABLE_INPUTS,
+    TEST_ENABLE_INPUTS,
+    TEST_PUSH_DETAILS,
+    TEST_PUSH_ERROR,
+    TEST_SET_REVIEW
+} from "../../actions/test";
 import {pushTestAttemptAC} from "./TestAttempt-ActionCreators";
 import {_pushSectionDetailsAC, changeCurrentSectionAsyncAC} from "./Sections/Sections-ActionCreator";
+import {updateQuestionAttemptAPI} from "../../../_Api/Tests/TestAttempts";
+import {updateQuestionAttemptScoreAPI} from "../../../_Api/Tests/Sections/Questions/QuestionAttempts";
 
 
 function incrementLoadingAC() {
@@ -72,4 +83,32 @@ function disableInputsAC() {
 
 }
 
-export {incrementLoadingAC, decrementLoadingAC, _pushTestDetailsAC, setUpTestAsyncAC, pushErrorAC, enableInputsAC, disableInputsAC};
+function updateCurrentQuestionScoreAsyncAC(newScore) {
+
+    return function (dispatch, getState) {
+
+        const state = getState();
+
+        const questionID = state.test.currentQuestion;
+        const sectionID = state.test.sectionsByID[state.test.currentSection].section_attempt_id;
+        const testID = state.test.test_attempt_id;
+
+        updateQuestionAttemptScoreAPI(testID, sectionID, questionID, newScore).then(() => {
+            dispatch({type: QUESTION_UPDATE_SCORE, questionID, newScore});
+        });
+
+    };
+
+}
+
+function setReiviewModeAC() {
+    return {
+        type: TEST_SET_REVIEW
+    }
+
+}
+
+export {
+    incrementLoadingAC, decrementLoadingAC, _pushTestDetailsAC, setUpTestAsyncAC, pushErrorAC, enableInputsAC, disableInputsAC,
+    updateCurrentQuestionScoreAsyncAC, setReiviewModeAC
+};

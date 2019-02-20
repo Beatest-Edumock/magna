@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import {UpdateScoreButtonUI} from "./UpdateScoreButtonUI";
 import {toast} from 'react-toastify';
-import {setCurrentQuestionScoreAsyncAC} from "../../../../../_Redux/ActionCreators/Test/Sections/Questions/QuestionAttempt-ActionCreator";
+import {updateCurrentQuestionScoreAsyncAC, updateScoreAC} from "../../../../../_Redux/ActionCreators/Test/Test-ActionCreator";
 
 
 class UpdateScoreButtonContainer extends Component {
@@ -39,7 +39,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         updateScore: (score) => {
-            dispatch(setCurrentQuestionScoreAsyncAC(score));
+            dispatch(updateCurrentQuestionScoreAsyncAC(score));
         }
     }
 }

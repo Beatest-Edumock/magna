@@ -22,7 +22,6 @@ function startTestAPI(testID) {
  */
 function updateQuestionAttemptAPI(testID, sectionID, questionID, change) {
 
-
     return testFramAxios.put(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts`, change)
 }
 

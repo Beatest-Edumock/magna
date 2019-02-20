@@ -8,8 +8,8 @@ function UpdateScorePaletteUI(props) {
         <div>
             {toDisplay &&
             <div className="my-2">
-                <div><kbd>Marks Allotted : XX</kbd></div>
-                <div><kbd>Marks Secured : YY</kbd></div>
+                <div><kbd>Marks Allotted : {props.maxScore}</kbd></div>
+                <div><kbd>Marks Secured : {props.obtainedScore}</kbd></div>
                 <div className="my-2">
                     <div className="form-group">
                         <label>Enter New Score :</label>

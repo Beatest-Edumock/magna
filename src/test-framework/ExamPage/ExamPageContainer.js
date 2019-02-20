@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import { setUpTestAsyncAC} from "../../_Redux/ActionCreators/Test/Test-ActionCreator";
+import {setUpTestAsyncAC} from "../../_Redux/ActionCreators/Test/Test-ActionCreator";
 import {getTestGroupAPI} from "../../_Api/Tests/Tests";
 import {ExamPageUI} from "./ExamUI";
 import axios from 'axios'
@@ -26,7 +26,7 @@ class ExamPageContainer extends React.Component {
 
     render() {
 
-        return <ExamPageUI loading={this.props.loadingCount > 0 || this.props.user == null}/>
+        return <ExamPageUI loading={this.props.loadingCount > 0 || this.props.user == null} isReviewMode={this.props.isReviewMode}/>
 
     }
 }
@@ -35,6 +35,7 @@ class ExamPageContainer extends React.Component {
 function mapStateToProps(state, ownProps) {
     return {
         loadingCount: state.test.loadingCount,
+        isReviewMode: state.test.reviewMode,
         user: state.user
     }
 
