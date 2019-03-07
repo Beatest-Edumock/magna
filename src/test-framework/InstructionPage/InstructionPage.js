@@ -4,6 +4,7 @@
 // imports
 import React, {Component} from 'react';
 import {DisplayInstruction} from "./DisplayInstruction";
+import {decodeTestIDString} from "../Utilities";
 
 /**
  * InstructionPage component get testID from the URL and
@@ -23,7 +24,7 @@ class InstructionPage extends Component {
         const {testID} = this.props.match.params;
 
         return (
-            <DisplayInstruction testID={testID}/>
+            <DisplayInstruction testID={decodeTestIDString(testID)}/>
 
 
         )

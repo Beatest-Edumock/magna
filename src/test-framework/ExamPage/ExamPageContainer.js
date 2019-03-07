@@ -5,6 +5,7 @@ import {getTestGroupAPI} from "../../_Api/Tests/Tests";
 import {ExamPageUI} from "./ExamUI";
 import axios from 'axios'
 import {_fetchAndPushQuestionDetailsAsyncAC} from "../../_Redux/ActionCreators/Test/Sections/Questions/Questions-ActionCreator";
+import {decodeTestIDString} from "../Utilities";
 
 class ExamPageContainer extends React.Component {
 
@@ -13,7 +14,7 @@ class ExamPageContainer extends React.Component {
         const {testID} = this.props.match.params;
 
 
-        getTestGroupAPI(testID).then(
+        getTestGroupAPI(decodeTestIDString(testID)).then(
             axios.spread((testDetails, sectionDetails, testAttemptDetails) => {
 
                 this.props.setupTestStore(testDetails.data, sectionDetails.data, testAttemptDetails.data)
