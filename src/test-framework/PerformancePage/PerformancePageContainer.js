@@ -6,7 +6,6 @@ import {TEST_PAGE_ROUTE} from "../../route";
 import {history} from "../../__internals/CustomHistory";
 import {LoadingSpinner} from "../ExamPage/LoadingSpinner";
 import {getTestDetailsAPI} from "../../_Api/Tests/Tests";
-import {decodeTestIDString} from "../Utilities";
 
 class PerformancePage extends React.Component {
 
@@ -40,9 +39,7 @@ class PerformancePage extends React.Component {
 
     componentDidMount() {
 
-        let {testID} = this.props.match.params;
-
-        testID = decodeTestIDString(testID);
+        const {testID} = this.props.match.params;
 
         getPerformanceAPI(testID).then(({data}) => {
             this.setState({data});

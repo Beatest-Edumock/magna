@@ -17,7 +17,17 @@
  * (See TEST_PAGE_ROUTE for an example)
  *
  */
-import {encodeTestID} from "./test-framework/Utilities";
+
+
+
+
+
+
+
+
+
+
+
 
 
 export const ROOT_ROUTE = () => {
@@ -95,7 +105,7 @@ export const TEST_INSTRUCTIONS_ROUTE = (testID, blueprint = false) => {
         return "/test/:testID/instructions"
     }
 
-    return `/test/${encodeTestID(testID)}/instructions`
+    return `/test/${testID}/instructions`
 
 };
 
@@ -122,6 +132,6 @@ export const PERFORMANCE_PAGE_ROUTE = (testID, blueprint = false) => {
         return "/test/:testID/performance";
     }
 
-    return `/test/${encodeTestID(testID)}/performance`
+    return `/test/${testID}/performance`
 
 };
