@@ -10,4 +10,23 @@ function updateQuestionAttemptScoreAPI(testID, sectionID, questID, newScore) {
 }
 
 
-export {updateQuestionAttemptScoreAPI};
+/**
+ *
+ * @param testID
+ * @param sectionID
+ * @param questionID
+ * @param time
+ * @returns {AxiosPromise<any> | IDBRequest | Promise<void>}
+ */
+function updateQuestionAttemptTimeAPI(testID, sectionID, questionID, time) {
+    // console.log("----");
+    // console.log(testID);
+    // console.log(sectionID);
+    // console.log(questionID);
+    // console.log(time);
+
+
+    return testFramAxios.put(`/tests/${testID}/sections/${sectionID}/questions/${questionID}/attempts/time`, {time})
+}
+
+export {updateQuestionAttemptScoreAPI, updateQuestionAttemptTimeAPI};

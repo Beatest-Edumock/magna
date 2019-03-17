@@ -2,6 +2,8 @@ import {SECTION_PUSH_DETAILS, SECTION_UPDATE_CURRENT, TEST_MARK_CURRENT_SECTION_
 import {changeCurrentQuestionAsyncAC} from "./Questions/Questions-ActionCreator";
 import {submitSectionAPI} from "../../../../_Api/Tests/Sections/SectionAttempts";
 import {enableInputsAC} from "../Test-ActionCreator";
+import {questionVisitTimeStampObj} from "../../Test/Test-ActionCreator";
+import {updateQuestionAttemptTimeAPI} from "../../../../_Api/Tests/Sections/Questions/QuestionAttempts";
 
 function _pushSectionDetailsAC(sectionsList) {
     return {type: SECTION_PUSH_DETAILS, sectionsList}
@@ -64,7 +66,6 @@ function markCurrentSectionCompleteAC() {
 /**
  * Mark the current section as complete
  *
- * If this is not
  *
  */
 function submitCurrentSectionAsyncAC(shouldMove = true) {

@@ -37,6 +37,8 @@ function pushErrorAC(text, isFatal) {
 }
 
 
+let questionVisitTimeStampObj = {};
+
 /**
  * Set up Test details, Section Details and the  Test Attempt.
  *
@@ -61,13 +63,16 @@ function setUpTestAsyncAC(testDetails, sectionList, testAttempt) {
         dispatch(pushTestAttemptAC(testAttempt));
 
         const state = getState();
+        questionVisitTimeStampObj = {time: new Date(), initial: true};
 
         // current question key will be set by pushTestAttempt
         // we just 'change' to that again so that the next N are fetched
         dispatch(changeCurrentSectionAsyncAC(state.test.currentSection));
         // dispatch(changeCurrentQuestionAsyncAC(state.test.currentQuestion));
 
+
         dispatch(decrementLoadingAC());
+
 
     }
 
@@ -110,5 +115,5 @@ function setReiviewModeAC() {
 
 export {
     incrementLoadingAC, decrementLoadingAC, _pushTestDetailsAC, setUpTestAsyncAC, pushErrorAC, enableInputsAC, disableInputsAC,
-    updateCurrentQuestionScoreAsyncAC, setReiviewModeAC
+    updateCurrentQuestionScoreAsyncAC, setReiviewModeAC, questionVisitTimeStampObj
 };
