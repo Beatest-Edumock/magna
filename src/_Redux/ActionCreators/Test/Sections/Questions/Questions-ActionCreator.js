@@ -1,6 +1,8 @@
 import {QUESTION_PUSH_DETAILS, QUESTION_PUSH_SOLUTIONS, QUESTION_UPDATE_CURRENT} from "../../../../actions/test";
 import {getQuestionDetailsAPI, getQuestionSolutionsAPI} from "../../../../../_Api/Tests/Sections/Questions/Questions";
 import {setCurrentQuestionToSeenAsyncAC} from "./QuestionAttempt-ActionCreator";
+import {questionVisitTimeStampObj} from "../../Test-ActionCreator";
+import {updateQuestionAttemptTimeAPI} from "../../../../../_Api/Tests/Sections/Questions/QuestionAttempts";
 
 /**
  * Do not call this action creator from any component.
@@ -78,6 +80,7 @@ function _changeCurrentQuestionAC(questionID) {
     return {type: QUESTION_UPDATE_CURRENT, questionID: questionID}
 }
 
+
 /**
  * change and fetch the state of current question, and fetch previous and next question
  *
@@ -85,6 +88,15 @@ function _changeCurrentQuestionAC(questionID) {
  * @returns {Function}
  */
 function changeCurrentQuestionAsyncAC(questionID) {
+
+    const currentDate = new Date();
+
+    const diff = (currentDate - questionVisitTimeStampObj.time) / 1000;
+
+
+    questionVisitTimeStampObj.time = currentDate;
+
+
     return (dispatch, getState) => {
 
         const state = getState();
@@ -92,6 +104,18 @@ function changeCurrentQuestionAsyncAC(questionID) {
         const questionsList = state.test.sectionsByID[currentSection].questions;
 
         const questionIndex = questionsList.indexOf(questionID);
+
+        if (questionVisitTimeStampObj.initial !== true && !state.test.is_complete) {
+
+            // console.log("000000000000000");
+            // console.log(diff);
+            //
+            // if(state.test.)
+            updateQuestionAttemptTimeAPI(state.test.id, currentSection, state.test.currentQuestion, diff);
+
+        }
+
+        questionVisitTimeStampObj.initial = false;
 
 
         // fetch the next three
