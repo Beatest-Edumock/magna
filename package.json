@@ -58,7 +58,7 @@
     "redux-thunk": "^2.3.0",
     "select": "^1.1.2",
     "why-did-you-update": "^0.1.1",
-    "yup": "^0.25.1"
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",

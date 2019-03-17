@@ -15,9 +15,9 @@ function profileLoginNavLink(props) {
 
         <NavLink tag={Link} to={props.isUserLoggedIn ? PLACEMENTS_PAGE_ROUTE() : PLACEMENTS_PAGE_ROUTE()}>
 
-            <Button color="primary" className="btn-sm btn-outline-success btn-block">
+            <button  className="btn-sm btn-outline-success ">
                 {props.isUserLoggedIn ? "Placements" : "Placements"}
-            </Button>
+            </button>
 
         </NavLink>
     )
@@ -49,9 +49,9 @@ function signupLogoutNavLink(props) {
     return (
 
         <NavLink>
-            <Button color="success" onClick={buttonHandler} className="btn-sm btn-outline-primary btn-">
+            <button  onClick={buttonHandler} className="btn-sm btn-outline-primary ">
                 {props.isUserLoggedIn ? "Logout" : "Signup"}
-            </Button>
+            </button>
 
         </NavLink>
     );
