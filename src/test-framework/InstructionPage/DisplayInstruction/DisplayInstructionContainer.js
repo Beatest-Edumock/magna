@@ -10,7 +10,6 @@ import {startTestAPI} from "../../../_Api/Tests/TestAttempts";
 import {history} from "../../../__internals/CustomHistory";
 import PropTypes from 'prop-types';
 import {PERFORMANCE_PAGE_ROUTE} from "../../../route";
-import {encodeTestID} from "../../Utilities";
 
 
 // DisplayInstructionContainer
@@ -39,7 +38,7 @@ class DisplayInstructionContainer extends Component {
             .then(() => {
 
                     // user should not be able to go 'back'
-                    history.replace(`/test/${encodeTestID(this.props.testID)}`)
+                    history.replace(`/test/${this.props.testID}`)
 
 
                 }
