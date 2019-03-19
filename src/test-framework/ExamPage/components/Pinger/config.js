@@ -1,1 +1,1 @@
-export const PING_TIME = 5; // time in seconds. depends on value of pinger in backend
+export const PING_TIME = 30; // time in seconds. depends on value of pinger in backend
