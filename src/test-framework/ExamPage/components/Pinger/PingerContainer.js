@@ -28,6 +28,7 @@ import {disableInputsAC, enableInputsAC} from "../../../../_Redux/ActionCreators
  * component will break it if it is torn down and rendered a second time.
  *
  *
+ *
  */
 class Pinger extends React.Component {
 
