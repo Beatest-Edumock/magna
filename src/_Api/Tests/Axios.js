@@ -44,7 +44,11 @@ testFramAxios.interceptors.response.use((response) => {
 });
 
 
-testFramAxios.interceptors.response.use(null,
+testFramAxios.interceptors.response.use(function (response) {
+        errCount = 0;
+
+        return response;
+    },
     function (error) {
 
         if (error.response.data.error_code === "PF0253" || error.response.data.error_code === "PF666")
