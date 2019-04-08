@@ -292,6 +292,8 @@ function PerformancePageUI(props) {
 
             </Table>
 
+            <h4 className="lead text-dark">For Coding questions, scores are shown based on number of test cases passed. An answer is marked correct in the table only when all the test cases pass. </h4>
+
             {/*Solutions Button Link*/}
             <button className="btn btn-primary" onClick={props.viewPerformanceClickHandler}>View Solutions</button>
 
