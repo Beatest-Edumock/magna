@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 /**
  *
  * Currently the `test` redux store looks like this:
@@ -236,7 +238,7 @@ function _pushTestAttemptDetails(state, {testAttempt}) {
 
         return {
             ...merged[sectionKey],
-            questions: sortedQuestion
+            questions: (state.sectionsByID[sectionKey].should_randomize_questions === true ? _.shuffle(sortedQuestion) : sortedQuestion)
 
         }
 
