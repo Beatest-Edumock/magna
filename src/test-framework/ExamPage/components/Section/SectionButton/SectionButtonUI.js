@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 
 
@@ -19,6 +20,14 @@ function SectionButtonUI(props) {
                 style={{whiteSpace: "normal"}}
                 onClick={() => props.sectionCallBack(props.sectionID)}>
             {props.sectionName}
+
+
+            {props.isTestComplete &&
+            <div>
+                <br/>
+                <p className="font-weight-bold lead"> Time Spent <br/> {moment.duration(props.timeSpent, 'seconds').humanize()}</p>
+            </div>
+            }
         </button>
     );
 

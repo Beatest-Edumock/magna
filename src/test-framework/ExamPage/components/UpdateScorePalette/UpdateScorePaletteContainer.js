@@ -28,6 +28,7 @@ class UpdateScorePalette extends Component {
                 customInput={this.state.customInput}
                 maxScore={this.props.currentQuestion.points_correct}
                 obtainedScore={this.props.currentQuestion.score}
+                timeSpent={this.props.currentQuestion.time_spent}
             />
 
         )

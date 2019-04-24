@@ -27,6 +27,7 @@ function SectionsGroupUI(props) {
                                 <SectionButton key={section.id}
                                                sectionName={section.name}
                                                sectionID={section.id}
+                                               timeSpent={section.time_spent}
                                                isCompleted={section.is_complete}
                                                disabled={disabled}
                                 />

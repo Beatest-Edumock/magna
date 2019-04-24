@@ -25,7 +25,9 @@ class SectionButtonContainer extends Component {
             sectionID={this.props.sectionID}
             isCompleted={this.props.isCompleted}
             sectionCallBack={this.sectionClickHandler}
-            isTestComplete={this.props.isTestComplete}/>
+            isTestComplete={this.props.isTestComplete}
+            timeSpent={this.props.timeSpent}
+        />
 
     }
 
@@ -44,7 +46,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
     return {
         currentSection: state.test.currentSection,
-        isTestComplete: state.test.is_complete
+        isTestComplete: state.test.is_complete,
     }
 
 }
