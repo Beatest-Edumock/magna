@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {PerformancePageUI} from "./PerformancePageUI";
-import {getPerformanceAPI} from "../../_Api/Tests/TestAttempts";
+import {getPerformanceAPI, getTestAttemptReportAPI} from "../../_Api/Tests/TestAttempts";
 import {TEST_PAGE_ROUTE} from "../../route";
 import {history} from "../../__internals/CustomHistory";
 import {LoadingSpinner} from "../ExamPage/LoadingSpinner";
@@ -13,7 +13,7 @@ class PerformancePage extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {data: null, user: props.user, testDetails: null};
+        this.state = {data: null, user: props.user, testDetails: null, testAttemptReport: null};
 
         this.viewPerformanceClickHandler = this.viewPerformanceClickHandler.bind(this);
     }
@@ -33,6 +33,7 @@ class PerformancePage extends React.Component {
         return <PerformancePageUI testDetails={this.state.testDetails}
                                   user={this.props.user}
                                   viewPerformanceClickHandler={this.viewPerformanceClickHandler}
+                                  testAttemptReport={this.state.testAttemptReport}
                                   data={this.state.data}/>;
 
     }
@@ -52,6 +53,18 @@ class PerformancePage extends React.Component {
             this.setState({...this.state, testDetails: data})
 
         });
+
+        let asUserID = (new URL(document.location)).searchParams.get("asUser");
+        if (asUserID)
+            getTestAttemptReportAPI(testID).then(({data}) => {
+                delete data['test_attempt_id'];
+                delete data['is_finished'];
+                delete data['create_date'];
+                delete data['finish_date'];
+
+
+                this.setState({...this.state, testAttemptReport: data})
+            })
 
     }
 

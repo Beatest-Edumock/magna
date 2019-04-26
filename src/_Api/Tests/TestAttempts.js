@@ -1,11 +1,15 @@
 import {testFramAxios} from "./Axios";
-import axios from "axios";
+import {rexAxios} from "./Axios-Rex";
 
+let asUserID = (new URL(document.location)).searchParams.get("asUser");
 
 function geTestAttempt(testID) {
     return testFramAxios.get(`/tests/${testID}/attempts`)
 }
 
+function getTestAttemptReportAPI(testID) {
+    return rexAxios.get(`/tests/${testID}/user/${asUserID}`)
+}
 
 function startTestAPI(testID) {
     return testFramAxios.post(`/tests/${testID}/attempts/start`)
@@ -39,4 +43,4 @@ function getPerformanceAPI(testID) {
     return testFramAxios.get(`/tests/${testID}/attempts/performance`)
 }
 
-export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTestAPI, getPerformanceAPI}
+export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTestAPI, getPerformanceAPI, getTestAttemptReportAPI}

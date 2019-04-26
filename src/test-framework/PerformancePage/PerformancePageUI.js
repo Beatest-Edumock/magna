@@ -1,14 +1,24 @@
 import React from 'react';
-import {Table, Container, Row, Col} from 'reactstrap';
-import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
+import {Progress} from 'react-sweet-progress';
+import "react-sweet-progress/lib/style.css";
+import {Col, Container, Row, Table} from 'reactstrap';
+import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {StackedBarChart} from '../../Common/Visualization/StackedBarChart';
 import {SimpleBarChart} from '../../Common/Visualization/SimpleBarChart';
 import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
 import {AreaChartUI} from '../../Common/Visualization/AreaChartUI';
 import {PieChartUI} from "../../Common/Visualization/PieChartUI";
 import "react-tabs/style/react-tabs.css";
-import {colors, materialColors} from '../../Common/Visualization/ColorPalette';
+import {colors} from '../../Common/Visualization/ColorPalette';
 
+function toTitleCase(str) {
+    return str.replace(
+        /\w\S*/g,
+        function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+    );
+}
 
 function calculateOverallAccuracy(sectionsObj) {
 
@@ -92,7 +102,7 @@ const questionTopicAttempt = [];
 function prepareQuestionAttemptedData(data) {
     const topicAttemptedCount = {};
     const lodAttemptCount = {};
-    const questionTypeAttemptCount= {};
+    const questionTypeAttemptCount = {};
 
     let sectionAttemptIdx;
     for (sectionAttemptIdx in data.section_attempts) {
@@ -173,7 +183,7 @@ function random_material_color() {
     console.log(result);
     return result;*/
 
-    return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+    return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
 }
 
 const overall = {attempts: 0, correct: 0, incorrect: 0, score: 0, accuracy: 0, total_questions: 0};
@@ -292,7 +302,8 @@ function PerformancePageUI(props) {
 
             </Table>
 
-            <h4 className="lead text-dark">For Coding questions, scores are shown based on number of test cases passed. An answer is marked correct in the table only when all the test cases pass. </h4>
+            <h4 className="lead text-dark">For Coding questions, scores are shown based on number of test cases passed. An answer is marked correct in the table only when all the
+                test cases pass. </h4>
 
             {/*Solutions Button Link*/}
             <button className="btn btn-primary" onClick={props.viewPerformanceClickHandler}>View Solutions</button>
@@ -333,17 +344,72 @@ function PerformancePageUI(props) {
                         <Row style={{marginTop: '20px'}}>
                             <Col xs="12" sm="12" md="12" lg="4">
                                 <h6>Attempts by Level of Difficulty</h6>
-                                <PieChartUI data={questionLodAttempt} cx={120} cy={120} innerRadius={35} outerRadius={80} />
+                                <PieChartUI data={questionLodAttempt} cx={120} cy={120} innerRadius={35} outerRadius={80}/>
                             </Col>
                             <Col xs="12" sm="12" md="12" lg="4"/>
                             <Col xs="12" sm="12" md="12" lg="4">
                                 <h6>Attempts by Question Type</h6>
-                                <PieChartUI data={questionTypeAttempt} cx={120} cy={120} innerRadius={35} outerRadius={80} />
+                                <PieChartUI data={questionTypeAttempt} cx={120} cy={120} innerRadius={35} outerRadius={80}/>
                             </Col>
                         </Row>
                     </Container>
                 </TabPanel>
             </Tabs>
+
+            <h3>Growth Potential</h3>
+
+            <div className="container">
+
+
+                {props.testAttemptReport !== null &&
+
+                Object.keys(props.testAttemptReport).map(key => {
+
+                    const obj = props.testAttemptReport;
+
+
+                    if (obj[key] != null) {
+
+
+                        return (<div className="row">
+                                <div className="col-6 ">
+                                    <h3 className="lead text-left">{toTitleCase(key).replace(/_/g, " ")}</h3>
+                                </div>
+                                <div className="col-6 my-2 ">
+                                    <Progress
+
+                                        theme={{
+                                            success: {
+                                                symbol: ' ‍',
+                                                color: 'rgb(223, 105, 180)'
+                                            },
+                                            active: {
+                                                symbol: ' ',
+                                                color: '#fbc630'
+                                            },
+                                            default: {
+                                                symbol: ' ',
+                                                color: '#fbc630'
+                                            }
+                                        }}
+
+
+                                        percent={obj[key] * 100}/>
+
+                                </div>
+                            </div>
+                        )
+
+
+                    }
+
+                })
+
+                }
+
+
+            </div>
+
 
         </div>);
 

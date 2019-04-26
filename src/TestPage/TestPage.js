@@ -180,7 +180,7 @@ class TestPage extends React.Component {
                                             if (object.is_complete) {
 
                                                 func = () => {
-                                                    this.viewScores(object.id);
+                                                    // this.viewScores(object.id);
                                                 }
 
                                             }
@@ -253,7 +253,7 @@ class TestPage extends React.Component {
                                             if (object.is_complete) {
 
                                                 func = () => {
-                                                    this.viewScores(object.id);
+                                                    // this.viewScores(object.id);
                                                 }
 
                                             }
