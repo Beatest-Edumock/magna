@@ -356,7 +356,7 @@ function PerformancePageUI(props) {
                 </TabPanel>
             </Tabs>
 
-            <h3>Growth Potential</h3>
+            <h3>Qualitative Analysis</h3>
 
             <div className="container">
 
@@ -394,7 +394,10 @@ function PerformancePageUI(props) {
                                         }}
 
 
-                                        percent={obj[key] * 100}/>
+                                        percent={
+                                            (obj[key] * 100) -
+                                            (obj[key] > .1 ? 10.0 : 0.0)
+                                        }/>
 
                                 </div>
                             </div>
