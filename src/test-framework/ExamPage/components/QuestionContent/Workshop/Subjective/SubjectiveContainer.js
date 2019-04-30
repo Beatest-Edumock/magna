@@ -21,12 +21,13 @@ class Subjective extends React.Component {
 
     constructor(props) {
         super(props);
+        this.timeOfLastUpdate = Date.now();
         this.onSaveClick = this.onSaveClick.bind(this);
         this.onTextChange = this.onTextChange.bind(this);
         this.showSaveWorkNotification = this.showSaveWorkNotification.bind(this);
-        
-        console.log("long ");
-        console.log(props.long_answer);
+
+        // console.log("long ");
+        // console.log(props.long_answer);
 
         this.state = {
             long_answer: props.question.long_answer === null ? RichTextEditor.createEmptyValue() : RichTextEditor.createValueFromString(props.question.long_answer, 'html'),
@@ -44,6 +45,7 @@ class Subjective extends React.Component {
     componentWillReceiveProps(nextProps, nextState) {
 
         if (nextProps.question.id !== this.props.question.id) {
+            this.timeOfLastUpdate = Date.now();
 
             this.showSaveWorkNotification(this.props);
 
@@ -69,6 +71,7 @@ class Subjective extends React.Component {
     }
 
     onTextChange(long_answer) {
+        const now = new Date();
 
 
         this.setState(
@@ -76,6 +79,12 @@ class Subjective extends React.Component {
                 ...this.state,
                 long_answer
             });
+
+        if (now - this.timeOfLastUpdate > 5000) {
+            this.onSaveClick();
+            this.timeOfLastUpdate = now;
+
+        }
     }
 
     render() {

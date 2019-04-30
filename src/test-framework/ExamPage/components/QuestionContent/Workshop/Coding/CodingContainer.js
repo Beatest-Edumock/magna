@@ -43,8 +43,10 @@ class Coding extends React.Component {
         }
     }
 
+
     constructor(props) {
         super(props);
+        this.timeOfLastUpdate = Date.now();
         this.onLanguageChange = this.onLanguageChange.bind(this);
         this.onRunClick = this.onRunClick.bind(this);
         this.onSaveClick = this.onSaveClick.bind(this);
@@ -95,6 +97,8 @@ class Coding extends React.Component {
 
         if (nextProps.question.id !== this.props.question.id) {
 
+            this.timeOfLastUpdate = Date.now();
+
             this.showSaveWorkNotification(this.props);
 
             const long_answer = nextProps.question.long_answer;
@@ -124,6 +128,18 @@ class Coding extends React.Component {
 
 
         }
+
+        // if (nextProps.question.id !== this.props.question.id) {
+        //     console.log("GOT IN");
+        //     setInterval(() => {
+        //
+        //             if (this.state.code !== "" && this.state.selectedLanguage.value)
+        //                 console.log("GAYA");
+        //                 // this.props.updateQuestionAttempt(this.state.code, this.state.selectedLanguage.value);
+        //         },
+        //         1000);
+        //
+        // }
 
         if (this.state.code !== "" && nextProps.question.long_answer === null && (this.props.question.id === nextProps.question.id)) {
 
@@ -173,7 +189,9 @@ class Coding extends React.Component {
         this.setState({...this.state, selectedLanguage: language})
     }
 
+
     onCodeChange(code) {
+        const now = new Date();
 
 
         this.setState(
@@ -181,6 +199,12 @@ class Coding extends React.Component {
                 ...this.state,
                 code
             });
+
+        if (now - this.timeOfLastUpdate > 5000) {
+            this.onSaveClick();
+            this.timeOfLastUpdate = now;
+
+        }
     }
 
     render() {
