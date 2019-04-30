@@ -34,6 +34,7 @@ class PerformancePage extends React.Component {
                                   user={this.props.user}
                                   viewPerformanceClickHandler={this.viewPerformanceClickHandler}
                                   testAttemptReport={this.state.testAttemptReport}
+                                  tabChangeCount={this.state.tabChangeCount}
                                   data={this.state.data}/>;
 
     }
@@ -61,9 +62,12 @@ class PerformancePage extends React.Component {
                 delete data['is_finished'];
                 delete data['create_date'];
                 delete data['finish_date'];
+                let tabChangeCount = data['tab_change_count'];
+
+                delete data['tab_change_count'];
 
 
-                this.setState({...this.state, testAttemptReport: data})
+                this.setState({...this.state, testAttemptReport: data, tabChangeCount})
             })
 
     }
