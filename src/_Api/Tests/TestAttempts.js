@@ -43,4 +43,10 @@ function getPerformanceAPI(testID) {
     return testFramAxios.get(`/tests/${testID}/attempts/performance`)
 }
 
-export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTestAPI, getPerformanceAPI, getTestAttemptReportAPI}
+
+function logTabChangeAPI(testID) {
+    return testFramAxios.post(`/tests/${testID}/attempts/focus`)
+
+}
+
+export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTestAPI, getPerformanceAPI, getTestAttemptReportAPI, logTabChangeAPI}

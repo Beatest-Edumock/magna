@@ -6,8 +6,30 @@ import {ExamPageUI} from "./ExamUI";
 import axios from 'axios'
 import {_fetchAndPushQuestionDetailsAsyncAC} from "../../_Redux/ActionCreators/Test/Sections/Questions/Questions-ActionCreator";
 import {decodeTestIDString} from "../Utilities";
+import {checkVis} from "./FocusChange";
+import {logTabChangeAPI} from "../../_Api/Tests/TestAttempts";
 
 class ExamPageContainer extends React.Component {
+
+
+    testID = null;
+
+    constructor(props) {
+        super(props);
+
+
+        if (!props.isComplete && !props.isReviewMode)
+            checkVis(() => {
+                logTabChangeAPI(this.testID);
+                console.log(this.props.testID);
+            })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.testID = this.props.testID;
+
+
+    }
 
 
     componentDidMount() {
@@ -37,7 +59,9 @@ function mapStateToProps(state, ownProps) {
     return {
         loadingCount: state.test.loadingCount,
         isReviewMode: state.test.reviewMode,
-        user: state.user
+        user: state.user,
+        isComplete: state.test.is_complete,
+        testID: state.test.id
     }
 
 }

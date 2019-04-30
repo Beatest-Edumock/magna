@@ -23,7 +23,7 @@
     "http-proxy-middleware": "^0.19.1",
     "i": "^0.3.6",
     "jQuery": "^1.7.4",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "npm": "^6.7.0",
