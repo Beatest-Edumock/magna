@@ -214,7 +214,7 @@ function mapStateToProps(state, ownProps) {
         user: state.user,
         testID: state.test.id,
         allowSectionJumps: state.test.allow_section_jumps,
-        isTestComplete: state.test.is_complete,
+        isTestComplete: state.test.is_complete || state.test.isReviewMode,
         currentSectionID: state.test.currentSection,
         currentQuestionID: state.test.currentQuestion,
         sections: state.test.sectionsByID,

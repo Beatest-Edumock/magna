@@ -50,6 +50,9 @@ class Coding extends React.Component {
         this.onLanguageChange = this.onLanguageChange.bind(this);
         this.onRunClick = this.onRunClick.bind(this);
         this.onSaveClick = this.onSaveClick.bind(this);
+        this.debouncedSave = _.debounce(this.onSaveClick, 1000);
+
+
         this.onCodeChange = this.onCodeChange.bind(this);
         this.showSaveWorkNotification = this.showSaveWorkNotification.bind(this);
         this.onCheckBoxToggle = this.onCheckBoxToggle.bind(this);
@@ -81,6 +84,7 @@ class Coding extends React.Component {
         };
         this.showSaveWorkNotification(props);
     }
+
 
     onSaveClick() {
 
@@ -191,7 +195,7 @@ class Coding extends React.Component {
 
 
     onCodeChange(code) {
-        const now = new Date();
+
 
 
         this.setState(
@@ -200,11 +204,14 @@ class Coding extends React.Component {
                 code
             });
 
-        if (now - this.timeOfLastUpdate > 5000) {
-            this.onSaveClick();
-            this.timeOfLastUpdate = now;
+        this.debouncedSave();
 
-        }
+
+        // if (now - this.timeOfLastUpdate > 5000) {
+        //     this.onSaveClick();
+        //     this.timeOfLastUpdate = now;
+        //
+        // }
     }
 
     render() {

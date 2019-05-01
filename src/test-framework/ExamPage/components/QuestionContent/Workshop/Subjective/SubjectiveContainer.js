@@ -24,6 +24,7 @@ class Subjective extends React.Component {
         this.timeOfLastUpdate = Date.now();
         this.onSaveClick = this.onSaveClick.bind(this);
         this.onTextChange = this.onTextChange.bind(this);
+        this.debouncedSave = _.debounce(this.onSaveClick, 1000);
         this.showSaveWorkNotification = this.showSaveWorkNotification.bind(this);
 
         // console.log("long ");
@@ -71,7 +72,7 @@ class Subjective extends React.Component {
     }
 
     onTextChange(long_answer) {
-        const now = new Date();
+        // const now = new Date();
 
 
         this.setState(
@@ -80,11 +81,13 @@ class Subjective extends React.Component {
                 long_answer
             });
 
-        if (now - this.timeOfLastUpdate > 5000) {
-            this.onSaveClick();
-            this.timeOfLastUpdate = now;
+        this.debouncedSave();
 
-        }
+        // if (now - this.timeOfLastUpdate > 5000) {
+        //     this.onSaveClick();
+        //     this.timeOfLastUpdate = now;
+        //
+        // }
     }
 
     render() {
