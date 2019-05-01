@@ -55,7 +55,7 @@ testFramAxios.interceptors.response.use(function (response) {
             errCount++;
 
 
-        if (errCount > 2)
+        if (errCount > 5)
             store.dispatch(pushErrorAC("", true));
 
         return Promise.reject(error);
