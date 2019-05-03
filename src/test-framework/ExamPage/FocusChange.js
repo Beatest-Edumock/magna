@@ -17,28 +17,58 @@ function checkVis(callback) {
 
         // checks for Firefox and other  NON IE Chrome versions
         $(window).on("focusin", function () {
-            callback();
+            // var focused = document.hasFocus();
+            //
+            // setTimeout(() => {
+            //     let element = document.querySelector(":focus");
+            //
+            //     console.log(element);
+            //
+            // }, 300);
+            // if (focused)
+            //     callback();
 
         }).on("focusout", function () {
-            callback();
+            console.log("Previous");
+            console.log(element);
+            let element = document.querySelector(":focus");
+
+            setTimeout(() => {
+                let element = document.querySelector(":focus");
+
+                console.log(element);
+
+
+            }, 300);
+
+
+            // console.log(focused);
+            // console.log("AHAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            // if (!focused)
+            //     callback();
 
         });
 
     } else {
+        return;
 
         // checks for IE and Chromium versions
         if (window.addEventListener) {
 
             // bind focus event
             window.addEventListener("focus", function (event) {
-                callback();
+                var focused = document.hasFocus();
+                if (focused)
+                    callback();
 
             }, false);
 
             // bind blur event
             window.addEventListener("blur", function (event) {
 
-                callback();
+                var focused = document.hasFocus();
+                if (focused)
+                    callback();
 
             }, false);
 
@@ -46,13 +76,17 @@ function checkVis(callback) {
 
             // bind focus event
             window.attachEvent("focus", function (event) {
-                callback();
+                var focused = document.hasFocus();
+                if (focused)
+                    callback();
 
             });
 
             // bind focus event
             window.attachEvent("blur", function (event) {
-                callback();
+                var focused = document.hasFocus();
+                if (focused)
+                    callback();
 
 
             });

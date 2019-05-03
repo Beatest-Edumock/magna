@@ -110,6 +110,15 @@ export const TEST_PAGE_ROUTE = (testID, blueprint = false) => {
 
 };
 
+export const CORPORATE_TEST_ROUTE = (slug, testType, blueprint = false) => {
+
+    if (blueprint) {
+        return "/corporates/:slug/tests/:testType"
+    }
+
+    return `/corporates/${slug}/tests/${testType}`
+
+};
 
 export const PLACEMENTS_PAGE_ROUTE = () => {
 

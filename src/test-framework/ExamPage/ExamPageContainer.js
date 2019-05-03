@@ -21,7 +21,6 @@ class ExamPageContainer extends React.Component {
         if (!props.isComplete && !props.isReviewMode)
             checkVis(() => {
                 logTabChangeAPI(this.testID);
-                console.log(this.props.testID);
             })
     }
 

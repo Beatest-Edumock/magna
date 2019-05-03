@@ -1,11 +1,11 @@
 import React from 'react';
-import {Button, NavItem, NavLink} from 'reactstrap';
+import {NavItem, NavLink} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {logoutUserApi} from "../../../_Api/User";
 import {history} from "../../../__internals/CustomHistory";
 import {toast} from 'react-toastify'
 import {NavBar} from "../NavBar";
-import {LOGIN_ROUTE, PLACEMENTS_PAGE_ROUTE, SIGNUP_ROUTE} from "../../../route";
+import {PLACEMENTS_PAGE_ROUTE, SIGNUP_ROUTE} from "../../../route";
 
 
 function profileLoginNavLink(props) {
@@ -15,7 +15,7 @@ function profileLoginNavLink(props) {
 
         <NavLink tag={Link} to={props.isUserLoggedIn ? PLACEMENTS_PAGE_ROUTE() : PLACEMENTS_PAGE_ROUTE()}>
 
-            <button  className="btn btn-sm btn-outline-success ">
+            <button className="btn btn-sm btn-outline-success ">
                 {props.isUserLoggedIn ? "Placements" : "Placements"}
             </button>
 
@@ -34,6 +34,7 @@ function signupLogoutNavLink(props) {
             logoutUserApi().then(() => {
                     props.removeUserAction();
                     toast.success("Successfully Logged Out");
+                    window.location.reload();
                 }
             )
         }
@@ -49,7 +50,7 @@ function signupLogoutNavLink(props) {
     return (
 
         <NavLink>
-            <button  onClick={buttonHandler} className="btn btn-sm btn-outline-primary ">
+            <button onClick={buttonHandler} className="btn btn-sm btn-outline-primary ">
                 {props.isUserLoggedIn ? "Logout" : "Signup"}
             </button>
 
@@ -67,9 +68,11 @@ function NavBarWithButtons(props) {
         <NavBar {...props}>
 
 
+            {!props.hidePlacements &&
             <NavItem>
                 {profileLoginNavLink(props)}
             </NavItem>
+            }
 
             <NavItem>
                 {signupLogoutNavLink(props)}

@@ -13,22 +13,26 @@ import {PlacementsPageContainer} from "./PlacementsPage";
 import {InstructionPage} from "./test-framework/InstructionPage/InstructionPage";
 import {
     ABOUT_US_ROUTE,
+    CORPORATE_TEST_ROUTE,
+    FORGOT_PASSWORD_ROUTE,
     LOGIN_ROUTE,
+    PERFORMANCE_PAGE_ROUTE,
+    PLACEMENTS_PAGE_ROUTE,
+    REFERRAL_SIGNUP_ROUTE,
     RESEND_ACTIVATION_ROUTE,
+    RESET_PASSWORD_ROUTE,
     ROOT_ROUTE,
     SIGNUP_ROUTE,
-    REFERRAL_SIGNUP_ROUTE,
     TERMS_AND_CONDS_ROUTE,
     TEST_INSTRUCTIONS_ROUTE,
     TEST_LIST_ROUTE,
-    TEST_PAGE_ROUTE,
-    PLACEMENTS_PAGE_ROUTE, PERFORMANCE_PAGE_ROUTE, FORGOT_PASSWORD_ROUTE, RESET_PASSWORD_ROUTE
-
+    TEST_PAGE_ROUTE
 } from "./route";
 import {PerformancePageContainer} from "./test-framework/PerformancePage";
 import {NotFoundPage} from "./404Page/404Page";
 import {ForgotPassword} from "./ForgotPasswordPage/ForgotPassword";
 import {ResetPassword} from "./ResetPasswordPage/ResetPassword";
+import {CorporateTestContainer} from "./CorporatesTestPage";
 
 
 const Routes = () => (
@@ -51,6 +55,12 @@ const Routes = () => (
 
             <Route exact path={TEST_PAGE_ROUTE(null, true)} component={ExamPageC}/>
             <Route exact path={PLACEMENTS_PAGE_ROUTE()} component={PlacementsPageContainer}/>
+
+            <Route exact path={TEST_PAGE_ROUTE(null, true)} component={ExamPageC}/>
+            <Route exact path={PLACEMENTS_PAGE_ROUTE()} component={PlacementsPageContainer}/>
+
+
+            <Route exact path={CORPORATE_TEST_ROUTE(null, null, true)} component={CorporateTestContainer}/>
 
 
             <Route exact path={TEST_INSTRUCTIONS_ROUTE(null, true)} component={InstructionPage}/>
