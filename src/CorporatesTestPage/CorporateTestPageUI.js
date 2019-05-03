@@ -9,6 +9,7 @@ import {LoginModal} from '../Common/LoginModal/LoginModal'
 import {PERFORMANCE_PAGE_ROUTE, TEST_INSTRUCTIONS_ROUTE} from "../route";
 import {TopBannerUI} from "./TopBannerUI";
 import {TestCard} from "../Common/TestCard";
+import {history} from "../__internals/CustomHistory";
 
 const bodyStyle = {
     background: 'radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)) ,url(/img/landing-3.jpg) no-repeat center',
@@ -67,9 +68,17 @@ class CorporateTestPageUI extends React.Component {
     startTest(testID) {
 
 
+        if (navigator.userAgent.includes("SEB")) {
+
+            history.replace(TEST_INSTRUCTIONS_ROUTE(testID));
+        }
+
+        return;
+
+
+
+
         let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
-
-
         windowReference.location = TEST_INSTRUCTIONS_ROUTE(testID);
 
 

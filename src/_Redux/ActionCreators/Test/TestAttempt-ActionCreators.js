@@ -37,8 +37,8 @@ function submitTestAsyncAc() {
                         window.opener.location.reload(true);
                         window.close();
                     }
-                    else {
-                        // probably a proctored browser
+                    else if (navigator.userAgent.includes("SEB")) {
+                        // a proctored browser
 
                         logoutUserApi().then(() => {
                             window.location.href = TEST_INSTRUCTIONS_ROUTE(state.test.id);
