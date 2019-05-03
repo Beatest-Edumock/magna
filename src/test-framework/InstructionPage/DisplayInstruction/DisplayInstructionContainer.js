@@ -1,7 +1,3 @@
-// Author @ Kyaw Khant Nyar
-// Last Edit: Sept 3, 2018
-
-
 // Imports
 import React, {Component} from 'react'
 import {DisplayInstructionUI} from "./DisplayInstructionUI";
@@ -11,14 +7,17 @@ import {history} from "../../../__internals/CustomHistory";
 import PropTypes from 'prop-types';
 import {PERFORMANCE_PAGE_ROUTE} from "../../../route";
 import {encodeTestID} from "../../Utilities";
+import {LoginModal} from "./LoginModal/LoginModal";
+import {connect} from 'react-redux';
 
 
 // DisplayInstructionContainer
-class DisplayInstructionContainer extends Component {
+class DisplayInstruction extends Component {
 
     constructor(props) {
         super(props);
         this.handleClick = this.startTestHandelClick.bind(this);
+        this.startTest = this.startTest.bind(this);
 
     }
 
@@ -26,6 +25,7 @@ class DisplayInstructionContainer extends Component {
     state = {
         instructions: '',
         title: '',
+        shouldShowModal: false
 
     };
 
@@ -33,6 +33,21 @@ class DisplayInstructionContainer extends Component {
      * on click handler for start test button
      */
     startTestHandelClick() {
+
+        if (!this.props.user) {
+            this.setState({...this.state, shouldShowModal: true});
+            return;
+        }
+        else {
+            this.startTest();
+        }
+
+
+    };
+
+
+    startTest() {
+
         this.setState({...this.state, instructions: ''});
 
         startTestAPI(this.props.testID)
@@ -48,13 +63,12 @@ class DisplayInstructionContainer extends Component {
 
             // fixme find a better way to take user to
             // the performance page since test is already complete
-            if (response.data.error_code === "TAC001") {
-                history.replace(PERFORMANCE_PAGE_ROUTE(this.props.testID));
-            }
+            // if (response.data.error_code === "TAC001") {
+            //     history.replace(PERFORMANCE_PAGE_ROUTE(this.props.testID));
+            // }
 
         });
-
-    };
+    }
 
     componentDidMount() {
         getTestDetailsAPI(this.props.testID)
@@ -74,11 +88,27 @@ class DisplayInstructionContainer extends Component {
         return (
             <div>
                 <DisplayInstructionUI instructions={this.state.instructions} name={this.state.title} startfunc={this.handleClick}/>
+                <LoginModal modal={this.state.shouldShowModal} onLoginCallback={() => {
+                    console.log("TESTING");
+                    this.startTest();
+                }}/>
             </div>
         )
     }
 }
 
+
+function mapStateToProps(state, ownProps) {
+
+    return {
+        isUserLoggedIn: state.user,
+        user: state.user,
+        ownProps
+    }
+
+}
+
+const DisplayInstructionContainer = connect(mapStateToProps)(DisplayInstruction);
 export {DisplayInstructionContainer}
 
 DisplayInstructionContainer.propTypes = {

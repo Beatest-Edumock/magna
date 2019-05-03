@@ -24,6 +24,10 @@ class LoginFormContainer extends React.Component {
             }
 
             toast.success(`Welcome ${data.full_name}`);
+            if (this.props.onLoginCallback) {
+                this.props.onLoginCallback();
+            }
+
 
         }).catch(({response}) => {
             setErrors({info: response.data.message});

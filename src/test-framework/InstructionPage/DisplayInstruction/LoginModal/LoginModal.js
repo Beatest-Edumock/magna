@@ -1,7 +1,7 @@
 import React from 'react';
 import {Modal, ModalBody, ModalHeader} from 'reactstrap';
-import {LoginFormContainer} from '../../LoginPage/LoginForm/LoginFormContainer'
-import {UserActions} from "../UserActions";
+import {LoginFormContainer} from "../../../../LoginPage/LoginForm/LoginFormContainer";
+import {UserActions} from "../../../../Common/UserActions";
 
 class LoginModal extends React.Component {
     constructor(props) {
@@ -23,6 +23,7 @@ class LoginModal extends React.Component {
         });
     }
 
+
     render() {
         return (
             <div>
@@ -30,6 +31,8 @@ class LoginModal extends React.Component {
                     <ModalHeader toggle={this.toggle}>Login</ModalHeader>
                     <ModalBody>
                         <LoginFormContainer shouldAutoDirect={false} onLoginCallback={() => {
+                            console.log("HMMMMMM");
+
                             this.props.onLoginCallback();
                         }}/>
                     </ModalBody>

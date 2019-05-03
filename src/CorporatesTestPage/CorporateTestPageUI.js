@@ -22,6 +22,7 @@ class CorporateTestPageUI extends React.Component {
     state = {
         data: "",
         modal: false,
+        loginSuccessFul: false
     }
 
     componentWillReceiveProps({data, isUserLoggedIn}) {
@@ -45,20 +46,26 @@ class CorporateTestPageUI extends React.Component {
     toggle(tab) {
         if (this.state.activeTab !== tab) {
             this.setState({
+                ...this.state,
                 activeTab: tab,
                 modal: false,
             });
         }
     }
 
-    showModal() {
+    showModal(testID) {
+
         this.setState({
+            ...this.state,
             modal: true,
+            selectedTestID: testID, // the modal popped when user clicked on this test
+            loginSuccessFul: false
         });
 
     }
 
     startTest(testID) {
+
 
         let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
 
@@ -78,6 +85,18 @@ class CorporateTestPageUI extends React.Component {
 
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.loginSuccessFul === false && nextState.loginSuccessFul === true) {
+            this.startTest(this.state.selectedTestID);
+            return false;
+
+        }
+
+        return true;
+
+
+    };
+
     render() {
         return (
             <div>
@@ -86,91 +105,103 @@ class CorporateTestPageUI extends React.Component {
                     <NavBarWithButtonsContainer hidePlacements={true}/>
                     {
                         !this.props.isUserLoggedIn &&
-                        <LoginModal modal={this.state.modal}/>
-                    }
+                        <LoginModal modal={this.state.modal} onLoginCallback={() => {
+
+                            setTimeout(
+                                () => {
+                                    this.setState({...this.state, loginSuccessFul: true})
+                                }
+                                , 1500
+                            );
 
 
-                    <div>
+                        }
 
-
-                        <Jumbotron fluid className="bg-white">
-                            <Container>
-
-
-                                <TopBannerUI corporate={this.props.corporate}/>
-
-
-                            </Container>
-                        </Jumbotron>
+                        }/>
+                        }
 
 
                         <div>
 
 
-                            <hr/>
-                            <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
-                                {(this.state.data) &&
-
-                                this.state.data.map((object) => {
-
-                                    let func;
+                            <Jumbotron fluid className="bg-white">
+                                <Container>
 
 
-                                    if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0)) {
-                                        func = () => {
-                                            this.startTest(object.id);
+                                    <TopBannerUI corporate={this.props.corporate}/>
+
+
+                                </Container>
+                            </Jumbotron>
+
+
+                            <div>
+
+
+                                <hr/>
+                                <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
+                                    {(this.state.data) &&
+
+                                    this.state.data.map((object) => {
+
+                                        let func;
+
+
+                                        if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0)) {
+                                            func = () => {
+                                                this.startTest(object.id);
+                                            }
+
+
+                                        }
+                                        if (!this.props.isUserLoggedIn) {
+                                            func = () => {
+                                                this.showModal(object.id);
+                                            }
+                                        }
+
+                                        if (object.is_complete) {
+
+                                            func = () => {
+                                                this.viewScores(object.id);
+                                            }
+
                                         }
 
 
-                                    }
-                                    if (!this.props.isUserLoggedIn) {
-                                        func = () => {
-                                            this.showModal();
-                                        }
-                                    }
+                                        return (
+                                            <div className="col-lg-3 col-md-4 col-sm-6 px-3 py-5">
 
-                                    if (object.is_complete) {
 
-                                        func = () => {
-                                            this.viewScores(object.id);
-                                        }
+                                                <TestCard testDetails={object} onClick={func}/>
+
+                                            </div>
+                                        );
+
+                                    })
 
                                     }
+                                </Row>
+                            </div>
 
-
-                                    return (
-                                        <div className="col-lg-3 col-md-4 col-sm-6 px-3 py-5">
-
-
-                                            <TestCard testDetails={object} onClick={func}/>
-
-                                        </div>
-                                    );
-
-                                })
-
-                                }
-                            </Row>
                         </div>
+                        < Footer / >
 
-                    </div>
-                    <Footer/>
+                        < /div>
+                        </div>
+                        );
 
-                </div>
-            </div>
-        );
-
-    }
-}
+                    }
+                    }
 
 
-export {CorporateTestPageUI};
+                    export {CorporateTestPageUI};
 
 
-CorporateTestPageUI.propTypes = {
-    data: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.object
-    ]),
+                    CorporateTestPageUI.propTypes = {
+                    data: PropTypes.oneOfType([
+                    PropTypes.string,
+                    PropTypes.object
+                    ]),
 
-}
+                }

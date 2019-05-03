@@ -2,6 +2,8 @@ import {TEST_MARK_COMPLETE, TEST_PUSH_ATTEMPTS} from "../../actions/test";
 import {finishTestAPI} from "../../../_Api/Tests/TestAttempts";
 import {updateQuestionAttemptTimeAPI} from "../../../_Api/Tests/Sections/Questions/QuestionAttempts";
 import {questionVisitTimeStampObj} from "../Test/Test-ActionCreator";
+import {logoutUserApi} from "../../../_Api/User";
+import {TEST_INSTRUCTIONS_ROUTE} from "../../../route";
 
 function pushTestAttemptAC(testAttempt) {
     return {type: TEST_PUSH_ATTEMPTS, testAttempt}
@@ -30,8 +32,20 @@ function submitTestAsyncAc() {
 
 
                     // refresh the parent window
-                    window.opener.location.reload(true);
-                    window.close();
+
+                    if (window.opener) {
+                        window.opener.location.reload(true);
+                        window.close();
+                    }
+                    else {
+                        // probably a proctored browser
+
+                        logoutUserApi().then(() => {
+                            window.location.href = TEST_INSTRUCTIONS_ROUTE(state.test.id);
+
+
+                        })
+                    }
                 }
             )
 

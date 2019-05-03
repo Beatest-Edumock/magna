@@ -9,6 +9,14 @@ class CorporateTestWrapper extends React.Component {
 
     state = {
         data: ""
+    };
+
+
+    componentDidUpdate(prevProps, prevState) {
+        // if (prevProps.user === null && this.props.user !== null) {
+        //     window.location.reload();
+        // }
+
     }
 
     componentDidMount() {
