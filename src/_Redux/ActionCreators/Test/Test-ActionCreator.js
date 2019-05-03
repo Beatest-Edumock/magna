@@ -106,9 +106,9 @@ function updateCurrentQuestionScoreAsyncAC(newScore) {
 
 }
 
-function setReiviewModeAC() {
+function setReiviewModeAC(superAdmin) {
     return {
-        type: TEST_SET_REVIEW
+        type: TEST_SET_REVIEW, superAdmin
     }
 
 }

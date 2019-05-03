@@ -311,10 +311,13 @@ function updateQuestionScore(state, {questionID, newScore}) {
 
 }
 
-function setReviewMode(state) {
+function setReviewMode(state, action) {
+
     return {
         ...state,
-        reviewMode: true
+        reviewMode: true,
+        superAdmin: action.superAdmin
+
     }
 
 }

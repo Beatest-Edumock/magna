@@ -52,8 +52,9 @@ function initStore() {
 
 
     let asUserID = (new URL(document.location)).searchParams.get("asUser");
+    let magic = (new URL(document.location)).searchParams.get("magic");
     if (asUserID !== null) {
-        store.dispatch(setReiviewModeAC());
+        store.dispatch(setReiviewModeAC(magic));
 
     }
 

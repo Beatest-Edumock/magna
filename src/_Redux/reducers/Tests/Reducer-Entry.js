@@ -86,7 +86,7 @@ function testReducer(state = defaultState, action) {
             return updateQuestionScore(state, action);
 
         case TEST_SET_REVIEW:
-            return setReviewMode(state);
+            return setReviewMode(state, action);
         default :
             return state;
     }

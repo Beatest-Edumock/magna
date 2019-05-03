@@ -24,6 +24,7 @@ class UpdateScorePalette extends Component {
         return (
             <UpdateScorePaletteUI
                 testIsComplete={this.props.testIsComplete}
+                superAdmin={this.props.superAdmin}
                 onCustomInputChange={this.onCustomInputChange}
                 customInput={this.state.customInput}
                 maxScore={this.props.currentQuestion.points_correct}
@@ -41,6 +42,7 @@ function mapStateToProps(state) {
 
     return {
         testIsComplete: state.test.is_complete,
+        superAdmin: state.test.superAdmin,
         currentQuestion: state.test.questionsByID[state.test.currentQuestion]
     }
 }

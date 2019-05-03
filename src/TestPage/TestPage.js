@@ -103,8 +103,8 @@ class TestPage extends React.Component {
                             </Container>
 
                         </Jumbotron>
-                        <div >
-                            <Nav tabs className="d-none" style={{width: '100%', justifyContent: 'center', borderBottom: 0, marginBottom: '2%', marginTop: '6%'}}>
+                        <div>
+                            <Nav tabs style={{width: '100%', justifyContent: 'center', borderBottom: 0, marginBottom: '2%', marginTop: '6%'}}>
                                 <NavItem>
                                     <NavLink
                                         style={{borderColor: '#dee2e6'}}
@@ -128,151 +128,151 @@ class TestPage extends React.Component {
                                     </NavLink>
                                 </NavItem>
                             </Nav>
-                                <TabContent style={{marginBottom: '3%'}} activeTab={this.state.activeTab}>
-                                    <TabPane tabId="1">
-                                        <Row className="d-none" style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
-                                            <Col sm="12">
-                                                <Container>
-                                                    <Row style={{justifyContent: 'center'}}>
-                                                        {
-                                                            MOCK_TESTS_CARD_ELEMENTS.map((feature_card) => {
-                                                                return (
-                                                                    <LargeFeatureCard
-                                                                        fullWidthSize="col-lg-4"
-                                                                        icon={feature_card.icon}
-                                                                        text={feature_card.text}
-                                                                    />
+                            <TabContent style={{marginBottom: '3%'}} activeTab={this.state.activeTab}>
+                                <TabPane tabId="1">
+                                    <Row style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
+                                        <Col sm="12">
+                                            <Container>
+                                                <Row style={{justifyContent: 'center'}}>
+                                                    {
+                                                        MOCK_TESTS_CARD_ELEMENTS.map((feature_card) => {
+                                                            return (
+                                                                <LargeFeatureCard
+                                                                    fullWidthSize="col-lg-4"
+                                                                    icon={feature_card.icon}
+                                                                    text={feature_card.text}
+                                                                />
 
 
-                                                                );
-                                                            })
-                                                        }
-                                                    </Row>
-                                                </Container>
-                                            </Col>
-                                        </Row>
-                                        <hr/>
-                                        <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
-                                            {(this.state.data) &&
-
-                                            this.state.data.map((object) => {
-
-
-                                                if (object.character !== "Mock")
-                                                    return;
-
-                                                let func;
-
-
-                                                if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0)) {
-                                                    func = () => {
-                                                        this.startTest(object.id);
+                                                            );
+                                                        })
                                                     }
+                                                </Row>
+                                            </Container>
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                    <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
+                                        {(this.state.data) &&
+
+                                        this.state.data.map((object) => {
 
 
-                                                }
-                                                if (!this.props.isUserLoggedIn) {
-                                                    func = () => {
-                                                        this.showModal();
-                                                    }
+                                            if (object.character !== "Mock")
+                                                return;
+
+                                            let func;
+
+
+                                            if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0)) {
+                                                func = () => {
+                                                    this.startTest(object.id);
                                                 }
 
-                                                if (object.is_complete) {
-
-                                                    func = () => {
-                                                        // this.viewScores(object.id);
-                                                    }
-
-                                                }
-
-
-                                                return (
-                                                    <div className="col-lg-3 col-md-4 col-sm-6 px-3 py-5">
-
-
-                                                        <TestCard testDetails={object} onClick={func}/>
-
-                                                    </div>
-                                                );
-
-
-                                            })
 
                                             }
-                                        </Row>
-                                    </TabPane>
-                                    <TabPane tabId="2">
-                                        <Row style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
-                                            <Col sm="12">
-                                                <Container>
-                                                    <Row style={{justifyContent: 'center'}}>
-                                                        {
-                                                            TOPIC_TESTS_CARD_ELEMENTS.map((feature_card) => {
-                                                                return (
-                                                                    <LargeFeatureCard
-                                                                        fullWidthSize="col-lg-4"
-                                                                        icon={feature_card.icon}
-                                                                        text={feature_card.text}
-                                                                    />
-
-
-                                                                );
-                                                            })
-                                                        }
-                                                    </Row>
-                                                </Container>
-                                            </Col>
-
-                                        </Row>
-
-                                        <hr/>
-                                        <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
-                                            {(this.state.data) &&
-
-                                            this.state.data.map((object) => {
-
-                                                if (object.character !== "Topic")
-                                                    return;
-
-                                                let func;
-
-
-                                                if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0)) {
-                                                    func = () => {
-                                                        this.startTest(object.id);
-                                                    }
-
-
+                                            if (!this.props.isUserLoggedIn) {
+                                                func = () => {
+                                                    this.showModal();
                                                 }
-                                                if (!this.props.isUserLoggedIn) {
-                                                    func = () => {
-                                                        this.showModal();
-                                                    }
+                                            }
+
+                                            if (object.is_complete) {
+
+                                                func = () => {
+                                                    this.viewScores(object.id);
                                                 }
-
-                                                if (object.is_complete) {
-
-                                                    func = () => {
-                                                        // this.viewScores(object.id);
-                                                    }
-
-                                                }
-
-
-                                                return (
-                                                    <div className="col-lg-3 col-md-4 col-sm-6 px-3 py-5">
-
-                                                        <TestCard testDetails={object} onClick={func}/>
-
-                                                    </div>
-                                                );
-
-                                            })
 
                                             }
-                                        </Row>
-                                    </TabPane>
-                                </TabContent>
+
+
+                                            return (
+                                                <div className="col-lg-3 col-md-4 col-sm-6 px-3 py-5">
+
+
+                                                    <TestCard testDetails={object} onClick={func}/>
+
+                                                </div>
+                                            );
+
+
+                                        })
+
+                                        }
+                                    </Row>
+                                </TabPane>
+                                <TabPane tabId="2">
+                                    <Row style={{marginBottom: '3%', marginLeft: 0, marginRight: 0}}>
+                                        <Col sm="12">
+                                            <Container>
+                                                <Row style={{justifyContent: 'center'}}>
+                                                    {
+                                                        TOPIC_TESTS_CARD_ELEMENTS.map((feature_card) => {
+                                                            return (
+                                                                <LargeFeatureCard
+                                                                    fullWidthSize="col-lg-4"
+                                                                    icon={feature_card.icon}
+                                                                    text={feature_card.text}
+                                                                />
+
+
+                                                            );
+                                                        })
+                                                    }
+                                                </Row>
+                                            </Container>
+                                        </Col>
+
+                                    </Row>
+
+                                    <hr/>
+                                    <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
+                                        {(this.state.data) &&
+
+                                        this.state.data.map((object) => {
+
+                                            if (object.character !== "Topic")
+                                                return;
+
+                                            let func;
+
+
+                                            if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0)) {
+                                                func = () => {
+                                                    this.startTest(object.id);
+                                                }
+
+
+                                            }
+                                            if (!this.props.isUserLoggedIn) {
+                                                func = () => {
+                                                    this.showModal();
+                                                }
+                                            }
+
+                                            if (object.is_complete) {
+
+                                                func = () => {
+                                                    // this.viewScores(object.id);
+                                                }
+
+                                            }
+
+
+                                            return (
+                                                <div className="col-lg-3 col-md-4 col-sm-6 px-3 py-5">
+
+                                                    <TestCard testDetails={object} onClick={func}/>
+
+                                                </div>
+                                            );
+
+                                        })
+
+                                        }
+                                    </Row>
+                                </TabPane>
+                            </TabContent>
                         </div>
 
                     </div>
