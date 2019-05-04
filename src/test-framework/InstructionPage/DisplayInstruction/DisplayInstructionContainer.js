@@ -5,7 +5,6 @@ import {getTestDetailsAPI} from "../../../_Api/Tests/Tests";
 import {startTestAPI} from "../../../_Api/Tests/TestAttempts";
 import {history} from "../../../__internals/CustomHistory";
 import PropTypes from 'prop-types';
-import {PERFORMANCE_PAGE_ROUTE} from "../../../route";
 import {encodeTestID} from "../../Utilities";
 import {LoginModal} from "./LoginModal/LoginModal";
 import {connect} from 'react-redux';
@@ -53,8 +52,7 @@ class DisplayInstruction extends Component {
         startTestAPI(this.props.testID)
             .then(() => {
 
-                    // user should not be able to go 'back'
-                    history.replace(`/test/${encodeTestID(this.props.testID)}`)
+                    history.push(`/test/${encodeTestID(this.props.testID)}`)
 
 
                 }
@@ -89,7 +87,6 @@ class DisplayInstruction extends Component {
             <div>
                 <DisplayInstructionUI instructions={this.state.instructions} name={this.state.title} startfunc={this.handleClick}/>
                 <LoginModal modal={this.state.shouldShowModal} onLoginCallback={() => {
-                    console.log("TESTING");
                     this.startTest();
                 }}/>
             </div>
@@ -113,4 +110,4 @@ export {DisplayInstructionContainer}
 
 DisplayInstructionContainer.propTypes = {
     testID: PropTypes.string
-}
+};

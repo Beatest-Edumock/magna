@@ -51,11 +51,11 @@ testFramAxios.interceptors.response.use(function (response) {
     },
     function (error) {
 
-        if (error.response.data.error_code === "PF0253" || error.response.data.error_code === "PF666")
+        if (error.response.data.error_code === "PF0253" || error.response.data.error_code === "PF666" )
             errCount++;
 
 
-        if (errCount > 5)
+        if (errCount > 0)
             store.dispatch(pushErrorAC("", true));
 
         return Promise.reject(error);

@@ -2,8 +2,7 @@ import {TEST_MARK_COMPLETE, TEST_PUSH_ATTEMPTS} from "../../actions/test";
 import {finishTestAPI} from "../../../_Api/Tests/TestAttempts";
 import {updateQuestionAttemptTimeAPI} from "../../../_Api/Tests/Sections/Questions/QuestionAttempts";
 import {questionVisitTimeStampObj} from "../Test/Test-ActionCreator";
-import {logoutUserApi} from "../../../_Api/User";
-import {TEST_INSTRUCTIONS_ROUTE} from "../../../route";
+import {history} from "../../../__internals/CustomHistory";
 
 function pushTestAttemptAC(testAttempt) {
     return {type: TEST_PUSH_ATTEMPTS, testAttempt}
@@ -39,12 +38,12 @@ function submitTestAsyncAc() {
                     }
                     else if (navigator.userAgent.includes("SEB")) {
                         // a proctored browser
-
-                        logoutUserApi().then(() => {
-                            window.location.href = TEST_INSTRUCTIONS_ROUTE(state.test.id);
+                        history.go(-2);
 
 
-                        })
+                        // logoutUserApi().then(() => {
+                        //     window.location.href = (state.test.id);
+                        // })
                     }
                 }
             )

@@ -15,7 +15,10 @@ import {UpdateScorePalette} from "./components/UpdateScorePalette";
 
 class ExamPageUI extends React.Component {
 
+
     render() {
+
+
         if (this.props.loading)
             return <LoadingSpinner/>;
         else {

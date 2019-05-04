@@ -70,12 +70,9 @@ class CorporateTestPageUI extends React.Component {
 
         if (navigator.userAgent.includes("SEB")) {
 
-            history.replace(TEST_INSTRUCTIONS_ROUTE(testID));
+            history.push(TEST_INSTRUCTIONS_ROUTE(testID));
             return;
         }
-
-
-
 
 
         let windowReference = window.open("", "_blank", "height=8000, width=8000,status=yes,toolbar=no,menubar=no,location=no");
@@ -127,90 +124,91 @@ class CorporateTestPageUI extends React.Component {
                         }
 
                         }/>
-                        }
+                    }
+
+
+                    <div>
+
+
+                        <Jumbotron fluid className="bg-white">
+                            <Container>
+
+
+                                <TopBannerUI corporate={this.props.corporate}/>
+
+
+                            </Container>
+                        </Jumbotron>
 
 
                         <div>
 
 
-                            <Jumbotron fluid className="bg-white">
-                                <Container>
+                            <hr/>
+                            <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
+                                {(this.state.data) &&
+
+                                this.state.data.map((object) => {
+
+                                    let func;
 
 
-                                    <TopBannerUI corporate={this.props.corporate}/>
-
-
-                                </Container>
-                            </Jumbotron>
-
-
-                            <div>
-
-
-                                <hr/>
-                                <Row style={{justifyContent: 'center', marginLeft: 0, marginRight: 0}}>
-                                    {(this.state.data) &&
-
-                                    this.state.data.map((object) => {
-
-                                        let func;
-
-
-                                        if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0)) {
-                                            func = () => {
-                                                this.startTest(object.id);
-                                            }
-
-
-                                        }
-                                        if (!this.props.isUserLoggedIn) {
-                                            func = () => {
-                                                this.showModal(object.id);
-                                            }
+                                    if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0)) {
+                                        func = () => {
+                                            this.startTest(object.id);
                                         }
 
-                                        if (object.is_complete) {
-
-                                            func = () => {
-                                                // this.viewScores(object.id);
-                                            }
-
-                                        }
-
-
-                                        return (
-                                            <div className="col-lg-3 col-md-4 col-sm-6 px-3 py-5">
-
-
-                                                <TestCard testDetails={object} onClick={func}/>
-
-                                            </div>
-                                        );
-
-                                    })
 
                                     }
-                                </Row>
-                            </div>
+                                    if (!this.props.isUserLoggedIn) {
+                                        func = () => {
+                                            this.showModal(object.id);
+                                        }
+                                    }
 
+                                    if (object.is_complete) {
+
+                                        func = () => {
+                                            // this.viewScores(object.id);
+                                        }
+
+                                    }
+
+
+                                    return (
+                                        <div className="col-lg-3 col-md-4 col-sm-6 px-3 py-5">
+
+
+                                            <TestCard testDetails={object} onClick={func}/>
+
+                                        </div>
+                                    );
+
+                                })
+
+                                }
+                            </Row>
                         </div>
-                        < Footer / >
 
-                        < /div>
-                        </div>
-                        );
+                    </div>
+                    < Footer / >
 
-                    }
-                    }
-
-
-                    export {CorporateTestPageUI};
-
-
-                    CorporateTestPageUI.propTypes = {
-                    data: PropTypes.oneOfType([
-                    PropTypes.string,
-                    PropTypes.object
-                    ]),
+                    <
+                    /div>
+                </div>
+                );
 
                 }
+                }
+
+
+                export {CorporateTestPageUI};
+
+
+                CorporateTestPageUI.propTypes = {
+                data: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.object
+                ]),
+
+            }

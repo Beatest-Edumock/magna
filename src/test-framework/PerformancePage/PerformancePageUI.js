@@ -414,13 +414,13 @@ function PerformancePageUI(props) {
                 }
 
 
-                {props.testAttemptReport !== null &&
-                <>
-                    <h3 className="justify-content-start">Number of tab changes</h3>
-                    <h3 className="text-muted"> {props.tabChangeCount}</h3>
-                </>
-
-                }
+                {/*{props.testAttemptReport !== null &&*/}
+                {/*<>*/}
+                    {/*<h3 className="justify-content-start">Number of tab changes</h3>*/}
+                    {/*<h3 className="text-muted"> {props.tabChangeCount}</h3>*/}
+                {/*</>*/}
+                {/**/}
+                {/*}*/}
 
 
             </div>
