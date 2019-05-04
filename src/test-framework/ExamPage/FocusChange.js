@@ -9,6 +9,12 @@ function changed() {
 
 function checkVis(callback) {
 
+    window.addEventListener("blur", function (event) {
+        callback();
+    }, false);
+
+    return;
+
 
     var notIE = (document.documentMode === undefined),
         isChromium = window.chrome;
@@ -29,8 +35,8 @@ function checkVis(callback) {
             //     callback();
 
         }).on("focusout", function () {
-            console.log("Previous");
-            console.log(element);
+            // console.log("Previous");
+            // console.log(element);
             let element = document.querySelector(":focus");
 
             setTimeout(() => {
@@ -42,10 +48,8 @@ function checkVis(callback) {
             }, 300);
 
 
-            // console.log(focused);
-            // console.log("AHAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            // if (!focused)
-            //     callback();
+            if (!focused)
+                callback();
 
         });
 
