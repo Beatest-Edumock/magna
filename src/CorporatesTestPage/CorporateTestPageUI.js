@@ -71,9 +71,9 @@ class CorporateTestPageUI extends React.Component {
         if (navigator.userAgent.includes("SEB")) {
 
             history.replace(TEST_INSTRUCTIONS_ROUTE(testID));
+            return;
         }
 
-        return;
 
 
 
