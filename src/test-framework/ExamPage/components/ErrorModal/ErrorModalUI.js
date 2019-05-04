@@ -25,7 +25,18 @@ class ErrorModalUI extends React.Component {
 
 
             setTimeout(() => {
-                    history.go(-2);
+
+                    if (navigator.userAgent.includes("SEB")) {
+
+                        history.go(-2);
+                    }
+                    else {
+
+                        if (window.opener) {
+                            window.opener.location.reload(true);
+                            window.close();
+                        }
+                    }
                 }
                 , 5000);
         }
