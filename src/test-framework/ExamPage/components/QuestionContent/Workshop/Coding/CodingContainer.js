@@ -184,7 +184,10 @@ class Coding extends React.Component {
 
         runCodeAPI(this.state.code, this.state.selectedLanguage.value, inputs)
             .then(({data}) => {
-                this.setState({...this.state, outputs: data[0], runTimes: data[1], currentlyRunning: false,})
+                this.setState({...this.state, outputs: data[0], runTimes: data[1], currentlyRunning: false,});
+
+                this.testCaseDisplay.scrollIntoView({block: 'end', behavior: 'smooth'});
+
             });
 
     }
@@ -195,7 +198,6 @@ class Coding extends React.Component {
 
 
     onCodeChange(code) {
-
 
 
         this.setState(
@@ -223,8 +225,12 @@ class Coding extends React.Component {
         }
 
         return (<CodingUI onLanguageChange={this.onLanguageChange}
+
+                          setRef={(ref) => {
+                              console.log("HMMMMMMMMMMMMM");
+                              this.testCaseDisplay = ref;
+                          }}
                           onRunClick={this.onRunClick}
-                          onCheckBoxToggle={this.onCheckBoxToggle}
                           onCheckBoxToggle={this.onCheckBoxToggle}
                           onSaveClick={this.onSaveClick}
                           onCodeChange={this.onCodeChange}

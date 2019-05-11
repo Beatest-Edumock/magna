@@ -8,7 +8,6 @@ import LoadingOverlay from 'react-loading-overlay';
 import 'brace/ext/language_tools';
 
 
-
 require('brace/mode/java');
 require('brace/mode/python');
 require('brace/mode/c_cpp');
@@ -18,6 +17,13 @@ require('brace/theme/solarized_light');
 
 
 class CodingUI extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.ref = null
+
+    }
 
 
     render() {
@@ -78,9 +84,9 @@ class CodingUI extends React.Component {
                 <div className="offset-7 row">
 
                     <div className="col-4 px-1">
-                    {
-                         <input type="checkbox" checked={this.props.isChecked} onChange={this.props.onCheckBoxToggle}/>
-                    }
+                        {
+                            <input type="checkbox" checked={this.props.isChecked} onChange={this.props.onCheckBoxToggle}/>
+                        }
                         <span> Custom Input </span>
                     </div>
 
@@ -106,20 +112,22 @@ class CodingUI extends React.Component {
 
 
                 {this.props.isChecked &&
-                    <div className="col-2 px-1">
-                        Custom Input :
-                        <textarea rows="2" cols="25" value={this.props.customInput} onChange={this.props.onCustomInputChange}/>
-                    </div>
+                <div className="col-2 px-1">
+                    Custom Input :
+                    <textarea rows="2" cols="25" value={this.props.customInput} onChange={this.props.onCustomInputChange}/>
+                </div>
                 }
 
                 {this.props.outputs &&
                 <div className="row  my-2 ">
                     <div className="col-12 ">
-                        <TestCaseDisplay inputs={this.props.inputs}
-                                         userOutputs={this.props.outputs}
-                                         correctOutputs={this.props.correctOutputs}
-                                         runTimes={this.props.runTimes}
-                                         isCustomInput={this.props.isChecked}/>
+                        <TestCaseDisplay
+                            setRef={this.props.setRef}
+                            inputs={this.props.inputs}
+                            userOutputs={this.props.outputs}
+                            correctOutputs={this.props.correctOutputs}
+                            runTimes={this.props.runTimes}
+                            isCustomInput={this.props.isChecked}/>
                     </div>
                 </div>
                 }
