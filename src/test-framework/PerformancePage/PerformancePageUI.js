@@ -470,27 +470,27 @@ function PerformancePageUI(props) {
                                     let description = "This trait determines how we interact with our environment.";
 
 
-                                    if (i === 0) {
+                                    if (i === 2) {
 
                                         leftText = "Extroverted";
                                         rightText = "Introverted";
                                     }
-                                    else if (i === 1) {
+                                    else if (i === 0) {
 
                                         leftText = "Intuitive";
                                         rightText = "Observant";
                                     }
-                                    else if (i === 2) {
+                                    else if (i === 3) {
 
                                         leftText = "Thinking";
                                         rightText = "Feeling";
                                     }
-                                    else if (i === 3) {
+                                    else if (i === 4) {
 
                                         leftText = "Judging";
                                         rightText = "Prospecting";
                                     }
-                                    else if (i === 4) {
+                                    else if (i === 1) {
 
                                         leftText = "Assertive";
                                         rightText = "Turbulent";
@@ -509,8 +509,8 @@ function PerformancePageUI(props) {
                                             <div className="col my-2 ">
                                                 <div>
 
-                                                    <p style={{float: "left"}}>{leftText}</p>
-                                                    <p style={{float: "right"}}>{rightText}</p>
+                                                    <p style={{float: "right"}}>{leftText}</p>
+                                                    <p style={{float: "left"}}>{rightText}</p>
 
                                                     <div className="">
                                                         <Progress
