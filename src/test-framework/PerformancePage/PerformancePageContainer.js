@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {PerformancePageUI} from "./PerformancePageUI";
-import {getPerformanceAPI, getTestAttemptReportAPI} from "../../_Api/Tests/TestAttempts";
+import {getPerformanceAPI, getTestAttemptPsychReportAPI, getTestAttemptReportAPI} from "../../_Api/Tests/TestAttempts";
 import {TEST_PAGE_ROUTE} from "../../route";
 import {history} from "../../__internals/CustomHistory";
 import {LoadingSpinner} from "../ExamPage/LoadingSpinner";
@@ -13,7 +13,7 @@ class PerformancePage extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {data: null, user: props.user, testDetails: null, testAttemptReport: null};
+        this.state = {data: null, user: props.user, testDetails: null};
 
         this.viewPerformanceClickHandler = this.viewPerformanceClickHandler.bind(this);
     }
@@ -35,6 +35,7 @@ class PerformancePage extends React.Component {
                                   viewPerformanceClickHandler={this.viewPerformanceClickHandler}
                                   testAttemptReport={this.state.testAttemptReport}
                                   tabChangeCount={this.state.tabChangeCount}
+                                  psychReport={this.state.psychReport}
                                   data={this.state.data}/>;
 
     }
@@ -58,17 +59,39 @@ class PerformancePage extends React.Component {
         let asUserID = (new URL(document.location)).searchParams.get("asUser");
         if (asUserID)
             getTestAttemptReportAPI(testID).then(({data}) => {
+
+
                 delete data['test_attempt_id'];
                 delete data['is_finished'];
                 delete data['create_date'];
                 delete data['finish_date'];
                 let tabChangeCount = data['tab_change_count'];
-
                 delete data['tab_change_count'];
 
 
-                this.setState({...this.state, testAttemptReport: data, tabChangeCount})
-            })
+                const isEmpty = Object.values(data).every(x => (x === null));
+
+                if (isEmpty) {
+
+                    this.setState({...this.state, tabChangeCount});
+                }
+                else {
+
+                    this.setState({...this.state, testAttemptReport: data, tabChangeCount});
+
+                }
+
+
+            });
+
+        if (asUserID) {
+            getTestAttemptPsychReportAPI(testID).then(({data}) => {
+
+                delete data['test_attempt_id'];
+                this.setState({...this.state, psychReport: data});
+
+            });
+        }
 
     }
 

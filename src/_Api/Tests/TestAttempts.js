@@ -11,6 +11,10 @@ function getTestAttemptReportAPI(testID) {
     return rexAxios.get(`/tests/${testID}/user/${asUserID}`)
 }
 
+function getTestAttemptPsychReportAPI(testID) {
+    return rexAxios.get(`/tests/${testID}/user/${asUserID}/psych`)
+}
+
 function startTestAPI(testID) {
     return testFramAxios.post(`/tests/${testID}/attempts/start`)
 }
@@ -49,4 +53,4 @@ function logTabChangeAPI(testID) {
 
 }
 
-export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTestAPI, getPerformanceAPI, getTestAttemptReportAPI, logTabChangeAPI}
+export {startTestAPI, geTestAttempt, updateQuestionAttemptAPI, pingAPI, finishTestAPI, getPerformanceAPI, getTestAttemptReportAPI, logTabChangeAPI, getTestAttemptPsychReportAPI}
