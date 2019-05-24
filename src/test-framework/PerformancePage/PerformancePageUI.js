@@ -474,26 +474,32 @@ function PerformancePageUI(props) {
 
                                         leftText = "Extroverted";
                                         rightText = "Introverted";
+                                        description = "This trait determines how we interact with our environment.";
                                     }
                                     else if (i === 0) {
 
                                         leftText = "Intuitive";
                                         rightText = "Observant";
+                                        description = "This trait shows where we direct our mental energy.";
                                     }
                                     else if (i === 3) {
 
                                         leftText = "Thinking";
                                         rightText = "Feeling";
+                                        description = "This trait determines how we make decisions and cope with emotions.";
                                     }
                                     else if (i === 4) {
 
                                         leftText = "Judging";
                                         rightText = "Prospecting";
+                                        description = "This trait reflects our approach to work, planning and decision-making.";
                                     }
                                     else if (i === 1) {
 
                                         leftText = "Assertive";
                                         rightText = "Turbulent";
+                                        description = "This trait underpins all others, showing how confident we are in our abilities and decisions.";
+
                                     }
 
 
