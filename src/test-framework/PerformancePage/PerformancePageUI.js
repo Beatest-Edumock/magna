@@ -538,7 +538,7 @@ function PerformancePageUI(props) {
                                                 </div>
 
                                             </div>
-                                            <p className="text-left text-muted text-monospace">{props.psychReport[chunk[0]]}</p>
+                                            <p className="text-left text-muted lead">{props.psychReport[chunk[0]]}</p>
                                         </div>
 
                                     );
