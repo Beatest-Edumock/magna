@@ -9,7 +9,7 @@ import {SimpleBarChart} from '../../Common/Visualization/SimpleBarChart';
 import {StackedRadarChart} from '../../Common/Visualization/StackedRadarChart';
 import {AreaChartUI} from '../../Common/Visualization/AreaChartUI';
 import {PieChartUI} from "../../Common/Visualization/PieChartUI";
-import "react-tabs/style/react-tabs.css";
+import "./styles.css";
 import {colors} from '../../Common/Visualization/ColorPalette';
 
 function toTitleCase(str) {
@@ -230,10 +230,10 @@ function PerformancePageUI(props) {
         <div style={{minHeight: "100%", minWidth: "100%"}} className="bg-light">
             <div className="container text-center  rounded ">
                 <div>
-                    <h2 className="my-5 text-monospace">{props.user.full_name}</h2>
+                    <p className="h4 my-5 ">{props.user.full_name}</p>
 
                     <div className="row my-5">
-                        <h3 className="col text-monospace text-muted">{props.testDetails.name}</h3>
+                        <h3 className="col  text-muted">{props.testDetails.name}</h3>
                         <h4 className="col text-monospace">Rank: {props.data.rank}</h4>
                         <h4 className="col text-monospace">Percentile: {props.data.percentile}</h4>
                     </div>
@@ -446,8 +446,8 @@ function PerformancePageUI(props) {
 
                     {props.tabChangeCount !== null && props.tabChangeCount !== undefined &&
                     <>
-                        <div className="card m-5 p-5 ">
-                            <h3 className="justify-content-start lead">Number of tab changes</h3>
+                        <div className="card my-5 py-5 ">
+                            <p className="justify-content-start lead h5 font-weight-bold">Number of tab changes</p>
                             <h3 className="text-muted justify-content-center"> {props.tabChangeCount}</h3>
                         </div>
                     </>
@@ -458,7 +458,7 @@ function PerformancePageUI(props) {
                     {props.psychReport !== undefined &&
                     <>
                         <div className="card p-5 shadow-sm">
-                            <h1 className="display-4">Personality Analysis</h1>
+                            <p className="h5 font-weight-bold">Personality Analysis</p>
 
 
                             {
@@ -506,9 +506,9 @@ function PerformancePageUI(props) {
                                     return (
                                         <div className="row my-5 no-gutters">
                                             <div className="col-6 ">
-                                                <h3 className="text-info display-4 text-left">{toTitleCase(chunk[0]).replace(/_text/, "")}<span style={{fontSize: "10px"}}
-                                                                                                                                                className="text-muted justify-content-center align-middle">{description}</span>
-                                                </h3>
+                                                <p className="h4 text-info  text-left">{toTitleCase(chunk[0]).replace(/_text/, "")}
+                                                </p>
+                                                <p className="text-left font-italic">{description}</p>
 
                                             </div>
 
