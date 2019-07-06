@@ -210,7 +210,7 @@ function SignUpForm(props) {
                     <Input
                         type="string"
                         name="referral_code_used"
-                        placeholder="Enter Referral Code"
+                        placeholder="Enter Referral Code(Optional)"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.referral_code_used}
