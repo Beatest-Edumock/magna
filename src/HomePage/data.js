@@ -52,7 +52,7 @@ export const LARGE_FEATURE_CARD_ELEMENTS = [
 
 		icon: <FontAwesomeIcon size={"6x"} icon={faHeadphones} color="#8C9EFF"/>,
 		text: <div><h4>Aptitude</h4>
-			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Beatest - Understanding skills and behaviour of a candidate using Machine learning and identifying the gaps and the right fit between candidates and industry.</div></div>
+			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Aiming to ace CAT or your campus recruitment exams? Need to learn the tricks to solve a sum in seconds? Learn from IIM and XLRI graduates today.</div></div>
 	},
 
 	{
@@ -109,7 +109,7 @@ export const FLIP_CARD_ELEMENTS = [
                 <div className="text-center" style={{marginTop: "10%"}}>
                     <Container>
                              <div><h4>Placement Exam</h4>
-			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Beatest - Understanding skills and behaviour of a candidate using Machine learning and identifying the gaps and the right fit between candidates and industry.</div></div>
+			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Aiming to ace CAT or your campus recruitment exams? Need to learn the tricks to solve a sum in seconds? Learn from IIM and XLRI graduates today.</div></div>
                 </Container>
             </div>
             </div>,
