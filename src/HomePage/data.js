@@ -109,7 +109,7 @@ export const FLIP_CARD_ELEMENTS = [
                 <div className="text-center" style={{marginTop: "10%"}}>
                     <Container>
                              <div><h4>Placement Exam</h4>
-			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Aiming to ace your placement exams? Learn the tricks and patterns emularing different corporate entrance exams from IIMs and XLRI graduates today</div></div>
+			<div style={{fontFamily: 'Open Sans,Helvetica,Arial,sans-serif',color:'#666'}}>Aiming to ace CAT or your campus recruitment exams? Need to learn the tricks to solve a sum in seconds? Learn from IIM and XLRI graduates today.</div></div>
                 </Container>
             </div>
             </div>,
