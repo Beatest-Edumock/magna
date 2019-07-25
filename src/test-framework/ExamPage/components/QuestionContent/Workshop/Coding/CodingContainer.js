@@ -184,7 +184,7 @@ class Coding extends React.Component {
 
         runCodeAPI(this.state.code, this.state.selectedLanguage.value, inputs)
             .then(({data}) => {
-                this.setState({...this.state, outputs: data[0], runTimes: data[1], currentlyRunning: false,});
+                this.setState({...this.state, outputs: data[0], runTimes: data[1], memoryTaken: data[2], currentlyRunning: false,});
 
                 this.testCaseDisplay.scrollIntoView({block: 'end', behavior: 'smooth'});
 
@@ -241,6 +241,7 @@ class Coding extends React.Component {
                           inputs={inputTestCase}
                           outputs={this.state.outputs}
                           runTimes={this.state.runTimes}
+                          memoryTaken={this.state.memoryTaken}
                           correctOutputs={this.props.question.coding_cases.map(el => el.right_output)}
                           isChecked={this.state.isChecked}
                           code={this.state.code}

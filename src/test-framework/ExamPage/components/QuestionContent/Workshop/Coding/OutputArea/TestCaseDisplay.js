@@ -72,7 +72,7 @@ function CustomOutputDisplay({userOutput}) {
 
 }
 
-export const TestCaseDisplay = ({inputs, userOutputs, correctOutputs, isCustomInput, runTimes, setRef}) => {
+export const TestCaseDisplay = ({inputs, userOutputs, correctOutputs, isCustomInput, runTimes, memoryTaken, setRef}) => {
 
 
     return (
@@ -95,6 +95,10 @@ export const TestCaseDisplay = ({inputs, userOutputs, correctOutputs, isCustomIn
                     <TabPanel className="w-100  p-3 ">
                         <p className="lead  text-gray blockquote" ref={setRef}>Time Taken</p>
                         <p className="lead  text-dark blockquote">{runTimes[index]} seconds</p>
+
+                        <p className="lead  text-gray blockquote" ref={setRef}>Memory Taken</p>
+                        <p className="lead  text-dark blockquote">{memoryTaken[index]} Bytes</p>
+
 
                         <p className="lead  text-gray blockquote">Input</p>
                         <p className="text-monospace bg-gray-light p-2 rounded"

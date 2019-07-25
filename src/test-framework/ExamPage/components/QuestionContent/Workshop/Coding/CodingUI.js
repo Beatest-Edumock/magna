@@ -127,6 +127,7 @@ class CodingUI extends React.Component {
                             userOutputs={this.props.outputs}
                             correctOutputs={this.props.correctOutputs}
                             runTimes={this.props.runTimes}
+                            memoryTaken={this.props.memoryTaken}
                             isCustomInput={this.props.isChecked}/>
                     </div>
                 </div>
