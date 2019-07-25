@@ -387,7 +387,7 @@ function PerformancePageUI(props) {
                 </Tabs>
 
                 {props.testAttemptReport !== undefined &&
-                <h3>Qualitative Analysis</h3>
+                <h3>Growth Potential</h3>
                 }
 
                 <div className="container">
