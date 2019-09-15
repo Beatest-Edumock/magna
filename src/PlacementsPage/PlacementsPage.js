@@ -158,7 +158,7 @@ class PlacementsPage extends React.Component {
                                     let func;
 
 
-                                    if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0)) {
+                                    if (this.props.isUserLoggedIn && (object.is_purchased || object.price === 0 || object.status === "created" || object.status === "attempted")) {
                                         func = () => {
                                             this.startTest(object.id);
                                         }

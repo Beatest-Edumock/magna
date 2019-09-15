@@ -1,4 +1,35 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+import {createOrder} from "../_Api/Payments";
+import {createRazorPayOrder} from "../Payment/RazorpayCheckout";
+
+let asUserID = (new URL(document.location)).searchParams.get("asUser");
+let testD;
+
+function buyTest() {
+     let order = createOrder(testD);
+     let options = {
+        "key": "rzp_live_IIFiNTCfcQrA0Z",
+        "amount": (testD.price * 100), // 2000 paise = INR 20, amount in paisa
+        "name": "Beatest",
+        "description": testD.name,
+        "image": "../../public/beatest.ico",
+        "order_id" : order.rp_order_id,
+        "handler": function (response){
+          alert("Success : Payment Done");
+          window.location.reload();
+        },
+        "prefill": {
+          "name": "Beatest",
+          "email": " "
+        },
+        "theme": {
+          "color": "#1771D7"
+        }
+      };
+    let rzp =new window.Razorpay(options);
+    rzp.open(); 
+}
 
 
 /**
@@ -7,6 +38,7 @@ import React from 'react';
  * @param testDetails a single test object returned from get tests endpoint
  * @param onClick the callback when the button is clicked
  */
+
 function TestCard({testDetails, onClick}) {
 
     let totalTime = testDetails.total_time;
@@ -24,17 +56,22 @@ function TestCard({testDetails, onClick}) {
     let buttonText = "Start Test";
     let buttonColor = "btn-primary";
 
+    testD = testDetails;
 
     if (hasAccess !== true) {
-        buttonText = "Buy Now";
-        buttonColor = "btn-success";
+        if(testDetails.status === "created" || testDetails.status === "attempted") {
+            //TODO Capturing Payments
+        } else {
+                buttonText = "Buy Now";
+                buttonColor = "btn-success";
+                onClick = buyTest;
+        }
     }
 
     if (testDetails.is_complete === true) {
         buttonColor = "btn-info";
         buttonText = "View Scores";
     }
-
 
     return (
         <div className="card shadow-sm">
