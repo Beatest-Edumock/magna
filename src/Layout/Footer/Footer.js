@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index.es";
-import {faFacebookF, faGoogle, faLinkedinIn} from '@fortawesome/free-brands-svg-icons';
+import {faFacebookF, faLinkedinIn, faTwitter, faInstagram} from '@fortawesome/free-brands-svg-icons';
 import {Container, Row} from 'reactstrap'
 import {Link} from 'react-router-dom'
 
@@ -17,10 +17,10 @@ function Footer() {
                     <Link to="/about-us" style={{marginRight:'2%',color: 'inherit',opacity:1,fontSize:14}}>Our Team</Link>
                     <Link to="/faq" style={{color: 'inherit',opacity:1,fontSize:14}}>FAQs</Link>
                     <Row style={{justifyContent: 'flex-end',width: '70%'}} >
-
-                        <Link  style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://plus.google.com/112722904416257444024" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faGoogle} style={{background: "#dd4b39",color: "white",width:'1em',height:'1em'}}/></Link>
-                        <Link  style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://www.linkedin.com/company/beatest/"><FontAwesomeIcon icon={faLinkedinIn} style={{background: "#007bb5",color: "white",width:'1em',height:'1em'}}/></Link>
-                        <Link  style={{marginRight:'3%',color: 'inherit',opacity:1}} to="https://www.facebook.com/beatest.in/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faFacebookF}   style={{background: "#3B5998",color: "white",width:'1em',height:'1em'}}/></Link>
+                        <a style={{marginRight:'3%',color: 'inherit',opacity:1}} href="https://www.linkedin.com/company/beatest/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faLinkedinIn} style={{background: "#007bb5",color: "white",width:'1em',height:'1em'}}/></a>
+                        <a style={{marginRight:'3%',color: 'inherit',opacity:1}} href="https://www.facebook.com/beatest.in/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faFacebookF}   style={{background: "#3B5998",color: "white",width:'1em',height:'1em'}}/></a>
+                        <a style={{marginRight:'3%',color: 'inherit',opacity:1}} href="https://twitter.com/beatest_in" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faTwitter}   style={{background: "#38A1F3",color: "white",width:'1em',height:'1em'}}/></a>
+                        <a style={{marginRight:'3%',color: 'inherit',opacity:1}} href="https://instagram.com/beatest.in" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon size={"1x"} icon={faInstagram}   style={{background: "#BC2A8D",color: "white",width:'1em',height:'1em'}}/></a>
 
                     </Row>
                 </Row>
