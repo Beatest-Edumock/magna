@@ -11,7 +11,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.2.0",
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "0.1.0-11",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "basic-react-calculator": "github:Beatest-Edumock/react-calculator",
     "bootstrap": "^4.1.3",
     "classnames": "^2.2.6",
